@@ -1,0 +1,44 @@
+.MoonContainer{
+    background: rgba(31, 32, 35, 1);
+    height: 100dvh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.MoonHeading {
+    position: absolute;
+    top: 8%;
+    text-align: center;
+}
+
+.MoonHeading h1 {
+    color: #424242;
+    font-family: "Inter Tight";
+    font-size: 22vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 95%; 
+    text-transform: uppercase;
+    width: 100vw; 
+}
+.OrbitImage{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100vh;
+    width: 52%;
+    object-fit: contain;
+}
+.MoonImage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: auto;
+    width: 550px;
+    object-fit: contain;
+    position: relative;
+}
