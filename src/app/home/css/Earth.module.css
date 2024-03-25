@@ -58,7 +58,8 @@
     display: flex;
     gap: 6px;
     flex-direction: column;
-    width: 499px;
+    max-width: 499px;
+    width: 100%;
     position: absolute;
     top: 45%;
     right: 15%;
@@ -95,15 +96,21 @@
     margin: 0; 
 }
 
-.MoonImageLabel{
+.MoonImageContainer{
     color: #fff;
     display: flex;
-    flex-direction: column;
-    gap: 3px;
+    align-items: flex-start;
+    gap: 25px;
     position: absolute;
     right: 11%;
     top: 15%;
     text-align: left;
+    text-transform: uppercase;
+}
+.MoonImageLabel{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 .MoonImageLabel span:last-child{
     opacity: 0.5;
