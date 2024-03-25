@@ -11,16 +11,21 @@ export default function Earth() {
       <img className={styles.EarthImage}
       src={'/assets/images/earth-img.png'}
       />
+      <p className={styles.EarthImageLabel}>
+        <span>[Earth]</span> <span>[home]</span>
+      </p>
       <p className={styles.EarthDescription}>
         <span className="heading-3">The nurturing sphere we call home.</span>
         <span className="caption">[Lorem ipsum dolor sit amet, consectetur adipiscing elit]</span>
       </p>
-      <p className={styles.EarthImageLabel}>
-        <span>[Earth]</span> <span>[home]</span>
-      </p>
-      <p className={styles.MoonImageLabel}>
-        <span>[moon]</span> <span>[384,400 km]</span>
-      </p>
+      <div className={styles.MoonImageContainer}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+          <circle cx="9.5" cy="9.5" r="9.5" fill="#4B4B4B"/>
+        </svg>
+        <p className={styles.MoonImageLabel}>
+          <span>[moon]</span> <span>[384,400 km]</span>
+        </p>
+      </div>
     </div>
   )
 }
