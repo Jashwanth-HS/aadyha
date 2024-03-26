@@ -1,6 +1,8 @@
 .SpaceSystemContainer{
+    position: relative;
     background: #515B6A;
     padding: 40px 0;
+    z-index: 2;
 }
 .LineDot{
     display: flex;

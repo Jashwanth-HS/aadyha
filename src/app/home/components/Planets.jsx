@@ -1,11 +1,9 @@
 "use client";
-import React, { useRef, useEffect, forwardRef } from "react";
+import React, { useRef, useEffect, forwardRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import styles from "../css/main.module.css";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
-import Earth from "./Earth";
-import Moon from "./Moon";
 
 // Model component which loads a 3D model and animations
 const Model = forwardRef((props, ref) => {
@@ -23,7 +21,6 @@ const Model = forwardRef((props, ref) => {
   // Effect to play camera animation
   useEffect(() => {
     if (cameraAction) {
-      console.log("cameraAction.time: ", cameraAction.time);
       cameraAction.play();
     }
   }, [cameraAction]);
@@ -110,13 +107,11 @@ const Planets = ({ children }) => {
             e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
         }}
       >
-        <Earth />
-        <Moon />
-        <Moon />
+        {children}
       </div>
       {/* Canvas for 3D scene */}
       <Canvas
-        style={{ height: "100vh", position: "fixed" }}
+        className={styles?.canvasContainer}
         gl={{ antialias: true, pixelRatio: devicePixelRatio }}
       >
         {/* Ambient light */}

@@ -20,11 +20,13 @@ import SpaceSystem from "./components/SpaceSystem";
 
 export default function Home() {
   return (
-    <Planets>
-      <Earth />
-      <Moon />
-      <Mars />
+    <>
+      <Planets>
+        <Earth />
+        <Moon />
+        <Mars />
+      </Planets>
       <SpaceSystem />
-    </Planets>
+    </>
   );
 }
