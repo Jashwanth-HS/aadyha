@@ -1,17 +1,26 @@
 .MoonContainer{
-    background: rgba(31, 32, 35, 1);
+    /* background: rgba(31, 32, 35, 1); */
     height: 100dvh;
     width: 100vw;
     display: flex;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+.overlayDiv{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
 }
 .MoonHeading {
     position: absolute;
     top: 8%;
     text-align: center;
 }
-
+.overlayDescription{
+    z-index: 1;
+}
 .MoonHeading h1 {
     color: #424242;
     font-family: "Inter Tight";

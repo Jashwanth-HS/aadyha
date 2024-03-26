@@ -1,0 +1,25 @@
+.divContainer{
+    position: relative;
+      background: transparent;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+  }
+  .canvasContainer{
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    pointer-events: auto !important;
+  }
+  /* .divContainer > div{
+    width: fit-content;
+    height: fit-content;
+    color: white;
+    background: black;
+    padding: 2rem;
+  } */
