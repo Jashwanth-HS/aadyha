@@ -94,8 +94,13 @@
 }
 .SpaceSystemDiscoverTitle{
     position: absolute;
-    top: 40%;
+    top: 35%;
 }
 .SpaceSystemDiscover button{
     margin-top: 60px;
+}
+.SpaceSystemDiscoverImg svg{
+    max-width: 100%;
+    width: 800px;
+    height: 100%;
 }

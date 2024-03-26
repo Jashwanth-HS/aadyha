@@ -189,7 +189,7 @@ export default function Satilite() {
         sectionTitle={'Space mission'} 
         sectionSubTitle={'[End to end solutions]'} 
         blocks={SatelliteSystemArray} 
-        imagePath={'/assets/images/lvs.png'} 
+        imagePath={'/assets/images/satellite-system.png'} 
         renderSvg={svg2}  
         isRight={true}
         title={'satellite system'}
@@ -199,7 +199,7 @@ export default function Satilite() {
         sectionTitle={'Satellite System'} 
         sectionSubTitle={'[End to end solutions]'} 
         blocks={SpaceMissionArray} 
-        imagePath={'/assets/images/lvs.png'} 
+        imagePath={'/assets/images/space-mission.png'} 
         renderSvg={svg3} 
         isbottom={true} 
         title={'sPACE  MISSION'}
