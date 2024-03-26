@@ -1,0 +1,101 @@
+.SpaceSystemContainer{
+    background: #515B6A;
+    padding: 40px 0;
+}
+.LineDot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    color: #fff;
+}
+.LineDotContent p{
+    opacity: 0.5;
+}
+.LaunchVehicleSystemContainer{
+    position: relative;
+    padding: 40px 0;
+}
+.LaunchVehicleSystemWrap{
+    display: flex;
+    padding: 100px 0 80px;
+    color: #fff;
+    width: 50%;
+}
+.SpaceSystemContentLeftList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 70px;
+    padding-top: 1rem;
+    border-top: 1px solid gray;
+}
+
+.SpaceSystemListitems {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex: calc(50% - 1rem);
+    padding-bottom: 2rem;
+    padding-inline: 2rem;
+    border-bottom: 1px solid gray;
+}
+.SpaceSystemListitems img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+.LvsRightItem svg{
+    position: absolute;
+    top: -550px;
+    right: -100px;
+}
+.BlockDataContainerRight .LvsRightItem svg{
+    position: absolute;
+    top: -300px;
+    left: -100px;
+}
+.LvsRightItemBottom.LvsRightItem svg{
+    position: absolute;
+    top: -300px;
+    right: -100px;
+}
+.LvsRightItem{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    align-items: center;
+}
+.BlockDataContainer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.BlockDataContainer.BlockDataContainerRight{
+    flex-direction: row-reverse;
+}
+.LvsLeftItem h3{
+    padding-bottom: 24px;
+}
+.LvsLeftItem button{
+    margin-top: 60px;
+}
+.SpaceSystemDiscoverWrap{
+    height: 100vh;
+}
+.SpaceSystemDiscover{
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+.SpaceSystemDiscoverTitle{
+    position: absolute;
+    top: 40%;
+}
+.SpaceSystemDiscover button{
+    margin-top: 60px;
+}

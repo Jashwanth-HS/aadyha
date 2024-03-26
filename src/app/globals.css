@@ -98,6 +98,11 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.container{
+  width: 90%;
+  margin: 0 auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -108,9 +113,35 @@ a {
   }
 }
 
+/* button */
+.primary-btn{
+  display: inline-flex;
+  padding: 14px 28px 14px 21px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: #000;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+}
 /* Headings */
 .title-1{
   font-size: 410px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 95%; 
+  text-transform: uppercase;
+}
+.heading-1{
+  font-size: 90px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 95%; 
+  text-transform: uppercase;
+}
+.heading-2{
+  font-size: 69px;
   font-style: normal;
   font-weight: 400;
   line-height: 95%; 
@@ -123,10 +154,25 @@ a {
   line-height: 100%; 
   text-transform: uppercase;
 }
+.sub-heading-2{
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 115%; 
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+}
 .caption{
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.micro-large{
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
 }
