@@ -95,7 +95,9 @@ const Model = forwardRef((props, ref) => {
 const Planets = ({ children }) => {
   // Ref for scroll position
   const scroll = useRef(0);
-
+  // Calculate device pixel ratio
+  const devicePixelRatio =
+    typeof window !== "undefined" ? window.devicePixelRatio : 1;
   // Render
   return (
     <>
@@ -113,7 +115,10 @@ const Planets = ({ children }) => {
         <Moon />
       </div>
       {/* Canvas for 3D scene */}
-      <Canvas style={{ height: "100vh", position: "fixed" }}>
+      <Canvas
+        style={{ height: "100vh", position: "fixed" }}
+        gl={{ antialias: true, pixelRatio: devicePixelRatio }}
+      >
         {/* Ambient light */}
         <ambientLight intensity={1} />
         {/* Directional light */}

@@ -16,6 +16,9 @@
     width: 100vw;
     z-index: 1;
 }
+.overlayDescription{
+    z-index: 1;
+}
 .EarthHeading {
     position: absolute;
     bottom: 8%;

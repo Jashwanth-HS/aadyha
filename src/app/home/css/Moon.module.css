@@ -18,7 +18,9 @@
     top: 8%;
     text-align: center;
 }
-
+.overlayDescription{
+    z-index: 1;
+}
 .MoonHeading h1 {
     color: #424242;
     font-family: "Inter Tight";
