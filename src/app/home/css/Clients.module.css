@@ -1,0 +1,166 @@
+.ClientsContainer{
+    background: #00031B;
+    padding: 120px 0;
+}
+.ClientsWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.ClientsTitle{
+    max-width: 1000px;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 60px;
+}
+.ClientsLogo{
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.ClientsLogoItems{
+    width: 100%;
+    border: 1px solid #fff;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ClientsLogoItems img{
+    width: 100%;
+}
+.LifeSupporSystemWrap{
+    padding: 100px 0;
+    display: flex;
+    gap: 130px;
+    color: #fff;
+}
+.LifeSupporSystemImg{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+.LifeSupporSystemContent span{
+    color: #aaa;
+}
+.Counter{
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 100px;
+    row-gap: 40px;
+}
+.CounterItems{
+    border-top: 1px solid rgba(255, 255, 255, 1);
+    padding-top: 1rem;
+    position: relative;
+}
+.CounterItems h3 {
+  color: rgba(255, 255, 255, 0.5); 
+  padding-bottom: 5px;
+  position: relative; 
+}
+
+.CounterItems h3::before {
+    content: '\2022'; 
+    display: inline-block;
+    margin-right: 5px; 
+    color: #fff;
+}
+.LifeSupporSystemContent button{
+    margin-top: 60px;
+}
+.LatestNewsContainer{
+    padding-top: 100px;
+    color: #fff;
+}
+.LatestNewsTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.LatestNewsTitle h3{
+    max-width: 460px;
+    width: 100%;
+}
+.LatestNewsItems{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 30px;
+}
+.LatestNewsItems img{
+    width: 100%;
+    height: 250px;
+}
+.LatestNewsItemsContent{
+    position: relative;
+}
+.LatestNewsItemsContent p{
+    padding: 20px 0 10px;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.LatestNewsItemsContent p::before {
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #fff; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+
+/* CEO MESSAGE */
+.CeoMessageContainer{
+    background: #515B6A;
+    padding-top: 40px;
+}
+.CeoMessageWrap{
+    display: flex;
+    align-items: center;
+    gap: 44px;
+    color: #fff;
+}
+.CeoMessageWrap img{
+    display: block;
+}
+.CeoMessageContent{
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+.CeoMessageContent h2{
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(168, 173, 180, 0.3);
+}
+.CeoMessageContent .profile{
+    padding-top: 25px;
+}
+.CeoMessageContent .profile h6::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 8px; 
+    background-color: #fff; 
+    margin-right: 10px; 
+}
+.CeoMessageContent .profile p{
+    padding-top: 6px;
+    color: #fff;
+    opacity: 0.5;
+}
+.CeoMessageContentBottm{
+    display: flex;
+    gap: 26px;
+}
+.CeoMessageContentBottm h3{
+    padding-bottom: 6px;
+}

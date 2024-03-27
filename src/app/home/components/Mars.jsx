@@ -11,19 +11,19 @@ export default function Mars() {
         className={styles.OrbitImage}
         src={"/assets/images/orbit-line.png"}
       />
-      <img className={styles.MarsImage} src={"/assets/images/mars.png"} />
-      <p className={styles.MarsImageLabel}>
+      {/* <img className={styles.MarsImage} src={"/assets/images/mars.png"} /> */}
+      <p className={`${styles?.MarsImageLabel} secondary-font`}>
         <span>[MARS]</span> <span>[Future home]</span>
       </p>
       <p className={styles.MarsDescription}>
         <span className="heading-3">prospective red frontier settlement</span>
-        <span className="caption">
+        <span className="caption secondary-font">
           [Lorem ipsum dolor sit amet, consectetur adipiscing elit]
         </span>
       </p>
 
       <div className={styles.MangalyaanContainer}>
-        <p className={styles.MangalyaanLabel}>
+        <p className={`${styles?.MangalyaanLabel} secondary-font`}>
           <span>[Mangalyaan]</span> <span>[SINCE 2013]</span>
         </p>
         <svg

@@ -16,12 +16,12 @@ export default function Earth() {
       src={'/assets/images/earth-img.png'}
   /> */}
       <div className={styles.overlayDescription}>
-        <p className={styles.EarthImageLabel}>
+        <p className={`${styles?.EarthImageLabel} secondary-font`}>
           <span>[Earth]</span> <span>[home]</span>
         </p>
         <p className={styles.EarthDescription}>
           <span className="heading-3">The nurturing sphere we call home.</span>
-          <span className="caption">
+          <span className="caption secondary-font">
             [Lorem ipsum dolor sit amet, consectetur adipiscing elit]
           </span>
         </p>
@@ -35,7 +35,7 @@ export default function Earth() {
           >
             <circle cx="9.5" cy="9.5" r="9.5" fill="#4B4B4B" />
           </svg>
-          <p className={styles.MoonImageLabel}>
+          <p className={`${styles?.MoonImageLabel} secondary-font`}>
             <span>[moon]</span> <span>[384,400 km]</span>
           </p>
         </div>

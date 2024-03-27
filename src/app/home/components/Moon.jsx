@@ -13,14 +13,14 @@ export default function Moon() {
       />
       {/* <img className={styles.MoonImage} src={"/assets/images/moon.png"} /> */}
       <div className={styles?.overlayDescription}>
-        <p className={styles.MoonImageLabel}>
+        <p className={`${styles?.MoonImageLabel} secondary-font`}>
           <span>[Moon]</span> <span>[space system]</span>
         </p>
         <p className={styles.MoonDescription}>
           <span className="heading-3">
             Inspiring humanity's quests for exploration
           </span>
-          <span className="caption">
+          <span className="caption secondary-font">
             [Lorem ipsum dolor sit amet, consectetur adipiscing elit]
           </span>
         </p>
@@ -64,7 +64,7 @@ export default function Moon() {
               </linearGradient>
             </defs>
           </svg>
-          <p className={styles.ChandrayaanLabel}>
+          <p className={`${styles?.ChandrayaanLabel} secondary-font`}>
             <span>[Chandrayaan-3]</span> <span>[2023. ENROUTE MOON]</span>
           </p>
         </div>
@@ -79,7 +79,7 @@ export default function Moon() {
           >
             <circle cx="9.5" cy="9.5" r="9.5" fill="#E4572E" />
           </svg>
-          <p className={styles.MarsLabel}>
+          <p className={`${styles?.MarsLabel} secondary-font`}>
             <span>[MARS]</span> <span>[home, AWAITING]</span>
           </p>
         </div>

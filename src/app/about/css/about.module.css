@@ -1,0 +1,248 @@
+.AboutBg{
+    background: #515B6A;
+}
+.banner{
+    max-width: 1122px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 60px;
+    text-align: center;
+    color: #fff;
+}
+.banner h3{
+    padding-bottom: 20px;
+}
+.banner p{
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+}
+.gallery{
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+}
+.gallery div:nth-child(2),
+.gallery div:nth-child(3) {
+    margin-top: 94px; 
+}
+.OurVissionContainer{
+    position: relative;
+    padding-top: 100px;
+    color: #fff;
+}
+.OurVissionWrapper{
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+}
+.OurVissionWrapper h3{
+    position: relative;
+}
+.LineDot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    color: #fff;
+}
+.OurVissionTextImg{
+    width: 100vw;
+    overflow: hidden; 
+    margin-top: -40px;
+}
+.OurVissionTextImg img{
+    width: 100%;
+    height: auto; 
+    display: block
+}
+.OurMissionContainer{
+    position: relative;
+}
+.OurMissionBg img{
+    width: 100%;
+    display: block;
+}
+.OurMissionContent {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    text-align: center; 
+    color: white; 
+}
+.OurMissionContent p{
+    padding-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.OurMissionContent p::before {
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #D9D9D9; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.WcaContainer{
+    padding: 100px 0;
+    color: #fff;
+}
+.WcaItems{
+    padding-top: 110px;
+    display: flex;
+    justify-content: space-between;
+    gap: 95px;
+}
+.WcaItems div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+.WcaItems div img{
+    max-width: 70px;
+    height: 70px;
+    width: 100%;
+    padding-bottom: 16px;
+}
+.TeamMembersImg img{
+    width: 100%;
+    display: block;
+}
+.JoinUsContainer{
+    padding: 120px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+.JoinUsContainer h3{
+    padding: 16px 0 30px;
+}
+.JoinUsContainer h6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.JoinUsContainer p{
+    max-width: 530px;
+    width: 100%;
+    margin: 0 auto;
+}
+.JoinUsContainer h6::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #D9D9D9; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.JoinUsContainer button{
+    margin-top: 48px;
+}
+.LeadershipTeamContainer{
+    background: url(/assets/images/leadership-team-bg.svg);
+    padding: 120px 0;
+}
+.LeadershipTeamTitle{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+.LeadershipTeamTitle h6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.LeadershipTeamTitle h6::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.LeadershipTeamWrap{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-top: 90px;
+}
+.LeadershipTeamItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.LeadershipTeamProfile img{
+    display: flex;
+    width: 150px;
+    height: 150px;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 147px;
+    background: #000;
+}
+
+@media(max-width : 768px){
+        .gallery div:nth-child(2),
+        .gallery div:nth-child(3) {
+        margin-top: 0px; 
+    }
+    .gallery{
+        overflow-x: scroll;
+
+    }
+    .gallery::-webkit-scrollbar {
+        display: none;
+    }
+    .WcaContainer{
+        padding: 60px 0;
+    }
+    .WcaItems{
+        padding-top: 40px;
+        flex-direction: column;
+    }
+    .OurMissionContent {
+        width: 90%;
+        margin: 0 auto;
+        position: absolute; 
+        top: 30%; 
+        left: 0;
+        right: 0;
+        transform: unset; 
+        text-align: center; 
+        color: white; 
+    }
+    .JoinUsContainer{
+        padding: 60px 0;
+    }
+    .LeadershipTeamContainer{
+        padding: 60px 0;
+    }
+    .LeadershipTeamWrap{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

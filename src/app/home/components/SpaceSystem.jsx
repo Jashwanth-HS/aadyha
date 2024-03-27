@@ -78,8 +78,8 @@ const SectionTitle = ({title,subTitle}) =>
                 </svg>
             </div>
             <div className={styles.LineDotContent}>
-                <h3 className="micro-large">{title}</h3>
-                <p className="caption">{subTitle}</p>
+                <h3 className="micro-large secondary-font">{title}</h3>
+                <p className="caption secondary-font">{subTitle}</p>
             </div>
         </div>
     );
@@ -107,14 +107,14 @@ const SpaceSystem = ({title,sectionTitle,subTitle,sectionSubTitle,blocks,renderS
                                          <img src={e?.src} alt=""/>
                                         </div>
                                         <div style={{display:"flex",flexDirection:"column",width:"100%"}} >
-                                            <div key={e} className="micro-large">{e?.title}</div>
-                                            <div key={e} className="caption">{e?.subTitle}</div>
+                                            <div key={e} className="micro-large secondary-font">{e?.title}</div>
+                                            <div key={e} className="caption secondary-font">{e?.subTitle}</div>
                                         </div>
                                     </div>
                                 </> 
                             })}
                         </div>
-                        <button className="primary-btn">explore more<svg xmlns="http://www.w3.org/2000/svg" width="20" height="1" viewBox="0 0 20 1" fill="none">
+                        <button className="primary-btn secondary-font">explore more<svg xmlns="http://www.w3.org/2000/svg" width="20" height="1" viewBox="0 0 20 1" fill="none">
                         <path d="M0 0.5H19.5" stroke="white"/>
                         </svg></button>
                     </div>
@@ -183,7 +183,7 @@ export default function Satilite() {
         imagePath={'/assets/images/lvs.png'} 
         renderSvg={svg1}
         title={'LAUNCH VEHICLE SYSTEM'}
-        subTitle={'From Concept to Design: Your partner in bespoke Space Solutions'}
+        subTitle={'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'}
          />
         <SpaceSystem
         sectionTitle={'Space mission'} 
