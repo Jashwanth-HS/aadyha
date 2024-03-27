@@ -4,8 +4,6 @@ import Earth from "./components/Earth";
 import Moon from "./components/Moon";
 import Planets from "./components/Planets";
 import Mars from "./components/Mars";
-// import SpaceSystemWrap from "./components/SpaceSystem";
-
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
 const Section = ({ children }) => {
@@ -25,7 +23,6 @@ export default function Home() {
         <Moon />
         <Mars />
       </Planets>
-      {/* <SpaceSystemWrap /> */}
       <Section>
         <SpaceSystem />
         <Clients />
