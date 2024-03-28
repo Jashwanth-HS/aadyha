@@ -1,10 +1,7 @@
 import "./typography.css";
 import styles from "./page.module.css";
+import Home from "./home/page";
 
 export default function App() {
-  return (
-    <main className={styles.main}>
-     'hii welcome'
-    </main>
-  );
+  return <Home />;
 }

@@ -22,7 +22,7 @@
 }
 .LaunchVehicleSystemWrap{
     display: flex;
-    padding: 100px 0 80px;
+    padding: 100px 80px;
     color: #fff;
     width: 50%;
 }
@@ -50,20 +50,33 @@
     height: 100px;
     object-fit: contain;
 }
-.LvsRightItem svg{
+.LvsRightItem .svgRender{
     position: absolute;
     top: -550px;
     right: -100px;
+    width: 84%;
+    height: auto;
 }
-.BlockDataContainerRight .LvsRightItem svg{
+
+.BlockDataContainerRight .LvsRightItem .svgRender{
     position: absolute;
     top: -300px;
     left: -100px;
+    width: 84%;
+    height: auto;
 }
-.LvsRightItemBottom.LvsRightItem svg{
+.LvsRightItemBottom.LvsRightItem .svgRender{
     position: absolute;
     top: -300px;
     right: -100px;
+    width: 84%;
+    height: auto;
+ }
+.svgRender svg{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index:-1;
 }
 .LvsRightItem{
     position: relative;
@@ -88,27 +101,117 @@
 }
 .SpaceSystemDiscoverWrap{
     height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 .SpaceSystemDiscover{
     position: relative;
     color: #fff;
     text-align: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .SpaceSystemDiscoverTitle{
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     position: absolute;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 35%;
+    top: 40%;
+    width: 70%;
+    margin: 0 auto;
 }
 .SpaceSystemDiscover button{
     margin-top: 60px;
 }
-.SpaceSystemDiscoverImg svg{
-    max-width: 100%;
-    width: 800px;
+.animatePathSvg{
+    display: flex;
+}
+.paused{
+    animation-play-state: paused; 
+
+}
+/* .animateLeft1 path ,  .animateLeft2 path{
+    stroke: #6A7688; 
+    animation: strokeAnimationFromBottom 3s  linear forwards;
+    animation-play-state: paused;
+}
+
+  .animateRight1 path{
+    stroke: #6A7688; 
+    animation: strokeAnimationFromTop 3s  linear forwards;
+    animation-play-state: paused; 
+}
+.LvsRightItem:not(.LvsRightItemBottom) .playAnimate path {
+    animation-play-state: running;
+
+}
+.LvsRightItem.LvsRightItemBottom .playAnimate path{
+    animation-play-state: running; 
+
+} */
+.SpaceSystemDiscoverImg{
+    position: relative;
+    width: 100%;
     height: 100%;
+    z-index: -1;
+    opacity: 0.1;
+}
+.SpaceSystemDiscoverImg > svg{
+    position: absolute;
+    z-index: -1;
+}
+
+.SpaceSystemDiscoverImg .topLeftPart {
+    /* top: 0; */
+    right: auto;
+    /* left: 22vw; */
+    top: -40vh;
+    left: -40vw;
+    height: 26vw;
+    width: 26vw;
+    transition: all 3s ease;
+}
+.SpaceSystemDiscoverImg .topRightPart {
+    /* top: 0; */
+    left: auto;
+    bottom: 0;
+    top: -40vh;
+    right:  -40vw;
+    /* right: 22vw; */
+    height: 26vw;
+    width: 26vw;
+    transition: all 3s ease;
+}
+.SpaceSystemDiscoverImg .bottomPart {
+    top: auto;
+    /* top: 24vw; */
+    left: 0;
+    right: 0;
+    bottom: -50vh;
+    /* bottom: -0; */
+
+    margin: 0 auto;
+    height: 26vw;
+    width: 26vw;
+    transition: all 3s ease;
+
+}
+@keyframes strokeAnimationFromBottom {
+    0% {
+        stroke-dasharray: 0%;
+    }
+    100% {
+        stroke-dasharray:180%;
+    }
+}
+@keyframes strokeAnimationFromTop {
+    0% {
+        stroke-dasharray: 1000;
+    }
+    100% {
+        stroke-dasharray:2000;
+    }
 }
