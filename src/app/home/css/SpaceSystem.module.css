@@ -76,6 +76,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    z-index:-1;
 }
 .LvsRightItem{
     position: relative;
@@ -129,30 +130,28 @@
     display: flex;
 }
 .paused{
-    animation-play-state: paused; /* Initially pause the animation */
+    animation-play-state: paused; 
 
 }
-.animateLeft1 path ,  .animateLeft2 path{
-    stroke-dasharray: 0%;
-    stroke: #6A7688; /* Initial stroke color */
+/* .animateLeft1 path ,  .animateLeft2 path{
+    stroke: #6A7688; 
     animation: strokeAnimationFromBottom 3s  linear forwards;
-    animation-play-state: paused; /* Initially pause the animation */
+    animation-play-state: paused;
 }
 
   .animateRight1 path{
-    stroke-dasharray: 180%;
-    stroke: #6A7688; /* Initial stroke color */
+    stroke: #6A7688; 
     animation: strokeAnimationFromTop 3s  linear forwards;
-    animation-play-state: paused; /* Initially pause the animation */
+    animation-play-state: paused; 
 }
 .LvsRightItem:not(.LvsRightItemBottom) .playAnimate path {
-    animation-play-state: running; /*  run the animation */
+    animation-play-state: running;
 
 }
 .LvsRightItem.LvsRightItemBottom .playAnimate path{
-    animation-play-state: running; /*  run the animation */
+    animation-play-state: running; 
 
-}
+} */
 .SpaceSystemDiscoverImg{
     position: relative;
     width: 100%;
@@ -173,7 +172,7 @@
     left: -40vw;
     height: 26vw;
     width: 26vw;
-    transition: all 2s ease;
+    transition: all 3s ease;
 }
 .SpaceSystemDiscoverImg .topRightPart {
     /* top: 0; */
@@ -184,7 +183,7 @@
     /* right: 22vw; */
     height: 26vw;
     width: 26vw;
-    transition: all 2s ease;
+    transition: all 3s ease;
 }
 .SpaceSystemDiscoverImg .bottomPart {
     top: auto;
@@ -197,7 +196,7 @@
     margin: 0 auto;
     height: 26vw;
     width: 26vw;
-    transition: all 2s ease;
+    transition: all 3s ease;
 
 }
 @keyframes strokeAnimationFromBottom {
@@ -210,9 +209,9 @@
 }
 @keyframes strokeAnimationFromTop {
     0% {
-        stroke-dasharray: 180%;
+        stroke-dasharray: 1000;
     }
     100% {
-        stroke-dasharray:0%;
+        stroke-dasharray:2000;
     }
 }
