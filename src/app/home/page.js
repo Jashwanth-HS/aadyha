@@ -31,8 +31,8 @@ export default function Home() {
         <Mars />
       </Planets>
       <Section>
-      <SpaceSystem />
-      <Clients />
+        <SpaceSystem />
+        <Clients />
       </Section>
     </>
   );

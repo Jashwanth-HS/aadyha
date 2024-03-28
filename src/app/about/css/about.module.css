@@ -166,6 +166,7 @@
     align-items: center;
     text-align: center;
     gap: 12px;
+    color: #000;
 }
 .LeadershipTeamTitle h6{
     display: flex;
@@ -188,6 +189,7 @@
     justify-content: space-between;
     gap: 2rem;
     padding-top: 90px;
+    color: #000;
 }
 .LeadershipTeamItem{
     display: flex;

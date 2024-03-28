@@ -1,0 +1,375 @@
+.Banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+.Banner h1{
+    max-width: 730px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.Banner p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 14px;
+}
+.Banner p::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.LvsTab{
+    padding-top: 90px;
+}
+.LvsTabWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100px;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+.LvsTabTitles{
+    max-width: 300px;
+    width: 100%;
+    position: relative;
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.LvsTabTitles img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+.LvsTabTitlesActive::after{
+    position: absolute;
+    content: '';
+    display: flex;
+    width: 100%;
+    height: 2px;
+    bottom: -30px;
+    background: black;
+}
+/* TVC */
+.TvcWrap{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    padding-top: 100px;
+}
+.TvcWrap.TvcWrapRight{
+    flex-direction: row;
+}
+.TvcContent{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+.TvcContent h3{
+    padding: 8px 0 24px;
+}
+.TvcContentBlocks{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #E8E8E8;
+}
+.TvcContentBlocksItem{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex: calc(50% - 1rem);
+    padding-inline: 2rem;
+    border-bottom: 1px solid #E8E8E8;
+}
+.TvcContentBlocksItem img{
+    width: 70px;
+    height: 70px;
+}
+.GncContainer{
+    background: #515B6A;
+    padding: 100px 0;
+    color: #fff;
+    margin-top: 100px;
+}
+.GncContainer h3{
+    max-width: 790px;
+    width: 100%;
+}
+.GncWrapper{
+    display: flex;
+    gap: 95px;
+    padding-top: 120px;
+}
+.GncItems{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 70px;
+}
+.GncItems h3{
+    padding-bottom: 24px;
+}
+
+/* Avionics */
+.AvionicsContainer{
+    padding: 90px 0;
+}
+.AvionicsHeader{
+    max-width: 470px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.AvionicsGallery{
+    display: flex;
+    gap: 1rem;
+}
+.AvionicsGallery img{
+    width: 100%;
+}
+.AvionicsItemWrapper{
+    display: flex;
+    gap: 140px;
+    padding-top: 60px;
+}
+.AccordionWrapper{
+    max-width: 620px;
+    width: 100%;
+}
+.list li {
+  margin: 0.75rem 0;
+}
+
+.info {
+  color: rgb(0, 49, 0);
+  background-color: rgb(230, 246, 230);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.accordion {
+  border-top: 1px solid #ccc;
+  margin-top: 1rem;
+  margin-top: 40px;
+}
+
+.item {
+  border-bottom: 1px solid #ccc;
+}
+
+.itemBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    color: #000;
+    background-color: transparent;
+    border: none;
+    font-family: "jetBrains Mono";
+}
+.itemBtn::before {
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.itemContent {
+  transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.itemPanel {
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: rgba(105, 105, 105, 1);
+    max-width: 490px;
+    width: 100%;
+}
+
+.chevron {
+  margin-left: auto;
+  transition: transform 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.itemBtnExpanded .chevron {
+  transform: rotate(180deg);
+}
+
+/* Control System */
+.ControlSystemWrapper{
+    padding-bottom: 100px;
+}
+.ControlSystemTitle{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.ControlSystemTitle p{
+    max-width: 580px;
+    width: 100%;
+    margin: 0 auto;
+    color: #696969;
+}
+.ControlSystemTabWrapper{
+    display: flex;
+}
+.ControlSystemTab{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+    cursor: pointer;
+}
+.FcsNavBar{
+    background: rgba(235, 235, 235, 0.5);
+    padding: 20px 60px;
+}
+.FcsNavBar:hover{
+    background: #000;
+    color: #fff;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.FcsNavActive{
+    background: #000;
+    color: #fff;
+}
+.ControlSystemContentWrapper{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.ControlSystemContent{
+    background: rgba(0, 0, 0, 0.08);
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+}
+.ControlSystemContent img{
+    width: 100%;
+}
+@media(max-width: 1440px){
+    .TvcWrapLeftImg img{
+        width: 600px;
+    }
+}
+
+@media(max-width : 768px){
+    .LvsTabWrapper{
+        flex-direction: column;
+        border: none;
+        height: auto;
+    }
+    .LvsTabTitles{
+        max-width: 100%;
+        width: 100%;
+        border-bottom: 1px solid rgba(0, 0, 0, 1);
+        padding: 20px 0;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .LvsTabTitles img{
+        width: 100px;
+        height: 70px;
+    }
+    .LvsTabTitlesActive::after{
+        position: absolute;
+        content: '';
+        display: flex;
+        width: 100%;
+        height: 2px;
+        bottom: -30px;
+        background: transparent;
+    }
+    .GncWrapper{
+        flex-direction: column;
+        padding-top: 60px;
+    }
+    .TvcWrap{
+        flex-direction: column;
+        padding-top: 60px;
+    }
+    .TvcWrap.TvcWrapRight{
+        flex-direction: column;
+    }
+    .TvcContent{
+        gap: 40px;
+    }
+    .TvcContentBlocks{
+        grid-template-columns: 1fr;
+    }
+    .TvcWrapLeftImg img{
+        width: 100%;
+    }
+    .AvionicsItemWrapper{
+        flex-direction: column;
+        gap: 70px;
+    }
+    .ControlSystemTab{
+        align-items: flex-start;
+    }
+    .ControlSystemTabWrapper, .ControlSystemContentWrapper{
+        width: 100%;
+        overflow-x: auto;
+    }
+    .ControlSystemTabWrapper::-webkit-scrollbar {
+        display: none;
+    }
+    .ControlSystemContentWrapper::-webkit-scrollbar {
+        display: none;
+    }
+    .FcsNavBar{
+        flex: 0 0 auto;
+        width: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 40px;
+    }
+    .ControlSystemContentWrapper{
+        gap: 8px;
+    }
+    .ControlSystemContent{
+        flex: 0 0 auto;
+        width: 90%;
+    }
+}
