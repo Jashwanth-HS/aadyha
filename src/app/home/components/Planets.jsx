@@ -9,7 +9,7 @@ import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
 const Model = forwardRef((props, ref) => {
   // Refs for the group and camera actions
   const group = useRef();
-  const { nodes, animations } = useGLTF("./Aadhya_latest-transformed.glb");
+  const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
   const { actions } = useAnimations(animations, group);
 
   // Get reference to the camera action
@@ -85,6 +85,104 @@ const Model = forwardRef((props, ref) => {
     //     />
     //   </group>
     // </group>
+    // <group ref={group} {...props} dispose={null}>
+    //   <group name="Scene">
+    //     <PerspectiveCamera
+    //       name="Camera"
+    //       makeDefault
+    //       far={1000}
+    //       near={0.1}
+    //       fov={56.106}
+    //       scale={5.287}
+    //     >
+    // <directionalLight
+    //   castShadow
+    //   position={[-0.35, 2.43, 38.3]}
+    //   shadow-camera-right={8}
+    //   shadow-camera-top={8}
+    //   shadow-camera-left={-8}
+    //   shadow-camera-bottom={-8}
+    //   shadow-mapSize-width={1024}
+    //   shadow-mapSize-height={1024}
+    //   intensity={2}
+    //   shadow-bias={-0.0001}
+    // />
+    //     </PerspectiveCamera>
+    //     <mesh
+    //       name="Earth_"
+    //       geometry={nodes.Earth_.geometry}
+    //       material={nodes.Earth_.material}
+    //       position={[0.234, 0.25, -42.94]}
+    //       rotation={[0.389, -0.245, 3.054]}
+    //       scale={-12.921}
+    //     />
+    //     <mesh
+    //       name="Moon"
+    //       geometry={nodes.Moon.geometry}
+    //       material={nodes.Moon.material}
+    //       position={[33.679, 17.157, -51.773]}
+    //       rotation={[1.205, 0.203, 0.067]}
+    //       scale={-1.763}
+    //     />
+    //     <mesh
+    //       name="Mars"
+    //       geometry={nodes.Mars.geometry}
+    //       material={nodes.Mars.material}
+    //       position={[-34.067, 1.245, 56.371]}
+    //       rotation={[-0.016, -1.146, -0.306]}
+    //       scale={-6.037}
+    //     />
+    //   </group>
+    // </group>
+    // <group ref={group} {...props} dispose={null}>
+    //   <group name="Scene">
+    //     <PerspectiveCamera
+    //       name="Camera"
+    //       makeDefault
+    //       far={1000}
+    //       near={0.1}
+    //       fov={56.106}
+    //       scale={5.287}
+    //     >
+    //       <directionalLight
+    //         castShadow
+    //         position={[-0.35, 2.43, 38.3]}
+    //         shadow-camera-right={8}
+    //         shadow-camera-top={8}
+    //         shadow-camera-left={-8}
+    //         shadow-camera-bottom={-8}
+    //         shadow-mapSize-width={1024}
+    //         shadow-mapSize-height={1024}
+    //         intensity={2}
+    //         shadow-bias={-0.0001}
+    //       />
+    //     </PerspectiveCamera>
+    //     <mesh
+    //       name="Earth_"
+    //       geometry={nodes.Earth_.geometry}
+    //       material={nodes.Earth_.material}
+    //       position={[0.234, 0.25, -42.94]}
+    //       rotation={[0.389, -0.245, 3.054]}
+    //       scale={-12.921}
+    //     />
+    //     <mesh
+    //       name="Moon"
+    //       geometry={nodes.Moon.geometry}
+    //       material={nodes.Moon.material}
+    //       position={[33.679, 17.157, -51.773]}
+    //       rotation={[1.205, 0.203, 0.067]}
+    //       scale={-0.801}
+    //     />
+    //     <mesh
+    //       name="Mars"
+    //       geometry={nodes.Mars.geometry}
+    //       material={nodes.Mars.material}
+    //       position={[-34.067, 1.245, 56.371]}
+    //       rotation={[-0.016, -1.146, -0.306]}
+    //       scale={-6.037}
+    //     />
+    //   </group>
+    // </group>
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <PerspectiveCamera
@@ -121,8 +219,7 @@ const Model = forwardRef((props, ref) => {
           geometry={nodes.Moon.geometry}
           material={nodes.Moon.material}
           position={[33.679, 17.157, -51.773]}
-          rotation={[1.205, 0.203, 0.067]}
-          scale={-1.763}
+          scale={0}
         />
         <mesh
           name="Mars"
