@@ -1,12 +1,13 @@
 import { controlSystemNavBar } from '@/helper';
 import React, { useState } from 'react'
+
 const NavBar = ({ setActive, active, styles }) => {
     return <div className={styles?.ControlSystemTabWrapper}>
-        {controlSystemNavBar?.map((e, index) => {
+        {controlSystemNavBar?.data?.map((e, index) => {
             return (
             <div key={index} 
                 className={`${styles?.FcsNavBar}  ${active?.id === e.id ? styles?.FcsNavActive : ''}`} 
-                onClick={() => setActive(controlSystemNavBar.find(e1 => e1.id === e.id))}>
+                onClick={() => setActive(controlSystemNavBar.data?.find(e1 => e1.id === e.id))}>
                 {e.title}
             </div>
             )
@@ -34,13 +35,14 @@ const NavBarcontent = ({ activeData, styles }) => {
 
 }
 export default function ControlSystem({ styles }) {
-    const [active, setActive] = useState(controlSystemNavBar[0])
+    const {title,description,slug} = controlSystemNavBar || {}
+    const [active, setActive] = useState(controlSystemNavBar?.data[0])
     return (
-        <div className="container">
+        <div className="container" id={slug}>
             <div className={styles?.ControlSystemWrapper}>
                 <div className={styles?.ControlSystemTitle}>
-                    <h3 className="heading-2">Flow control system</h3>
-                    <p className="paragraph">AADYAH’s offers three essential solenoid valves designed to meet the unique requirements of commercial launch vehicles.</p>
+                    <h3 className="heading-2">{title}</h3>
+                    <p className="paragraph">{description}</p>
                 </div>
                 <div className={styles?.ControlSystemTab}>
                     <NavBar setActive={setActive} active={active} styles={styles} />

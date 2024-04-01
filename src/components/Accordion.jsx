@@ -3,50 +3,50 @@ import React from 'react';
 import styles from './Accordion.module.css';
 import { Accordion, AccordionItem as Item } from "@szhsin/react-accordion";
 
-const AccordionItem = ({ header, ...rest }) => (
-    <Item
-      {...rest}
-      header={
-        <>
-          {header}
-          
-        </>
-      }
-      className={styles.item}
-      buttonProps={{
-        className: ({ isEnter }) =>
-          `${styles.itemBtn} ${isEnter && styles.itemBtnExpanded}`,
-      }}
-      contentProps={{ className: styles.itemContent }}
-      panelProps={{ className: styles.itemPanel }}
-    />
+const AccordionItem = ({ header,HeaderclassName,ContentClassName,IconClass, ...rest }) => (
+  <Item
+    {...rest}
+    header={
+      <>
+        {header}
+        <span className={styles.chevron}>
+          <span className={`${styles?.chevron1} ${IconClass}`}></span>
+          <span className={`${styles?.chevron2} ${IconClass}`}></span>
+        </span>
+      </>
+    }
+    className={styles.item}
+    buttonProps={{
+      className: ({ isEnter }) =>
+        `${styles.itemBtn} ${HeaderclassName} ${isEnter && styles.itemBtnExpanded}`,
+    }}
+    contentProps={{ className: styles.itemContent }}
+    panelProps={{ className: `${styles.itemPanel}  ${ContentClassName}`}}
+  />
 );
 
-export default function Accordion({children,header}) {
+export default function AccordionWrap({AccordianTitle,values,HeaderclassName,ContentClassName,IconClass}) {
   return (
+    <div className={styles?.AccordionWrapper}>
+    <div><h3 className="sub-heading-1">{AccordianTitle}</h3></div>
     <div className={styles?.accordion}>
-    <Accordion transition transitionTimeout={250}>
-        
-      <AccordionItem header="Engine Control Unit" initialEntered>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </AccordionItem>
-
-      <AccordionItem header="Power Distribution System">
-        Quisque eget luctus mi, vehicula mollis lorem. Proin fringilla vel
-        erat quis sodales. Nam ex enim, eleifend venenatis lectus vitae.
-      </AccordionItem>
-
-      <AccordionItem header="High Voltage Bus">
-        Suspendisse massa risus, pretium id interdum in, dictum sit amet ante.
-        Fusce vulputate purus sed tempus feugiat.
-      </AccordionItem>
-
-      <AccordionItem header="Avionics Power Bus">
-        Suspendisse massa risus, pretium id interdum in, dictum sit amet ante.
-        Fusce vulputate purus sed tempus feugiat.
-      </AccordionItem>
-    </Accordion>
+      <Accordion transition transitionTimeout={250}>
+        {values?.map((e,index)=> {
+          const {header,text} = e || {};
+          return <React.Fragment key={index}>
+            <AccordionItem 
+            header={header} 
+            initialEntered={index === 0} 
+            ContentClassName={ContentClassName} 
+            HeaderclassName={HeaderclassName}
+            IconClass={IconClass}
+            >
+         {text}
+        </AccordionItem>
+          </React.Fragment>
+        })}
+      </Accordion>
+    </div>
   </div>
   )
 }

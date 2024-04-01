@@ -1,23 +1,12 @@
-import { dataArray, dataArrayTab } from '@/helper';
-import React, { useState } from 'react'
+import { partGridContent } from '@/helper';
 
-export default function NavContent({styles}) {
-    const [activeData,setActiveData] = useState(dataArray[0]);
-  return (
-    <div className={styles?.LvsTab}>
-    <div className={styles?.LvsTabWrapper}>
-        {dataArrayTab?.map((e,index)=> {
-            const {title,id,image} = e || {};
-            return <div className={`${styles?.LvsTabTitles} ${activeData?.id === id ? styles?.LvsTabTitlesActive : ""}`} key={index} onClick={()=> setActiveData(dataArray.find((e)=> e.id == id))}>
-                {image &&  <img src={image} />}
-                {title &&  <div>{title}</div>}
-            </div>
-        })}
-        </div>
-    <div>
-{activeData?.data?.map((data,index)=> {
+import React from 'react'
+
+export default function PartGridContent({styles}) {
+    const {slug,data}= partGridContent || {}
+  return data?.map((data,index)=> {
     const {title,description,blocks,subTitle,image} = data || {}
-        return <div key={index}>
+        return <div key={index} id={slug}>
             <div className={`${styles?.TvcWrap} ${index % 2 === 0 ? styles?.TvcWrapRight : ''}`}>
                 <div className={`${styles?.TvcWrapLeftImg} mobile-hide`}><img  src={image}/></div>
                 <div className={styles?.TvcContent}>
@@ -42,8 +31,5 @@ export default function NavContent({styles}) {
                 </div>
             </div>
         </div>
-    })}
-    </div>
-    </div>
-  )
+    })
 }
