@@ -9,7 +9,7 @@ import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
 const Model = forwardRef((props, ref) => {
   // Refs for the group and camera actions
   const group = useRef();
-  const { nodes, animations } = useGLTF("./Aadhya_latest-transformed.glb");
+  const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
   const { actions } = useAnimations(animations, group);
 
   // Get reference to the camera action
@@ -36,55 +36,6 @@ const Model = forwardRef((props, ref) => {
 
   // Render the model components
   return (
-    // <group ref={group} dispose={null}>
-    //   <group name="Scene">
-    //     {/* Camera */}
-    //     <PerspectiveCamera
-    //       name="Camera"
-    //       makeDefault
-    //       far={1000}
-    //       near={0.1}
-    //       fov={22.895}
-    //       scale={12.49}
-    //     >
-    //       {/* Directional light */}
-    //       <directionalLight
-    //         castShadow
-    //         position={[-0.35, 2.43, 38.3]}
-    //         shadow-camera-right={8}
-    //         shadow-camera-top={8}
-    //         shadow-camera-left={-8}
-    //         shadow-camera-bottom={-8}
-    //         shadow-mapSize-width={1024}
-    //         shadow-mapSize-height={1024}
-    //         intensity={2}
-    //         shadow-bias={-0.0001}
-    //       />
-    //     </PerspectiveCamera>
-    //     {/* Earth */}
-    //     <mesh
-    //       name="Earth_"
-    //       geometry={nodes.Earth_.geometry}
-    //       material={nodes.Earth_.material}
-    //       rotation={[-2.564, -0.183, -3.11]}
-    //       scale={-12.56}
-    //     />
-    //     {/* Moon */}
-    //     <mesh
-    //       name="Moon"
-    //       geometry={nodes.Moon.geometry}
-    //       material={nodes.Moon.material}
-    //       scale={-22.0}
-    //     />
-    //     {/* Mars */}
-    //     <mesh
-    //       name="Mars"
-    //       geometry={nodes.Mars.geometry}
-    //       material={nodes.Mars.material}
-    //       scale={-61.801}
-    //     />
-    //   </group>
-    // </group>
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <PerspectiveCamera
@@ -121,8 +72,7 @@ const Model = forwardRef((props, ref) => {
           geometry={nodes.Moon.geometry}
           material={nodes.Moon.material}
           position={[33.679, 17.157, -51.773]}
-          rotation={[1.205, 0.203, 0.067]}
-          scale={-1.763}
+          scale={0}
         />
         <mesh
           name="Mars"
@@ -173,5 +123,7 @@ const Planets = ({ children }) => {
     </>
   );
 };
+
+useGLTF.preload("./Aadhya_final-transformed.glb");
 
 export default Planets;
