@@ -156,6 +156,17 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
+.secondary-btn{
+  display: inline-flex;
+  padding: 14px 28px 14px 21px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #000;
+  background: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 /* Headings */
 .title-1{
   font-size: 410px;
@@ -217,6 +228,9 @@ a {
   font-weight: 400;
   line-height: 95%; 
   text-transform: uppercase;
+  @media(max-width : 768px){
+    font-size: 21px;
+  }
 }
 .sub-heading-2{
   font-size: 24px;

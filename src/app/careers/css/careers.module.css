@@ -1,0 +1,254 @@
+.Banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+.Banner h1{
+    max-width: 730px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.Banner h6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 14px;
+}
+.Banner h6::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.Banner p{
+    max-width: 460px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 16px;
+    text-align: center;
+}
+.Banner button{
+    margin-top: 36px;
+}
+.Banner img{
+    margin-top: 90px;
+    display: block;
+}
+
+/* Our Values */
+.OurValuesContainer{
+    background: #000;
+    color: #fff;
+}
+.OurValuesWrapper{
+    padding: 100px 0;
+}
+.OurValuesTitle{
+    max-width: 580px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 40px;
+}
+.OurValuesItems{
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    gap: 58px;
+}
+.OVRepeater{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.OVRepeater img{
+    padding-bottom: 8px;
+}
+.OVRepeater p{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Work With Us */
+.WorkWithUsWrapper{
+    padding-top: 100px;
+}
+.WorkWithUsTitle{
+    max-width: 640px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 56px;
+}
+.WorkWithUsTitle h6{
+    display: flex;
+    align-items: center;
+}
+.WorkWithUsTitle h6::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.WorkwithusItems{
+    display: flex;
+}
+.WWURepeater img{
+    width: 100%;
+    display: block;
+}
+
+/* Aadyah Impact */
+.AadyahImpactContainer{
+    background: #000;
+    color: #fff;
+}
+.AadyahImpactWrapper{
+    padding: 120px 0 80px;
+}
+.AadyahImpactTitle{
+    display: flex;
+    align-items: center;
+    gap: 90px;
+    padding-bottom: 40px;
+}
+.AadyahImpactTitle p{
+    max-width: 620px;
+    width: 100%;
+}
+.AadyahImpactItems{
+    display: flex;
+    gap: 20px;
+}
+.AadyahImpactRepeater img{
+    width: 100%;
+}
+.AadyahImpactRepeater h3{
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+}
+.AadyahImpactRepeater h3::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #fff; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.AadyahImpactRepeater p{
+    max-width: 460px;
+    width: 100%;
+    padding-top: 8px;
+}
+
+/* Testimonial */
+.TestimonialContainer{
+    background: #515B6A;
+    color: #fff;
+}
+.TestimonialWrapper{
+    max-width: 850px;
+    width: 100%;
+    display: flex;
+    gap: 70px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    margin: 0 auto;
+    height: 100%;
+}
+.TestimonialWrapper .profile{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.TestimonialWrapper .profile p{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Opportunities */
+.OpportunitiesWrapper{
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 110px 0 120px;
+}
+.OpportunitiesWrapper p{
+    max-width: 440px;
+    width: 100%;
+    margin: 0;
+}
+.OpportunitiesWrapper button{
+    margin-top: 12px;
+}
+
+@media(max-width:768px){
+    .OurValuesWrapper{
+        padding: 60px 0;
+    }
+    .OurValuesItems{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 60px;
+        padding-bottom: 0;
+    }
+    .OurValuesTitle{
+        padding-top: 0;
+    }
+    .WorkwithusItems{
+        gap: 8px;
+        overflow-x: auto;
+    }
+    .WorkwithusItems::-webkit-scrollbar{
+        display: none;
+    }
+    .WWURepeater{
+        flex: 0 0 auto;
+        width: 90%;
+    }
+    .WWURepeater img{
+        height: 440px;
+    }
+    .AadyahImpactTitle{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 16px;
+    }
+    .AadyahImpactItems{
+        overflow-x: auto;
+        gap: 8px;
+    }
+    .AadyahImpactItems::-webkit-scrollbar{
+        display: none;
+    }
+    .AadyahImpactRepeater{
+        flex: 0 0 auto;
+        width: 90%;
+    }
+}

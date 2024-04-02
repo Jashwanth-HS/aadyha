@@ -345,3 +345,110 @@ export const spaceDebrisMission = {
     description:'Attached to Launch Vehicles’ upper stages and Satellites, TRACE helps us to ensure a future of responsible space exploration. TRACE significance lies in its ability to transfer real-time location and velocity data to a ground station, triggered from Earth. This capability empowers space agencies and operators to precisely identify Orbital Parameters, contributing to the safety and coordination of assets in space.',
     images:'/assets/images/space-debris-mission.png',
 };
+
+//CAREERS
+//Our Values
+export const ourValues = {
+    title:'our values',
+    description: "Where our values drive every aspect of our work. At the heart of our operations lie integrity, innovation, and excellence.",
+    data: [
+        {
+            image: "/assets/images/our-value-icon.svg",
+            title: "[Our value 1]",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        },
+        {
+            image: "/assets/images/our-value-icon.svg",
+            title: "[Our value 2]",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        },   
+        {
+            image: "/assets/images/our-value-icon.svg",
+            title: "[Our value 3]",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        },
+        {
+            image: "/assets/images/our-value-icon.svg",
+            title: "[Our value 4]",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        },
+        {
+            image: "/assets/images/our-value-icon.svg",
+            title: "[OUr value 5]",
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        }   
+    ]
+}   
+
+//Work With Us
+export const workwithus = {
+    subTitle: 'work with us',
+    title:'Life at aadyah',
+    description: "Join us on our mission to revolutionize transportation, where we believe in cultivating an exceptional team and fostering a dynamic culture. ",
+    data: [
+        {image: "/assets/images/work-with-us-img-one.png",},
+        {image: "/assets/images/work-with-us-img-two.png",},   
+        {image: "/assets/images/work-with-us-img-three.png",},
+    ]
+}   
+
+//Aadyah Impact
+export const aadyahImpact = {
+    title:'aadyah impact',
+    description: "On a daily basis, AADYAH employees work on programs and projects with the potential to notably impact our lives on Earth and beyond the stars. ",
+    data: [
+        {
+            image: "/assets/images/chandrayaan-img.png",
+            title: "In the NEWS",
+            description: "Chandrayaan 3: Top Indian Startups Making Their Mark in Space",
+        },
+        {
+            image: "/assets/images/tech-startup-aadyah.png",
+            title: "In the NEWS",
+            description: "Keiretsu Forum Invests In Defense- Tech Startup AADYAH",
+        },
+    ]
+}   
+
+//Testimonial
+export const testimonial = [
+    {
+        id:1,
+        name: 'Anil kumar',
+        designation:'Trainee, Mechanical design1',
+        description: "“ Working at AADYAH has been a really great way to kickstart my career. It truly is a fantastic company that invests in the growth of their employees and continuously fosters innovation. I’m excited for the future in space that we will enable! ”",
+    },
+    {
+        id:2,
+        name: 'Anil kumar',
+        designation:'Trainee, Mechanical design2',
+        description: "“ Working at AADYAH has been a really great way to kickstart my career. It truly is a fantastic company that invests in the growth of their employees and continuously fosters innovation. I’m excited for the future in space that we will enable! ”",
+    },
+    {
+        id:3,
+        name: 'Anil kumar',
+        designation:'Trainee, Mechanical design3',
+        description: "“ Working at AADYAH has been a really great way to kickstart my career. It truly is a fantastic company that invests in the growth of their employees and continuously fosters innovation. I’m excited for the future in space that we will enable! ”",
+    },
+    {
+        id:4,
+        name: 'Anil kumar',
+        designation:'Trainee, Mechanical design4',
+        description: "“ Working at AADYAH has been a really great way to kickstart my career. It truly is a fantastic company that invests in the growth of their employees and continuously fosters innovation. I’m excited for the future in space that we will enable! ”",
+    },
+    {
+        id:5,
+        name: 'Anil kumar',
+        designation:'Trainee, Mechanical design5',
+        description: "“ Working at AADYAH has been a really great way to kickstart my career. It truly is a fantastic company that invests in the growth of their employees and continuously fosters innovation. I’m excited for the future in space that we will enable! ”",
+    },
+]   
+
+//Opportunities
+export const opportunities = {
+    title:'Opportunities',
+    description: "At AADYAH, we are committed to your personal and professional development.",
+    button: {
+        text: "View on linkedin",
+    }
+}   

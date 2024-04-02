@@ -20,25 +20,25 @@ const Banner = () => {
       </picture>
     </div>
   </div>
-  }
+}
 
-  export default function page() {
-   
-    return (
-      <>
-        <Container>
-        <Banner />
-        </Container>
-        <div className={styles?.SpaceMissionContent}>
-        <Container>
-        <SatelliteRoadmap styles={styles} />
-        </Container>
-        <PlanetaryMissions styles={styles} />
-        <Container>
-        <SpaceDebrisMission styles={styles} />
-        </Container>
-        </div>
-      </>
-    )
-  }
+export default function page() {
+  
+  return (
+    <>
+      <Container>
+      <Banner />
+      </Container>
+      <div className={styles?.SpaceMissionContent}>
+      <Container>
+      <SatelliteRoadmap styles={styles} />
+      </Container>
+      <PlanetaryMissions styles={styles} />
+      <Container>
+      <SpaceDebrisMission styles={styles} />
+      </Container>
+      </div>
+    </>
+  )
+}
   

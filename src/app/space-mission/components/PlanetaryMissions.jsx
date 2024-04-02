@@ -20,14 +20,13 @@ export default function PlanetaryMissions({ styles }) {
                     {data?.map((e,index)=> {
                        const {title:PMtitle,description:PMDescription, image:PMImages} = e || {};
                         return <React.Fragment key={index}>
-                    <div className={styles?.PMRepeater}>
-                        <div>{images && <img src={PMImages} />}</div>
-                        <div className={styles?.PMRepeaterContent}>
-                            <h3 className="micro-large secondary-font">{PMtitle}</h3>
-                            <p className="micro-large secondary-font">{PMDescription}</p>
+                        <div className={styles?.PMRepeater}>
+                            <div>{PMImages && <img src={PMImages} />}</div>
+                            <div className={styles?.PMRepeaterContent}>
+                                <h3 className="micro-large secondary-font">{PMtitle}</h3>
+                                <p className="micro-large secondary-font">{PMDescription}</p>
+                            </div>
                         </div>
-                    </div>
-
                         </React.Fragment>
                     })}
                 </div>
