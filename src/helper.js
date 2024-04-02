@@ -71,18 +71,18 @@ export const AvionicsData = {
     title:'Avionics',
     description:'AADYAH offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle.',
     images:['/assets/images/avionics-img-one.png','/assets/images/avionics-img-two.png'],
-    data:{title:'OUR SOLUTION',values:[
+    data:{title:'OUR SOLUTIONS',values:[
         {header:'Engine Control Unit',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Mission critical system crucial for managing and controlling parameters such as thrust, fuel flow rate etc.'
         },
-        {header:'Engine Control Unit',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        {header:'Power Distribution System',
+        text:'The power distribution system design will include peak power requirements, Power sustenance for the entire Mission duration, and Maintenance of power within operating boundaries. AADYAH’s Power Distribution System ensures efficient power allocation throughout your launch vehicle.'
         },
-        {header:'Engine Control Unit',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        {header:'High Voltage Bus',
+        text:'AADYAH High Voltage Bus solution is designed to handle high-power demands reliably. Maintain stability and performance with our robust high-voltage power distribution'
         },
-        {header:'Engine Control Unit',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        {header:'Avionics Power Bus',
+        text:'Custom build system to ensure steady operation of avionics subsystems by providing regulated voltage supply and power distribution.'
         },
     ]}
 }
@@ -92,7 +92,7 @@ export const AvionicsData = {
 export const controlSystemNavBar = {
     title:'FLOW CONTROL SYSTEM',
     slug:'Flow',
-    description:'AADYAH’s offers three essential solenoid valves designed to meet the unique requirements of commercial launch vehicles.',
+    description:'AADYAH offers three essential solenoid valves designed to meet the unique requirements of commercial launch vehicles.',
     data:[
     { id: 1, 
         title: "PROPELLANT FUEL SYSTEM",
@@ -105,17 +105,14 @@ export const controlSystemNavBar = {
     { id: 2, 
         title: "PRESSURE CONTROL SYSTEM",
          data: [
-            { image: "/assets/images/latch-valve.png", title: "Latch Valve" },
-            { image: "/assets/images/isolation-valve.png", title: "Isolation Valve 1" },
-            { image: "/assets/images/fill-drain-valve.png", title: "Fill and Drain Valve 1" },
+            { image: "/assets/images/latch-valve.png", title: "Relief Valve" },
+            { image: "/assets/images/isolation-valve.png", title: "Regulator Valve" },
         ] 
     },
     { id: 3, 
         title: "MONITORING & DRIVE ELECTRONICS",
          data: [
-            { image: "/assets/images/fill-drain-valve.png", title: "Fill and Drain Valve 2" },
-            { image: "/assets/images/isolation-valve.png", title: "Isolation Valve 2" },
-            { image: "/assets/images/latch-valve.png", title: "Latch Valve 2" },
+            { image: "/assets/images/fill-drain-valve.png", title: "Driver Circuit Software" },
         ] 
     }
     ]
