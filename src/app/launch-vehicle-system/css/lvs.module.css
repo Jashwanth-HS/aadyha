@@ -85,6 +85,7 @@
     display: flex;
     gap: 95px;
     padding-top: 120px;
+    max-width: 1300px;
 }
 .GncItems{
     display: flex;

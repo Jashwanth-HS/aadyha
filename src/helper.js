@@ -45,23 +45,23 @@ export const GauidanceData = {
     data:[
         {
             image:"/assets/images/sensing-vehicle-acceleration.svg",
-            title:"hdh kjdfh ",
+            title:"Sensing vehicle  Acceleration rates",
             description:"Sensing technology allows us to accurately monitor vehicle acceleration rates comparing with sensors output and generate control command, providing crucial data for precise navigation and control."
         },
         {
-            image:"/assets/images/sensing-vehicle-acceleration.svg",
-            title:"hdh kjdfh ",
-            description:"Sensing technology allows us to accurately monitor vehicle acceleration rates comparing with sensors output and generate control command, providing crucial data for precise navigation and control.            "
+            image:"/assets/images/navigation.svg",
+            title:"Navigation",
+            description:"Using advanced algorithms, we calculate and track the vehicle's current attitude, position, and velocity, ensuring a real-time understanding."
         },
         {
-            image:"/assets/images/sensing-vehicle-acceleration.svg",
-            title:"hdh kjdfh ",
-            description:"Sensing technology allows us to accurately monitor vehicle acceleration rates comparing with sensors output and generate control command, providing crucial data for precise navigation and control.            "
+            image:"/assets/images/guidance.svg",
+            title:"Guidance",
+            description:"We offer comprehensive guidance solutions, assisting in the computation of optimal vehicle attitude, position, and velocity to achieve mission objectives efficiently."
         },
         {
-            image:"/assets/images/sensing-vehicle-acceleration.svg",
-            title:"hdh kjdfh ",
-            description:"Sensing technology allows us to accurately monitor vehicle acceleration rates comparing with sensors output and generate control command, providing crucial data for precise navigation and control.            "
+            image:"/assets/images/autopilot.svg",
+            title:"Autopilot",
+            description:"Our algorithms compute precise control commands, enabling seamless steering of the vehicle to the desired attitude, even in complex operational scenarios."
         },
     ]
 }
