@@ -254,3 +254,94 @@ export const MotionControlSystem = {
         },
     ]}
 };
+
+// Satellite roadmap
+export const satelliteRoadmap = {
+    slug: 'Flow',
+    title: 'Satellite roadmap',
+    data: [
+        {
+            id: 1,
+            title: "Satellite Stabilization and Debris Management",
+            data:
+                {
+                    image: "/assets/images/spacecarft-operation.svg",
+                    title: "Satellite Stabilization and Debris Management",
+                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                    button: {
+                        text: "read more",
+                    }
+                }
+            ,
+        },
+        {
+            id: 2,
+            title: "Spacecraft Operations and IoT Solutions",
+            data:
+                {
+                    image: "/assets/images/spacecarft-operation.svg",
+                    title: "Spacecraft Operations and IoT Solutions",
+                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                    button: {
+                        text: "read more",
+                    }
+                }
+            ,
+        },
+        {
+            id: 3,
+            title: "Debris Rendezvous and Advanced Space Operations",
+            data:
+                {
+                    image: "/assets/images/spacecarft-operation.svg",
+                    title: "Debris Rendezvous and Advanced Space Operations",
+                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                    button: {
+                        text: "read more",
+                    }
+                }
+            ,
+        },
+        {
+            id: 4,
+            title: "Deorbiting Debris with Precision",
+            data:
+            {
+                image: "/assets/images/spacecarft-operation.svg",
+                title: "Deorbiting Debris with Precision",
+                description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                button: {
+                    text: "read more",
+                }
+            }
+            
+        }
+    ]
+};
+
+// Space and planetary missions
+export const planetaryMissions = {
+    title:'Space and planetary missions',
+    images:"/assets/images/space-planetary-mission.png",
+    data: [
+        {
+            image: "/assets/images/lunar-lander.png",
+            title: "lunar lander",
+            description: "descent, modular design, enabling safe lunar exploration missions.",
+        },
+        {
+            image: "/assets/images/lunar-rover.png",
+            title: "lunar Rover",
+            description: "Robust mobility, advanced instrumentation, pivotal for lunar surface exploration.",
+        }   
+    ]
+}   
+
+// Space debris mission
+export const spaceDebrisMission = {
+    slug:'SpaceDebrisMission',
+    title:'Space debris mission', 
+    subTitle: 'TRACE, is a self-powered and self-communicating beacon that enables active tracking. ', 
+    description:'Attached to Launch Vehicles’ upper stages and Satellites, TRACE helps us to ensure a future of responsible space exploration. TRACE significance lies in its ability to transfer real-time location and velocity data to a ground station, triggered from Earth. This capability empowers space agencies and operators to precisely identify Orbital Parameters, contributing to the safety and coordination of assets in space.',
+    images:'/assets/images/space-debris-mission.png',
+};

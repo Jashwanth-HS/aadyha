@@ -1,0 +1,237 @@
+.Banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+.Banner h1{
+    max-width: 730px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.Banner h6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 14px;
+}
+.Banner h6::before{
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.Banner p{
+    max-width: 460px;
+    width: 100%;
+    padding-top: 16px;
+    text-align: center;
+}
+.Banner img{
+    margin-top: -40px;
+    display: block;
+}
+.SpaceMissionContent{
+    background: #515B6A;
+}
+.SatelliteRoadmapWrapper{
+    padding: 100px 0;
+    color: #fff;
+}
+/* Tab */
+.ControlSystemTabWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 0 60px;
+}
+.ControlSystemTab{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+}
+.FcsNavBar{
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 1);
+    padding: 20px  0;
+    color:  rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+.FcsNavBar h3{
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+.FcsNavBar h3::before{
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 8px; 
+    background-color: #30A28E; 
+    margin-right: 10px; 
+}
+.FcsNavBar:hover{
+    color: #fff;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.FcsNavActive{
+    border-top: 1px solid rgba(64, 216, 189, 1);
+    color: #fff;
+}
+.satelliteRoadmapContent{
+    display: flex;
+    align-items: center;
+    gap: 150px;
+}
+.satelliteRoadmapContent p{
+    padding: 25px 0 40px;
+}
+.satelliteRoadmapContent button{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    color: #fff;
+}
+.PlanetaryMissionsContainer{
+    padding: 100px 0 130px;
+    display: flex;
+    align-items: center;
+    gap: 150px;
+    position: relative;
+    color: #fff;
+}
+.PMContentWrap{
+    padding-right: 200px;
+    width: 100%;
+}
+.PMContentWrap h2{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+    padding-bottom: 20px;
+}
+.PMContenItems{
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.PMRepeater{
+    display: flex;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.34);
+}
+.PMRepeaterContent{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+.PMRepeaterContent h3::before{
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 8px; 
+    background-color: #fff; 
+    margin-right: 10px; 
+}
+.PMRepeaterContent p{
+    color: rgba(255, 255, 255, 0.6);
+}
+.SpaceDebrisMissionContainer{
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    color: #fff;
+    border-top:  1px solid rgba(140, 147, 157, 0.3);
+    padding: 90px 0 100px;
+}
+.SpaceDebrisMissionContent{
+    max-width: 640px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.SpaceDebrisMissionContent h6{
+    text-transform: capitalize;
+}
+.SpaceDebrisMissionContent p{
+    color: #E8E8E8;
+}
+.SDMSpaceImg img{
+    width: 100%;
+}
+
+@media(max-width:768px){
+    .Banner img{
+        margin-top: 40px;
+    }
+    .ControlSystemTabWrapper{
+        overflow-x: auto;
+        padding-bottom: 20px;
+    }
+    .ControlSystemTabWrapper::-webkit-scrollbar{
+        display: none;
+    }
+    .FcsNavBar{
+        flex: 0 0 auto;
+        width: 40%;
+    }
+    .FcsNavBar p{
+        display: none;
+    }
+    .SatelliteRoadmapWrapper{
+        padding: 60px 0 20px;
+    }
+    .satelliteRoadmapContent{
+        flex-direction: column;
+        gap: 60px;
+    }
+    .satelliteRoadmapContent img{
+        width: 100%;
+    }
+    .PlanetaryMissionsContainer{
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 40px;
+    }
+    .PMMoonImg{
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+    .PMMoonImg img{
+        max-width: 50%;
+        width: 100%;
+    }
+    .PMContentWrap{
+        width: 90%;
+        margin: 0 auto;
+        border-top:  1px solid rgba(140, 147, 157, 0.3);
+        padding-right: 0;
+    }
+    .PMRepeater{
+        flex-direction: column;
+        gap: 24px;
+    }
+    .PMRepeater img{
+        width: 100%;
+    }
+    .PMRepeaterContent{
+        gap: 16px;
+    }
+    .SpaceDebrisMissionContainer{
+        flex-direction: column;
+        border: none;
+        padding: 20px 0 60px;
+    }
+}
