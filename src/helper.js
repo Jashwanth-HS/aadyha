@@ -127,56 +127,59 @@ export const PropulsionData = {
     images:'/assets/images/propulsion-subsystems.png',
     data:[
     { id: 1, 
-        title: "Flow Control System (FCS)",
+        title: "AADYAH’s Electronic Control Unit (ECU)",
         description:"Achieving mission success requires equipment that is both versatile and dependable. AADYAH's Electronic Control Unit (ECU) is a testament to our dedication to precision, flexibility, and quality. As a partner in your mission, we ensure that every facet of our technology aligns with your mission's objectives, guaranteeing success every step of the way.",
         data:{title:'Key Features',values:[
             {header:'Wide Input Voltage Range',
             text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power.'
             },
             {header:'Flexible Control Options',
-            text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            text:'Whether you have a single thruster or a dual thruster system design, our ECU is adaptable to suit your requirements.'
+            },
+            {header:'Diverse Propulsion Systems',
+            text:'We cater to both electrical and chemical propulsion systems. Regardless of the propulsion type, we ensure high efficiency and reliability.'
             },
             {header:'Communication Protocols',
-            text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            text:'Our ECU supports both CAN 2.0 B and RS 485/422 communication protocols, promoting efficient data exchange and exact control.'
             },
-            {header:'Communication Protocols',
-            text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            {header:'Custom-Built',
+            text:'Recognizing that every mission is unique, we specialize in crafting tailored solutions that perfectly match your mission specifications.'
             },
         ]}
     },
     { id: 2, 
-        title: "Electronic Control Unit (ECU)",
-        description:"Achieving mission success requires equipment that is both versatile and dependable. AADYAH's Electronic Control Unit (ECU) is a testament to our dedication to precision, flexibility, and quality. As a partner in your mission, we ensure that every facet of our technology aligns with your mission's objectives, guaranteeing success every step of the way.",
+        title: "Power Processing Unit (PPU)",
+        description:"Space missions represent the pinnacle of human ingenuity and ambition. Such endeavors demand equipment that's not just functional but also supremely reliable. AADYAH's PPUs encapsulate this philosophy, offering power solutions that are tailor-made for the vast, unpredictable expanse of space. Choose AADYAH, and power your mission to success",
         data:{title:'Key Features 2',values:[
-            {header:'Wide Input Voltage Range 1',
-            text:'1 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power.'
+            {header:'Tailor-Made Solutions',
+            text:'Every mission has its distinct challenges and requirements. We excel in creating PPUs that are custom-built, ensuring optimal synergy with your spacecraft system.'
             },
-            {header:'Flexible Control Options 2',
-            text:'2 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            {header:'Advanced Thermal Protection',
+            text:'The vastness of space presents extreme temperature variations. Our PPUs come equipped with sophisticated thermal protection mechanisms, ensuring they deliver optimal performance irrespective of the external conditions.'
             },
-            {header:'Communication Protocols 3',
-            text:'3 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            {header:'Voltage Protection',
+            text:'Voltage stability is crucial for the longevity and reliability of spacecraft systems. With inbuilt under and overvoltage protection, our PPUs shield your power supply from harmful voltage fluctuations.'
             },
-            {header:'Communication Protocols 4',
+            {header:'Pending',
             text:'4 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
             },
         ]}
     },
     { id: 3, 
-        title: "Power Processing Unit (PPU)",
-        description:"Achieving mission success requires equipment that is both versatile and dependable. AADYAH's Electronic Control Unit (ECU) is a testament to our dedication to precision, flexibility, and quality. As a partner in your mission, we ensure that every facet of our technology aligns with your mission's objectives, guaranteeing success every step of the way.",
+        title: "Flow Control System (FCS)",
+        description:"When navigating the vast expanse of space, the precise control and management of cryogenic propellants are of paramount importance. AADYAH's expertise in the development of state of-the-art Flow Control Systems (FCS) ensures your propulsion systems operate at their best, regardless of the challenges posed by space environments.",
         data:{title:'Key Features 3',values:[
-            {header:'Wide Input Voltage Range 11',
-            text:'11 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power.'
+            {header:'Custom-Tailored Solutions',
+            text:'At AADYAH, we recognize that every mission has unique demands. Our in-house team excels in crafting FCS tailored to your specific spacecraft needs.'
             },
-            {header:'Flexible Control Options 22',
-            text:'22 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            {header:'High-Performance Valves',
+            text:'Direct-Acting Solenoid Valves: Precision-engineered for space applications, ensuring reliable flow control even in extreme conditions.'
             },
-            {header:'Communication Protocols 33',
-            text:'33 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            {header:'Impressive Pressure Handling',
+            text:'With the capability to handle peak chamber pressures of up to 680 bar, our valves stand robust against the intense demands of space propulsion systems.'
             },
-            {header:'Communication Protocols 44',
-            text:'44 Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+            {header:'Stringent Leak-Tightness',
+            text:'A leak rate as minimal as 10E-04 mbar L/s for gaseous Helium is testament to our uncompromising quality standards. This assures safety and longevity of the propulsion system by preventing the wastage of precious propellants.'
             },
         ]}
     },
@@ -194,13 +197,13 @@ export const ElectricPowerSystem = {
         text:'Space environments are unpredictable and harsh. Our EPS is meticulously designed to be radiation-tolerant, ensuring durability even in the harshest conditions.'
         },
         {header:'Efficient Power Tracking and Conversion',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Harnessing solar power in space requires efficiency. Our EPS excels in peak power tracking, adeptly converting solar array power and efficiently charging onboard batteries.'
         },
         {header:'Tailored for Your Mission',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Recognizing the diverse needs of space missions, our EPS can be customized to align perfectly with your specific mission objectives, ensuring consistent power availability.'
         },
         {header:'Multi-Voltage Management',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Spacecraft comprise numerous sensors and sub-systems, each with its own voltage requirements. AADYAH’s EPS skilfully manages these diverse voltage levels, guaranteeing smooth operations across the board.'
         },
     ]}
 };
@@ -216,7 +219,7 @@ export const OnBoardComputer = {
         text:'Recognizing the unique requirements of every satellite mission, AADYAH offers custom-built OBCs that are tailor-made to integrate seamlessly with your specific satellite system.'
         },
         {header:'Multifaceted Functionality',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Pending'
         },
     ]}
 };
@@ -235,19 +238,19 @@ export const MotionControlSystem = {
         text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
         },
         {header:'Adaptable Functionality',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'AADYAH recognizes the varied requirements of space missions. Our Motion Control System is versatile enough to efficiently manage different mission demands.'
         },
         {header:'Mission-specific Actuation Mechanisms',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Our specialized actuation mechanisms cater to distinct satellite functions.'
         },
         {header:'Solar Array Driving Assembly',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Ensuring that your solar panels remain oriented towards the Sun, maximizing energy absorption.'
         },
         {header:'Antenna Pointing',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Keeping your communication antennas aligned with their ground or space relay stations, guaranteeing uninterrupted data exchange.'
         },
         {header:'Special Instrument Actuation',
-        text:'Our ECU can handle a diverse range of input voltages from 5V to 32V, ensuring your satellite thruster system always gets consistent and dependable power'
+        text:'Whether its scientific tools, observational cameras, or other bespoke instruments, our Motion Control System ensures they operate at their peak potential.'
         },
     ]}
 };
