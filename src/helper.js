@@ -219,7 +219,7 @@ export const OnBoardComputer = {
         text:'Recognizing the unique requirements of every satellite mission, AADYAH offers custom-built OBCs that are tailor-made to integrate seamlessly with your specific satellite system.'
         },
         {header:'Multifaceted Functionality',
-        text:'Pending'
+        list:{type:"ul",data:['mydata','mydata1','mydata2']}
         },
     ]}
 };
@@ -451,4 +451,40 @@ export const opportunities = {
     button: {
         text: "View on linkedin",
     }
+}   
+
+//Contact Address
+export const AddressData = {
+    title: `office locations`,
+    address:[{
+        title: `Aadyah Aerospace Pvt. Ltd.`,
+        text: `B-1115, Brigade Signature Towers Old Madras Road, Katammanallur Gate, Bengaluru. Karnataka-560049, India`
+    },
+    {
+        title: `AADYAH North America LLC`,
+        text: `1800 Old Meadow Rd, Apt 1119, McLean.VA 22102`
+    }],
+    connect: {
+        title: `connect with us`,
+        data: [{
+            title: `For enquiries`,
+            email: `info@aadyah.com`
+        },
+        {
+            title: `Call us`,
+            tel: `+91 9353401723`,
+        }
+        ]
+    }
+};
+
+//Our customers 
+export const ourCustomers  = {
+    title:'Our customers are spread across the globe.',
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pharetra vestibulum tincidunt.",
+    images:'/assets/images/our-customers-globe.png',
+    data: [
+        { title: "Offices" },
+        { title: "Customers" },
+    ]
 }   
