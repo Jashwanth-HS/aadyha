@@ -224,7 +224,7 @@ height: 12px;
     .ContactContainer{
         flex-direction: column;
         gap: 60px;
-        padding-top: 80px;
+        padding-top: 82px;
     }
     .ContactFormItems{
         display: flex;
