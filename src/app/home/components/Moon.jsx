@@ -3,7 +3,7 @@ import styles from "../css/Moon.module.css";
 export default function Moon() {
   return (
     <div className={styles.MoonContainer}>
-      <div className={styles?.overlayDiv}></div>
+      {/* <div className={styles?.overlayDiv}></div>
       <div className={styles.MoonHeading}>
         <h1>to moon</h1>
       </div>
@@ -11,7 +11,6 @@ export default function Moon() {
         className={styles.OrbitImage}
         src={"/assets/images/orbit-line.png"}
       />
-      {/* <img className={styles.MoonImage} src={"/assets/images/moon.png"} /> */}
       <div className={styles?.overlayDescription}>
         <p className={`${styles?.MoonImageLabel} secondary-font`}>
           <span>[Moon]</span> <span>[space system]</span>
@@ -83,7 +82,7 @@ export default function Moon() {
             <span>[MARS]</span> <span>[home, AWAITING]</span>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
