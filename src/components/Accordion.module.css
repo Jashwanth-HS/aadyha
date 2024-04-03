@@ -1,0 +1,100 @@
+.AccordionWrapper{
+    max-width: 620px;
+    width: 100%;
+}
+.list li {
+  margin: 0.75rem 0;
+}
+.chevron{
+  position: relative;
+  height: 20px;
+  width: 20px;
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.chevron1{
+  position: absolute;
+  display: flex;
+  width: 18px;
+  height: 1px;
+  background: #000;
+
+}
+.chevron2{
+  position: absolute;
+  display: flex;
+  width: 18px;
+  height: 1px;
+  transform: rotate(90deg);
+  background: #000;
+}
+.itemBtnExpanded .chevron2{
+  height: 0px;
+}
+.info {
+  color: rgb(0, 49, 0);
+  background-color: rgb(230, 246, 230);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.accordion {
+  border-top: 1px solid #ccc;
+  margin-top: 1rem;
+  margin-top: 40px;
+}
+
+.item {
+  border-bottom: 1px solid #ccc;
+}
+
+.itemBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+    color: #000;
+    background-color: transparent;
+    border: none;
+    font-family: "jetBrains Mono";
+}
+.itemBtn::before {
+    content: '';
+    display: inline-block;
+    width: 6px; 
+    height: 6px; 
+    background-color: #000; 
+    margin-right: 10px; 
+    border-radius: 50%;
+}
+.itemContent {
+  transition: height 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.itemPanel {
+    padding-bottom: 20px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: rgba(105, 105, 105, 1);
+    max-width: 490px;
+    width: 100%;
+}
+
+.chevron {
+  transition: transform 0.25s cubic-bezier(0, 0, 0, 1);
+}
+

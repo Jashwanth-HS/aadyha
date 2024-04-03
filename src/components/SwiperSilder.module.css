@@ -1,0 +1,16 @@
+.SwiperContainer{
+    width: 100%;
+    height: 500px;
+    padding: 110px 0 0;
+}
+.SwiperContainer :global(.swiper-pagination-bullet){
+    background-color: rgba(217, 217, 217, 1) ;
+    opacity: 0.6;
+}
+.SwiperContainer :global(.swiper-pagination-bullet-active){
+    background-color: #30A28E;
+    opacity: 1;
+}
+.SwiperContainer :global(.swiper-pagination){
+    margin-bottom: 40px;
+}

@@ -156,6 +156,18 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
+.secondary-btn{
+  display: inline-flex;
+  padding: 14px 28px 14px 21px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #000;
+  color: #000;
+  background: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
 /* Headings */
 .title-1{
   font-size: 410px;
@@ -174,7 +186,7 @@ a {
     font-size: 64px;
   }
   @media(max-width : 768px){
-    font-size: 37px;
+    font-size: 34px;
   }
 }
 .heading-2{
@@ -217,14 +229,16 @@ a {
   font-weight: 400;
   line-height: 95%; 
   text-transform: uppercase;
+  @media(max-width : 768px){
+    font-size: 21px;
+  }
 }
 .sub-heading-2{
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 115%; 
-  letter-spacing: 1.44px;
-  text-transform: uppercase;
+  line-height: normal;
+  letter-spacing: -1px;
 }
 .sub-heading-3{
   font-size: 21px;
