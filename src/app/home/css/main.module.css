@@ -1,9 +1,22 @@
-.divContainer{
+/* .divContainer{
     position: relative;
       background: transparent;
       width: 100vw;
-      height: 100vh;
+      height: 500vh;
       overflow: auto;
+  } */
+  .divContainer{
+    background-image: url('/assets/images/earth-bg.png') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100dvh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    /* z-index: 0; */
+    overflow: hidden;
   }
   .canvasContainer{
     position: absolute !important;
@@ -16,10 +29,127 @@
     overflow: hidden !important;
     pointer-events: auto !important;
   }
-  /* .divContainer > div{
-    width: fit-content;
-    height: fit-content;
-    color: white;
-    background: black;
-    padding: 2rem;
-  } */
+
+  .overlayDescription{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.EarthHeading {
+    position: absolute;
+    bottom: 8%;
+    text-align: center;
+    transition: all 1s;
+}
+.EarthHeadingInner{
+  position: relative;
+  display: flex;
+    color: #fff;
+    font-family: "Inter Tight";
+    font-size: 16vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 95%; 
+    text-transform: uppercase;
+    width: 100%; 
+}
+.OrbitImage{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  height: 100vh;
+  width: 100%;
+  object-fit: contain;
+  top: 0;
+}
+.overlayDiv{
+  top:0;
+  position: fixed;
+  height: 100vh;
+  overflow: auto;
+  width: 100vw;
+  z-index: 2;
+}
+.overlayDiv > div {
+  position: relative;
+  height: 100vh;
+}
+.EarthImage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: auto;
+    width: 530px;
+    object-fit: contain;
+    position: relative;
+}
+.EarthDescription{
+    color: #fff;
+    position: absolute;
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    max-width: 499px;
+    width: 100%;
+    position: absolute;
+    top: 45%;
+    right: 15%;
+}   
+.EarthDescription span:last-child{
+    width: 281px;
+    opacity: 0.5;
+}
+.EarthImageLabel {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 15%;
+    width: 30%;
+    bottom: 50%;
+    text-transform: uppercase;
+}
+.EarthImageLabelSpan:last-child{
+    opacity: 0.5;
+}
+.EarthImageLabel::before {
+    content: '';
+    position: absolute;
+    width: 100%; 
+    height: 1px; 
+    background-color: #fff;
+    top: 30px;
+    left: 100px;
+    transform: translateX(-0%);
+}
+
+.EarthImageLabelSpan {
+    margin: 0; 
+}
+.MoonImageContainer{
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  position: absolute;
+  right: 11%;
+  top: 15%;
+  text-align: left;
+  text-transform: uppercase;
+}
+.MoonImageLabel{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.MoonImageLabel span:last-child{
+  opacity: 0.5;
+}
+.textSpan{
+  transition: all 0.3s;
+}

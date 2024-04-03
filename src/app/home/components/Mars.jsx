@@ -3,7 +3,7 @@ import styles from "../css/Mars.module.css";
 export default function Mars() {
   return (
     <div className={styles.MarsContainer}>
-      <div className={styles?.overlayDiv}></div>
+      {/* <div className={styles?.overlayDiv}></div>
       <div className={styles.MarsHeading}>
         <h1>to mars</h1>
       </div>
@@ -11,7 +11,6 @@ export default function Mars() {
         className={styles.OrbitImage}
         src={"/assets/images/orbit-line.png"}
       />
-      {/* <img className={styles.MarsImage} src={"/assets/images/mars.png"} /> */}
       <p className={`${styles?.MarsImageLabel} secondary-font`}>
         <span>[MARS]</span> <span>[Future home]</span>
       </p>
@@ -47,7 +46,7 @@ export default function Mars() {
           />
           <circle cx="19.3085" cy="3.24995" r="2.74995" stroke="#C8402D" />
         </svg>
-      </div>
+      </div> */}
     </div>
   );
 }

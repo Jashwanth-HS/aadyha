@@ -4,18 +4,18 @@ import Image from "next/image";
 export default function Earth() {
   return (
     <div className={styles.EarthContainer}>
-      <div className={styles?.overlayDiv}></div>
+      {/* <div className={styles?.overlayDiv}></div>
       <div className={styles.EarthHeading}>
         <h1>from earth</h1>
       </div>
       <img
         className={styles.OrbitImage}
         src={"/assets/images/orbit-line.png"}
-      />
+      /> */}
       {/* <img className={styles.EarthImage}
       src={'/assets/images/earth-img.png'}
   /> */}
-      <div className={styles.overlayDescription}>
+      {/* <div className={styles.overlayDescription}>
         <p className={`${styles?.EarthImageLabel} secondary-font`}>
           <span>[Earth]</span> <span>[home]</span>
         </p>
@@ -39,7 +39,7 @@ export default function Earth() {
             <span>[moon]</span> <span>[384,400 km]</span>
           </p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
