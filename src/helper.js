@@ -267,7 +267,7 @@ export const satelliteRoadmap = {
                 {
                     image: "/assets/images/spacecarft-operation.svg",
                     title: "Satellite Stabilization and Debris Management",
-                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                    description: "AADYAH embarked on an exciting mission that involves the launch of a 16U satellite. This satellite has a dual-purpose objective: first, to demonstrate advanced satellite stabilization techniques, and second, to establish robust communication capabilities. The mission also showcases spacecraft maneuvering abilities utilizing RADAR and optical payload data to precisely reach targeted space debris. AADYAH uses cutting edge Electro-optic payloads, including cameras and LiDAR technology, for the characterization of this space debris.",
                     button: {
                         text: "read more",
                     }
@@ -281,7 +281,7 @@ export const satelliteRoadmap = {
                 {
                     image: "/assets/images/spacecarft-operation.svg",
                     title: "Spacecraft Operations and IoT Solutions",
-                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This 7mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution. It is our endeavor to establish AADYAH as the one stop solution for integrated space asset solutions, underlining our commitment to innovation and excellence.",
                     button: {
                         text: "read more",
                     }
@@ -295,7 +295,7 @@ export const satelliteRoadmap = {
                 {
                     image: "/assets/images/spacecarft-operation.svg",
                     title: "Debris Rendezvous and Advanced Space Operations",
-                    description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                    description: "We are initiating the mission with a two-fold purpose. Firstly, we will demonstrate our spacecraft's ability to rendezvous with space debris, showcasing our precision and control in space operations. Secondly, we will exhibit the remote operation of the spacecraft's robotic arm (or an alternative technology for debris removal), representing a leap forward in space technology. Additionally, we will conduct vital demonstrations involving spacecraft refueling and the performance evaluation of space situational awareness devices.",
                     button: {
                         text: "read more",
                     }
@@ -309,7 +309,7 @@ export const satelliteRoadmap = {
             {
                 image: "/assets/images/spacecarft-operation.svg",
                 title: "Deorbiting Debris with Precision",
-                description: "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution.",
+                description: "Our mission is to demonstrate the deorbiting of space debris with enhanced precision and efficiency. This will include the deorbiting of smaller, less massive debris using a robotic arm, showcasing our mastery over intricate space operations. Moreover, AADYAH will demonstrate the removal of larger, more massive debris utilizing a specialized net system. This mission solidifies our commitment to making space safer and cleaner through cutting-edge technology and innovation.",
                 button: {
                     text: "read more",
                 }

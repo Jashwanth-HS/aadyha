@@ -1,6 +1,14 @@
 'use client';
 import { satelliteRoadmap } from '@/helper';
-import React, { useState } from 'react'
+import { Box } from '@react-three/drei';
+import React, { useEffect, useRef, useState } from 'react'
+
+const paragraphStyles = {
+    WebkitLineClamp: 4,
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    display: '-webkit-box',   
+}
 
 const NavBar = ({ setActive, active, styles }) => {
     return <div className={styles?.ControlSystemTabWrapper}>
@@ -18,22 +26,43 @@ const NavBar = ({ setActive, active, styles }) => {
 }
 
 const NavBarcontent = ({ activeData, styles }) => {
+    const [isOpen, setisOpen] = useState(false)
+    const [showReadMoreButton, setshowReadMoreButton] = useState(false)
     const {data:contentData} = activeData || {};
+    const ref = useRef(null)
+    useEffect(() => {
+        if (ref.current){
+            setshowReadMoreButton(
+                ref.current.scrollHeight !== ref.current.clientHeight
+            )
+        }
+    }, [])
     const { image, title, description, button} = contentData || {}
     if (!activeData?.data) {
         return <div>NO data found</div>
     }
     return (
     <div className={styles?.ControlSystemContentWrapper}>
-        <div className={styles?.satelliteRoadmapContent} >
+        <div className={styles?.satelliteRoadmapItems} >
             <div>{image && <img src={image} />}</div>
-            <div>
+            <div className={styles?.satelliteRoadmapContent}>
                 <h3 className="heading-3">{title}</h3>
-                <p className="paragraph">{description}</p>
-                <button className="secondary-font"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M0 9H18" stroke="white"/>
-                <path d="M8.9082 18L8.9082 -2.68221e-07" stroke="white"/>
-                </svg>{button?.text}</button>
+                <p style={isOpen ? null: paragraphStyles} ref={ref} className="paragraph">{description}</p>
+                {showReadMoreButton && (
+                    <button onClick={() => setisOpen(!isOpen)} className="secondary-font">
+                    {isOpen ? (
+                        <><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M0 9H18" stroke="white"/>
+                        <path d="M8.9082 18L8.9082 -2.68221e-07" stroke="white"/>
+                        </svg><span>Read less</span></>
+                    ) : (
+                        <><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M0 9H18" stroke="white"/>
+                        <path d="M8.9082 18L8.9082 -2.68221e-07" stroke="white"/>
+                        </svg><span>Read more</span></>
+                    )}
+                </button>
+                )}
             </div>
         </div>
  </div>

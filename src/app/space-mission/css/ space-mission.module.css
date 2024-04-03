@@ -86,15 +86,15 @@
     border-top: 1px solid rgba(64, 216, 189, 1);
     color: #fff;
 }
-.satelliteRoadmapContent{
+.satelliteRoadmapItems{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 150px;
 }
-.satelliteRoadmapContent p{
-    padding: 25px 0 40px;
+.satelliteRoadmapItems p{
+    padding: 25px 0 0;
 }
-.satelliteRoadmapContent button{
+.satelliteRoadmapItems button{
     display: flex;
     align-items: center;
     gap: 20px;
@@ -102,7 +102,12 @@
     border: none;
     text-transform: uppercase;
     color: #fff;
-}
+    margin-top: 40px;
+    cursor: pointer;
+}  
+.satelliteRoadmapContent{
+    padding-top: 100px;
+} 
 .PlanetaryMissionsContainer{
     padding: 100px 0 130px;
     display: flex;
@@ -193,11 +198,11 @@
     .SatelliteRoadmapWrapper{
         padding: 60px 0 20px;
     }
-    .satelliteRoadmapContent{
+    .satelliteRoadmapItems{
         flex-direction: column;
         gap: 60px;
     }
-    .satelliteRoadmapContent img{
+    .satelliteRoadmapItems img{
         width: 100%;
     }
     .PlanetaryMissionsContainer{
