@@ -13,7 +13,6 @@ export default function ContactForm({ style }) {
     e.preventDefault();
     try {
       const result = fetch({
-        url: "https://reqres.in/api/users",
         method: "POST",
         body: inputValues,
       }).then((res) => res.json());
@@ -26,22 +25,22 @@ export default function ContactForm({ style }) {
       setError(true);
     }
   };
-  // useEffect(()=> {
-  //   let setTimeoutId;
-  //   if(error){
-  //     setTimeoutId = setTimeout(() => {
-  //         setError(null);
-  //       }, 3000);
-  //   }
-  //   if(success){
-  //     setTimeoutId = setTimeout(() => {
-  //       setSuccess(null);
-  //     }, 3000);
-  //   }
-  //   return () => {
-  //     clearTimeout(setTimeoutId);
-  //   }
-  // },[error,success])
+  useEffect(()=> {
+    let setTimeoutId;
+    if(error){
+      setTimeoutId = setTimeout(() => {
+          setError(null);
+        }, 3000);
+    }
+    if(success){
+      setTimeoutId = setTimeout(() => {
+        setSuccess(null);
+      }, 3000);
+    }
+    return () => {
+      clearTimeout(setTimeoutId);
+    }
+  },[error,success])
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInputValues({ ...inputValues, [name]: value });
