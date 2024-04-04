@@ -1,9 +1,22 @@
 .NavTab{
     padding: 90px 5% 0 5%;
-    position: sticky;
-    top: calc(-70px + 80px);
+    position: relative;
+    background: white;
     background: white;
 }
+
+.NavTabSticky{
+    position: fixed;
+    width: 100%;
+    top: -140px;
+    background: white;
+    z-index: 2;
+    transition: all 0.5s ease;
+}
+.NavTabSticky.stickyClassName{
+    top: 0px;
+}
+
 .NavTabWrapper{
     display: flex;
     justify-content: space-between;
