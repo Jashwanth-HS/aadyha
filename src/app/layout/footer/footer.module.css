@@ -20,7 +20,7 @@
     left: 0;
     z-index: -1;
 }
-.cosmosContainerBackground > img {
+.cosmosContainerBackground  img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -35,12 +35,6 @@
 }
 .cosmosTitle{
     color: #fff;
-font-size: 69px;
-font-style: normal;
-font-weight: 400;
-width: 100%;
-line-height: 95%;
-text-transform: uppercase;
 }
 .cosmosBlocksContainer{
     display: flex;
@@ -90,10 +84,134 @@ text-transform: uppercase;
     width: fit-content;
     padding: 0.8rem 1.3rem;
     color: #000;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: 90%; /* 12.6px */
-letter-spacing: 0.7px;
-text-transform: uppercase;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90%; 
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+.FooterContainer{
+    width: 90%;
+    margin: 0 auto;
+    padding: 70px 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+.FooterItems{
+    display: flex;
+    justify-content: space-between;
+}
+.FooterTitle{
+    max-width: 250px;
+    display: flex;
+    gap: 44px;
+    flex-direction: column;
+}
+.FooterTitle img{
+    width: 180px;
+}
+.FooterLinks ul{
+    list-style: none;
+    display: inline-grid;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    row-gap: 16px;
+    grid-column-gap: 100px;
+}
+.FooterLinks ul li{
+    font-family: "JetBrains Mono";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.enquiresWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.enquiresContent{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.enquiresContent h3{
+    color: rgba(0, 0, 0, 0.5);
+}
+.SocialLinkWrapper ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.SocialLinkWrapper img{
+    width: 20px;
+    height: 20px;
+}
+.copyRightsWrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "JetBrains Mono";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    color: rgba(105, 105, 105, 1);
+}
+.copyRightsItems{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+@media(max-width:768px){
+    .cosmosContainer{
+        padding: 60px 20px;
+    }
+    .cosmosContentContainer{
+        width: 100%;
+    }
+    .cosmosBlocksContainer{
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 60px;
+        height: 400px;
+    }
+    .cosmosTitle{
+        font-size: 37px;
+    }
+    .FooterContainer{
+        gap: 48px;
+    }
+    .FooterItems{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .FooterLinks ul{
+        display: flex;
+        flex-direction: column;
+    }
+    .copyRightsWrapper{
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 6px;
+    }
+    .copyRightsItems{
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 20px;
+    }
+    .privacyPolicyItems{
+        max-width: 275px;
+        width: 100%;
+        line-height: 24px;
+    }
 }

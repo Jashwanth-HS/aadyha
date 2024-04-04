@@ -677,10 +677,11 @@ export const cosmosData = {
 
 //Footer
 export const footer = {
-    images:'/assets/images/our-customers-globe.png',
-    title:'Our customers are spread across the globe.',
+    images:'/assets/images/logoBlack.svg',
+    title:'Let’s work together',
     button: {
-        text: "View opening",
+        label: "View opening",
+        slug:"/contact"
     },
     links:[
         {label:'Satellite SYSTEM',slug:'/satellite-system'},
@@ -699,15 +700,16 @@ export const footer = {
         tel: `+91 9353401723`,
     }],
     socialLinks:[
-        {label:'linkedIn',slug:'/https://www.linkedin.com/'},
-        {label:'twitter',slug:'/https://twitter.com/?lang=en'},
-        {label:'instagram',slug:'/https://www.instagram.com/'},
-        {label:'facebook',slug:'/https://www.facebook.com/'},
-        {label:'youtube',slug:'/https://www.youtube.com/'},
+        {label:'linkedIn',slug:'https://www.linkedin.com/'},
+        {label:'twitter',slug:'https://twitter.com/?lang=en'},
+        {label:'instagram',slug:'https://www.instagram.com/'},
+        {label:'facebook',slug:'https://www.facebook.com/'},
+        {label:'youtube',slug:'https://www.youtube.com/'},
     ],
-    copyRights:[
+    privacyPolicy:[
         {label:'Quality & Policy',slug:'/Quality'},
         {label:'cookie policy',slug:'/cookie'},
         {label:'Privacy Policy',slug:'/Privacy'},
-        {copyright:"@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved."}]
+    ],
+    copyRights:"@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved."
 }

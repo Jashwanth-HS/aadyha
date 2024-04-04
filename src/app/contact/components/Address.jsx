@@ -35,7 +35,7 @@ export default function Address({ styles }) {
                       <a className="paragraph" href={email ? 'mailto:'+email : tel ? 'tel:'+tel : "#"} target='_blank'>{tel || email}</a>
                     </div>
                   </React.Fragment>
-              })}
+                })}
                 </div>
             </div>
         </div>

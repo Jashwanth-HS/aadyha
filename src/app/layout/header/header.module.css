@@ -68,14 +68,20 @@
 }
 .navHeaderLinksContainer li {
     list-style-type: none;
+    font-family: "JetBrains Mono";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
 }
 .navHeaderButton{
     display: flex;
     width: fit-content;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    padding: 1.3rem;
+    height: 40px;
+    padding: 1.2rem;
     background: white;
     color: black;
     text-transform: uppercase;

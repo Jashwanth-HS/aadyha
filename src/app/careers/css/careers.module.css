@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding-top: calc(70px + 100px);
 }
 .Banner h1{
     max-width: 730px;

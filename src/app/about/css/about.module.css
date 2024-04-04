@@ -5,7 +5,8 @@
     max-width: 1122px;
     width: 100%;
     margin: 0 auto;
-    padding: 120px 0 60px;
+    padding-top: calc(70px + 100px);
+    padding-bottom: 60px;
     text-align: center;
     color: #fff;
 }
