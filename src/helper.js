@@ -347,7 +347,10 @@ export const OnBoardComputer = {
         header: "Bespoke Design",
         text: "Recognizing the unique requirements of every satellite mission, AADYAH offers custom-built OBCs that are tailor-made to integrate seamlessly with your specific satellite system.",
       },
-      { header: "Multifaceted Functionality", text: "Pending" },
+      {
+        header: "Multifaceted Functionality",
+        list: { type: "ul", data: ["mydata", "mydata1", "mydata2"] },
+      },
     ],
   },
 };

@@ -1,0 +1,261 @@
+.ContactBanner{
+    background: #515B6A;
+    color: #fff;
+    padding: 120px 0 100px;
+}
+.Banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.Banner h1{
+    max-width: 525px;
+    width: 100%;
+    text-transform: capitalize;
+}
+.Banner p{
+    max-width: 460px;
+    width: 100%;
+    padding-top: 16px;
+}
+.ContactContainer{
+    width: 100%;
+    padding-top: 90px;
+    display: flex;
+    gap: 140px;
+    justify-content: space-between;
+}
+.ContactFormWrap{
+    width: 100%;
+}
+.ContactFormWrap h1{
+    text-transform: uppercase;
+    padding-bottom: 70px;
+}
+.ContactFormItems{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.ContactFormTextarea{
+    grid-column: 1 / span 2;
+    width: 100%;
+}
+.ContactFormItems input[type="text"],
+.ContactFormItems input[type="email"],
+.ContactFormItems input[type="tel"],
+.ContactFormItems textarea {
+  background: none;
+  border: none;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 10px;
+  padding-bottom: 18px;
+  text-transform: uppercase;
+  font-family: "JetBrains Mono";
+}
+.ContactFormItems input[type="text"]::placeholder,
+.ContactFormItems input[type="email"]::placeholder,
+.ContactFormItems input[type="tel"]::placeholder,
+.ContactFormItems textarea::placeholder {
+  color: rgba(255, 255, 255, 1);
+}
+
+.ContactFormItems input[type="text"]:focus,
+.ContactFormItems input[type="email"]:focus,
+.ContactFormItems input[type="tel"]:focus,
+.ContactFormItems textarea:focus {
+  outline: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+.ActionContainer{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.SubmitMessage {
+    display: flex;
+    width: fit-content;
+    gap: 0rem;
+}
+.SubmitMessage > p svg {
+height: 12px;
+}
+.SubmitMessage  .successMessage{
+    display: flex;
+    border: 1px solid #7DDF64;
+    padding: 14px 28px 14px 21px;
+    width: 100%;
+    color: #7DDF64;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+.SubmitMessage .errorMessage{
+    display: flex;
+    border: 1px solid #df6464;
+    padding: 14px 28px 14px 21px;
+    width: 100%;
+    color: #df6464;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+.AddressContainer{
+    width: 100%;
+}
+.AddressContainer h2{
+    text-transform: uppercase;
+}
+.AddressWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-top: 60px;
+}
+.AddressItems{
+    display: flex;
+    flex-direction: column;
+    gap: 46px;
+}
+.AddressItemsContent{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.AddressItemsContent h3::before{
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 8px; 
+    background-color: #fff; 
+    margin-right: 10px; 
+    margin-bottom: 2px;
+}
+.AddressItemsContent p{
+    max-width: 300px;
+    width: 100%;
+}
+.ConnectUsWrapper{
+    max-width: 500px;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    padding-top: 22px;
+}
+.ConnectUsWrapper h2::before{
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 8px; 
+    background-color: #fff; 
+    margin-right: 10px; 
+    margin-bottom: 2px;
+}
+.ConnectUsItems{
+    display: flex;
+    gap: 120px;
+    padding-top: 25px;
+}
+.ConnectUsContent h3{
+    color: rgba(255, 255, 255, 0.6);
+    padding-bottom: 4px;
+}
+
+/* Our Customers */
+.OurCustomersWrap{
+    background: #EEEFF0;
+}
+.OurCustomersContainer{
+    display: flex;
+    padding: 60px 0;
+}
+.OurCustomersTitle{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 550px;
+    width: 100%;
+    padding-top: 40px
+}
+.OurCustomersTitle h3{
+    text-transform: capitalize;
+}
+.OurCustomersContentWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+.OurCustomersContentWrap img{
+    width: 100%;
+}
+.ORContenItems{
+    display: flex;
+    gap: 70px;
+}
+.OCRepeaterContent{
+    display: flex;
+    align-items: center;
+}
+.ORContenItems>:first-child::before{
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 8px; 
+    background-color: #00BAE2; 
+    margin-right: 10px; 
+}
+.ORContenItems>:last-child::before{
+    content: '';
+    display: inline-block;
+    width: 5px; 
+    height: 8px; 
+    background-color: #E4572E; 
+    margin-right: 10px; 
+}
+
+@media(max-width:768px){
+    .ContactContainer{
+        flex-direction: column;
+        gap: 60px;
+        padding-top: 82px;
+    }
+    .ContactFormItems{
+        display: flex;
+        flex-direction: column;
+    }
+    .ActionContainer{
+        flex-direction: column;
+    }
+    .ContactFormWrap h1{
+        padding-bottom: 56px;
+    }
+    .ContactFormWrap button{
+        width: 100%;
+    }
+    .SubmitMessage{
+        width: 100%;
+    }
+    .AddressWrapper{
+        padding-top: 36px;
+    }
+    .OurCustomersTitle{
+        padding: 0;
+    }
+    .ConnectUsItems{
+        gap: 100px;
+    }
+    .OurCustomersContainer{
+        flex-direction: column;
+        gap: 60px;
+    }
+    .OurCustomersContentWrap{
+        align-items: self-start;
+    }
+}

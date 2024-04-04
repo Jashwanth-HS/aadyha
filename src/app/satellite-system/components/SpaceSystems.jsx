@@ -18,6 +18,7 @@ export default function SpaceSystems({data,styles}) {
           ContentClassName={styles?.AccordionTextWhite} 
           HeaderclassName={styles?.AccordionTextWhite}
           IconClass={styles?.AccordionIconClass}
+          listClassName={styles?.AccordionListClass}
           />}
         </div>
       </div>
