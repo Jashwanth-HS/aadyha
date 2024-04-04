@@ -674,3 +674,40 @@ export const cosmosData = {
     },
   ],
 };
+
+//Footer
+export const footer = {
+    images:'/assets/images/our-customers-globe.png',
+    title:'Our customers are spread across the globe.',
+    button: {
+        text: "View opening",
+    },
+    links:[
+        {label:'Satellite SYSTEM',slug:'/satellite-system'},
+        {label:'LAUNCH VEHICLE SYSTEM',slug:'/launch-vehicle-system'},
+        {label:'SPACE MISSION',slug:'/space-mission'},
+        {label:'ABOUT US',slug:'/about'},
+        {label:'CAREERS',slug:'/careers'},
+        {label:'CONTACT US',slug:'/contact'},
+    ],
+    enquires:[{
+        title: `For enquiries`,
+        email: `info@aadyah.com`
+    },
+    {
+        title: `Call us`,
+        tel: `+91 9353401723`,
+    }],
+    socialLinks:[
+        {label:'linkedIn',slug:'/https://www.linkedin.com/'},
+        {label:'twitter',slug:'/https://twitter.com/?lang=en'},
+        {label:'instagram',slug:'/https://www.instagram.com/'},
+        {label:'facebook',slug:'/https://www.facebook.com/'},
+        {label:'youtube',slug:'/https://www.youtube.com/'},
+    ],
+    copyRights:[
+        {label:'Quality & Policy',slug:'/Quality'},
+        {label:'cookie policy',slug:'/cookie'},
+        {label:'Privacy Policy',slug:'/Privacy'},
+        {copyright:"@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved."}]
+}
