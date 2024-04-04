@@ -117,8 +117,6 @@ const Planets = ({ children }) => {
   useEffect(() => {
     let setTimeoutId;
     const handleWheel = (event) => {
-      let scrolled = scrollableDivRef.current.scrollTop;
-
       if (scrolling.current === false) {
         // if (scrolled < 200) {
         //   setHeadingText("FROM EARTH");
@@ -139,7 +137,8 @@ const Planets = ({ children }) => {
           (direction === 1 ? window.innerHeight : -window.innerHeight);
 
         // Define variables for animation
-        const startScroll = scrollableDivRef.current.scrollTop;
+        const startScroll =
+          scrollableDivRef.current && scrollableDivRef.current.scrollTop;
         let startTime;
 
         // Define the scroll animation function
@@ -152,7 +151,8 @@ const Planets = ({ children }) => {
           scrolling.current = true;
           scroll.current = newScroll;
           // Scroll to the new position
-          scrollableDivRef.current.scrollTop = newScroll;
+          if (scrollableDivRef.current)
+            scrollableDivRef.current.scrollTop = newScroll;
           clearTimeout(setTimeoutId);
           setTimeoutId = setTimeout(() => {
             scrolling.current = false;
@@ -170,12 +170,14 @@ const Planets = ({ children }) => {
     };
 
     // Add event listener for wheel events
-    scrollableDivRef.current.addEventListener("wheel", handleWheel);
+    if (scrollableDivRef.current)
+      scrollableDivRef.current.addEventListener("wheel", handleWheel);
 
     // Clean up by removing the event listener
     return () => {
       clearTimeout(setTimeoutId);
-      scrollableDivRef.current.removeEventListener("wheel", handleWheel);
+      if (scrollableDivRef.current)
+        scrollableDivRef.current.removeEventListener("wheel", handleWheel);
     };
   }, []);
 
@@ -250,7 +252,6 @@ const Planets = ({ children }) => {
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
             />
-            {/* <span>[Earth]</span> <span>[home]</span> */}
           </div>
           <div className={styles.EarthDescription}>
             <WordAnimation

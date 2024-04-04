@@ -1,0 +1,32 @@
+.PrimaryButton{
+    background: white;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 0.8rem 1.3rem;
+    color: #000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90%;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    text-align: center;
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.PrimaryButton.PrimaryButtonDark{
+    color: #fff;
+    background: #000;
+}
+.PrimaryButton >  span , .PrimaryButton >  span {
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background-color: rgb(0, 0, 0);
+}
+.PrimaryButton.PrimaryButtonDark >  span , .PrimaryButton.PrimaryButtonDark >  span {
+    background-color: rgb(255, 255, 255);
+}   
