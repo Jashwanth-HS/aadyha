@@ -99,6 +99,9 @@
 .hamburgerIcon{
     display: none;
 }
+.menuContainer{
+    display: none;
+}
 @media(max-width:768px){
 .navHeaderLogo{
     width: 120px;
@@ -152,6 +155,7 @@
     background: #00031B;
     transition: all 0.3s ease;
     z-index: 8;
+    display: block;
     overflow: hidden;
 }
 .menuContainer.openMenubar{
