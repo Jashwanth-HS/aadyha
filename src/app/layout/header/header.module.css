@@ -1,0 +1,67 @@
+.navHeader{
+    position: fixed;
+    top: 40px;
+    z-index: 9;
+    width: 100%;
+    max-width: 1700px;
+    height: 50px;
+}
+.navHeaderInner{
+    display: flex;
+    width: 100%;
+    padding: 0 5vw;
+    justify-content: space-between;
+    align-items: center;
+}
+.navHeaderLogo{
+    height: 50px;
+    width: auto;
+}
+.navHeaderLogo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.navHeaderLinksContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: white;
+    text-transform: uppercase;
+}
+.navHeaderLinksContainer ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    width: 100%;
+}
+.navHeaderLinksContainer li {
+    list-style-type: none;
+}
+.navHeaderButton{
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 1.3rem;
+    background: white;
+    color: black;
+    text-transform: uppercase;
+
+}
+.navHeaderButton button , .navHeaderButton a {
+    white-space: nowrap;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.3rem;
+}
+.navHeaderButton button  >  span , .navHeaderButton a  >  span {
+    width: 20px;
+    height: 1px;
+    background-color: rgb(0, 0, 0);
+}

@@ -1,9 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import Earth from "./components/Earth";
-import Moon from "./components/Moon";
+
 import Planets from "./components/Planets";
-import Mars from "./components/Mars";
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
 const Section = ({ children }) => {
@@ -18,11 +16,7 @@ const Section = ({ children }) => {
 export default function Home() {
   return (
     <>
-      <Planets>
-        <Earth />
-        <Moon />
-        <Mars />
-      </Planets>
+      <Planets />
       <Section>
         <SpaceSystem />
         <Clients />

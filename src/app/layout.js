@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import Header from "@/app/layout/header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Header />
         <ReactLenis root options={{ lerp: 0.08 }}>
           {children}
         </ReactLenis>
