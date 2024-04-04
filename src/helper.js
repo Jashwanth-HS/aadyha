@@ -609,7 +609,6 @@ export const opportunities = {
     text: "View on linkedin",
   },
 };
-
 export const headerData = {
   logo: "/assets/images/logo.svg",
   links: [
@@ -620,4 +619,58 @@ export const headerData = {
     { label: "CAREERS", slug: "careers" },
   ],
   button: { label: "Connect with us", slug: "/contact" },
+};
+//Contact Address
+export const AddressData = {
+  title: `office locations`,
+  address: [
+    {
+      title: `Aadyah Aerospace Pvt. Ltd.`,
+      text: `B-1115, Brigade Signature Towers Old Madras Road, Katammanallur Gate, Bengaluru. Karnataka-560049, India`,
+    },
+    {
+      title: `AADYAH North America LLC`,
+      text: `1800 Old Meadow Rd, Apt 1119, McLean.VA 22102`,
+    },
+  ],
+  connect: {
+    title: `connect with us`,
+    data: [
+      {
+        title: `For enquiries`,
+        email: `info@aadyah.com`,
+      },
+      {
+        title: `Call us`,
+        tel: `+91 9353401723`,
+      },
+    ],
+  },
+};
+
+//Our customers
+export const ourCustomers = {
+  title: "Our customers are spread across the globe.",
+  description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pharetra vestibulum tincidunt.",
+  images: "/assets/images/our-customers-globe.png",
+  data: [{ title: "Offices" }, { title: "Customers" }],
+};
+
+//footer cosmos
+
+export const cosmosData = {
+  title: "The cosmos awaits, and we Are leading the way.",
+  blocks: [
+    {
+      title: "Join Aadyah",
+      description: "Join aadyah. innovate and inspire the world",
+      button: { label: "view opening", slug: "/contact" },
+    },
+    {
+      title: "Clients",
+      description: "Talk to us to discuss the  boundless opportunities",
+      button: { label: "Get in touch", slug: "/contact" },
+    },
+  ],
 };

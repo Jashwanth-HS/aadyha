@@ -1,15 +1,44 @@
 .navHeader{
     position: fixed;
-    top: 40px;
+    top: 0;
     z-index: 9;
     width: 100%;
-    max-width: 1700px;
-    height: 50px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+    background-color: #00031B;
+}
+.navHeader.hideNavHeader{
+    top: -80px;
+}
+.navHeader.colorNavHeader{
+    background-color: transparent;
+    color: black;
+}
+.navHeader.colorNavHeaderLight{
+    background: transparent !important;
+}
+.navHeader.colorNavHeader  li {
+    color: black;
+}
+.navHeader.colorNavHeader .navHeaderButton   {
+    background: black;
+    
+} 
+.navHeader.colorNavHeader .navHeaderButton{
+    color: white;
+}
+.navHeader.colorNavHeader .navHeaderButton  span {
+    background: white;
 }
 .navHeaderInner{
     display: flex;
     width: 100%;
+    max-width: 1800px;
     padding: 0 5vw;
+
     justify-content: space-between;
     align-items: center;
 }
