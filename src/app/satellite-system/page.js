@@ -27,26 +27,29 @@ const Banner = () => {
 export default function page() {
   return (
     <>
-      <div className={styles?.stickyContainer} data-lenis-prevent>
+      {/* <div
+        className={`${styles?.stickyContainer} stickyContainer`}
+        data-lenis-prevent
+      > */}
+      <Container>
+        <Banner />
+      </Container>
+      <NavBar styles={styles} />
+      <Container>
+        <Propulsion styles={styles} />
+      </Container>
+      <div className={styles?.SpaceSystemsContainer}>
         <Container>
-          <Banner />
+          {spaceSystem?.map((e, index) => {
+            return (
+              <React.Fragment key={index}>
+                <SpaceSystems data={e} styles={styles} />
+              </React.Fragment>
+            );
+          })}
         </Container>
-        <NavBar styles={styles} />
-        <Container>
-          <Propulsion styles={styles} />
-        </Container>
-        <div className={styles?.SpaceSystemsContainer}>
-          <Container>
-            {spaceSystem?.map((e, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <SpaceSystems data={e} styles={styles} />
-                </React.Fragment>
-              );
-            })}
-          </Container>
-        </div>
       </div>
+      {/* </div> */}
     </>
   );
 }

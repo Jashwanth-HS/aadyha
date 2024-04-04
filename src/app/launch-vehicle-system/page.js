@@ -19,20 +19,23 @@ const Banner = () => {
 export default function Index() {
   return (
     <>
-      <div className={styles?.stickyContainer} data-lenis-prevent>
-        <Container>
-          <Banner />
-        </Container>
-        <NavBar styles={styles} />
-        <Container>
-          <PartGridContent styles={styles} />
-        </Container>
-        <Gauidance styles={styles} />
-        <Container>
-          <Avionics styles={styles} />
-          <ControlSystem styles={styles} />
-        </Container>
-      </div>
+      {/* <div
+        className={`${styles?.stickyContainer} stickyContainer`}
+        data-lenis-prevent
+      > */}
+      <Container>
+        <Banner />
+      </Container>
+      <NavBar styles={styles} />
+      <Container>
+        <PartGridContent styles={styles} />
+      </Container>
+      <Gauidance styles={styles} />
+      <Container>
+        <Avionics styles={styles} />
+        <ControlSystem styles={styles} />
+      </Container>
+      {/* </div> */}
     </>
   );
 }
