@@ -9,6 +9,7 @@
     position: fixed;
     width: 100%;
     top: -140px;
+    padding: 0 6rem;
     background: white;
     z-index: 2;
     transition: all 0.5s ease;
@@ -55,6 +56,9 @@
         padding: 70px 5% 0 5%;
         position: relative;
         top: 0px;
+    }
+    .NavTabSticky{
+        display: none;
     }
     .NavTabWrapper{
         flex-direction: column;
