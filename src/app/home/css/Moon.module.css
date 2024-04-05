@@ -8,12 +8,12 @@
     /* z-index: -1; */
     overflow: hidden;
 }
-.overlayDiv{
+/* .overlayDiv{
     position: absolute;
     height: 100vh;
     width: 100vw;
     z-index: 1;
-}
+} */
 .MoonHeading {
     position: absolute;
     top: 8%;
