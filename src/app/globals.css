@@ -177,43 +177,25 @@ a {
   text-transform: uppercase;
 }
 .heading-1{
-  font-size: 90px;
+  font-size: 4.7cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 95%; 
   text-transform: uppercase;
-  @media(max-width : 1440px){
-    font-size: 64px;
-  }
-  @media(max-width : 768px){
-    font-size: 34px;
-  }
 }
 .heading-2{
-  font-size: 69px;
+  font-size: 3cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 95%; 
   text-transform: uppercase;
-  @media(max-width : 1440px){
-    font-size: 42px;
-  }
-  @media(max-width : 768px){
-    font-size: 24px;
-  }
 }
 .heading-3{
-  font-size: 40px;
+  font-size: 2.1cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 100%; 
   text-transform: uppercase;
-  @media(max-width : 1440px){
-    font-size: 31px;
-  }
-  @media(max-width : 768px){
-    font-size: 24px;
-  }
 }
 .heading-4{
   font-size: 37px;
@@ -224,14 +206,11 @@ a {
   
 }
 .sub-heading-1{
-  font-size: 28px;
+  font-size: 1.45cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 95%; 
   text-transform: uppercase;
-  @media(max-width : 768px){
-    font-size: 21px;
-  }
 }
 .sub-heading-2{
   font-size: 24px;
@@ -249,26 +228,107 @@ a {
   text-transform: uppercase;
 }
 .caption{
-  font-size: 12px;
+  font-size: 0.8cqw;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
 }
 .micro-large{
-  font-size: 15px;
+  font-size: 0.8cqw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
 }
 .paragraph{
-  font-size: 16px;
+  font-size: 1cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
 }
 
+@media(max-width:768px){
+  .title-1{
+    font-size: 410px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 95%; 
+    text-transform: uppercase;
+  }
+  .heading-1{
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 95%; 
+    text-transform: uppercase;
+  }
+  .heading-2{
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 95%; 
+    text-transform: uppercase;
+  }
+  .heading-3{
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100%; 
+    text-transform: uppercase;
+  }
+  .heading-4{
+    font-size: 37px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 98%; 
+    letter-spacing: -2px;
+    
+  }
+  .sub-heading-1{
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 95%; 
+    text-transform: uppercase;
+  }
+  .sub-heading-2{
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1px;
+  }
+  .sub-heading-3{
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 119%; 
+    letter-spacing: 1.26px;
+    text-transform: uppercase;
+  }
+  .caption{
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+  .micro-large{
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+  .paragraph{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+  }
+  
+}
 /* Override default autofill background color */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 

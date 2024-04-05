@@ -10,57 +10,47 @@
     overflow: hidden;
 }
 .cosmosContainer{
-    padding: 8rem 5rem;
-    position: relative;
-    width: 100vw;
-    height: fit-content;
-}
-.cosmosContainerBackground{
-    position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
+    position: relative;
 }
 .cosmosContainerBackground  img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
 }
 .cosmosContentContainer{
+    width: 32%;
+    position: absolute;
+    top: 150px;
+    left: 5%;
+    text-align: left; 
+    color: white; 
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    width: 44vw;
-    gap: 5rem;
-}
-.cosmosTitle{
-    color: #fff;
+    gap: 70px;
 }
 .cosmosBlocksContainer{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    gap: 60px;
+    width: 80%;
+    text-transform: uppercase;
 }
 .cosmosBlock{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 40px;
+}
+.cosmosBlockContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: fle;
     align-items: flex-start;
     gap: 1rem;
-    width: 50%;
 }
 .cosmosBlockTitle{
     color: #6EE1B8;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,14 +63,6 @@
     position: relative;
     margin-right: 10px;
     background: #6EE1B8;
-}
-.cosmosBlockDescription{
-    color: #FFF;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-transform: uppercase;
 }
 .cosmosBlockButton{
     background: white;
@@ -174,21 +156,25 @@ text-transform: uppercase;
 }
 
 @media(max-width:768px){
-    .cosmosContainer{
-        padding: 60px 20px;
-    }
-    .cosmosContentContainer{
-        width: 100%;
-    }
     .cosmosBlocksContainer{
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
         gap: 60px;
-        height: 400px;
     }
-    .cosmosTitle{
-        font-size: 37px;
+    .cosmosContentContainer{
+        width: 100%;
+        margin: 0 auto;
+        top: 60px;
+        left: 0;
+        right: 0;
+        padding: 16px;
+    }
+    .cosmosContentContainer h2{
+        font-size: 8.5cqw;
+    }
+    .cosmosBlockDescription{
+        font-size: 4.5cqw;
     }
     .FooterContainer{
         gap: 48px;

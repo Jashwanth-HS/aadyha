@@ -22,8 +22,10 @@ export default function Cosmos({ styles }) {
             const { title, description, button } = e || {};
             return (
               <div key={index} className={styles?.cosmosBlock}>
-                <h4 className={styles?.cosmosBlockTitle}>{title}</h4>
-                <p className={styles?.cosmosBlockDescription}>{description}</p>
+                <div className={styles?.cosmosBlockContent}>
+                  <h4 className={`${styles?.cosmosBlockTitle} caption secondary-font`}>{title}</h4>
+                  <p className={`${styles?.cosmosBlockDescription} caption secondary-font`}>{description}</p>
+                </div>
                 <PrimaryButton label={button.label} href={button?.slug} />
               </div>
             );

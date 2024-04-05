@@ -9,8 +9,11 @@ export default function About() {
       <div className={styles?.AboutBg}>
         <div className="container">
           <div className={styles.banner}>
-            <h3 className="heading-1">Pioneering the Future of Aerospace Technology</h3>
-            <p>Welcome to AADYAH, a pioneering force in space technology innovation and exploration. </p>
+            <div className={styles?.AboutBannerTitle}>
+              <h3 className="heading-1">Pioneering the Future of Aerospace Technology</h3>
+              <p className="paragraph">Welcome to AADYAH, a pioneering force in space technology innovation and exploration. </p>
+            </div>
+            <div className={styles?.AboutEllipse}><img className={styles.OrbitImage} src={"/assets/images/about-ellipse.png"}/></div>
           </div>
 
           <div className={styles?.gallery}>
@@ -59,7 +62,7 @@ export default function About() {
 
         <div className="container">
           <div className={styles?.WcaContainer}>
-            <div><h3 className="heading-2">Why choose aadyah?</h3></div>
+            <div className={styles?.WcaContainerTitile}><h3 className="heading-2">Why choose aadyah?</h3></div>
 
             <div className={styles?.WcaItems}>
               <div>
