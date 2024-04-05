@@ -70,7 +70,7 @@
     height: 70px;
 }
 .GncContainer{
-    width: 110%;
+    width: 100%;
     background: #515B6A;
     padding: 100px 0;
     color: #fff;
@@ -82,9 +82,9 @@
 }
 .GncWrapper{
     display: flex;
+    justify-content: space-between;
     gap: 95px;
     padding-top: 120px;
-    max-width: 1300px;
 }
 .GncItems{
     display: flex;
