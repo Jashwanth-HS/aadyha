@@ -180,3 +180,10 @@
       width: 80%;
   }
 }
+
+@media screen and (max-device-width:780px) {
+  .divContainer{
+    display: none;
+  }
+
+}

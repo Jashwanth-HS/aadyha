@@ -126,8 +126,9 @@ const Planets = () => {
     }, 5000);
     const handleWheel = (event) => {
       if (scrolling.current === false) {
-        const deltaY =
-          event.deltaY || event.touches[0].clientY - touchY.current;
+        const deltaY = event.deltaY;
+        // const deltaY =
+        //   event.deltaY || event.touches[0].clientY - touchY.current;
         const direction = deltaY >= 1 ? 1 : -1; // 1 for down, -1 for up
         setDirection(direction);
 
@@ -170,18 +171,18 @@ const Planets = () => {
         requestAnimationFrame(animateScroll);
       }
     };
-    const handleTouchStart = (event) => {
-      touchY.current = event.touches[0].clientY;
-    };
+    // const handleTouchStart = (event) => {
+    //   touchY.current = event.touches[0].clientY;
+    // };
 
-    const handleTouchMove = (event) => {
-      handleWheel(event);
-    };
+    // const handleTouchMove = (event) => {
+    //   handleWheel(event);
+    // };
     // Add event listener for wheel events
     if (scrollableDivRef.current) {
       scrollableDivRef.current.addEventListener("wheel", handleWheel);
-      scrollableDivRef.current.addEventListener("touchstart", handleTouchStart);
-      scrollableDivRef.current.addEventListener("touchmove", handleTouchMove);
+      // scrollableDivRef.current.addEventListener("touchstart", handleTouchStart);
+      // scrollableDivRef.current.addEventListener("touchmove", handleTouchMove);
     }
 
     // Clean up by removing the event listener
@@ -189,14 +190,14 @@ const Planets = () => {
       clearTimeout(setTimeoutId);
       if (scrollableDivRef.current) {
         scrollableDivRef.current.removeEventListener("wheel", handleWheel);
-        scrollableDivRef.current.removeEventListener(
-          "touchstart",
-          handleTouchStart
-        );
-        scrollableDivRef.current.removeEventListener(
-          "touchmove",
-          handleTouchMove
-        );
+        // scrollableDivRef.current.removeEventListener(
+        //   "touchstart",
+        //   handleTouchStart
+        // );
+        // scrollableDivRef.current.removeEventListener(
+        //   "touchmove",
+        //   handleTouchMove
+        // );
       }
     };
   }, []);

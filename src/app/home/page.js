@@ -4,6 +4,7 @@ import Head from "next/head";
 import Planets from "./components/Planets";
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
+import MobileViewPlanets from "./components/MobileViewPlanets";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -22,6 +23,7 @@ export default function Home() {
       </Head>
       <Planets />
       <Section>
+        <MobileViewPlanets />
         <SpaceSystem />
         <Clients />
       </Section>

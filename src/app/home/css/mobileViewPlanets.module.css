@@ -1,0 +1,10 @@
+.mobilePlanetsContainer{
+    display: none;
+}
+@media screen and (max-device-width:780px) {
+    .mobilePlanetsContainer{
+        display: flex;
+        background: blue;
+        height: 100dvh;
+    }
+}
