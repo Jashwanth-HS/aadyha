@@ -28,7 +28,7 @@ export default function Header() {
       } else {
         navHeaderRef.current.classList.remove(styles?.hideNavHeader);
       }
-      if (window.scrollY <= 500) {
+      if (window.scrollY <= 400) {
         if (isLight) {
           navHeaderRef.current.classList.remove(styles?.colorNavHeader);
           navHeaderRef.current.classList.add(styles?.colorNavHeaderLight);
@@ -70,7 +70,6 @@ export default function Header() {
     };
   }, []);
   const handleMenuToggle = () => {
-    console.log("first");
     const menu = hamburgerRef.current.classList;
     if (menu.contains(styles.openMenu)) {
       hamburgerRef.current.classList.remove(styles.openMenu);
@@ -134,7 +133,7 @@ export default function Header() {
         </div>
       </header>
       <MenuBar
-        links={links}
+        links={links.concat({ label: "contact us", slug: "contact" })}
         handleMenuToggle={handleMenuToggle}
         pathname={pathNameRef.current}
         styles={styles}

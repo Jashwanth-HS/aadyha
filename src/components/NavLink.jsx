@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 export default function NavLink({ Links, renderLink, ...rest }) {
   const MainStickyRef = useRef(null);
+  const storePrevScroll = useRef(0);
   const MainRef = useRef(null);
   const handleActiveNav = (id) => {
     Links.forEach((e) => {
@@ -28,9 +29,16 @@ export default function NavLink({ Links, renderLink, ...rest }) {
   const handleScroll = (e) => {
     if (window.scrollY > 600) {
       MainStickyRef.current.classList.add(styles?.stickyClassName);
+      if (window.scrollY > storePrevScroll.current) {
+        MainStickyRef.current.classList.remove(styles?.moveStickyTop);
+      } else {
+        MainStickyRef.current.classList.add(styles?.moveStickyTop);
+      }
     } else {
+      MainStickyRef.current.classList.remove(styles?.moveStickyTop);
       MainStickyRef.current.classList.remove(styles?.stickyClassName);
     }
+    storePrevScroll.current = window.scrollY;
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
