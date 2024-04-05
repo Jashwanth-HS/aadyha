@@ -6,7 +6,6 @@
     padding-top: calc(70px + 100px);
 }
 .Banner h1{
-    max-width: 730px;
     width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -27,8 +26,7 @@
     border-radius: 50%;
 }
 .Banner p{
-    max-width: 460px;
-    width: 100%;
+    width: 30%;
     padding-top: 16px;
     text-align: center;
 }
@@ -47,8 +45,7 @@
     padding-top: 120px;
 }
 .PropulsionWrapper .Title{
-    max-width: 560px;
-    width: 100%;
+    width: 38%;
 }
 .PropulsionWrapper .Title p{
     padding-top: 24px;
@@ -139,6 +136,7 @@
     background-color: white;
 }
 .SpaceSystemsItemsRight p{
+    width: 65%;
     padding-bottom: 60px;
 }
 .AccordionListClass li {

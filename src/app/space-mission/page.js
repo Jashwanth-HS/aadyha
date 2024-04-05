@@ -8,7 +8,7 @@ import SpaceDebrisMission from "./components/SpaceDebrisMission";
 const Banner = () => {
   return (
     <div className={styles?.Banner}>
-      <div>
+      <div className={styles?.BannerTitle}>
         <h6 className="micro-large secondary-font">
           Mission critical solutions
         </h6>
@@ -18,7 +18,7 @@ const Banner = () => {
           era of space exploration.
         </p>
       </div>
-      <div>
+      <div className={styles?.BannerImg}>
         <picture>
           <source
             media="(min-width: 768px)"

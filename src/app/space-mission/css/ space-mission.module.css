@@ -4,9 +4,10 @@
     justify-content: center;
     align-items: center;
     padding-top: calc(70px + 100px);
+    height: 100vh;
+    position: relative;
 }
 .Banner h1{
-    max-width: 730px;
     width: 100%;
     margin: 0 auto;
     text-align: center;
@@ -27,11 +28,20 @@
     border-radius: 50%;
 }
 .Banner p{
-    max-width: 460px;
-    width: 100%;
+    width: 35%;
     margin: 0 auto;
     padding-top: 16px;
     text-align: center;
+}
+.BannerTitle{
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+}
+.BannerImg{
+    position: absolute;
+    bottom: 0;
 }
 .Banner img{
     margin-top: -40px;
@@ -106,6 +116,7 @@
     cursor: pointer;
 }  
 .satelliteRoadmapContent{
+    width: 40%;
     padding-top: 100px;
 } 
 .PlanetaryMissionsContainer{
@@ -150,6 +161,7 @@
     margin-right: 10px; 
 }
 .PMRepeaterContent p{
+    width: 60%;
     color: rgba(255, 255, 255, 0.6);
 }
 .SpaceDebrisMissionContainer{
@@ -178,6 +190,12 @@
 }
 
 @media(max-width:768px){
+    .Banner{
+        height: 60vh;
+    }
+    .Banner p{
+        width: 100%;
+    }
     .Banner img{
         margin-top: 40px;
     }
@@ -187,6 +205,9 @@
     }
     .ControlSystemTabWrapper::-webkit-scrollbar{
         display: none;
+    }
+    .satelliteRoadmapContent{
+        padding-top: 40px;
     }
     .FcsNavBar{
         flex: 0 0 auto;
