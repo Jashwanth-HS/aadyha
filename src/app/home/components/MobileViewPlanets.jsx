@@ -1,7 +1,14 @@
 import React from "react";
 import styles from "../css/mobileViewPlanets.module.css";
+import EarthMobie from "./EarthMobile";
+import MoonMobile from "./MoonMobile";
+import MarsMobile from "./MarsMobile";
 export default function MobileViewPlanets() {
   return (
-    <div className={styles?.mobilePlanetsContainer}>MobileViewPlanets</div>
+    <div>
+      {/* <EarthMobie />
+      <MoonMobile />
+      <MarsMobile /> */}
+    </div>
   );
 }

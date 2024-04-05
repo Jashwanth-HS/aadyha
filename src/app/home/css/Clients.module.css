@@ -164,3 +164,45 @@
 .CeoMessageContentBottm h3{
     padding-bottom: 6px;
 }
+
+@media(max-width:768px){
+    .LifeSupporSystemWrap{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .LatestNewsContainer{
+        padding-top: 20px;
+    }
+    .LatestNewsContainer button{
+        display: none;
+    }
+    .LatestNewsItems{
+        overflow-x: auto !important;
+    }
+    .LatestNewsItems::-webkit-scrollbar{
+        display: none;
+    }
+    .LatestNewsItemsContent{
+        flex: 0 0 auto;
+        width: 90%;
+    }
+    .CeoMessageWrap{
+        flex-direction: column-reverse;
+    }
+    .CeoMessageWrap img{
+        width: 100%;
+    }
+    .ClientsLogo{
+        overflow-x: auto;
+    }
+    .ClientsLogo::-webkit-scrollbar{
+        display: none;
+    }
+    .ClientsLogoItems{
+        flex: 0 0 auto;
+        width: 90%;
+    }
+    .ClientsLogoItems img{
+        width: unset;
+    }
+}

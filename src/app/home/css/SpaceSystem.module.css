@@ -183,3 +183,39 @@
 
 }
 
+@media(max-width:768px){
+    .BlockDataContainer{
+        flex-direction: column-reverse;
+    }
+    .LaunchVehicleSystemWrap{
+        width: 100%;
+        padding: 60px 16px;
+    }
+    .LvsRightItem{
+        width: 100%;
+    }
+    .LvsRightItem img{
+        width: 100%;
+    }
+    .LvsLeftItem button{
+        margin-top: 40px;
+    }
+    .BlockDataContainer{
+        flex-direction: column-reverse;
+    }
+    .BlockDataContainer.BlockDataContainerRight{
+        flex-direction: column-reverse;
+    }
+    .svgRender img{
+        width: 100%;
+    }
+    .SpaceSystemDiscoverTitle{
+        top: 7%;
+    }
+    .SpaceSystemDiscoverWrap{
+        height: unset;
+    }
+    .SpaceSystemDiscover{
+        height: 300px;
+    }
+}
