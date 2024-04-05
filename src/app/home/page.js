@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-
+import Head from "next/head";
 import Planets from "./components/Planets";
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
@@ -16,6 +16,10 @@ const Section = ({ children }) => {
 export default function Home() {
   return (
     <>
+      <Head key={"homepage"}>
+        <title>Home page</title>
+        <meta name="description" content="Aadyah space home page" />
+      </Head>
       <Planets />
       <Section>
         <SpaceSystem />

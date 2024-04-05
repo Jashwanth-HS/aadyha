@@ -43,6 +43,9 @@
     text-align: center;
     transition: all 1s;
 }
+.EarthHeadingInnerTop{
+  bottom: 60%;
+}
 .EarthHeadingInner{
   position: relative;
   display: flex;
@@ -65,6 +68,8 @@
   width: 100%;
   object-fit: contain;
   top: 0;
+  transition: transform 2s; /* Smooth transition over 5 seconds */
+  animation: rotateAnimation infinite 25s linear; /* Rotate infinitely with a 5-second duration */
 }
 .overlayDiv{
   top:0;
@@ -117,15 +122,19 @@
 .EarthImageLabelSpan:last-child{
     opacity: 0.5;
 }
-.EarthImageLabel::before {
-    content: '';
+
+.addLineText {
     position: absolute;
-    width: 100%; 
+    width: 80%; 
     height: 1px; 
     background-color: #fff;
     top: 30px;
-    left: 100px;
+    right: -30px;
     transform: translateX(-0%);
+    transition: width 5s; /* Add a transition for smooth width changes */
+}
+.addLineText.addLineTextAnimation {
+  animation: expandAnimation 5s forwards; /* Trigger the animation */
 }
 
 .EarthImageLabelSpan {
@@ -152,4 +161,22 @@
 }
 .textSpan{
   transition: all 0.3s;
+}
+
+@keyframes rotateAnimation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+@keyframes expandAnimation {
+  from {
+      width: 0%;
+  }
+  to {
+      width: 80%;
+  }
 }

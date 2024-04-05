@@ -30,7 +30,6 @@ const Model = forwardRef((props, ref) => {
   useFrame((state) => {
     let gotoValue = ref.current * 0.0005;
     gotoValue = gotoValue > 0.8 ? 1 : gotoValue;
-    // console.log("ref.current: ", ref.current);
     actions["Animation"].time = THREE.MathUtils.lerp(
       actions["Animation"].time,
       actions["Animation"].getClip().duration * gotoValue,
@@ -92,7 +91,10 @@ const Model = forwardRef((props, ref) => {
 });
 
 // Main component
-const Planets = ({ children }) => {
+const Planets = () => {
+  const devContainerRef = useRef(null);
+  const orbitImageRef = useRef(null);
+  const addLineText = useRef(null);
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [earthImageLabelSpanText1, setEarthImageLabelSpanText1] =
     useState("[EARTH]");
@@ -116,15 +118,13 @@ const Planets = ({ children }) => {
 
   useEffect(() => {
     let setTimeoutId;
+    addLineText.current.classList.remove(styles.addLineTextAnimation);
+    addLineText.current.classList.add(styles.addLineTextAnimation);
+    setTimeoutId = setTimeout(() => {
+      addLineText.current.classList.remove(styles.addLineTextAnimation);
+    }, 5000);
     const handleWheel = (event) => {
       if (scrolling.current === false) {
-        // if (scrolled < 200) {
-        //   setHeadingText("FROM EARTH");
-        // } else if (scrolled > 700 && scrolled < 1081) {
-        //   setHeadingText("TO MOON");
-        // } else if (scrolled > 1100) {
-        //   setHeadingText("TO MARS");
-        // }
         const deltaY = event.deltaY;
         const direction = deltaY >= 1 ? 1 : -1; // 1 for down, -1 for up
         setDirection(direction);
@@ -182,8 +182,17 @@ const Planets = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    let setTimeoutId;
     if (direction) {
+      addLineText.current.classList.remove(styles.addLineTextAnimation);
+      addLineText.current.classList.add(styles.addLineTextAnimation);
+      setTimeoutId = setTimeout(() => {
+        addLineText.current.classList.remove(styles.addLineTextAnimation);
+      }, 5000);
       if (headingText === "FROM EARTH") {
+        orbitImageRef.current.src = "/assets/images/orbit-line-moon.png";
+        devContainerRef.current.style.backgroundImage = "none";
+        devContainerRef.current.style.background = "#1F2023";
         setHeadingText("TO MOON");
         setEarthImageLabelSpanText1("[MOON]");
         setEarthImageLabelSpanText2("[SPACE SYSTEM]");
@@ -191,6 +200,9 @@ const Planets = ({ children }) => {
         setEarthDescription2(`[Inspiring humaanity's quest for exploration]`);
       } else if (headingText === "TO MOON") {
         if (direction === 1) {
+          devContainerRef.current.style.backgroundImage = "none";
+          devContainerRef.current.style.background = "black";
+          orbitImageRef.current.src = "/assets/images/orbit-line-mars.png";
           setHeadingText("TO MARS");
           setEarthImageLabelSpanText1("[MARS]");
           setEarthImageLabelSpanText2("[FUTURE HOME]");
@@ -201,6 +213,9 @@ const Planets = ({ children }) => {
             `[Discovering New Horizons: Journeying Beyond Earth to Mars]`
           );
         } else {
+          orbitImageRef.current.src = "/assets/images/orbit-line.png";
+          devContainerRef.current.style.backgroundImage =
+            "url('/assets/images/earth-bg.png')";
           setHeadingText("FROM EARTH");
           setEarthImageLabelSpanText1("[EARTH]");
           setEarthImageLabelSpanText2("[HOME]");
@@ -208,6 +223,10 @@ const Planets = ({ children }) => {
           setEarthDescription2(`[Time to take place among the stars]`);
         }
       } else if (headingText === "TO MARS" && direction === -1) {
+        orbitImageRef.current.src = "/assets/images/orbit-line-moon.png";
+
+        devContainerRef.current.style.backgroundImage = "none";
+        devContainerRef.current.style.background = "#1F2023";
         setHeadingText("TO MOON");
         setEarthImageLabelSpanText1("[MOON]");
         setEarthImageLabelSpanText2("[SPACE SYSTEM]");
@@ -215,11 +234,14 @@ const Planets = ({ children }) => {
         setEarthDescription2(`[Inspiring humaanity's quest for exploration]`);
       }
     }
+    return () => {
+      clearTimeout(clearTimeout(setTimeoutId));
+    };
   }, [direction]);
   // Render
   return (
     <>
-      <div className={styles?.divContainer}>
+      <div className={styles?.divContainer} ref={devContainerRef}>
         {/* Container for scrollable content */}
         <div
           className={styles?.overlayDiv}
@@ -230,7 +252,11 @@ const Planets = ({ children }) => {
           <div></div>
           <div></div>
         </div>
-        <div className={styles.EarthHeading}>
+        <div
+          className={`${styles.EarthHeading} ${
+            !headingText.includes("EARTH") ? styles?.EarthHeadingInnerTop : ""
+          }`}
+        >
           <WordAnimation
             word={headingText}
             className={styles.EarthHeadingInner}
@@ -238,35 +264,43 @@ const Planets = ({ children }) => {
         </div>
         <img
           className={styles.OrbitImage}
+          ref={orbitImageRef}
           src={"/assets/images/orbit-line.png"}
         />
         <div className={styles.overlayDescription}>
           <div className={`${styles?.EarthImageLabel} secondary-font`}>
+            <p ref={addLineText} className={styles.addLineText}></p>
             <WordAnimation
               word={earthImageLabelSpanText1}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
+              delay={1000}
             />
             <WordAnimation
               word={earthImageLabelSpanText2}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
+              delay={2000}
             />
           </div>
           <div className={styles.EarthDescription}>
             <WordAnimation
+              stagger={0.07}
+              delay={1000}
               word={earthDescription1}
               className={"heading-3"}
               marginSpace={"0px"}
             />
             <WordAnimation
+              stagger={0.07}
+              delay={2000}
               word={earthDescription2}
               className={"caption secondary-font"}
               marginSpace={"0px"}
             />
           </div>
           <div className={styles.MoonImageContainer}>
-            <svg
+            {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="19"
               height="19"
@@ -274,7 +308,7 @@ const Planets = ({ children }) => {
               fill="none"
             >
               <circle cx="9.5" cy="9.5" r="9.5" fill="#4B4B4B" />
-            </svg>
+            </svg> */}
             <p className={`${styles?.MoonImageLabel} secondary-font`}>
               <span>[moon]</span> <span>[384,400 km]</span>
             </p>
