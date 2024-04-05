@@ -23,7 +23,7 @@ export default function Home() {
       </Head>
       <Planets />
       <Section>
-        <MobileViewPlanets />
+        <MobileViewPlanets/>
         <SpaceSystem />
         <Clients />
       </Section>

@@ -3,8 +3,161 @@
 }
 @media screen and (max-device-width:780px) {
     .mobilePlanetsContainer{
+        display: block;
+    }
+    /* Earth */
+    .EarthContainer{
+        background: #00031B;
+        color: #fff;
+        padding-top: 100px;
+        position: relative;
+        height: 500px;
         display: flex;
-        background: blue;
-        height: 100dvh;
+        justify-content: center;
+        align-items: center;
+    }
+    .EarthMobileContent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .EarthHeading h3{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "Inter Tight";
+        font-size: 69px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+        z-index: 0;
+    }
+    .EarthImage{
+        position: relative;
+    }
+    .EarthImageLabel{
+        position: absolute;
+        left: 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        z-index: 2;
+    }
+    .EarthImageLabel>:last-child{
+        color: rgba(255, 255, 255, 0.5);
+    }
+    .EarthImageLabel::after {
+        content: ''; 
+        position: absolute; 
+        bottom: -20%;
+        left: 0; 
+        width: 100px;
+        border-bottom: 2px solid #fff; /* Style the line */
+    }
+    .MoonImageLabel{
+        position: absolute;
+        right: 10%;
+        top: 24%;
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+    }
+    /* Moon */
+    .MoonContainer{
+        background: #1F2023;
+        color: #fff;
+        position: relative;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .MoonHeading h3{
+        position: absolute;
+        top: 5%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "Inter Tight";
+        font-size: 90px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+        z-index: 0;
+        color: #424242;
+    }
+    .MoonMobileContent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .MoonImage{
+        position: relative;
+    }
+    .ChandrayanItem{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        bottom: 22%;
+        right: 5%;
+        text-transform: uppercase
+    }
+    .EarthDescription{
+        position: absolute;
+        right: 10%;
+        width: 40%;
+        text-transform: uppercase;
+    }
+    .MarsImageLabel{
+        position: absolute;
+        bottom: 12%;
+        left: 26%;
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+    }
+    /* Mars */
+    .MarsContainer{
+        background: #100302;
+        color: #fff;
+        position: relative;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .MarshMobileContent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .MarsHeading h3{
+        position: absolute;
+        top: 20%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "Inter Tight";
+        font-size: 90px;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+        z-index: 0;
+        color: #C8402D;
+    }
+    .MangalyanImageLabel{
+        position: absolute;
+        left: 10%;
+        bottom: 25%;
+        display: flex;
+        flex-direction: column;
+    }
+    .EarthImageLabel{
+        text-transform: uppercase;
     }
 }
