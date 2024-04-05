@@ -29,7 +29,7 @@ const Banner = () => {
           <path d="M0.5 0.5H20" stroke="black" />
         </svg>
       </button>
-      <div>
+      <div className={styles?.CareerBannerImg}>
         <picture>
           <source
             media="(min-width: 768px)"
@@ -52,9 +52,7 @@ const Banner = () => {
 export default function page() {
   return (
     <>
-      <Container>
-        <Banner />
-      </Container>
+      <Banner />
       <div className={styles?.OurValuesContainer}>
         <Container>
           <OurValues styles={styles} />
