@@ -94,6 +94,7 @@ const Model = forwardRef((props, ref) => {
 const Planets = () => {
   const devContainerRef = useRef(null);
   const orbitImageRef = useRef(null);
+  const prevScrolledRef = useRef(null);
   const addLineText = useRef(null);
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [earthImageLabelSpanText1, setEarthImageLabelSpanText1] =
@@ -109,7 +110,7 @@ const Planets = () => {
   // Ref for scroll position
   const scrolling = useRef(false);
   const scroll = useRef(0);
-  const touchY = useRef(0);
+  // const touchY = useRef(0);
   const [direction, setDirection] = useState();
   // Calculate device pixel ratio
   const devicePixelRatio =
@@ -124,6 +125,7 @@ const Planets = () => {
     setTimeoutId = setTimeout(() => {
       addLineText.current.classList.remove(styles.addLineTextAnimation);
     }, 5000);
+
     const handleWheel = (event) => {
       if (scrolling.current === false) {
         const deltaY = event.deltaY;
@@ -209,7 +211,7 @@ const Planets = () => {
       addLineText.current.classList.add(styles.addLineTextAnimation);
       setTimeoutId = setTimeout(() => {
         addLineText.current.classList.remove(styles.addLineTextAnimation);
-      }, 5000);
+      }, 2000);
       if (headingText === "FROM EARTH") {
         orbitImageRef.current.src = "/assets/images/orbit-line-moon.png";
         devContainerRef.current.style.backgroundImage = "none";
@@ -279,6 +281,7 @@ const Planets = () => {
           }`}
         >
           <WordAnimation
+            stagger={0.1}
             word={headingText}
             className={styles.EarthHeadingInner}
           />
@@ -292,29 +295,31 @@ const Planets = () => {
           <div className={`${styles?.EarthImageLabel} secondary-font`}>
             <p ref={addLineText} className={styles.addLineText}></p>
             <WordAnimation
+              stagger={0.07}
               word={earthImageLabelSpanText1}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
-              delay={1000}
+              // delay={500}
             />
             <WordAnimation
+              stagger={0.07}
               word={earthImageLabelSpanText2}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
-              delay={2000}
+              // delay={800}
             />
           </div>
           <div className={styles.EarthDescription}>
             <WordAnimation
               stagger={0.07}
-              delay={1000}
+              // delay={500}
               word={earthDescription1}
               className={"heading-3"}
               marginSpace={"0px"}
             />
             <WordAnimation
               stagger={0.07}
-              delay={2000}
+              // delay={800}
               word={earthDescription2}
               className={"caption secondary-font"}
               marginSpace={"0px"}
