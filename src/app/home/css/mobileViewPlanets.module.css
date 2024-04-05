@@ -108,8 +108,8 @@
     }
     .EarthDescription{
         position: absolute;
-        right: 10%;
-        width: 40%;
+        right: 2%;
+        width: 45%;
         text-transform: uppercase;
     }
     .MarsImageLabel{
