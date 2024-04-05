@@ -17,17 +17,16 @@
 .NavTabSticky.stickyClassName{
     top: 0px;
 }
-
 .NavTabWrapper{
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 100px;
     height: 100px;
     border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 .NavTabTitles{
-    max-width: 300px;
-    width: 100%;
+
     position: relative;
     width: fit-content;
     display: flex;
@@ -35,6 +34,9 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+.NavTabTitles h3{
+    width: 65%;
 }
 .NavTabTitles img {
     height: 70px;

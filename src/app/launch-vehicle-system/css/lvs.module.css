@@ -6,8 +6,7 @@
     padding-top: calc(70px + 100px);
 }
 .Banner h1{
-    max-width: 730px;
-    width: 100%;
+    width: 65%;
     margin: 0 auto;
     text-align: center;
 }
