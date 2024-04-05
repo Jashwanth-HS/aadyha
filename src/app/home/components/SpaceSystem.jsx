@@ -148,9 +148,7 @@ const SpaceSystem = ({ data }) => {
 
     if (isElementVisible) {
       svgPaths.forEach((path) => {
-        const animateElement = path.querySelector(
-          "animate" //[data-action="startAnimation"]
-        ); // Get the animate element within each path
+        const animateElement = path.querySelector("animate"); // Get the animate element within each path
         if (animateElement) {
           animateElement.beginElement(); // Start the animation
         }
@@ -158,15 +156,8 @@ const SpaceSystem = ({ data }) => {
     } else {
       svgPaths.forEach((path) => {
         const animateElement = path.querySelector("animate"); // Get the animate element within each path
-        // const animateElement1 = path.querySelector(
-        //   'animate[data-action="stopAnimation"]'
-        // ); // Get the animate element within each path
         if (animateElement) {
           animateElement.endElement(); // End the animation
-          // animateElement1.beginElement(); // start the animation
-          // setTimeout(() => {
-          //   animateElement1.endElement(); // start the animation
-          // }, 100);
         }
       });
     }
@@ -233,6 +224,7 @@ const SpaceSystem = ({ data }) => {
             <div className={styles?.svgRender}>
               {renderSvg === "Left1" && (
                 <svg
+                  style={{ transform: "scaleY(-1)" }}
                   width="944"
                   height="1541"
                   viewBox="0 0 944 1541"
@@ -244,55 +236,32 @@ const SpaceSystem = ({ data }) => {
                     stroke="#6A7688"
                   >
                     <animate
-                      // data-action="startAnimation"
                       attributeName="stroke-dasharray"
                       attributeType="XML"
-                      from="0,2500"
-                      to="2500,2500"
+                      values="0,2500;2500,0"
                       dur="5s"
                       repeatCount="1"
                       fill="freeze"
                     />
-                    {/* <animate
-                      data-action="stopAnimation"
-                      attributeName="stroke-dasharray"
-                      attributeType="XML"
-                      to="0,2500"
-                      from="2500,2500"
-                      dur="0.1s"
-                      repeatCount="1"
-                      fill="freeze"
-                    /> */}
                   </path>
                   <path
                     d="M1069.96 1322.83L357.334 971.492C320.291 953.099 316.092 918.898 316.203 905.147C316.314 891.396 320.152 857.234 357.432 838.925L1069.97 487.72M1069.95 1515.09L281.136 1126.21C196.363 1084.4 143.737 999.677 143.688 905.246C143.738 810.642 196.252 726.064 281.124 684.346L1069.99 295.466"
                     stroke="#6A7688"
                   >
                     <animate
-                      // data-action="startAnimation"
                       attributeName="stroke-dasharray"
                       attributeType="XML"
-                      from="0,2500"
-                      to="2500,2500"
+                      values="0,2500;2500,0"
                       dur="5s"
                       repeatCount="1"
                       fill="freeze"
                     />
-                    {/* <animate
-                      data-action="stopAnimation"
-                      attributeName="stroke-dasharray"
-                      attributeType="XML"
-                      to="0,2500"
-                      from="2500,2500"
-                      dur="0.1s"
-                      repeatCount="1"
-                      fill="freeze"
-                    /> */}
                   </path>
                 </svg>
               )}
               {renderSvg === "Left2" && (
                 <svg
+                  style={{ transform: "scaleY(-1)" }}
                   width="944"
                   height="1541"
                   viewBox="0 0 944 1541"
@@ -304,50 +273,26 @@ const SpaceSystem = ({ data }) => {
                     stroke="#6A7688"
                   >
                     <animate
-                      // data-action="startAnimation"
                       attributeName="stroke-dasharray"
                       attributeType="XML"
-                      from="0,2500"
-                      to="2500,2500"
+                      values="0,2500;2500,0"
                       dur="5s"
                       repeatCount="1"
                       fill="freeze"
                     />
-                    {/* <animate
-                      data-action="stopAnimation"
-                      attributeName="stroke-dasharray"
-                      attributeType="XML"
-                      to="0,2500"
-                      from="2500,2500"
-                      dur="0.1s"
-                      repeatCount="1"
-                      fill="freeze"
-                    /> */}
                   </path>
                   <path
                     d="M1069.96 1322.83L357.334 971.492C320.291 953.099 316.092 918.898 316.203 905.147C316.314 891.396 320.152 857.234 357.432 838.925L1069.97 487.72M1069.95 1515.09L281.136 1126.21C196.363 1084.4 143.737 999.677 143.688 905.246C143.738 810.642 196.252 726.064 281.124 684.346L1069.99 295.466"
                     stroke="#6A7688"
                   >
                     <animate
-                      // data-action="startAnimation"
                       attributeName="stroke-dasharray"
                       attributeType="XML"
-                      from="0,2500"
-                      to="2500,2500"
+                      values="0,2500;2500,0"
                       dur="5s"
                       repeatCount="1"
                       fill="freeze"
                     />
-                    {/* <animate
-                      data-action="stopAnimation"
-                      attributeName="stroke-dasharray"
-                      attributeType="XML"
-                      to="0,2500"
-                      from="2500,2500"
-                      dur="0.1s"
-                      repeatCount="1"
-                      fill="freeze"
-                    /> */}
                   </path>
                 </svg>
               )}
@@ -364,25 +309,13 @@ const SpaceSystem = ({ data }) => {
                     stroke="#6A7688"
                   >
                     <animate
-                      // data-action="startAnimation"
                       attributeName="stroke-dasharray"
                       attributeType="XML"
-                      from="0,2500"
-                      to="2500,2500"
+                      values="0,2500;2500,0"
                       dur="5s"
                       repeatCount="1"
                       fill="freeze"
                     />
-                    {/* <animate
-                      data-action="stopAnimation"
-                      attributeName="stroke-dasharray"
-                      attributeType="XML"
-                      to="0,2500"
-                      from="2500,2500"
-                      dur="0.1s"
-                      repeatCount="1"
-                      fill="freeze"
-                    /> */}
                   </path>
                   <path
                     d="M-233.406 217.925L479.224 569.267C516.267 587.661 520.465 621.862 520.355 635.613C520.244 649.364 516.405 683.525 479.125 701.835L-233.416 1053.04M-233.392 25.6743L555.422 414.554C640.194 456.359 692.82 541.083 692.87 635.514C692.819 730.118 640.306 814.696 555.434 856.414L-233.431 1245.29"
@@ -392,22 +325,11 @@ const SpaceSystem = ({ data }) => {
                       // data-action="startAnimation"
                       attributeName="stroke-dasharray"
                       attributeType="XML"
-                      from="0,2500"
-                      to="2500,2500"
+                      values="0,2500;2500,0"
                       dur="5s"
                       repeatCount="1"
                       fill="freeze"
                     />
-                    {/* <animate
-                      data-action="stopAnimation"
-                      attributeName="stroke-dasharray"
-                      attributeType="XML"
-                      to="0,2500"
-                      from="2500,2500"
-                      dur="0.1s"
-                      repeatCount="1"
-                      fill="freeze"
-                    /> */}
                   </path>
                 </svg>
               )}

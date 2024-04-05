@@ -62,6 +62,16 @@ export default function Header() {
       navHeaderRef.current.classList.add(styles?.colorNavHeader);
       imageRef.current.src = "/assets/images/logoBlack.svg";
     }
+    let NavLink = document.querySelectorAll(".navLink");
+    if (NavLink?.length > 0) {
+      NavLink.forEach((e) => {
+        if (e.id === pathNameRef.current) {
+          e.classList.add(styles.NavActive);
+        } else {
+          e.classList.remove(styles.NavActive);
+        }
+      });
+    }
   });
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -108,7 +118,7 @@ export default function Header() {
               {links?.map((link, index) => {
                 const { label, slug } = link;
                 return (
-                  <li key={index} className={pathname === slug ? "active" : ""}>
+                  <li key={index} className="navLink" id={"/" + slug}>
                     <Link href={"/" + slug} legacyBehavior>
                       {label}
                     </Link>

@@ -52,8 +52,8 @@
 }
 .LvsRightItem .svgRender{
     position: absolute;
-    top: -550px;
-    right: -100px;
+    top: -328px;
+    right: 0;
     width: 84%;
     height: auto;
 }
@@ -67,10 +67,11 @@
 }
 .LvsRightItemBottom.LvsRightItem .svgRender{
     position: absolute;
-    top: -300px;
-    right: -100px;
+    top: -350px;
+    right: 150px;
     width: 84%;
     height: auto;
+    transform: rotate(90deg);
  }
 .svgRender svg{
     width: 100%;
@@ -133,25 +134,7 @@
     animation-play-state: paused; 
 
 }
-/* .animateLeft1 path ,  .animateLeft2 path{
-    stroke: #6A7688; 
-    animation: strokeAnimationFromBottom 3s  linear forwards;
-    animation-play-state: paused;
-}
 
-  .animateRight1 path{
-    stroke: #6A7688; 
-    animation: strokeAnimationFromTop 3s  linear forwards;
-    animation-play-state: paused; 
-}
-.LvsRightItem:not(.LvsRightItemBottom) .playAnimate path {
-    animation-play-state: running;
-
-}
-.LvsRightItem.LvsRightItemBottom .playAnimate path{
-    animation-play-state: running; 
-
-} */
 .SpaceSystemDiscoverImg{
     position: relative;
     width: 100%;
@@ -199,19 +182,4 @@
     transition: all 3s ease;
 
 }
-@keyframes strokeAnimationFromBottom {
-    0% {
-        stroke-dasharray: 0%;
-    }
-    100% {
-        stroke-dasharray:180%;
-    }
-}
-@keyframes strokeAnimationFromTop {
-    0% {
-        stroke-dasharray: 1000;
-    }
-    100% {
-        stroke-dasharray:2000;
-    }
-}
+
