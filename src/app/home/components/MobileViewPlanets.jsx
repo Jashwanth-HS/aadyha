@@ -5,10 +5,10 @@ import MoonMobile from "./MoonMobile";
 import MarsMobile from "./MarsMobile";
 export default function MobileViewPlanets() {
   return (
-    <div>
-      {/* <EarthMobie />
+    <div className={styles?.mobilePlanetsContainer}>
+      <EarthMobie />
       <MoonMobile />
-      <MarsMobile /> */}
+      <MarsMobile />
     </div>
   );
 }

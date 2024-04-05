@@ -15,7 +15,7 @@ const WordAnimation = ({
     const letters = wordRef.current.children;
     gsap.set(letters, {
       opacity: 0,
-      y: 150,
+      y: 100,
     });
     gsap.to(letters, {
       duration: 1,
