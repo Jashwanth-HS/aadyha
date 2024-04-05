@@ -1,27 +1,43 @@
 .AboutBg{
     background: #515B6A;
+    position: relative;
 }
 .banner{
-    max-width: 1122px;
-    width: 100%;
+    width: 65%;
     margin: 0 auto;
     padding-top: calc(70px + 100px);
     padding-bottom: 60px;
     text-align: center;
     color: #fff;
 }
+.AboutBannerTitle{
+    position: relative;
+    z-index: 1;
+}
 .banner h3{
     padding-bottom: 20px;
 }
 .banner p{
-    max-width: 480px;
+    width: 50%;
+    margin: 0 auto;
+}
+.AboutEllipse{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
     margin: 0 auto;
 }
+.AboutEllipse img{
+    width: 100%;
+}
 .gallery{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 35px;
+    position: relative;
+    z-index: 1;
 }
 .gallery div:nth-child(2),
 .gallery div:nth-child(3) {
@@ -33,8 +49,7 @@
     color: #fff;
 }
 .OurVissionWrapper{
-    max-width: 1140px;
-    width: 100%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -58,7 +73,7 @@
 .OurVissionTextImg{
     width: 100vw;
     overflow: hidden; 
-    margin-top: -40px;
+    margin-top: -100px;
 }
 .OurVissionTextImg img{
     width: 100%;
@@ -140,8 +155,7 @@
     justify-content: center;
 }
 .JoinUsContainer p{
-    max-width: 530px;
-    width: 100%;
+    width: 35%;
     margin: 0 auto;
 }
 .JoinUsContainer h6::before{
@@ -209,12 +223,19 @@
 }
 
 @media(max-width : 768px){
-        .gallery div:nth-child(2),
-        .gallery div:nth-child(3) {
+    .banner{
+        width: 100%;
+    }
+    .banner p{
+        width: 100%;
+    }
+    .gallery div:nth-child(2),
+    .gallery div:nth-child(3) {
         margin-top: 0px; 
     }
     .gallery{
         overflow-x: scroll;
+        justify-content: flex-start;
 
     }
     .gallery::-webkit-scrollbar {
@@ -223,9 +244,18 @@
     .WcaContainer{
         padding: 60px 0;
     }
+    .WcaContainerTitile h3{
+        font-size: 37px;
+    }
     .WcaItems{
         padding-top: 40px;
         flex-direction: column;
+    }
+    .OurVissionWrapper{
+        width: 100%;
+    }
+    .OurVissionTextImg{
+        margin-top: -30px;
     }
     .OurMissionContent {
         width: 90%;
@@ -240,6 +270,9 @@
     }
     .JoinUsContainer{
         padding: 60px 0;
+    }
+    .JoinUsContainer p{
+        width: 100%;
     }
     .LeadershipTeamContainer{
         padding: 60px 0;
