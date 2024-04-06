@@ -46,9 +46,9 @@
     align-items: flex-start;
     gap: 8px;
 }
-.LifeSupporSystemContent span{
+/* .LifeSupporSystemContent span{
     color: #aaa;
-}
+} */
 .Counter{
     padding-top: 50px;
     display: grid;
