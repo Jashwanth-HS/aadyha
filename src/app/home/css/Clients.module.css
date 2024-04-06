@@ -1,12 +1,13 @@
 .ClientsContainer{
     background: #00031B;
-    padding: 120px 0;
+    padding:  0  0 120px;
 }
 .ClientsWrapper{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    display: none;
 }
 .ClientsTitle{
     max-width: 1000px;

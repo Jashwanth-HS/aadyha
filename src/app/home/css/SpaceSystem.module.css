@@ -38,7 +38,8 @@
 .SpaceSystemListitems {
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1rem;
+    flex-direction: column;
     margin-bottom: 1rem;
     flex: calc(50% - 1rem);
     padding-bottom: 2rem;
@@ -126,12 +127,10 @@
     align-items: center;
 }
 .SpaceSystemDiscoverTitle{
-    max-width: 1000px;
-    width: 100%;
+    width: 50%;
     margin: 0 auto;
     position: absolute;
     top: 40%;
-    width: 70%;
     margin: 0 auto;
 }
 .SpaceSystemDiscover button{

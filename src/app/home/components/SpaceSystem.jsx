@@ -188,7 +188,7 @@ const SpaceSystem = ({ data }) => {
                       </div>
                       <div className={styles?.SpaceSystemListContent}>
                         <div className="micro-large">{e?.title}</div>
-                        <div className="caption">{e?.subTitle}</div>
+                        {/* <div className="caption">{e?.subTitle}</div> */}
                       </div>
                     </div>
                   );
