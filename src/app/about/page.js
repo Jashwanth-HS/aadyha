@@ -10,7 +10,7 @@ export default function About() {
           <div className={styles.banner}>
             <div className={styles?.AboutBannerTitle}>
               <h3 className="heading-1">
-                Pioneering the Future of Aerospace Technology
+                Pioneering the Future of space Technology
               </h3>
               <p className="paragraph">
                 Welcome to AADYAH, a pioneering force in space technology
