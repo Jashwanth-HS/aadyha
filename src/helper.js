@@ -660,12 +660,12 @@ export const ourCustomers = {
 //footer cosmos
 
 export const cosmosData = {
-  title: "The cosmos awaits, and we Are leading the way.",
+  title: "Your Partner for Mission critical Space Systems",
   blocks: [
     {
       title: "Join Aadyah",
       description: "Join aadyah. innovate and inspire the world",
-      button: { label: "view opening", slug: "/contact" },
+      button: { label: "view opening", slug: "/careers" },
     },
     {
       title: "Clients",
@@ -681,7 +681,7 @@ export const footer = {
     title:'Let’s work together',
     button: {
         label: "View opening",
-        slug:"/contact"
+        slug:"/careers"
     },
     links:[
         {label:'Satellite SYSTEM',slug:'/satellite-system'},
