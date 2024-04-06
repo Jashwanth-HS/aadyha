@@ -2,12 +2,12 @@
 export const LVCNavBar = [
   {
     title: "Thrust vector control system (TVC)",
-    image: "/assets/images/thrust-vector-control-system.svg",
+    image: "/assets/images/lvs-tvcs.svg",
     slug: "Thrust",
   },
   {
     title: "Guidance navigation and control",
-    image: "/assets/images/guidance-navigation-control.svg",
+    image: "/assets/images/lvs-guidance-navigation-control.svg",
     slug: "Guidance",
   },
   {
@@ -17,7 +17,7 @@ export const LVCNavBar = [
   },
   {
     title: "Flow control system",
-    image: "/assets/images/flow-control-system.svg",
+    image: "/assets/images/lvs-flow-control-system.svg",
     slug: "Flow",
   },
 ];
