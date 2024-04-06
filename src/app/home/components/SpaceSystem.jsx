@@ -194,18 +194,20 @@ const SpaceSystem = ({ data }) => {
                   );
                 })}
               </div>
-              <button className="primary-btn">
-                explore more
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="1"
-                  viewBox="0 0 20 1"
-                  fill="none"
-                >
-                  <path d="M0 0.5H19.5" stroke="white" />
-                </svg>
-              </button>
+              <a href="/launch-vehicle-system">
+                <button className="primary-btn">
+                  explore more
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="1"
+                    viewBox="0 0 20 1"
+                    fill="none"
+                  >
+                    <path d="M0 0.5H19.5" stroke="white" />
+                  </svg>
+                </button>
+              </a>
             </div>
           </div>
 
@@ -375,18 +377,20 @@ const Discovering = ({ title }) => {
         <div className={styles?.SpaceSystemDiscoverTitle}>
           <div className="heading-2">{title}</div>
           <div>
-            <button className="primary-btn">
-              discover Aadyah
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="1"
-                viewBox="0 0 20 1"
-                fill="none"
-              >
-                <path d="M0 0.5H19.5" stroke="white" />
-              </svg>
-            </button>
+            <a href="/about">
+              <button className="primary-btn">
+                discover Aadyah
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="1"
+                  viewBox="0 0 20 1"
+                  fill="none"
+                >
+                  <path d="M0 0.5H19.5" stroke="white" />
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
 
