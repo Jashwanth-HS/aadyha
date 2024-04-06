@@ -86,8 +86,7 @@ export default function About() {
 
               <div>
                 <h3 className="heading-2">
-                  We envision a future where humanity's reach extends far beyond
-                  our home planet.
+                  Building Sustainable Space Assets
                 </h3>
               </div>
             </div>
@@ -118,8 +117,7 @@ export default function About() {
           <div className={styles?.OurMissionContent}>
             <p className="micro-large secondary-font">Our Mission</p>
             <h3 className="heading-3">
-              Our mission is to build a top quartile in profitability,
-              customer-centric, employee-led sustainable space business.
+            Accelerate design, build, launch and commercialisation of space systems 
             </h3>
           </div>
         </div>
