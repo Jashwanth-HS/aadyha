@@ -2,12 +2,12 @@
 export const LVCNavBar = [
   {
     title: "Thrust vector control system (TVC)",
-    image: "/assets/images/thrust-vector-control-system.svg",
+    image: "/assets/images/lvs-tvcs.svg",
     slug: "Thrust",
   },
   {
     title: "Guidance navigation and control",
-    image: "/assets/images/guidance-navigation-control.svg",
+    image: "/assets/images/lvs-guidance-navigation-control.svg",
     slug: "Guidance",
   },
   {
@@ -17,7 +17,7 @@ export const LVCNavBar = [
   },
   {
     title: "Flow control system",
-    image: "/assets/images/flow-control-system.svg",
+    image: "/assets/images/lvs-flow-control-system.svg",
     slug: "Flow",
   },
 ];
@@ -349,7 +349,16 @@ export const OnBoardComputer = {
       },
       {
         header: "Multifaceted Functionality",
-        list: { type: "ul", data: ["mydata", "mydata1", "mydata2"] },
+        text: "AADYAH’s OBC is a powerhouse capable of",
+        list: {
+          type: "ul",
+          data: [
+            "Attitude and Orbit Control: Ensuring your satellite maintains the correct position and trajectory.",
+            "Telecommand Execution: Swiftly processing and executing commands relayed from ground stations.",
+            "Telemetry Management: Efficiently collecting, formatting, and transmitting crucial housekeeping data, providing real-time insights into the satellite's health.",
+            "Time Synchronization: Guaranteeing harmonized operations across satellite subsystems with precise onboard timing synchronization and distribution.",
+          ],
+        },
       },
     ],
   },
@@ -660,12 +669,12 @@ export const ourCustomers = {
 //footer cosmos
 
 export const cosmosData = {
-  title: "The cosmos awaits, and we Are leading the way.",
+  title: "Your Partner for Mission critical Space Systems",
   blocks: [
     {
       title: "Join Aadyah",
       description: "Join aadyah. innovate and inspire the world",
-      button: { label: "view opening", slug: "/contact" },
+      button: { label: "view opening", slug: "/careers" },
     },
     {
       title: "Clients",
@@ -681,7 +690,7 @@ export const footer = {
   title: "Let’s work together",
   button: {
     label: "View opening",
-    slug: "/contact",
+    slug: "/careers",
   },
   links: [
     { label: "Satellite SYSTEM", slug: "/satellite-system" },

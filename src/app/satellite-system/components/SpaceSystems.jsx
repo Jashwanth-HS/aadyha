@@ -10,7 +10,7 @@ export default function SpaceSystems({data,styles}) {
       <div className={styles?.SpaceSystemsItemsContent}>
         <div className={styles?.SpaceSystemsImgs}>{images && <img src={images} />}</div>
         <div className={styles?.SpaceSystemsItemsRight}>
-          <p>{description}</p>
+          <p className={styles?.SpaceSystemsItemsRightDesc}>{description}</p>
           {accordianData?.values && 
           <AccordionWrap 
           AccordianTitle={accordianData?.title} 

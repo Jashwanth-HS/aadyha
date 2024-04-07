@@ -177,7 +177,7 @@ a {
   text-transform: uppercase;
 }
 .heading-1{
-  font-size: 4.7cqw;
+  font-size: 4.4cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 95%; 
@@ -228,21 +228,21 @@ a {
   text-transform: uppercase;
 }
 .caption{
-  font-size: 0.8cqw;
+  font-size: 12px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
 }
 .micro-large{
-  font-size: 0.8cqw;
+  font-size: 1cqw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
 }
 .paragraph{
-  font-size: 1cqw;
+  font-size: 0.8cqw;
   font-style: normal;
   font-weight: 400;
   line-height: 22px;

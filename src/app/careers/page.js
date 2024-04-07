@@ -17,7 +17,7 @@ const Banner = () => {
         We are dedicated to aspiring for the stars and continually advancing the
         frontiers of aerospace technology
       </p>
-      <button className="secondary-btn secondary-font">
+      {/* <button className="secondary-btn secondary-font">
         view current openings{" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@ const Banner = () => {
         >
           <path d="M0.5 0.5H20" stroke="black" />
         </svg>
-      </button>
+      </button> */}
       <div className={styles?.CareerBannerImg}>
         <picture>
           <source

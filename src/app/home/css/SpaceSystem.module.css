@@ -11,7 +11,7 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    color: #fff;
+    color: hsl(0, 0%, 100%);
 }
 .LineDotContent p{
     opacity: 0.5;
@@ -27,8 +27,8 @@
     width: 50%;
 }
 .SpaceSystemContentLeftList {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     margin-top: 70px;
     padding-top: 1rem;
@@ -37,8 +37,9 @@
 
 .SpaceSystemListitems {
     display: flex;
-    align-items: center;
-    gap: 2rem;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
     margin-bottom: 1rem;
     flex: calc(50% - 1rem);
     padding-bottom: 2rem;
@@ -50,9 +51,17 @@
     height: 100px;
     object-fit: contain;
 }
+.SpaceSystemListContent{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+.LvsLeftItemTitle p{
+    text-transform: uppercase;
+}
 .LvsRightItem .svgRender{
     position: absolute;
-    top: -328px;
     right: 0;
     width: 84%;
     height: auto;
@@ -60,14 +69,12 @@
 
 .BlockDataContainerRight .LvsRightItem .svgRender{
     position: absolute;
-    top: -300px;
-    left: -100px;
+    left: 0px;
     width: 84%;
     height: auto;
 }
 .LvsRightItemBottom.LvsRightItem .svgRender{
     position: absolute;
-    top: -350px;
     right: 150px;
     width: 84%;
     height: auto;
@@ -83,8 +90,12 @@
     position: relative;
     display: flex;
     justify-content: center;
-    width: 50%;
     align-items: center;
+    width: 50%;
+}
+.LvsRightItem img{
+    width: 100%;
+    position: relative;
 }
 .BlockDataContainer{
     display: flex;
@@ -116,12 +127,10 @@
     align-items: center;
 }
 .SpaceSystemDiscoverTitle{
-    max-width: 1000px;
-    width: 100%;
+    width: 50%;
     margin: 0 auto;
     position: absolute;
     top: 40%;
-    width: 70%;
     margin: 0 auto;
 }
 .SpaceSystemDiscover button{
@@ -196,6 +205,14 @@
     }
     .LvsRightItem img{
         width: 100%;
+    }
+    .SpaceSystemContentLeftList{
+        grid-template-columns: 1fr;
+    }
+    .SpaceSystemListitems{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 0;
     }
     .LvsLeftItem button{
         margin-top: 40px;

@@ -41,8 +41,9 @@ export default function Clients() {
                                 <div><p className="heading-2">150</p></div>
                             </div>
                         </div>
-                        <div><button className="primary-btn-light secondary-font">discover Aadyah<svg xmlns="http://www.w3.org/2000/svg" width="20" height="2" viewBox="0 0 20 2" fill="none">
-                        <path d="M0 1H19.5" stroke="black"/></svg></button></div>
+                        <div><a href="/about">
+                        <button className="primary-btn-light secondary-font">discover Aadyah<svg xmlns="http://www.w3.org/2000/svg" width="20" height="2" viewBox="0 0 20 2" fill="none">
+                        <path d="M0 1H19.5" stroke="black"/></svg></button></a></div>
                     </div>
                 </div>
             </div>

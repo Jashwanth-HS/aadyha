@@ -78,8 +78,13 @@
     bottom: 50%;
     text-transform: uppercase;
 }
+.MoonImageLabel span:first-child{
+    opacity: 0.5;
+    font-size: 15px;
+}
 .MoonImageLabel span:last-child{
     opacity: 0.5;
+    font-size: 12px;
 }
 .MoonImageLabel::before {
     content: '';

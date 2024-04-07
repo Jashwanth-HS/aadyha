@@ -10,9 +10,9 @@
     align-items: flex-start;
 }
 .Banner h1{
-    max-width: 525px;
-    width: 100%;
-    text-transform: capitalize;
+    width: 60%;
+    text-transform: unset;
+    letter-spacing: -4px;
 }
 .Banner p{
     max-width: 460px;

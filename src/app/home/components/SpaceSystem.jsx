@@ -2,65 +2,65 @@
 import { useIsElementVisible } from "@/helper/Observer";
 import styles from "../css/SpaceSystem.module.css";
 import React, { useEffect, useRef, useState } from "react";
+import { PrimaryButton } from "@/components/Buttons";
 const LaunchVehicleSystemArray = [
   {
-    src: "/assets/images/thrust-vector.svg",
+    src: "/assets/images/thrust-vector-control-system.svg",
     title: "Thrust vector control system (TVC)",
-    subTitle: "[Lorem Ipsum is]",
+    subTitle: "[TVC by Flex Nozzle Control TVC by Engine Gimballing]",
   },
   {
-    src: "/assets/images/guidance-navigation.svg",
+    src: "/assets/images/guidance-navigation-control.svg",
     title: "Guidance navigation and control",
-    subTitle: "[Lorem Ipsum is]",
+    subTitle: "[Design and development of Trajectory simulation & optimization,6DoF simulation, and control navigation guidance algorithms]",
   },
   {
     src: "/assets/images/avionics.svg",
     title: "Avionics",
-    subTitle: "[Lorem Ipsum is]",
+    subTitle: "[offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle]",
   },
   {
-    src: "/assets/images/control-system.svg",
+    src: "/assets/images/flow-control-system.svg",
     title: "Flow control system",
-    subTitle: "[Lorem Ipsum is]",
+    subTitle: "[custom build valves with high performance, pressure handling and stringent leak-tightness]",
   },
 ];
 const SatelliteSystemArray = [
   {
-    src: "/assets/images/thrust-vector.svg",
+    src: "/assets/images/propulsion-subsystems.svg",
     title: "Propulsion subsystems",
-    subTitle: "[Lorem Ipsum iss ksdfids]",
+    subTitle: "[delivering the best-in-class control, efficiency, and reliability that your spacecraft demands.]",
   },
   {
-    src: "/assets/images/guidance-navigation.svg",
+    src: "/assets/images/ss-electric-power-system.svg",
     title: "Electric power system (eps)",
-    subTitle: "[Lorem Ipsum is sdhi]",
+    subTitle: "[Reliable and adaptable power solutions with radiation tolerance, power tracking and multi voltage management tailored for you mission]",
   },
   {
-    src: "/assets/images/avionics.svg",
+    src: "/assets/images/ss-on-board-computer.svg",
     title: "On-board computer",
-    subTitle: "[Lorem Ipsum is sdfhi]",
+    subTitle: "[tailor-made solutions to integrate with your mssion]",
   },
   {
-    src: "/assets/images/control-system.svg",
+    src: "/assets/images/ss-motion-control-system.svg",
     title: "Motion control system",
-    subTitle: "[Lorem Ipsum is sjdfi]",
+    subTitle: "[Advanced system which ensures accurate pointing & orientation, and precision-control mechanism]",
   },
 ];
 const SpaceMissionArray = [
   {
-    src: "/assets/images/thrust-vector.svg",
+    src: "/assets/images/sm-sdm.svg",
     title: "SPACE DEBRIS MISSION",
-    subTitle: "[Lorem Ipsum iss ksdfids]",
+    subTitle: "[TRACE, is a self-powered and self-communicating beacon,which enable real-time location and velocity data to a ground statin, triggered from Earth.]",
   },
   {
-    src: "/assets/images/guidance-navigation.svg",
+    src: "/assets/images/sm-satellite.svg",
     title: "SATELLITE",
-    subTitle: "[Lorem Ipsum is sdhi]",
   },
   {
-    src: "/assets/images/avionics.svg",
+    src: "/assets/images/sm-spm.svg",
     title: "SPACE AND PLANETARY MISSIONS",
-    subTitle: "[Lorem Ipsum is sdfhi]",
+    subTitle: "[Lunar Lander, Lunar Rover]",
   },
 ];
 
@@ -69,31 +69,33 @@ const SpaceSystemArray = [
     sectionTitle: "launch vehicle SYSTEM",
     sectionSubTitle: "[End to end solutions]",
     blocks: LaunchVehicleSystemArray,
-    imagePath: "/assets/images/lvs.png",
+    imagePath: "/assets/images/hp-lvs-img.png",
     renderSvg: "Left1",
     title: "LAUNCH VEHICLE SYSTEM",
-    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions",
+    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions", 
+    Button : {label : "Explore more", slug:"/launch-vehicle-system"}
   },
   {
     sectionTitle: "Space mission",
     sectionSubTitle: "[End to end solutions]",
     blocks: SatelliteSystemArray,
-    imagePath: "/assets/images/lvs.png",
+    imagePath: "/assets/images/hp-flow-control-system.png",
     renderSvg: "Right1",
     isRight: true,
     title: "satellite system",
-    subTitle:
-      "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
+    subTitle: "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
+    Button : {label : "Explore more", slug:"/satellite-system"}
   },
   {
     sectionTitle: "Satellite System",
     sectionSubTitle: "[End to end solutions]",
     blocks: SpaceMissionArray,
-    imagePath: "/assets/images/lvs.png",
+    imagePath: "/assets/images/hp-space-mission.png",
     renderSvg: "Left2",
     isbottom: true,
-    title: "sPACE  MISSION",
+    title: "SPACE  MISSION",
     subTitle: "Ascending Beyond Limits",
+    Button : {label : "Explore more", slug:"/space-mission"}
   },
 ];
 const SectionTitle = ({ title, subTitle }) => {
@@ -140,6 +142,7 @@ const SpaceSystem = ({ data }) => {
     imagePath,
     isRight,
     isbottom,
+    Button,
   } = data || {};
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
@@ -176,7 +179,7 @@ const SpaceSystem = ({ data }) => {
         >
           <div className={styles.LaunchVehicleSystemWrap}>
             <div className={styles.LvsLeftItem}>
-              <div>
+              <div className={styles?.LvsLeftItemTitle}>
                 <h3 className="heading-1">{title}</h3>
                 <p className="sub-heading-2">{subTitle}</p>
               </div>
@@ -187,32 +190,15 @@ const SpaceSystem = ({ data }) => {
                       <div className={styles?.SpaceSystemListImg}>
                         <img src={e?.src} alt="" />
                       </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          width: "100%",
-                        }}
-                      >
+                      <div className={styles?.SpaceSystemListContent}>
                         <div className="micro-large">{e?.title}</div>
-                        <div className="caption">{e?.subTitle}</div>
+                        {/* <div className="caption">{e?.subTitle}</div> */}
                       </div>
                     </div>
                   );
                 })}
               </div>
-              <button className="primary-btn">
-                explore more
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="1"
-                  viewBox="0 0 20 1"
-                  fill="none"
-                >
-                  <path d="M0 0.5H19.5" stroke="white" />
-                </svg>
-              </button>
+              <PrimaryButton isDark={true} label={Button?.label} href={Button?.slug} />
             </div>
           </div>
 
@@ -382,18 +368,20 @@ const Discovering = ({ title }) => {
         <div className={styles?.SpaceSystemDiscoverTitle}>
           <div className="heading-2">{title}</div>
           <div>
-            <button className="primary-btn">
-              discover Aadyah
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="1"
-                viewBox="0 0 20 1"
-                fill="none"
-              >
-                <path d="M0 0.5H19.5" stroke="white" />
-              </svg>
-            </button>
+            <a href="/about">
+              <button className="primary-btn">
+                discover Aadyah
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="1"
+                  viewBox="0 0 20 1"
+                  fill="none"
+                >
+                  <path d="M0 0.5H19.5" stroke="white" />
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
 

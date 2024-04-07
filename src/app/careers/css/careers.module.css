@@ -117,8 +117,13 @@
 .WWURepeater{
     width: 100%;
 }
+.WWURepeaterImgs{
+    width: 100%;
+    height: 100%;
+}
 .WWURepeater img{
     width: 100%;
+    height: 100%;
     display: block;
 }
 

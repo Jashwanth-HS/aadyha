@@ -24,7 +24,7 @@ export default function Home() {
 
       <Planets />
       <Section>
-        <MobileViewPlanets />
+        <MobileViewPlanets/>
         <SpaceSystem />
         <Clients />
       </Section>

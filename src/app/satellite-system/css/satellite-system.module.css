@@ -135,8 +135,8 @@
 .AccordionIconClass{
     background-color: white;
 }
-.SpaceSystemsItemsRight p{
-    width: 65%;
+.SpaceSystemsItemsRightDesc{
+    width: 75%;
     padding-bottom: 60px;
 }
 .AccordionListClass li {

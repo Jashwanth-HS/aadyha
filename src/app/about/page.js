@@ -10,7 +10,7 @@ export default function About() {
           <div className={styles.banner}>
             <div className={styles?.AboutBannerTitle}>
               <h3 className="heading-1">
-                Pioneering the Future of Aerospace Technology
+                Pioneering the Future of space Technology
               </h3>
               <p className="paragraph">
                 Welcome to AADYAH, a pioneering force in space technology
@@ -86,8 +86,7 @@ export default function About() {
 
               <div>
                 <h3 className="heading-2">
-                  We envision a future where humanity's reach extends far beyond
-                  our home planet.
+                  Building Sustainable Space Assets
                 </h3>
               </div>
             </div>
@@ -118,8 +117,7 @@ export default function About() {
           <div className={styles?.OurMissionContent}>
             <p className="micro-large secondary-font">Our Mission</p>
             <h3 className="heading-3">
-              Our mission is to build a top quartile in profitability,
-              customer-centric, employee-led sustainable space business.
+            Accelerate design, build, launch and commercialisation of space systems 
             </h3>
           </div>
         </div>
@@ -193,18 +191,20 @@ export default function About() {
               exploration and discovery. Together, we can shape the future of
               space technology and leave an indelible mark on the universe.{" "}
             </p>
-            <button className="primary-btn">
-              View careers{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="1"
-                viewBox="0 0 20 1"
-                fill="none"
-              >
-                <path d="M0 0.5H19.5" stroke="white" />
-              </svg>
-            </button>
+            <a href="/careers">
+              <button className="primary-btn">
+                View careers{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="1"
+                  viewBox="0 0 20 1"
+                  fill="none"
+                >
+                  <path d="M0 0.5H19.5" stroke="white" />
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
       </div>
