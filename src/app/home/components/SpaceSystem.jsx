@@ -2,6 +2,7 @@
 import { useIsElementVisible } from "@/helper/Observer";
 import styles from "../css/SpaceSystem.module.css";
 import React, { useEffect, useRef, useState } from "react";
+import { PrimaryButton } from "@/components/Buttons";
 const LaunchVehicleSystemArray = [
   {
     src: "/assets/images/thrust-vector-control-system.svg",
@@ -71,7 +72,8 @@ const SpaceSystemArray = [
     imagePath: "/assets/images/hp-lvs-img.png",
     renderSvg: "Left1",
     title: "LAUNCH VEHICLE SYSTEM",
-    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions",
+    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions", 
+    Button : {label : "Explore more", slug:"/launch-vehicle-system"}
   },
   {
     sectionTitle: "Space mission",
@@ -81,8 +83,8 @@ const SpaceSystemArray = [
     renderSvg: "Right1",
     isRight: true,
     title: "satellite system",
-    subTitle:
-      "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
+    subTitle: "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
+    Button : {label : "Explore more", slug:"/space-mission"}
   },
   {
     sectionTitle: "Satellite System",
@@ -93,6 +95,7 @@ const SpaceSystemArray = [
     isbottom: true,
     title: "sPACE  MISSION",
     subTitle: "Ascending Beyond Limits",
+    Button : {label : "Explore more", slug:"/satellite-system"}
   },
 ];
 const SectionTitle = ({ title, subTitle }) => {
@@ -139,6 +142,7 @@ const SpaceSystem = ({ data }) => {
     imagePath,
     isRight,
     isbottom,
+    Button,
   } = data || {};
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
@@ -194,20 +198,7 @@ const SpaceSystem = ({ data }) => {
                   );
                 })}
               </div>
-              <a href="/launch-vehicle-system">
-                <button className="primary-btn">
-                  explore more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="1"
-                    viewBox="0 0 20 1"
-                    fill="none"
-                  >
-                    <path d="M0 0.5H19.5" stroke="white" />
-                  </svg>
-                </button>
-              </a>
+              <PrimaryButton isDark={true} label={Button?.label} href={Button?.slug} />
             </div>
           </div>
 
