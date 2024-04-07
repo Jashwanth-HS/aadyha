@@ -9,7 +9,7 @@
     justify-content: center;
     position: relative;
     /* z-index: 0; */
-    overflow: hidden;
+    overflow-y: hidden;
   }
   .canvasContainer{
     position: absolute !important;
@@ -66,9 +66,9 @@
 }
 .overlayDiv{
   top:0;
-  position: absolute;
+  position: fixed;
   height: 100vh;
-  overflow: auto;
+  overflow-y: hidden;
   width: 100vw;
   z-index: 2;
 }

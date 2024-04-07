@@ -21,6 +21,7 @@ export default function Home() {
         <title>Home page</title>
         <meta name="description" content="Aadyah space home page" />
       </Head>
+
       <Planets />
       <Section>
         <MobileViewPlanets />

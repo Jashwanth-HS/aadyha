@@ -677,39 +677,53 @@ export const cosmosData = {
 
 //Footer
 export const footer = {
-    images:'/assets/images/logoBlack.svg',
-    title:'Let’s work together',
-    button: {
-        label: "View opening",
-        slug:"/contact"
-    },
-    links:[
-        {label:'Satellite SYSTEM',slug:'/satellite-system'},
-        {label:'LAUNCH VEHICLE SYSTEM',slug:'/launch-vehicle-system'},
-        {label:'SPACE MISSION',slug:'/space-mission'},
-        {label:'ABOUT US',slug:'/about'},
-        {label:'CAREERS',slug:'/careers'},
-        {label:'CONTACT US',slug:'/contact'},
-    ],
-    enquires:[{
-        title: `For enquiries`,
-        email: `info@aadyah.com`
+  images: "/assets/images/logoBlack.svg",
+  title: "Let’s work together",
+  button: {
+    label: "View opening",
+    slug: "/contact",
+  },
+  links: [
+    { label: "Satellite SYSTEM", slug: "/satellite-system" },
+    { label: "LAUNCH VEHICLE SYSTEM", slug: "/launch-vehicle-system" },
+    { label: "SPACE MISSION", slug: "/space-mission" },
+    { label: "ABOUT US", slug: "/about" },
+    { label: "CAREERS", slug: "/careers" },
+    { label: "CONTACT US", slug: "/contact" },
+  ],
+  enquires: [
+    {
+      title: `For enquiries`,
+      email: `info@aadyah.com`,
     },
     {
-        title: `Call us`,
-        tel: `+91 9353401723`,
-    }],
-    socialLinks:[
-        {label:'linkedIn',slug:'https://www.linkedin.com/'},
-        {label:'twitter',slug:'https://twitter.com/?lang=en'},
-        {label:'instagram',slug:'https://www.instagram.com/'},
-        {label:'facebook',slug:'https://www.facebook.com/'},
-        {label:'youtube',slug:'https://www.youtube.com/'},
-    ],
-    privacyPolicy:[
-        {label:'Quality & Policy',slug:'/Quality'},
-        {label:'cookie policy',slug:'/cookie'},
-        {label:'Privacy Policy',slug:'/Privacy'},
-    ],
-    copyRights:"@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved."
-}
+      title: `Call us`,
+      tel: `+91 9353401723`,
+    },
+  ],
+  socialLinks: [
+    { label: "linkedIn", slug: "https://www.linkedin.com/" },
+    { label: "twitter", slug: "https://twitter.com/?lang=en" },
+    { label: "instagram", slug: "https://www.instagram.com/" },
+    { label: "facebook", slug: "https://www.facebook.com/" },
+    { label: "youtube", slug: "https://www.youtube.com/" },
+  ],
+  privacyPolicy: [
+    { label: "Quality & Policy", slug: "/Quality" },
+    { label: "cookie policy", slug: "/cookie" },
+    { label: "Privacy Policy", slug: "/Privacy" },
+  ],
+  copyRights: "@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved.",
+};
+
+//calculate planets animation function
+
+export const disableOverflow = (boolean) => {
+  if (boolean) {
+    document.querySelector("body").style.overflow = "hidden";
+    document.querySelector("body").style.height = "100vh";
+  } else {
+    document.querySelector("body").style.overflow = "auto";
+    document.querySelector("body").style.height = "100%";
+  }
+};
