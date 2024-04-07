@@ -50,7 +50,19 @@
     line-height: 95%; 
     text-transform: uppercase;
     width: 100%; 
+    transition: all 0.1s ease;
 }
+.EarthHeadingInner.EarthText{
+  color: #fff;
+}
+.EarthHeadingInner.MoonText{
+  color: #424242;
+}
+.EarthHeadingInner.MarsText{
+  color: #C8402D;
+}
+
+
 .OrbitImage{
   position: absolute;
   display: flex;

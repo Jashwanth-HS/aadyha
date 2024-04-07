@@ -268,6 +268,13 @@ const Planets = () => {
           <WordAnimation
             stagger={0.1}
             word={headingText}
+            style={{
+              color: headingText.includes("MOON")
+                ? "#424242"
+                : headingText.includes("EARTH")
+                ? "#ffffff"
+                : "#C8402D",
+            }}
             className={styles.EarthHeadingInner}
           />
         </div>

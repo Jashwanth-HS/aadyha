@@ -36,7 +36,7 @@ const WordAnimation = ({
   }, [word, delay]);
 
   return word ? (
-    <div className={className} ref={wordRef}>
+    <div className={className} ref={wordRef} style={style}>
       {word.split("").map((letter, index) => {
         return (
           <span
