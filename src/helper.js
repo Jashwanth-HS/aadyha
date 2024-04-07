@@ -349,7 +349,11 @@ export const OnBoardComputer = {
       },
       {
         header: "Multifaceted Functionality",
-        list: { type: "ul", data: ["mydata", "mydata1", "mydata2"] },
+        text: "AADYAH’s OBC is a powerhouse capable of",
+        list: { type: "ul", data: ["Attitude and Orbit Control: Ensuring your satellite maintains the correct position and trajectory.",
+        "Telecommand Execution: Swiftly processing and executing commands relayed from ground stations.", 
+        "Telemetry Management: Efficiently collecting, formatting, and transmitting crucial housekeeping data, providing real-time insights into the satellite's health.",
+        "Time Synchronization: Guaranteeing harmonized operations across satellite subsystems with precise onboard timing synchronization and distribution."] },
       },
     ],
   },

@@ -93,7 +93,7 @@ const SpaceSystemArray = [
     imagePath: "/assets/images/hp-space-mission.png",
     renderSvg: "Left2",
     isbottom: true,
-    title: "sPACE  MISSION",
+    title: "SPACE  MISSION",
     subTitle: "Ascending Beyond Limits",
     Button : {label : "Explore more", slug:"/space-mission"}
   },

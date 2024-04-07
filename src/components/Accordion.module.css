@@ -63,7 +63,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    text-transform: uppercase;
+    text-transform: none;
     text-align: left;
     color: #000;
     background-color: transparent;
@@ -82,7 +82,12 @@
 .itemContent {
   transition: height 0.25s cubic-bezier(0, 0, 0, 1);
 }
-
+.itemContent ul{
+  padding-top: 20px;
+}
+.itemContent ul li{
+  padding-bottom: 10px;
+}
 .itemPanel {
     padding-bottom: 20px;
     font-size: 16px;
