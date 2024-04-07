@@ -84,7 +84,7 @@ const SpaceSystemArray = [
     isRight: true,
     title: "satellite system",
     subTitle: "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
-    Button : {label : "Explore more", slug:"/space-mission"}
+    Button : {label : "Explore more", slug:"/satellite-system"}
   },
   {
     sectionTitle: "Satellite System",
@@ -95,7 +95,7 @@ const SpaceSystemArray = [
     isbottom: true,
     title: "sPACE  MISSION",
     subTitle: "Ascending Beyond Limits",
-    Button : {label : "Explore more", slug:"/satellite-system"}
+    Button : {label : "Explore more", slug:"/space-mission"}
   },
 ];
 const SectionTitle = ({ title, subTitle }) => {
