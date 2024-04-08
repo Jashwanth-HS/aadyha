@@ -366,15 +366,15 @@ const Planets = () => {
               left: earthSpanText3?.includes("MOON")
                 ? "auto"
                 : earthSpanText3?.includes("MANGALYAAN")
-                ? "25%"
-                : "33%",
+                ? "26%"
+                : "29%",
               right:
                 earthSpanText3?.includes("MARS") ||
                 earthSpanText3?.includes("MANGALYAAN")
                   ? "auto"
-                  : "11%",
+                  : "20%",
               bottom: earthSpanText3?.includes("MARS")
-                ? "17%"
+                ? "24%"
                 : earthSpanText3?.includes("MANGALYAAN")
                 ? "23%"
                 : "0",
@@ -382,7 +382,7 @@ const Planets = () => {
                 earthSpanText3?.includes("MARS") ||
                 earthSpanText3?.includes("MANGALYAAN")
                   ? "auto"
-                  : "15%",
+                  : "27%",
             }}
           >
             <WordAnimation

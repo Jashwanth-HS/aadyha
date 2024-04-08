@@ -79,14 +79,14 @@ export default function Header() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const handleMenuToggle = () => {
+  const handleMenuToggle = (isClose) => {
     const menu = hamburgerRef.current.classList;
     if (menu.contains(styles.openMenu)) {
       hamburgerRef.current.classList.remove(styles.openMenu);
       imageRef.current.src = "/assets/images/logoBlack.svg";
       handleScroll();
       menubarRef.current.classList.remove(styles.openMenubar);
-    } else {
+    } else if (!isClose) {
       hamburgerRef.current.classList.add(styles.openMenu);
       imageRef.current.src = "/assets/images/logo.svg";
       menubarRef.current.classList.add(styles.openMenubar);
@@ -101,7 +101,7 @@ export default function Header() {
             href={"/"}
             onClick={() => {
               if (window.innerWidth <= 768) {
-                handleMenuToggle();
+                handleMenuToggle("close");
               }
             }}
           >
@@ -166,7 +166,7 @@ const MenuBar = forwardRef(
                   <Link
                     href={"/" + slug}
                     onClick={() => {
-                      handleMenuToggle();
+                      handleMenuToggle("close");
                     }}
                   >
                     {label}
