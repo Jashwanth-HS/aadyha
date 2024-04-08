@@ -102,25 +102,25 @@ export const GauidanceData = {
   title: "GUIDANCE NAVIGATION AND CONTROL",
   data: [
     {
-      image: "/assets/images/sensing-vehicle-acceleration.svg",
+      image: "sensing-vehicle-acceleration",
       title: "Sensing vehicle  Acceleration rates",
       description:
         "Sensing technology allows us to accurately monitor vehicle acceleration rates comparing with sensors output and generate control command, providing crucial data for precise navigation and control.",
     },
     {
-      image: "/assets/images/navigation.svg",
+      image: "navigation",
       title: "Navigation",
       description:
         "Using advanced algorithms, we calculate and track the vehicle's current attitude, position, and velocity, ensuring a real-time understanding.",
     },
     {
-      image: "/assets/images/guidance.svg",
+      image: "guidance",
       title: "Guidance",
       description:
         "We offer comprehensive guidance solutions, assisting in the computation of optimal vehicle attitude, position, and velocity to achieve mission objectives efficiently.",
     },
     {
-      image: "/assets/images/autopilot.svg",
+      image: "autopilot",
       title: "Autopilot",
       description:
         "Our algorithms compute precise control commands, enabling seamless steering of the vehicle to the desired attitude, even in complex operational scenarios.",

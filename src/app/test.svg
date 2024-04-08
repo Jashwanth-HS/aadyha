@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" width="50" height="50" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;"><defs><clipPath id="__lottie_element_10"><rect width="50" height="50" x="0" y="0"></rect></clipPath></defs><g clip-path="url(#__lottie_element_10)"><g transform="matrix(1,0,0,1,17.702436447143555,0)" opacity="1" style="display: block;"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M14,25 C14,22.24 11.76,20 9,20 C6.24,20 4,22.24 4,25 C4,27.76 6.24,30 9,30 C11.76,30 14,27.76 14,25z"></path><g opacity="1" transform="matrix(1,0,0,1,25,25)"><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="10" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="2" d=" M-11,0 C-11,-2.760999917984009 -13.23900032043457,-5 -16,-5 C-18.76099967956543,-5 -21,-2.760999917984009 -21,0 C-21,2.76200008392334 -18.76099967956543,5 -16,5 C-13.23900032043457,5 -11,2.76200008392334 -11,0z"></path></g></g><g transform="matrix(1,0,0,1,15.726516723632812,0)" opacity="1" style="display: block;"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M30,25 C30,22.24 27.76,20 25,20 C22.24,20 20,22.24 20,25 C20,27.76 22.24,30 25,30 C27.76,30 30,27.76 30,25z"></path><g opacity="1" transform="matrix(1,0,0,1,25,25)"><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="10" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="2" d=" M5,0 C5,-2.760999917984009 2.76200008392334,-5 0,-5 C-2.760999917984009,-5 -5,-2.760999917984009 -5,0 C-5,2.76200008392334 -2.760999917984009,5 0,5 C2.76200008392334,5 5,2.76200008392334 5,0z"></path></g></g><g transform="matrix(1,0,0,1,-31.600128173828125,3.402292251586914)" opacity="1" style="display: block;"><path fill="rgb(0,0,0)" fill-opacity="1" d=" M46,25 C46,22.24 43.76,20 41,20 C38.24,20 36,22.24 36,25 C36,27.76 38.24,30 41,30 C43.76,30 46,27.76 46,25z"></path><g opacity="1" transform="matrix(1,0,0,1,25,25)"><path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0" stroke-miterlimit="10" stroke="rgb(0,0,0)" stroke-opacity="1" stroke-width="2" d=" M21,0 C21,-2.760999917984009 18.761999130249023,-5 16,-5 C13.23799991607666,-5 11,-2.760999917984009 11,0 C11,2.76200008392334 13.23799991607666,5 16,5 C18.761999130249023,5 21,2.76200008392334 21,0z"></path></g></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="172" height="140" viewBox="0 0 172 140" fill="none">
+  <path d="M1 87.5751C14.8235 69.0457 56.4118 40.8104 112.176 76.1045C121.294 81.9869 145.706 89.8693 170.412 74.3398M170.412 74.3398C171.118 74.3398 156.588 73.1634 149.235 72.5751M170.412 74.3398L158.059 90.2222" stroke="#22D7FF" stroke-width="1.81223" class="svg-elem-1"></path>
+  <line x1="72.9061" y1="0.904652" x2="72.9061" y2="139.092" stroke="#40D8BD" stroke-width="1.81223" stroke-linecap="round" stroke-dasharray="5.44 5.44" class="svg-elem-2"></line>
+  <line x1="83.0821" y1="10.7469" x2="83.0821" y2="127.17" stroke="#40D8BD" stroke-width="1.81223" stroke-linecap="round" stroke-dasharray="5.44 5.44" class="svg-elem-3"></line>
+  <path d="M94.5303 16.8999L94.5303 122.782" stroke="#40D8BD" stroke-width="1.81223" stroke-dasharray="5.44 5.44" class="svg-elem-4"></path>
+  <line x1="104.26" y1="26.6293" x2="104.26" y2="113.052" stroke="#40D8BD" stroke-width="1.81223" stroke-linecap="round" stroke-dasharray="5.44 5.44" class="svg-elem-5"></line>
+  <path d="M146.5 72.1733C146.5 104.482 120.309 130.673 88 130.673C55.6913 130.673 29.5 104.482 29.5 72.1733C29.5 39.8647 55.6913 13.6733 88 13.6733C120.309 13.6733 146.5 39.8647 146.5 72.1733Z" stroke="#22D7FF" class="svg-elem-6"></path>
+  <g filter="url(#filter0_f_1592_2489)">
+    <path d="M65 58.9995C65 61.7609 62.7614 63.9995 60 63.9995C57.2386 63.9995 55 61.7609 55 58.9995C55 56.2381 57.2386 53.9995 60 53.9995C62.7614 53.9995 65 56.2381 65 58.9995Z" fill="url(#paint0_radial_1592_2489)" class="svg-elem-7"></path>
+    <path d="M65 58.9995C65 61.7609 62.7614 63.9995 60 63.9995C57.2386 63.9995 55 61.7609 55 58.9995C55 56.2381 57.2386 53.9995 60 53.9995C62.7614 53.9995 65 56.2381 65 58.9995Z" fill="url(#paint1_radial_1592_2489)" class="svg-elem-8"></path>
+  </g>
+  <defs>
+    <filter id="filter0_f_1592_2489" x="53.1044" y="52.104" width="13.7911" height="13.7911" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+      <feGaussianBlur stdDeviation="0.947778" result="effect1_foregroundBlur_1592_2489"></feGaussianBlur>
+    </filter>
+    <radialGradient id="paint0_radial_1592_2489" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 58.9995) rotate(90) scale(25.625 25.625)">
+      <stop stop-color="white"></stop>
+      <stop offset="1" stop-color="#FFEDCA" stop-opacity="0"></stop>
+    </radialGradient>
+    <radialGradient id="paint1_radial_1592_2489" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(60 58.9995) rotate(90) scale(25.625 25.625)">
+      <stop stop-color="white"></stop>
+      <stop offset="1" stop-color="#FFEDCA" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+</svg>
