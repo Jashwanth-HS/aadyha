@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from "../css/Clients.module.css";
+import { PrimaryButton } from '@/components/Buttons';
 export default function Clients() {
   return (
     <>
@@ -42,8 +43,8 @@ export default function Clients() {
                             </div>
                         </div>
                         <div><a href="/about">
-                        <button className="primary-btn-light secondary-font">discover Aadyah<svg xmlns="http://www.w3.org/2000/svg" width="20" height="2" viewBox="0 0 20 2" fill="none">
-                        <path d="M0 1H19.5" stroke="black"/></svg></button></a></div>
+                            <PrimaryButton label={' discover Aadyah'} />
+                        </a></div>
                     </div>
                 </div>
             </div>
