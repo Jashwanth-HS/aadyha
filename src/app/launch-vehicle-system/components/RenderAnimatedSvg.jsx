@@ -127,30 +127,30 @@ const RenderSvg = ({ name, svgAnimation }) => {
       fill="none"
     >
       <path
-        d="M83.0157 45.1512C78.2438 53.4163 72.6483 60.1366 67.476 64.3252C64.8885 66.4206 62.4281 67.8651 60.248 68.564C58.0679 69.2629 56.2225 69.2016 54.793 68.3763C53.3635 67.551 52.3877 65.9834 51.9029 63.746C51.4182 61.5085 51.439 58.6555 51.9599 55.3669C53.0011 48.7933 56.0233 40.5873 60.7952 32.3221C65.5671 24.057 71.1626 17.3367 76.3349 13.1481C78.9224 11.0527 81.3828 9.60823 83.5629 8.90929C85.743 8.21038 87.5884 8.27173 89.0179 9.09704C90.4474 9.92236 91.4232 11.4899 91.908 13.7273C92.3927 15.9648 92.372 18.8178 91.851 22.1064C90.8098 28.68 87.7876 36.886 83.0157 45.1512Z"
+        d="M83.0157 45.1526C78.2438 53.4178 72.6483 60.1381 67.476 64.3266C64.8885 66.422 62.4281 67.8666 60.248 68.5655C58.0679 69.2644 56.2225 69.2031 54.793 68.3777C53.3635 67.5524 52.3877 65.9849 51.9029 63.7475C51.4182 61.51 51.439 58.657 51.9599 55.3684C53.0011 48.7948 56.0233 40.5888 60.7952 32.3236C65.5671 24.0584 71.1626 17.3381 76.3349 13.1496C78.9224 11.0542 81.3828 9.6097 83.5629 8.91075C85.743 8.21184 87.5884 8.2732 89.0179 9.09851C90.4474 9.92382 91.4232 11.4914 91.908 13.7288C92.3927 15.9663 92.372 18.8193 91.851 22.1079C90.8098 28.6814 87.7876 36.8875 83.0157 45.1526Z"
         stroke="#40D8BD"
         className={svgAnimation.svgElem1}
       ></path>
       <path
-        d="M80.5 41.9995L81.5 47.4995L86.5 46.9995M65.5 24.4995L59 26.9995"
+        d="M80.5 42.001L81.5 47.501L86.5 47.001M65.5 24.501L59 27.001"
         stroke="#22D7FF"
         className={svgAnimation.svgElem2}
       ></path>
       <path
-        d="M65 24.9995L66.5 30.4995"
+        d="M65 25.001L66.5 30.501"
         stroke="#22D7FF"
         className={svgAnimation.svgElem3}
       ></path>
       <circle
         cx="59"
-        cy="59.1743"
+        cy="59.1758"
         r="58.5"
         stroke="#22D7FF"
         className={svgAnimation.svgElem4}
       ></circle>
       <circle
         cx="59.0002"
-        cy="59.1745"
+        cy="59.176"
         r="40.8"
         stroke="#22D7FF"
         strokeDasharray="2 2"
@@ -158,24 +158,36 @@ const RenderSvg = ({ name, svgAnimation }) => {
       ></circle>
       <circle
         cx="59"
-        cy="59.1743"
+        cy="59.1758"
         r="10.5625"
         fill="#40D8BD"
         stroke="#40D8BD"
         className={svgAnimation.svgElem6}
       ></circle>
-      <g filter="url(#filter0_f_1329_3458)">
+      <g filter="url(#filter0_f_2000_74518)">
         <path
-          d="M92 8.99951C92 11.2087 90.2091 12.9995 88 12.9995C85.7909 12.9995 84 11.2087 84 8.99951C84 6.79037 85.7909 4.99951 88 4.99951C90.2091 4.99951 92 6.79037 92 8.99951Z"
+          d="M92 9.00098C92 11.2101 90.2091 13.001 88 13.001C85.7909 13.001 84 11.2101 84 9.00098C84 6.79184 85.7909 5.00098 88 5.00098C90.2091 5.00098 92 6.79184 92 9.00098Z"
           fill="#40D8BD"
           className={svgAnimation.svgElem7}
         ></path>
       </g>
+      <g filter="url(#filter1_f_2000_74518)">
+        <path
+          d="M26 73.001C26 75.7624 23.7614 78.001 21 78.001C18.2386 78.001 16 75.7624 16 73.001C16 70.2396 18.2386 68.001 21 68.001C23.7614 68.001 26 70.2396 26 73.001Z"
+          fill="url(#paint0_radial_2000_74518)"
+          className={svgAnimation.svgElem8}
+        ></path>
+        <path
+          d="M26 73.001C26 75.7624 23.7614 78.001 21 78.001C18.2386 78.001 16 75.7624 16 73.001C16 70.2396 18.2386 68.001 21 68.001C23.7614 68.001 26 70.2396 26 73.001Z"
+          fill="url(#paint1_radial_2000_74518)"
+          className={svgAnimation.svgElem9}
+        ></path>
+      </g>
       <defs>
         <filter
-          id="filter0_f_1329_3458"
+          id="filter0_f_2000_74518"
           x="82.1044"
-          y="3.10396"
+          y="3.10542"
           width="11.7911"
           height="11.7911"
           filterUnits="userSpaceOnUse"
@@ -190,9 +202,52 @@ const RenderSvg = ({ name, svgAnimation }) => {
           ></feBlend>
           <feGaussianBlur
             stdDeviation="0.947778"
-            result="effect1_foregroundBlur_1329_3458"
+            result="effect1_foregroundBlur_2000_74518"
           ></feGaussianBlur>
         </filter>
+        <filter
+          id="filter1_f_2000_74518"
+          x="14.1044"
+          y="66.1054"
+          width="13.7911"
+          height="13.7911"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          ></feBlend>
+          <feGaussianBlur
+            stdDeviation="0.947778"
+            result="effect1_foregroundBlur_2000_74518"
+          ></feGaussianBlur>
+        </filter>
+        <radialGradient
+          id="paint0_radial_2000_74518"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(21 73.001) rotate(90) scale(25.625 25.625)"
+        >
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="#FFEDCA" stopOpacity="0"></stop>
+        </radialGradient>
+        <radialGradient
+          id="paint1_radial_2000_74518"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(21 73.001) rotate(90) scale(25.625 25.625)"
+        >
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="#FFEDCA" stopOpacity="0"></stop>
+        </radialGradient>
       </defs>
     </svg>
   ) : name == "guidance" ? (

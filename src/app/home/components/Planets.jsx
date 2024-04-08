@@ -134,7 +134,8 @@ const Planets = () => {
     let setTimeoutId;
     addLineText.current.classList.remove(styles.addLineTextAnimation);
     addLineText.current.classList.add(styles.addLineTextAnimation);
-
+    scroll.current = "earth";
+    setHeadingText("FROM EARTH");
     const handleWheel = (event) => {
       if (scrolling.current === false) {
         scrolling.current = true;
@@ -201,6 +202,8 @@ const Planets = () => {
           setTimeoutId1 = setTimeout(() => {
             orbitImageRef.current.src = "/assets/images/orbit-line.png";
             orbitImageRef.current.style.left = "0";
+            orbitImageRef.current.style.top = "0";
+            orbitImageRef.current.style.scale = "1";
             devContainerRef.current.style.backgroundImage =
               "url('/assets/images/earth-bg.png')";
             setHeadingText("FROM EARTH");
@@ -310,7 +313,7 @@ const Planets = () => {
         >
           <WordAnimation
             fading={true}
-            stagger={0.1}
+            stagger={0.08}
             word={headingText}
             style={{
               color: headingText.includes("MOON")
@@ -347,14 +350,14 @@ const Planets = () => {
           <div className={styles.EarthDescription}>
             <WordAnimation
               fading={true}
-              stagger={0.07}
+              stagger={0.05}
               word={earthDescription1}
               className={"heading-3"}
               marginSpace={"0px"}
             />
             <WordAnimation
               typing={true}
-              typeDelay={50}
+              typeDelay={40}
               word={earthDescription2}
               className={"caption secondary-font"}
               marginSpace={"0px"}
@@ -367,14 +370,14 @@ const Planets = () => {
                 ? "auto"
                 : earthSpanText3?.includes("MANGALYAAN")
                 ? "26%"
-                : "29%",
+                : "29.5%",
               right:
                 earthSpanText3?.includes("MARS") ||
                 earthSpanText3?.includes("MANGALYAAN")
                   ? "auto"
                   : "20%",
               bottom: earthSpanText3?.includes("MARS")
-                ? "24%"
+                ? "23%"
                 : earthSpanText3?.includes("MANGALYAAN")
                 ? "23%"
                 : "0",
