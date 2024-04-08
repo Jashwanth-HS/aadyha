@@ -729,10 +729,14 @@ export const footer = {
 
 export const disableOverflow = (boolean) => {
   if (boolean) {
-    document.querySelector("body").style.overflow = "hidden";
+    document.querySelector("body").style.overflowY = "hidden";
     document.querySelector("body").style.height = "100vh";
   } else {
-    document.querySelector("body").style.overflow = "auto";
+    document.querySelector("body").style.overflowY = "auto";
     document.querySelector("body").style.height = "100%";
   }
+};
+
+export const createDelay = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };

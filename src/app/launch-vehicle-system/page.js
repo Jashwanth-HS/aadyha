@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../launch-vehicle-system/css/lvs.module.css";
 import Avionics from "./components/Avionics";
 import Gauidance from "./components/Gauidance";
@@ -7,6 +7,7 @@ import ControlSystem from "./components/ControlSystem";
 import PartGridContent from "./components/PartGridContent";
 import NavBar from "./components/NavBar";
 import Container from "@/components/Container";
+import { disableOverflow } from "@/helper";
 
 const Banner = () => {
   return (
@@ -17,6 +18,9 @@ const Banner = () => {
   );
 };
 export default function Index() {
+  useEffect(() => {
+    disableOverflow(false);
+  }, []);
   return (
     <>
       {/* <div

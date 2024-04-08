@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../careers/css/careers.module.css";
 import Container from "@/components/Container";
 import OurValues from "./components/OurValues";
@@ -7,8 +7,12 @@ import WorkWithUs from "./components/WorkWithUs";
 import AadyahImpact from "./components/AadyahImpact";
 import Testimonial from "./components/Testimonial";
 import Opportunities from "./components/Opportunities";
+import { disableOverflow } from "@/helper";
 
 const Banner = () => {
+  useEffect(() => {
+    disableOverflow(false);
+  }, []);
   return (
     <div className={styles?.Banner}>
       <h6 className="micro-large secondary-font">work with us</h6>

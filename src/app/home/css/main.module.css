@@ -113,8 +113,7 @@
     top: 45%;
     right: 15%;
 }   
-.EarthDescription span:last-child{
-    width: 281px;
+.EarthDescription > div:last-child{
     opacity: 0.5;
 }
 .EarthImageLabel {
@@ -168,20 +167,34 @@ text-transform: uppercase;
   color: #fff;
   display: flex;
   align-items: flex-start;
-  gap: 25px;
+  flex-direction: column;
+  gap: 0.2rem;
   position: absolute;
   right: 11%;
   top: 15%;
   text-align: left;
   text-transform: uppercase;
+
 }
 .MoonImageLabel{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 4px;
+  font-family: "JetBrains Mono";
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: uppercase;
 }
-.MoonImageLabel span:last-child{
+.MoonImageContainer .MoonImageLabel:last-child{
   opacity: 0.5;
+  font-family: "JetBrains Mono";
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: uppercase;
 }
 .textSpan{
   transition: all 0.3s;

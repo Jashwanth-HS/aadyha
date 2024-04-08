@@ -1,10 +1,11 @@
 "use client";
 import styles from "../space-mission/css/ space-mission.module.css";
 import Container from "@/components/Container";
-import React from "react";
+import React, { useEffect } from "react";
 import SatelliteRoadmap from "./components/satelliteRoadmap";
 import PlanetaryMissions from "./components/PlanetaryMissions";
 import SpaceDebrisMission from "./components/SpaceDebrisMission";
+import { disableOverflow } from "@/helper";
 const Banner = () => {
   return (
     <div className={styles?.Banner}>
@@ -39,6 +40,9 @@ const Banner = () => {
 };
 
 export default function page() {
+  useEffect(() => {
+    disableOverflow(false);
+  }, []);
   return (
     <>
       <Container>

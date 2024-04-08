@@ -1,18 +1,33 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { createDelay } from "@/helper";
 
 const WordAnimation = ({
   word,
   className,
   stagger,
+  typing,
+  typeDelay = 100,
   marginSpace = "60px",
   delay = 0,
   style,
 }) => {
   const wordRef = useRef(null);
-
-  const animateWord = () => {
-    const letters = wordRef.current.children;
+  const typingAnimation = async () => {
+    const letters = word.split("");
+    if (wordRef.current) wordRef.current.innerHTML = "";
+    for (let index = 0; index < letters.length; index++) {
+      const letter = letters[index];
+      const span = document.createElement("span");
+      span.textContent = letter;
+      span.style.display = "inline-block";
+      span.style.marginLeft = letter == " " ? "7px" : "0";
+      await createDelay(typeDelay);
+      wordRef.current.appendChild(span);
+    }
+  };
+  const fadingAnimation = () => {
+    const letters = wordRef.current ? wordRef.current.children : null;
     gsap.set(letters, {
       opacity: 0,
       y: 100,
@@ -24,7 +39,7 @@ const WordAnimation = ({
       stagger: stagger || 0.3,
     });
   };
-
+  const animateWord = typing ? typingAnimation : fadingAnimation;
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (word) {
@@ -37,19 +52,23 @@ const WordAnimation = ({
 
   return word ? (
     <div className={className} ref={wordRef} style={style}>
-      {word.split("").map((letter, index) => {
-        return (
-          <span
-            key={index}
-            style={{
-              opacity: 0,
-              marginLeft: letter !== " " ? "" : marginSpace,
-            }}
-          >
-            {letter}
-          </span>
-        );
-      })}
+      {typing ? (
+        <></>
+      ) : (
+        word.split("").map((letter, index) => {
+          return (
+            <span
+              key={index}
+              style={{
+                opacity: 0,
+                marginLeft: letter !== " " ? "" : marginSpace,
+              }}
+            >
+              {letter}
+            </span>
+          );
+        })
+      )}
     </div>
   ) : (
     <></>
