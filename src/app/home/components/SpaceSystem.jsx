@@ -147,20 +147,19 @@ const SpaceSystem = ({ data }) => {
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
   useEffect(() => {
-    const svgPaths = elementRef.current.querySelectorAll("path"); // Select all paths within the SVG
-
+    const svgPaths = elementRef.current.querySelectorAll("path"); 
     if (isElementVisible) {
       svgPaths.forEach((path) => {
-        const animateElement = path.querySelector("animate"); // Get the animate element within each path
+        const animateElement = path.querySelector("animate"); 
         if (animateElement) {
-          animateElement.beginElement(); // Start the animation
+          animateElement.beginElement(); 
         }
       });
     } else {
       svgPaths.forEach((path) => {
-        const animateElement = path.querySelector("animate"); // Get the animate element within each path
+        const animateElement = path.querySelector("animate");
         if (animateElement) {
-          animateElement.endElement(); // End the animation
+          animateElement.endElement(); 
         }
       });
     }

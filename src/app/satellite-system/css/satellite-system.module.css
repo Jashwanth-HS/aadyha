@@ -144,9 +144,15 @@
 }
 
 @media(max-width:768px){
+    .Banner p{
+        width: 100%;
+    }
     .PropulsionWrapper{
         flex-direction: column;
         gap: 30px;
+    }
+    .PropulsionWrapper .Title{
+        width: 100%;
     }
     .PropulsionWrapper img{
         width: 100%;
