@@ -1,3 +1,4 @@
+'use client';
 import Container from "@/components/Container";
 import styles from "../contact/css/contact.module.css";
 import React, { useEffect } from "react";
