@@ -167,6 +167,7 @@ const Planets = () => {
   useEffect(() => {
     let setTimeoutId, setTimeoutId1;
     if (direction) {
+      disableOverflow(true);
       addLineText.current.classList.remove(styles.addLineTextAnimation);
       addLineText.current.classList.add(styles.addLineTextAnimation);
       setTimeoutId = setTimeout(() => {
@@ -191,7 +192,7 @@ const Planets = () => {
           clearTimeout(setTimeoutId1);
           setTimeoutId1 = setTimeout(() => {
             devContainerRef.current.style.backgroundImage = "none";
-            devContainerRef.current.style.background = "black";
+            devContainerRef.current.style.background = "#100302";
             orbitImageRef.current.src = "/assets/images/orbit-line-mars.png";
             setHeadingText("TO MARS");
 
