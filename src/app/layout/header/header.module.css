@@ -199,6 +199,14 @@
     display: block;
     overflow: hidden;
 }
+.menuContainer  .navHeaderLinksContainer li a{
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 119%; 
+    letter-spacing: 1.26px;
+    text-transform: uppercase;
+}
 .menuContainer.openMenubar{
     left: 0;
 
