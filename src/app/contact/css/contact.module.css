@@ -223,6 +223,9 @@ height: 12px;
 }
 
 @media(max-width:768px){
+    .Banner h1{
+        width: 90%;
+    }
     .ContactContainer{
         flex-direction: column;
         gap: 60px;
