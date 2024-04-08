@@ -198,7 +198,7 @@ export const controlSystemNavBar = {
       title: "MONITORING & DRIVE ELECTRONICS",
       data: [
         {
-          image: "/assets/images/fill-drain-valve.png",
+          image: "/assets/images/driver-circuit-software.png",
           title: "Driver Circuit Software",
         },
       ],
@@ -550,7 +550,7 @@ export const aadyahImpact = {
       image: "/assets/images/stanford-seed.png",
       title: "In the NEWS",
       description:
-        "Chandrayaan 3: Top Indian Startups Making Their Mark in Space",
+        "AADYAH in Stanford SEED 2024 Cohort",
     },
     {
       image: "/assets/images/tech-startup-aadyah.png",

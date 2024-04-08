@@ -90,7 +90,7 @@ export default function Clients() {
                                 <p className="caption secondary-font">Chairman of the Board, Managing Director </p>
                             </div>
                         </div>
-                        <a href="">
+                        {/* <a href="">
                             <div className={styles?.CeoMessageContentBottm}>
                                 <div><img src={"/assets/images/space-avionics.png"}/></div>
                                 <div>
@@ -98,7 +98,7 @@ export default function Clients() {
                                     <p className="caption secondary-font">Mr. Sethurajan shared his insights and experience on Mission Development</p>
                                 </div>
                             </div>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
             </div>

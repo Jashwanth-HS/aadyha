@@ -13,6 +13,11 @@
     text-align: center;
     color: hsl(0, 0%, 100%);
 }
+.LineDotContent{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
 .LineDotContent p{
     opacity: 0.5;
 }
@@ -63,6 +68,7 @@
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    text-transform: uppercase;
 }
 .SpaceSystemListContent p{
     color: rgba(255, 255, 255, 0.5);
