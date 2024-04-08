@@ -362,9 +362,26 @@ const Planets = () => {
           <div
             className={styles.MoonImageContainer}
             style={{
-              left: earthSpanText3?.includes("EARTH") ? "33%" : "auto",
-              bottom: earthSpanText3?.includes("MARS") ? "17%" : "0",
-              top: earthSpanText3?.includes("MARS") ? "auto" : "15%",
+              left: earthSpanText3?.includes("MOON")
+                ? "auto"
+                : earthSpanText3?.includes("MANGALYAAN")
+                ? "25%"
+                : "33%",
+              right:
+                earthSpanText3?.includes("MARS") ||
+                earthSpanText3?.includes("MANGALYAAN")
+                  ? "auto"
+                  : "11%",
+              bottom: earthSpanText3?.includes("MARS")
+                ? "17%"
+                : earthSpanText3?.includes("MANGALYAAN")
+                ? "23%"
+                : "0",
+              top:
+                earthSpanText3?.includes("MARS") ||
+                earthSpanText3?.includes("MANGALYAAN")
+                  ? "auto"
+                  : "15%",
             }}
           >
             <WordAnimation

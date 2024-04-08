@@ -179,7 +179,7 @@ text-transform: uppercase;
 .MoonImageLabel{
   display: flex;
   flex-direction: row;
-  gap: 4px;
+  /* gap: 4px; */
   font-family: "JetBrains Mono";
 font-size: 15px;
 font-style: normal;
