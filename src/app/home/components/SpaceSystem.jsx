@@ -191,7 +191,7 @@ const SpaceSystem = ({ data }) => {
                         <img src={e?.src} alt="" />
                       </div>
                       <div className={styles?.SpaceSystemListContent}>
-                        <h4 className="micro-large secondary-font">{e?.title}</h4>
+                        <h4 className="paragraph secondary-font">{e?.title}</h4>
                         <p className="caption secondary-font">{e?.subTitle}</p>
                       </div>
                     </div>

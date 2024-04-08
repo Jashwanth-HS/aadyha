@@ -174,35 +174,30 @@ a {
   font-size: 410px;
   font-style: normal;
   font-weight: 400;
-  line-height: 95%; 
   text-transform: uppercase;
 }
 .heading-1{
   font-size: 4.4cqw;
   font-style: normal;
   font-weight: 400;
-  line-height: 95%; 
   text-transform: uppercase;
 }
 .heading-2{
   font-size: 3cqw;
   font-style: normal;
   font-weight: 400;
-  line-height: 95%; 
   text-transform: uppercase;
 }
 .heading-3{
   font-size: 2.1cqw;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; 
   text-transform: uppercase;
 }
 .heading-4{
   font-size: 37px;
   font-style: normal;
   font-weight: 400;
-  line-height: 98%; 
   letter-spacing: -2px;
   
 }
@@ -210,21 +205,18 @@ a {
   font-size: 1.45cqw;
   font-style: normal;
   font-weight: 400;
-  line-height: 95%; 
   text-transform: uppercase;
 }
 .sub-heading-2{
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: 115%;
   letter-spacing: -1px;
 }
 .sub-heading-3{
   font-size: 21px;
   font-style: normal;
   font-weight: 400;
-  line-height: 119%; 
   letter-spacing: 1.26px;
   text-transform: uppercase;
 }
@@ -232,21 +224,18 @@ a {
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
   text-transform: uppercase;
 }
 .micro-large{
   font-size: 0.8cqw;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
   text-transform: uppercase;
 }
 .paragraph{
-  font-size: 0.8cqw;
+  font-size: 1.1cqw;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px;
 }
 
 @media(max-width:768px){
