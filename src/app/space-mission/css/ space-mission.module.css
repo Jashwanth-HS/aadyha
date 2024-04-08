@@ -101,6 +101,9 @@
     align-items: flex-start;
     gap: 150px;
 }
+.satelliteRoadmapItems img{
+    width: 100%;
+}
 .satelliteRoadmapItems p{
     padding: 25px 0 0;
 }

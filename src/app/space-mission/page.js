@@ -6,8 +6,14 @@ import SatelliteRoadmap from "./components/satelliteRoadmap";
 import PlanetaryMissions from "./components/PlanetaryMissions";
 import SpaceDebrisMission from "./components/SpaceDebrisMission";
 import { disableOverflow } from "@/helper";
+import { Helmet } from "react-helmet";
 const Banner = () => {
   return (
+    <>
+    <Helmet>
+      <title>Space mission - Aadyah Space</title>
+      <meta name="description" content="Aadyah space home page" />
+    </Helmet>
     <div className={styles?.Banner}>
       <div className={styles?.BannerTitle}>
         <h6 className="micro-large secondary-font">
@@ -36,6 +42,7 @@ const Banner = () => {
         </picture>
       </div>
     </div>
+    </>
   );
 };
 

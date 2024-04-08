@@ -8,12 +8,18 @@ import AadyahImpact from "./components/AadyahImpact";
 import Testimonial from "./components/Testimonial";
 import Opportunities from "./components/Opportunities";
 import { disableOverflow } from "@/helper";
+import { Helmet } from "react-helmet";
 
 const Banner = () => {
   useEffect(() => {
     disableOverflow(false);
   }, []);
   return (
+    <>
+    <Helmet>
+      <title>Careers - Aadyah Space</title>
+      <meta name="description" content="Aadyah space home page" />
+    </Helmet>
     <div className={styles?.Banner}>
       <h6 className="micro-large secondary-font">work with us</h6>
       <h1 className="heading-1">Build the Future With Us</h1>
@@ -50,6 +56,7 @@ const Banner = () => {
         </picture>
       </div>
     </div>
+    </>
   );
 };
 

@@ -94,6 +94,7 @@ export default function Header() {
   };
   return (
     <>
+      
       <header ref={navHeaderRef} className={styles?.navHeader}>
         <div className={styles?.navHeaderInner}>
           <Link
