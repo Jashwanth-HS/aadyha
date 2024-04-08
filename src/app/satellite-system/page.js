@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../satellite-system/css/satellite-system.module.css";
 import NavBar from "./components/NavBar";
 import Container from "@/components/Container";
@@ -9,6 +9,7 @@ import {
   ElectricPowerSystem,
   OnBoardComputer,
   MotionControlSystem,
+  disableOverflow,
 } from "@/helper";
 const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
 const Banner = () => {
@@ -25,6 +26,9 @@ const Banner = () => {
 };
 
 export default function page() {
+  useEffect(() => {
+    disableOverflow(false);
+  }, []);
   return (
     <>
       {/* <div

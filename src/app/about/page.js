@@ -1,8 +1,12 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../about/css/about.module.css";
+import { disableOverflow } from "@/helper";
 
 export default function About() {
+  useEffect(() => {
+    disableOverflow(false);
+  }, []);
   return (
     <>
       <div className={styles?.AboutBg}>
@@ -85,9 +89,7 @@ export default function About() {
               </div>
 
               <div>
-                <h3 className="heading-2">
-                  Building Sustainable Space Assets
-                </h3>
+                <h3 className="heading-2">Building Sustainable Space Assets</h3>
               </div>
             </div>
           </div>
@@ -117,7 +119,8 @@ export default function About() {
           <div className={styles?.OurMissionContent}>
             <p className="micro-large secondary-font">Our Mission</p>
             <h3 className="heading-3">
-            Accelerate design, build, launch and commercialisation of space systems 
+              Accelerate design, build, launch and commercialisation of space
+              systems
             </h3>
           </div>
         </div>
