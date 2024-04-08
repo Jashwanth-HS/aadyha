@@ -54,10 +54,10 @@ const WordAnimation = ({
     return () => clearTimeout(timeout);
   }, [word, delay]);
 
-  return word ? (
+  return (
     <div className={className} ref={wordRef} style={style}>
-      {typing && <></>}
-      {fading &&
+      {word &&
+        fading &&
         word.split("").map((letter, index) => {
           return (
             <span
@@ -72,8 +72,6 @@ const WordAnimation = ({
           );
         })}
     </div>
-  ) : (
-    <></>
   );
 };
 

@@ -126,12 +126,12 @@ export default function Header() {
                 );
               })}
             </ul>
+            <PrimaryButton
+              label={button?.label}
+              href={button?.slug}
+              className={styles?.navHeaderButton}
+            />
           </nav>
-          <PrimaryButton
-            label={button?.label}
-            href={button?.slug}
-            className={styles?.navHeaderButton}
-          />
           <div
             ref={hamburgerRef}
             className={styles?.hamburgerIcon}
