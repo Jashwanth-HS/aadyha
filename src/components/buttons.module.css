@@ -17,6 +17,9 @@
     align-items: center;
     gap: 1.25rem;
     font-family: "JetBrains Mono";
+    @media(max-width:1440px){
+        font-size: 12px;
+    }
 }
 .PrimaryButton.PrimaryButtonDark{
     color: #fff;

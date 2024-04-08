@@ -217,7 +217,7 @@ a {
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 115%;
   letter-spacing: -1px;
 }
 .sub-heading-3{
@@ -236,7 +236,7 @@ a {
   text-transform: uppercase;
 }
 .micro-large{
-  font-size: 1cqw;
+  font-size: 0.8cqw;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
