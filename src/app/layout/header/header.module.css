@@ -89,7 +89,7 @@
     transition: color 0.3s ease;
 }
 .navHeaderLinksContainer li a:hover{
-    color: rgba(255, 255, 255, 0.7);
+    color: #e4572e;
 }
 .navHeaderButton{
     display: flex;
