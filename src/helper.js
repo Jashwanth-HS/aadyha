@@ -350,10 +350,15 @@ export const OnBoardComputer = {
       {
         header: "Multifaceted Functionality",
         text: "AADYAH’s OBC is a powerhouse capable of",
-        list: { type: "ul", data: ["Attitude and Orbit Control: Ensuring your satellite maintains the correct position and trajectory.",
-        "Telecommand Execution: Swiftly processing and executing commands relayed from ground stations.", 
-        "Telemetry Management: Efficiently collecting, formatting, and transmitting crucial housekeeping data, providing real-time insights into the satellite's health.",
-        "Time Synchronization: Guaranteeing harmonized operations across satellite subsystems with precise onboard timing synchronization and distribution."] },
+        list: {
+          type: "ul",
+          data: [
+            "Attitude and Orbit Control: Ensuring your satellite maintains the correct position and trajectory.",
+            "Telecommand Execution: Swiftly processing and executing commands relayed from ground stations.",
+            "Telemetry Management: Efficiently collecting, formatting, and transmitting crucial housekeeping data, providing real-time insights into the satellite's health.",
+            "Time Synchronization: Guaranteeing harmonized operations across satellite subsystems with precise onboard timing synchronization and distribution.",
+          ],
+        },
       },
     ],
   },
@@ -681,39 +686,53 @@ export const cosmosData = {
 
 //Footer
 export const footer = {
-    images:'/assets/images/logoBlack.svg',
-    title:'Let’s work together',
-    button: {
-        label: "View opening",
-        slug:"/careers"
-    },
-    links:[
-        {label:'Satellite SYSTEM',slug:'/satellite-system'},
-        {label:'LAUNCH VEHICLE SYSTEM',slug:'/launch-vehicle-system'},
-        {label:'SPACE MISSION',slug:'/space-mission'},
-        {label:'ABOUT US',slug:'/about'},
-        {label:'CAREERS',slug:'/careers'},
-        {label:'CONTACT US',slug:'/contact'},
-    ],
-    enquires:[{
-        title: `For enquiries`,
-        email: `info@aadyah.com`
+  images: "/assets/images/logoBlack.svg",
+  title: "Let’s work together",
+  button: {
+    label: "View opening",
+    slug: "/careers",
+  },
+  links: [
+    { label: "Satellite SYSTEM", slug: "/satellite-system" },
+    { label: "LAUNCH VEHICLE SYSTEM", slug: "/launch-vehicle-system" },
+    { label: "SPACE MISSION", slug: "/space-mission" },
+    { label: "ABOUT US", slug: "/about" },
+    { label: "CAREERS", slug: "/careers" },
+    { label: "CONTACT US", slug: "/contact" },
+  ],
+  enquires: [
+    {
+      title: `For enquiries`,
+      email: `info@aadyah.com`,
     },
     {
-        title: `Call us`,
-        tel: `+91 9353401723`,
-    }],
-    socialLinks:[
-        {label:'linkedIn',slug:'https://www.linkedin.com/'},
-        {label:'twitter',slug:'https://twitter.com/?lang=en'},
-        {label:'instagram',slug:'https://www.instagram.com/'},
-        {label:'facebook',slug:'https://www.facebook.com/'},
-        {label:'youtube',slug:'https://www.youtube.com/'},
-    ],
-    privacyPolicy:[
-        {label:'Quality & Policy',slug:'/Quality'},
-        {label:'cookie policy',slug:'/cookie'},
-        {label:'Privacy Policy',slug:'/Privacy'},
-    ],
-    copyRights:"@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved."
-}
+      title: `Call us`,
+      tel: `+91 9353401723`,
+    },
+  ],
+  socialLinks: [
+    { label: "linkedIn", slug: "https://www.linkedin.com/" },
+    { label: "twitter", slug: "https://twitter.com/?lang=en" },
+    { label: "instagram", slug: "https://www.instagram.com/" },
+    { label: "facebook", slug: "https://www.facebook.com/" },
+    { label: "youtube", slug: "https://www.youtube.com/" },
+  ],
+  privacyPolicy: [
+    { label: "Quality & Policy", slug: "/Quality" },
+    { label: "cookie policy", slug: "/cookie" },
+    { label: "Privacy Policy", slug: "/Privacy" },
+  ],
+  copyRights: "@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved.",
+};
+
+//calculate planets animation function
+
+export const disableOverflow = (boolean) => {
+  if (boolean) {
+    document.querySelector("body").style.overflow = "hidden";
+    document.querySelector("body").style.height = "100vh";
+  } else {
+    document.querySelector("body").style.overflow = "auto";
+    document.querySelector("body").style.height = "100%";
+  }
+};
