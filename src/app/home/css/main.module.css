@@ -127,6 +127,22 @@
     bottom: 50%;
     text-transform: uppercase;
 }
+.EarthImageLabelSpan:first-child{
+  font-family: "JetBrains Mono";
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: uppercase;
+}
+.EarthImageLabelSpan:last-child{
+  font-family: "JetBrains Mono";
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: uppercase;
+}
 .EarthImageLabelSpan:last-child{
     opacity: 0.5;
 }
