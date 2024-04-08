@@ -210,6 +210,7 @@
         display: none;
     }
     .satelliteRoadmapContent{
+        width: 100%;
         padding-top: 40px;
     }
     .FcsNavBar{
@@ -258,6 +259,9 @@
     }
     .PMRepeaterContent{
         gap: 16px;
+    }
+    .PMRepeaterContent p{
+        width: 100%;
     }
     .SpaceDebrisMissionContainer{
         flex-direction: column;
