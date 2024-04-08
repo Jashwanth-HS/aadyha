@@ -47,7 +47,7 @@ const Banner = () => {
           />
           <source
             media="(max-width: 767px)"
-            srcSet={"/assets/images/career-banner-img.png"}
+            srcSet={"/assets/images/career-banner-mob-img.png"}
           />
           <img
             src="/assets/images/career-banner-img.png"
