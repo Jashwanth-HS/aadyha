@@ -219,6 +219,9 @@
 }
 
 @media(max-width:768px){
+    .Banner p, .Banner h1{
+        width: 100%;
+    }
     .OurValuesWrapper{
         padding: 60px 0;
     }
@@ -230,6 +233,12 @@
     }
     .OurValuesTitle{
         padding-top: 0;
+    }
+    .WorkWithUsTitle{
+        width: 100%;
+    }
+    .TestimonialWrapper p{
+        font-size: 18px;
     }
     .WorkwithusItems{
         gap: 8px;

@@ -57,7 +57,7 @@
 }
 @media(max-width:768px){
     .NavTab{
-        padding: 20px 5% 0 5%;
+        padding: 20px 5% 60px 5%;
         position: relative;
         top: 40px;
     }

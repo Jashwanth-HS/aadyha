@@ -237,6 +237,15 @@
         align-items: flex-start;
         padding: 2rem 0;
     }
+    .SpaceSystemContainer{
+        padding: 40px 0 60px;
+    }
+    .SpaceSystemContainer:nth-child(even)  .LaunchVehicleSystemWrap {
+        padding: 0 16px;
+    }
+    .SpaceSystemContainer:nth-child(odd)  .LaunchVehicleSystemWrap {
+        padding: 0 16px;
+    }
     .LvsLeftItem button{
         margin-top: 40px;
     }
