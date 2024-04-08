@@ -13,6 +13,11 @@
     text-align: center;
     color: hsl(0, 0%, 100%);
 }
+.LineDotContent{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
 .LineDotContent p{
     opacity: 0.5;
 }
@@ -63,6 +68,7 @@
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    text-transform: uppercase;
 }
 .SpaceSystemListContent p{
     color: rgba(255, 255, 255, 0.5);
@@ -139,11 +145,16 @@
     align-items: center;
 }
 .SpaceSystemDiscoverTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 50%;
     margin: 0 auto;
     position: absolute;
     top: 40%;
     margin: 0 auto;
+    z-index: 999;
 }
 .SpaceSystemDiscover button{
     margin-top: 60px;
@@ -225,6 +236,15 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 2rem 0;
+    }
+    .SpaceSystemContainer{
+        padding: 40px 0 60px;
+    }
+    .SpaceSystemContainer:nth-child(even)  .LaunchVehicleSystemWrap {
+        padding: 0 16px;
+    }
+    .SpaceSystemContainer:nth-child(odd)  .LaunchVehicleSystemWrap {
+        padding: 0 16px;
     }
     .LvsLeftItem button{
         margin-top: 40px;

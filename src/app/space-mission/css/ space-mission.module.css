@@ -101,6 +101,9 @@
     align-items: flex-start;
     gap: 150px;
 }
+.satelliteRoadmapItems img{
+    width: 100%;
+}
 .satelliteRoadmapItems p{
     padding: 25px 0 0;
 }
@@ -207,6 +210,7 @@
         display: none;
     }
     .satelliteRoadmapContent{
+        width: 100%;
         padding-top: 40px;
     }
     .FcsNavBar{
@@ -255,6 +259,9 @@
     }
     .PMRepeaterContent{
         gap: 16px;
+    }
+    .PMRepeaterContent p{
+        width: 100%;
     }
     .SpaceDebrisMissionContainer{
         flex-direction: column;

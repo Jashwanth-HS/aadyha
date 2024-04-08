@@ -22,7 +22,7 @@
     justify-content: space-between;
     align-items: flex-start;
     gap: 100px;
-    height: 100px;
+    height: 70px;
     border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
 .NavTabTitles{
@@ -39,7 +39,7 @@
     width: 65%;
 }
 .NavTabTitles img {
-    height: 70px;
+    height: 40px;
     width: auto;
     object-fit: contain;
 }
@@ -57,7 +57,7 @@
 }
 @media(max-width:768px){
     .NavTab{
-        padding: 20px 5% 0 5%;
+        padding: 20px 5% 60px 5%;
         position: relative;
         top: 40px;
     }

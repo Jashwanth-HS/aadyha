@@ -114,6 +114,9 @@
     line-height: normal;
     text-transform: uppercase;
 }
+.FooterLinks li a:hover{
+    color: rgba(0, 0, 0, 0.6);
+}
 .enquiresWrap{
     display: flex;
     flex-direction: column;

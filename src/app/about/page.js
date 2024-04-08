@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "../about/css/about.module.css";
 import { disableOverflow } from "@/helper";
+import { Helmet } from "react-helmet";
 
 export default function About() {
   useEffect(() => {
@@ -9,6 +10,10 @@ export default function About() {
   }, []);
   return (
     <>
+      <Helmet>
+        <title>About - Aadyah Space</title>
+        <meta name="description" content="Aadyah space home page" />
+      </Helmet>
       <div className={styles?.AboutBg}>
         <div className="container">
           <div className={styles.banner}>

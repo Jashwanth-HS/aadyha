@@ -64,7 +64,7 @@
 }
 .OurValuesItems{
     padding-top: 120px;
-    padding-bottom: 60px;
+    justify-content: space-around;
     display: flex;
     gap: 58px;
 }
@@ -219,6 +219,9 @@
 }
 
 @media(max-width:768px){
+    .Banner p, .Banner h1{
+        width: 100%;
+    }
     .OurValuesWrapper{
         padding: 60px 0;
     }
@@ -230,6 +233,12 @@
     }
     .OurValuesTitle{
         padding-top: 0;
+    }
+    .WorkWithUsTitle{
+        width: 100%;
+    }
+    .TestimonialWrapper p{
+        font-size: 18px;
     }
     .WorkwithusItems{
         gap: 8px;
@@ -244,6 +253,9 @@
     }
     .WWURepeater img{
         height: 440px;
+    }
+    .OVRepeater{
+        align-items: center;
     }
     .AadyahImpactTitle{
         flex-direction: column;

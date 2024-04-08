@@ -8,6 +8,7 @@ import PartGridContent from "./components/PartGridContent";
 import NavBar from "./components/NavBar";
 import Container from "@/components/Container";
 import { disableOverflow } from "@/helper";
+import { Helmet } from "react-helmet";
 
 const Banner = () => {
   return (
@@ -23,10 +24,10 @@ export default function Index() {
   }, []);
   return (
     <>
-      {/* <div
-        className={`${styles?.stickyContainer} stickyContainer`}
-        data-lenis-prevent
-      > */}
+      <Helmet>
+        <title> Launch Vehicle System - Aadyah Space</title>
+        <meta name="description" content="Aadyah space home page" />
+      </Helmet>
       <Container>
         <Banner />
       </Container>

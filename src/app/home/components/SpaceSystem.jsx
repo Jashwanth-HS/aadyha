@@ -67,7 +67,7 @@ const SpaceMissionArray = [
 const SpaceSystemArray = [
   {
     sectionTitle: "launch vehicle SYSTEM",
-    sectionSubTitle: "[End to end solutions]",
+    sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: LaunchVehicleSystemArray,
     imagePath: "/assets/images/hp-lvs-img.png",
     renderSvg: "Left1",
@@ -77,7 +77,7 @@ const SpaceSystemArray = [
   },
   {
     sectionTitle: "Space mission",
-    sectionSubTitle: "[End to end solutions]",
+    sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: SatelliteSystemArray,
     imagePath: "/assets/images/hp-flow-control-system.png",
     renderSvg: "Right1",
@@ -88,7 +88,7 @@ const SpaceSystemArray = [
   },
   {
     sectionTitle: "Satellite System",
-    sectionSubTitle: "[End to end solutions]",
+    sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: SpaceMissionArray,
     imagePath: "/assets/images/hp-space-mission.png",
     renderSvg: "Left2",
@@ -368,18 +368,7 @@ const Discovering = ({ title }) => {
           <div className="heading-2">{title}</div>
           <div>
             <a href="/about">
-              <button className="primary-btn">
-                discover Aadyah
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="1"
-                  viewBox="0 0 20 1"
-                  fill="none"
-                >
-                  <path d="M0 0.5H19.5" stroke="white" />
-                </svg>
-              </button>
+              <PrimaryButton isDark label={' discover Aadyah'} />
             </a>
           </div>
         </div>

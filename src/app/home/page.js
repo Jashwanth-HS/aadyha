@@ -5,6 +5,7 @@ import Planets from "./components/Planets";
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
 import MobileViewPlanets from "./components/MobileViewPlanets";
+import { Helmet } from "react-helmet";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -17,11 +18,10 @@ const Section = ({ children }) => {
 export default function Home() {
   return (
     <>
-      <Head key={"homepage"}>
-        <title>Home page</title>
+      <Helmet>
+        <title>Home - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
-      </Head>
-
+      </Helmet>
       <Planets />
       <Section>
         <MobileViewPlanets/>

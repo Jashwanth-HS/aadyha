@@ -15,9 +15,6 @@ export default function Moon({styles}) {
             </p>
         </div>
         <div>
-            <p className={`${styles?.ChandrayanItem} secondary-font`}>
-                <span>[Chandrayaan-3]</span> <span>[2023. ENROUTE MOON]</span>
-            </p>
             <p className={`${styles?.MarsImageLabel} secondary-font`}>
                 <span>[MARS]</span> <span>[home, AWAITING]</span>
             </p>

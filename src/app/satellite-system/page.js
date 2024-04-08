@@ -11,9 +11,15 @@ import {
   MotionControlSystem,
   disableOverflow,
 } from "@/helper";
+import { Helmet } from "react-helmet";
 const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
 const Banner = () => {
   return (
+    <>
+    <Helmet>
+      <title>Satellite System - Aadyah Space</title>
+      <meta name="description" content="Aadyah space home page" />
+    </Helmet>
     <div className={styles?.Banner}>
       <h6 className="micro-large secondary-font">Space system</h6>
       <h1 className="heading-1">Satellite System</h1>
@@ -22,6 +28,7 @@ const Banner = () => {
         to new heights.
       </p>
     </div>
+    </>
   );
 };
 

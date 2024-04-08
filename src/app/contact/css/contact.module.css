@@ -54,7 +54,9 @@
   margin-bottom: 10px;
   padding-bottom: 18px;
   text-transform: uppercase;
+  font-size: 16px;
   font-family: "JetBrains Mono";
+  border-radius: unset;
 }
 .ContactFormItems input[type="text"]::placeholder,
 .ContactFormItems input[type="email"]::placeholder,
@@ -68,7 +70,7 @@
 .ContactFormItems input[type="tel"]:focus,
 .ContactFormItems textarea:focus {
   outline: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
 }
 .ActionContainer{
     display: flex;
@@ -221,6 +223,9 @@ height: 12px;
 }
 
 @media(max-width:768px){
+    .Banner h1{
+        width: 90%;
+    }
     .ContactContainer{
         flex-direction: column;
         gap: 60px;
@@ -249,7 +254,7 @@ height: 12px;
         padding: 0;
     }
     .ConnectUsItems{
-        gap: 100px;
+        gap: 60px;
     }
     .OurCustomersContainer{
         flex-direction: column;

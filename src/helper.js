@@ -198,7 +198,7 @@ export const controlSystemNavBar = {
       title: "MONITORING & DRIVE ELECTRONICS",
       data: [
         {
-          image: "/assets/images/fill-drain-valve.png",
+          image: "/assets/images/driver-circuit-software.png",
           title: "Driver Circuit Software",
         },
       ],
@@ -415,10 +415,10 @@ export const satelliteRoadmap = {
       id: 1,
       title: "Satellite Stabilization and Debris Management",
       data: {
-        image: "/assets/images/spacecarft-operation.svg",
+        image: "/assets/images/spacecraft-operations.svg",
         title: "Satellite Stabilization and Debris Management",
         description:
-          "AADYAH embarked on an exciting mission that involves the launch of a 16U satellite. This satellite has a dual-purpose objective: first, to demonstrate advanced satellite stabilization techniques, and second, to establish robust communication capabilities. The mission also showcases spacecraft maneuvering abilities utilizing RADAR and optical payload data to precisely reach targeted space debris. AADYAH uses cutting edge Electro-optic payloads, including cameras and LiDAR technology, for the characterization of this space debris.",
+          "AADYAH embarked on an exciting mission that involves the launch of a 16U satellite. This satellite has  a dual-purpose objective: first, to demonstrate advanced satellite stabilization techniques, and  second, to establish robust communication capabilities.",
         button: {
           text: "read more",
         },
@@ -441,10 +441,10 @@ export const satelliteRoadmap = {
       id: 3,
       title: "Debris Rendezvous and Advanced Space Operations",
       data: {
-        image: "/assets/images/spacecarft-operation.svg",
+        image: "/assets/images/debris-rendezvous.svg",
         title: "Debris Rendezvous and Advanced Space Operations",
         description:
-          "We are initiating the mission with a two-fold purpose. Firstly, we will demonstrate our spacecraft's ability to rendezvous with space debris, showcasing our precision and control in space operations. Secondly, we will exhibit the remote operation of the spacecraft's robotic arm (or an alternative technology for debris removal), representing a leap forward in space technology. Additionally, we will conduct vital demonstrations involving spacecraft refueling and the performance evaluation of space situational awareness devices.",
+          "We are initiating the mission with a two-fold purpose. Firstly, we will demonstrate our spacecraft's  ability to rendezvous with space debris, showcasing our precision and control in space operations.  Secondly, we will exhibit the remote operation of the spacecraft's robotic arm (or an alternative  technology for debris removal), representing a leap forward in space technology.",
         button: {
           text: "read more",
         },
@@ -454,10 +454,10 @@ export const satelliteRoadmap = {
       id: 4,
       title: "Deorbiting Debris with Precision",
       data: {
-        image: "/assets/images/spacecarft-operation.svg",
+        image: "/assets/images/deorbiting-debris.svg",
         title: "Deorbiting Debris with Precision",
         description:
-          "Our mission is to demonstrate the deorbiting of space debris with enhanced precision and efficiency. This will include the deorbiting of smaller, less massive debris using a robotic arm, showcasing our mastery over intricate space operations. Moreover, AADYAH will demonstrate the removal of larger, more massive debris utilizing a specialized net system. This mission solidifies our commitment to making space safer and cleaner through cutting-edge technology and innovation.",
+          "Our mission is to demonstrate the deorbiting of space debris with enhanced precision and efficiency.  This will include the deorbiting of smaller, less massive debris using a robotic arm, showcasing our  mastery over intricate space operations.",
         button: {
           text: "read more",
         },
@@ -505,34 +505,24 @@ export const ourValues = {
     "Where our values drive every aspect of our work. At the heart of our operations lie integrity, innovation, and excellence.",
   data: [
     {
-      image: "/assets/images/our-value-icon.svg",
-      title: "[Our value 1]",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: "/assets/images/ov-trust.svg",
+      title: "Trust",
     },
     {
-      image: "/assets/images/our-value-icon.svg",
-      title: "[Our value 2]",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: "/assets/images/ov-accountability.svg",
+      title: "Accountability",
     },
     {
-      image: "/assets/images/our-value-icon.svg",
-      title: "[Our value 3]",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: "/assets/images/ov-commitment.svg",
+      title: "Commitment",
     },
     {
-      image: "/assets/images/our-value-icon.svg",
-      title: "[Our value 4]",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: "/assets/images/ov-integrity.svg",
+      title: "Integrity",
     },
     {
-      image: "/assets/images/our-value-icon.svg",
-      title: "[OUr value 5]",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      image: "/assets/images/ov-transparency.svg",
+      title: "Transparency",
     },
   ],
 };
@@ -557,10 +547,10 @@ export const aadyahImpact = {
     "On a daily basis, AADYAH employees work on programs and projects with the potential to notably impact our lives on Earth and beyond the stars. ",
   data: [
     {
-      image: "/assets/images/chandrayaan-img.png",
+      image: "/assets/images/stanford-seed.png",
       title: "In the NEWS",
       description:
-        "Chandrayaan 3: Top Indian Startups Making Their Mark in Space",
+        "AADYAH in Stanford SEED 2024 Cohort",
     },
     {
       image: "/assets/images/tech-startup-aadyah.png",

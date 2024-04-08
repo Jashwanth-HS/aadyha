@@ -5,9 +5,15 @@ import React, { useEffect } from "react";
 import Contact from "./components/Contact";
 import OurCustomers from "./components/OurCustomers";
 import { disableOverflow } from "@/helper";
+import { Helmet } from "react-helmet";
 
 const Banner = () => {
   return (
+    <>
+    <Helmet>
+      <title> Contact - Aadyah Space</title>
+      <meta name="description" content="Aadyah space home page" />
+    </Helmet>
     <div className={styles?.Banner}>
       <div>
         <h1 className="heading-1">Reach out to us to know more</h1>
@@ -17,6 +23,7 @@ const Banner = () => {
         </p>
       </div>
     </div>
+    </>
   );
 };
 
