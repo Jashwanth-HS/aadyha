@@ -90,13 +90,15 @@ export default function Clients() {
                                 <p className="caption secondary-font">Chairman of the Board, Managing Director </p>
                             </div>
                         </div>
-                        <div className={styles?.CeoMessageContentBottm}>
-                            <div><img src={"/assets/images/space-avionics.png"}/></div>
-                            <div>
-                                <h3 className="sub-heading-3">Space Avionics - Design Nuggets</h3>
-                                <p className="caption secondary-font">Mr. Sethurajan shared his insights and experience on Mission Development</p>
+                        <a href="">
+                            <div className={styles?.CeoMessageContentBottm}>
+                                <div><img src={"/assets/images/space-avionics.png"}/></div>
+                                <div>
+                                    <h3 className="sub-heading-3">Space Avionics - Design Nuggets</h3>
+                                    <p className="caption secondary-font">Mr. Sethurajan shared his insights and experience on Mission Development</p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -64,7 +64,6 @@
 }
 .OurValuesItems{
     padding-top: 120px;
-    padding-bottom: 60px;
     justify-content: space-around;
     display: flex;
     gap: 58px;
@@ -245,6 +244,9 @@
     }
     .WWURepeater img{
         height: 440px;
+    }
+    .OVRepeater{
+        align-items: center;
     }
     .AadyahImpactTitle{
         flex-direction: column;

@@ -547,7 +547,7 @@ export const aadyahImpact = {
     "On a daily basis, AADYAH employees work on programs and projects with the potential to notably impact our lives on Earth and beyond the stars. ",
   data: [
     {
-      image: "/assets/images/chandrayaan-img.png",
+      image: "/assets/images/stanford-seed.png",
       title: "In the NEWS",
       description:
         "Chandrayaan 3: Top Indian Startups Making Their Mark in Space",

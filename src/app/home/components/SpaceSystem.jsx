@@ -67,7 +67,7 @@ const SpaceMissionArray = [
 const SpaceSystemArray = [
   {
     sectionTitle: "launch vehicle SYSTEM",
-    sectionSubTitle: "[End to end solutions]",
+    sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: LaunchVehicleSystemArray,
     imagePath: "/assets/images/hp-lvs-img.png",
     renderSvg: "Left1",
@@ -77,7 +77,7 @@ const SpaceSystemArray = [
   },
   {
     sectionTitle: "Space mission",
-    sectionSubTitle: "[End to end solutions]",
+    sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: SatelliteSystemArray,
     imagePath: "/assets/images/hp-flow-control-system.png",
     renderSvg: "Right1",
@@ -88,7 +88,7 @@ const SpaceSystemArray = [
   },
   {
     sectionTitle: "Satellite System",
-    sectionSubTitle: "[End to end solutions]",
+    sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: SpaceMissionArray,
     imagePath: "/assets/images/hp-space-mission.png",
     renderSvg: "Left2",
