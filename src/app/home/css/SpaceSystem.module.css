@@ -228,6 +228,7 @@
     }
     .LvsRightItem img{
         width: 100%;
+        max-width: 300px;
     }
     .SpaceSystemContentLeftList{
         grid-template-columns: 1fr;
@@ -254,6 +255,8 @@
     }
     .BlockDataContainer.BlockDataContainerRight{
         flex-direction: column-reverse;
+        gap: 40px;
+        padding-top: 20px;
     }
     .svgRender img{
         width: 100%;
@@ -267,4 +270,12 @@
     .SpaceSystemDiscover{
         height: 300px;
     }
+    .LvsRightItemBottom.LvsRightItem .svgRender{
+        position: absolute;
+        right: 0;
+        left: 0;
+        width: 84%;
+        height: auto;
+        transform: rotate(90deg);
+     }
 }
