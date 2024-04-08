@@ -34,21 +34,28 @@
     padding-top: 1rem;
     border-top: 1px solid gray;
 }
+.SpaceSystemContainer:nth-child(even)  .LaunchVehicleSystemWrap {
+    padding: 100px 0 100px 80px;
+}
+.SpaceSystemContainer:nth-child(odd)  .LaunchVehicleSystemWrap {
+    padding: 100px 80px 100px 0px;
+}
 
 .SpaceSystemListitems {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    flex-direction: column;
     margin-bottom: 1rem;
     flex: calc(50% - 1rem);
     padding-bottom: 2rem;
-    padding-inline: 2rem;
     border-bottom: 1px solid gray;
 }
+.SpaceSystemListitems:nth-child(odd){
+    padding-right: 2rem;
+}
 .SpaceSystemListitems img{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
 }
 .SpaceSystemListContent{
@@ -56,6 +63,9 @@
     flex-direction: column;
     gap: 5px;
     width: 100%;
+}
+.SpaceSystemListContent p{
+    color: rgba(255, 255, 255, 0.5);
 }
 .LvsLeftItemTitle p{
     text-transform: uppercase;
@@ -94,6 +104,7 @@
     width: 50%;
 }
 .LvsRightItem img{
+    max-width: 500px;
     width: 100%;
     position: relative;
 }

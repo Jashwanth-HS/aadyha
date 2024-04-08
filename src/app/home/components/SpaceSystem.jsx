@@ -167,7 +167,7 @@ const SpaceSystem = ({ data }) => {
   }, [isElementVisible]);
   return (
     <>
-      <div className={styles.LaunchVehicleSystemContainer} ref={elementRef}>
+      <div className={styles.SpaceSystemContainer} ref={elementRef}>
         <SectionTitle
           title={sectionTitle || "launch vehicle SYSTEM"}
           subTitle={sectionSubTitle || "[End to end solutions]"}
@@ -191,8 +191,8 @@ const SpaceSystem = ({ data }) => {
                         <img src={e?.src} alt="" />
                       </div>
                       <div className={styles?.SpaceSystemListContent}>
-                        <div className="micro-large">{e?.title}</div>
-                        {/* <div className="caption">{e?.subTitle}</div> */}
+                        <h4 className="micro-large secondary-font">{e?.title}</h4>
+                        <p className="caption secondary-font">{e?.subTitle}</p>
                       </div>
                     </div>
                   );
@@ -436,7 +436,8 @@ const Discovering = ({ title }) => {
 
 export default function SpaceSystemWrap() {
   return (
-    <div className={styles.SpaceSystemContainer}>
+    // <div className={styles.SpaceSystemContainer}>
+    <>
       {SpaceSystemArray?.map((e, index) => {
         return (
           <React.Fragment key={index}>
@@ -445,6 +446,7 @@ export default function SpaceSystemWrap() {
         );
       })}
       <Discovering title={"Discovering tomorrow's universe today"} />
-    </div>
+      </>
+    // </div>
   );
 }
