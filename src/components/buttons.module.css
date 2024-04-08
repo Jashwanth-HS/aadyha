@@ -19,6 +19,7 @@
     gap: 1.25rem;
     font-family: "JetBrains Mono";
     transition: all 0.3s ease;
+    cursor: pointer;
     @media(max-width:1440px){
         font-size: 12px;
     }

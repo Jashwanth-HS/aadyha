@@ -139,11 +139,16 @@
     align-items: center;
 }
 .SpaceSystemDiscoverTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 50%;
     margin: 0 auto;
     position: absolute;
     top: 40%;
     margin: 0 auto;
+    z-index: 999;
 }
 .SpaceSystemDiscover button{
     margin-top: 60px;
