@@ -143,6 +143,7 @@ a {
   color: #fff;
   text-transform: uppercase;
   cursor: pointer;
+  font-family: "JetBrains Mono";
 }
 .primary-btn-light{
   display: inline-flex;
