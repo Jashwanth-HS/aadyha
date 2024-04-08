@@ -278,7 +278,7 @@ const Planets = () => {
         setEarthImageLabelSpanText2(LabelSpanText2);
         setEarthDescription1(Description1);
         setEarthDescription2(Description2);
-      }, 2500);
+      }, 2000);
     }
     return () => {
       clearTimeout(setTimeoutId);
@@ -309,6 +309,7 @@ const Planets = () => {
           style={{ bottom: !headingText.includes("EARTH") ? "53%" : "0" }}
         >
           <WordAnimation
+            fading={true}
             stagger={0.1}
             word={headingText}
             style={{
@@ -333,20 +334,19 @@ const Planets = () => {
             <WordAnimation
               typing={true}
               word={earthImageLabelSpanText1}
-              NoOpacity={true}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
             />
             <WordAnimation
               typing={true}
               word={earthImageLabelSpanText2}
-              NoOpacity={true}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
             />
           </div>
           <div className={styles.EarthDescription}>
             <WordAnimation
+              fading={true}
               stagger={0.07}
               word={earthDescription1}
               className={"heading-3"}
@@ -354,6 +354,7 @@ const Planets = () => {
             />
             <WordAnimation
               typing={true}
+              typeDelay={50}
               word={earthDescription2}
               className={"caption secondary-font"}
               marginSpace={"0px"}
