@@ -75,11 +75,11 @@ export default function page() {
           <AadyahImpact styles={styles} />
         </Container>
       </div>
-      <div className={styles?.TestimonialContainer}>
+      {/* <div className={styles?.TestimonialContainer}>
         <Container>
           <Testimonial styles={styles} />
         </Container>
-      </div>
+      </div> */}
       <Container>
         <Opportunities styles={styles} />
       </Container>

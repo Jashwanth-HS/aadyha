@@ -702,9 +702,9 @@ export const footer = {
   ],
   socialLinks: [
     { label: "linkedIn", slug: "https://www.linkedin.com/" },
-    { label: "twitter", slug: "https://twitter.com/?lang=en" },
-    { label: "instagram", slug: "https://www.instagram.com/" },
-    { label: "facebook", slug: "https://www.facebook.com/" },
+    { label: "twitter", slug: "https://twitter.com/AadyahAerospace" },
+    // { label: "instagram", slug: "https://www.instagram.com/" },
+    // { label: "facebook", slug: "https://www.facebook.com/" },
     { label: "youtube", slug: "https://www.youtube.com/" },
   ],
   privacyPolicy: [
