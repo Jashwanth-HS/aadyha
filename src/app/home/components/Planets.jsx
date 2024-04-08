@@ -6,6 +6,8 @@ import styles from "../css/main.module.css";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
 import WordAnimation from "@/components/WordAnimation";
 import { disableOverflow } from "@/helper";
+let initialRender = true;
+
 // Model component which loads a 3D model and animations
 const Model = forwardRef((props, ref) => {
   // Refs for the group and camera actions
@@ -271,17 +273,21 @@ const Planets = () => {
           ? `[SINCE 2013]`
           : `[384,400 km]`;
 
-      setTimeoutId = setTimeout(() => {
-        overlayDescriptionRef.current.style.opacity = "1";
-        addLineText.current.classList.add(styles.addLineTextAnimation);
+      setTimeoutId = setTimeout(
+        () => {
+          overlayDescriptionRef.current.style.opacity = "1";
+          addLineText.current.classList.add(styles.addLineTextAnimation);
 
-        setEarthSpanText3(spanText3);
-        setEarthSpanText4(spanText4);
-        setEarthImageLabelSpanText1(LabelSpanText1);
-        setEarthImageLabelSpanText2(LabelSpanText2);
-        setEarthDescription1(Description1);
-        setEarthDescription2(Description2);
-      }, 2000);
+          setEarthSpanText3(spanText3);
+          setEarthSpanText4(spanText4);
+          setEarthImageLabelSpanText1(LabelSpanText1);
+          setEarthImageLabelSpanText2(LabelSpanText2);
+          setEarthDescription1(Description1);
+          setEarthDescription2(Description2);
+          initialRender = false;
+        },
+        initialRender ? 0 : 2000
+      );
     }
     return () => {
       clearTimeout(setTimeoutId);
@@ -336,12 +342,14 @@ const Planets = () => {
             <p ref={addLineText} className={styles.addLineText}></p>
             <WordAnimation
               typing={true}
+              typeDelay={30}
               word={earthImageLabelSpanText1}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
             />
             <WordAnimation
               typing={true}
+              typeDelay={30}
               word={earthImageLabelSpanText2}
               className={styles.EarthImageLabelSpan}
               marginSpace={"0px"}
@@ -351,13 +359,14 @@ const Planets = () => {
             <WordAnimation
               fading={true}
               stagger={0.05}
+              typeDelay={30}
               word={earthDescription1}
               className={"heading-3"}
               marginSpace={"0px"}
             />
             <WordAnimation
               typing={true}
-              typeDelay={40}
+              typeDelay={30}
               word={earthDescription2}
               className={"caption secondary-font"}
               marginSpace={"0px"}
@@ -390,12 +399,14 @@ const Planets = () => {
           >
             <WordAnimation
               typing={true}
+              typeDelay={30}
               word={earthSpanText3}
               className={`${styles?.MoonImageLabel} secondary-font`}
               marginSpace={"0px"}
             />
             <WordAnimation
               typing={true}
+              typeDelay={30}
               word={earthSpanText4}
               className={`${styles?.MoonImageLabel} secondary-font`}
               marginSpace={"0px"}
