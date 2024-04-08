@@ -226,7 +226,7 @@ export default function About() {
               </div>
               <h3>Shaju Stephen</h3>
               <p>Chairman & Managing Director</p>
-              <img src={"/assets/images/linkedin.svg"} />
+              <a target="_blank" href="https://www.linkedin.com/in/shaju-stephen-9211223/?originalSubdomain=in"><img src={"/assets/images/linkedin.svg"} /></a>
             </div>
             <div className={styles?.LeadershipTeamItem}>
               <div className={styles?.LeadershipTeamProfile}>
@@ -234,7 +234,7 @@ export default function About() {
               </div>
               <h3>V Sunderarajan</h3>
               <p>CEO</p>
-              <img src={"/assets/images/linkedin.svg"} />
+              <a target="_blank" href="https://www.linkedin.com/in/sunderarajan-varadan-37609716/"><img src={"/assets/images/linkedin.svg"} /></a>
             </div>
             <div className={styles?.LeadershipTeamItem}>
               <div className={styles?.LeadershipTeamProfile}>
@@ -242,7 +242,7 @@ export default function About() {
               </div>
               <h3>Pradeep Kumar</h3>
               <p>CTO</p>
-              <img src={"/assets/images/linkedin.svg"} />
+              <a target="_blank" href="https://www.linkedin.com/in/pradeep-kumar-68686357/"><img src={"/assets/images/linkedin.svg"} /></a>
             </div>
             <div className={styles?.LeadershipTeamItem}>
               <div className={styles?.LeadershipTeamProfile}>
@@ -250,7 +250,7 @@ export default function About() {
               </div>
               <h3>Sabu Joseph</h3>
               <p>Director, People and Culture</p>
-              <img src={"/assets/images/linkedin.svg"} />
+              <a target="_blank" href="https://www.linkedin.com/in/sabu-joseph-0a03a58/"><img src={"/assets/images/linkedin.svg"} /></a>
             </div>
             <div className={styles?.LeadershipTeamItem}>
               <div className={styles?.LeadershipTeamProfile}>
@@ -258,7 +258,7 @@ export default function About() {
               </div>
               <h3>Amarnath reddy</h3>
               <p>GM-Systems engineering</p>
-              <img src={"/assets/images/linkedin.svg"} />
+              <a target="_blank" href=""><img src={"/assets/images/linkedin.svg"} /></a>
             </div>
             <div className={styles?.LeadershipTeamItem}>
               <div className={styles?.LeadershipTeamProfile}>
@@ -266,7 +266,7 @@ export default function About() {
               </div>
               <h3>Varun Kurup</h3>
               <p>Director, Finance</p>
-              <img src={"/assets/images/linkedin.svg"} />
+              <a target="_blank" href="https://www.linkedin.com/in/varunkurup/?originalSubdomain=in"><img src={"/assets/images/linkedin.svg"} /></a>
             </div>
           </div>
         </div>

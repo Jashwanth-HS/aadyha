@@ -78,6 +78,14 @@
     line-height: normal;
     text-transform: uppercase;
 }
+.navHeaderLinksContainer li a{
+    font-family: "JetBrains Mono";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
 .navHeaderButton{
     display: flex;
     width: fit-content;
@@ -120,6 +128,15 @@
 }
 .colorNavHeader .NavActive::after{
     background: #000;
+}
+
+@media(max-width:1440px){
+    .navHeaderLinksContainer ul{
+        gap: 3rem;
+    }
+    .navHeaderLinksContainer li a{
+        font-size: 12px;
+    }
 }
 @media(max-width:768px){
 .navHeaderLogo{
