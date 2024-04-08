@@ -728,7 +728,7 @@ export const footer = {
 //calculate planets animation function
 
 export const disableOverflow = (boolean) => {
-  if (boolean) {
+  if (boolean && window.innerWidth >= 768) {
     document.querySelector("body").style.overflowY = "hidden";
     document.querySelector("body").style.height = "100vh";
   } else {

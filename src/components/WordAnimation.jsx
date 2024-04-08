@@ -7,6 +7,7 @@ const WordAnimation = ({
   className,
   stagger,
   typing,
+  fading,
   typeDelay = 100,
   marginSpace = "60px",
   delay = 0,
@@ -28,17 +29,20 @@ const WordAnimation = ({
   };
   const fadingAnimation = () => {
     const letters = wordRef.current ? wordRef.current.children : null;
-    gsap.set(letters, {
-      opacity: 0,
-      y: 100,
-    });
-    gsap.to(letters, {
-      duration: 1,
-      opacity: 1,
-      y: 0,
-      stagger: stagger || 0.3,
-    });
+    if (letters) {
+      gsap.set(letters, {
+        opacity: 0,
+        y: 100,
+      });
+      gsap.to(letters, {
+        duration: 1,
+        opacity: 1,
+        y: 0,
+        stagger: stagger || 0.3,
+      });
+    }
   };
+
   const animateWord = typing ? typingAnimation : fadingAnimation;
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -52,9 +56,8 @@ const WordAnimation = ({
 
   return word ? (
     <div className={className} ref={wordRef} style={style}>
-      {typing ? (
-        <></>
-      ) : (
+      {typing && <></>}
+      {fading &&
         word.split("").map((letter, index) => {
           return (
             <span
@@ -67,8 +70,7 @@ const WordAnimation = ({
               {letter}
             </span>
           );
-        })
-      )}
+        })}
     </div>
   ) : (
     <></>
