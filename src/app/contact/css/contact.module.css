@@ -70,7 +70,7 @@
 .ContactFormItems input[type="tel"]:focus,
 .ContactFormItems textarea:focus {
   outline: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
 }
 .ActionContainer{
     display: flex;
@@ -251,7 +251,7 @@ height: 12px;
         padding: 0;
     }
     .ConnectUsItems{
-        gap: 100px;
+        gap: 60px;
     }
     .OurCustomersContainer{
         flex-direction: column;
