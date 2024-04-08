@@ -131,45 +131,7 @@ a {
 .secondary-font{
   font-family: "JetBrains Mono";
 }
-/* button */
-.primary-btn{
-  display: inline-flex;
-  padding: 14px 28px 14px 21px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  background: #000;
-  border: none;
-  color: #fff;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-family: "JetBrains Mono";
-}
-.primary-btn-light{
-  display: inline-flex;
-  padding: 14px 28px 14px 21px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  background: #fff;
-  border: none;
-  color: #000;
-  text-transform: uppercase;
-  font-family: "JetBrains Mono";
-  cursor: pointer;
-}
-.secondary-btn{
-  display: inline-flex;
-  padding: 14px 28px 14px 21px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid #000;
-  color: #000;
-  background: transparent;
-  text-transform: uppercase;
-  cursor: pointer;
-}
+
 /* Headings */
 .title-1{
   font-size: 410px;

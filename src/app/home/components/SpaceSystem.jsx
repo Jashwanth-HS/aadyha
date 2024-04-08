@@ -368,18 +368,7 @@ const Discovering = ({ title }) => {
           <div className="heading-2">{title}</div>
           <div>
             <a href="/about">
-              <button className="primary-btn">
-                discover Aadyah
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="1"
-                  viewBox="0 0 20 1"
-                  fill="none"
-                >
-                  <path d="M0 0.5H19.5" stroke="white" />
-                </svg>
-              </button>
+              <PrimaryButton isDark label={' discover Aadyah'} />
             </a>
           </div>
         </div>

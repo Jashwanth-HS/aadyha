@@ -1,4 +1,5 @@
 'use client';
+import { PrimaryButton } from '@/components/Buttons';
 import React, { useEffect } from 'react'
 import { useState } from "react";
 
@@ -95,12 +96,7 @@ export default function ContactForm({ style }) {
         </div>
 
         <div className={style?.ActionContainer}>
-          <button type="submit" className='primary-btn-light'>
-            send message
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="1" viewBox="0 0 20 1" fill="none">
-              <path d="M0 0.5H19.5" stroke="black" />
-            </svg>
-          </button>
+          <PrimaryButton isDark label={'send message'} />
           <div className={style?.SubmitMessage}>
             {success ? <p className={style?.successMessage}>
               <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10" fill="none">
