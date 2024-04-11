@@ -42,7 +42,7 @@ export default function Gauidance({ styles }) {
                 </div>
                 <div>
                   <h3 className="sub-heading-1">{title}</h3>
-                  <p>{description}</p>
+                  <p className="paragraph">{description}</p>
                 </div>
               </div>
             );

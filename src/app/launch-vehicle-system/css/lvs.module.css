@@ -35,7 +35,7 @@
 .TvcWrap{
     display: flex;
     flex-direction: row-reverse;
-    gap: 150px;
+    gap: 100px;
     align-items: center;
     padding-top: 100px;
 }
@@ -100,7 +100,9 @@
 .GncItems h3{
     padding-bottom: 24px;
 }
-
+.GncItems p{
+    color: rgba(255, 255, 255, 0.8);
+}
 /* Avionics */
 .AvionicsContainer{
     padding: 90px 0;

@@ -14,7 +14,7 @@ const Banner = () => {
       <title> Contact - Aadyah Space</title>
       <meta name="description" content="Aadyah space home page" />
     </Helmet>
-    <div className={styles?.Banner}>
+    {/* <div className={styles?.Banner}>
       <div>
         <h1 className="heading-1">Reach out to us to know more</h1>
         <p className="paragraph">
@@ -22,7 +22,7 @@ const Banner = () => {
           pharetra vestibulum tincidunt.
         </p>
       </div>
-    </div>
+    </div> */}
     </>
   );
 };

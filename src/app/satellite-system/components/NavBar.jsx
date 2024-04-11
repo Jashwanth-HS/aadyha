@@ -9,7 +9,7 @@ export default function NavBar({styles}) {
           const { title, image } = item || {};
           return <>
             {image && <img src={image} />}
-            {title && <div className={`${styles?.SsTabTitle} secondary-font`}>{title}</div>}
+            {title && <div className={`${styles?.SsTabTitle} secondary-font micro-large`}>{title}</div>}
           </>
         }
       }

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import styles from "../about/css/about.module.css";
 import { disableOverflow } from "@/helper";
 import { Helmet } from "react-helmet";
+import { PrimaryButton } from "@/components/Buttons";
 
 export default function About() {
   useEffect(() => {
@@ -200,18 +201,7 @@ export default function About() {
               space technology and leave an indelible mark on the universe.{" "}
             </p>
             <a href="/careers">
-              <button className="primary-btn">
-                View careers{" "}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="1"
-                  viewBox="0 0 20 1"
-                  fill="none"
-                >
-                  <path d="M0 0.5H19.5" stroke="white" />
-                </svg>
-              </button>
+              <PrimaryButton isDark label={"View careers"} />
             </a>
           </div>
         </div>

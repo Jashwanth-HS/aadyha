@@ -76,7 +76,7 @@ const SpaceSystemArray = [
     Button : {label : "Explore more", slug:"/launch-vehicle-system"}
   },
   {
-    sectionTitle: "Space mission",
+    sectionTitle: "Satellite System",
     sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: SatelliteSystemArray,
     imagePath: "/assets/images/hp-flow-control-system.png",
@@ -87,7 +87,7 @@ const SpaceSystemArray = [
     Button : {label : "Explore more", slug:"/satellite-system"}
   },
   {
-    sectionTitle: "Satellite System",
+    sectionTitle: "Space mission",
     sectionSubTitle: "[Trusted partner  for your space missions]",
     blocks: SpaceMissionArray,
     imagePath: "/assets/images/hp-space-mission.png",

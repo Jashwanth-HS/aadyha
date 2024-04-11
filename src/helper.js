@@ -547,11 +547,13 @@ export const aadyahImpact = {
     "On a daily basis, AADYAH employees work on programs and projects with the potential to notably impact our lives on Earth and beyond the stars. ",
   data: [
     {
+      slug:"https://www.linkedin.com/pulse/aadyah-stanford-seed-2024-cohort-aadyah-aerospace-private-limited-qrunc/?trackingId=SJWg5f5nQn6t45vWy90xpQ%3D%3D",
       image: "/assets/images/stanford-seed.png",
       title: "In the NEWS",
       description: "AADYAH in Stanford SEED 2024 Cohort",
     },
     {
+      slug:"https://www.keiretsuforum.in/news/exclusive-keiretsu-forum-invests-in-defence-tech-startup-aadyah/20",
       image: "/assets/images/tech-startup-aadyah.png",
       title: "In the NEWS",
       description: "Keiretsu Forum Invests In Defense- Tech Startup AADYAH",
@@ -701,9 +703,9 @@ export const footer = {
   ],
   socialLinks: [
     { label: "linkedIn", slug: "https://www.linkedin.com/" },
-    { label: "twitter", slug: "https://twitter.com/?lang=en" },
-    { label: "instagram", slug: "https://www.instagram.com/" },
-    { label: "facebook", slug: "https://www.facebook.com/" },
+    { label: "twitter", slug: "https://twitter.com/AadyahAerospace" },
+    // { label: "instagram", slug: "https://www.instagram.com/" },
+    // { label: "facebook", slug: "https://www.facebook.com/" },
     { label: "youtube", slug: "https://www.youtube.com/" },
   ],
   privacyPolicy: [
@@ -711,7 +713,8 @@ export const footer = {
     { label: "cookie policy", slug: "/cookie-policy" },
     { label: "Privacy Policy", slug: "/privacy-policy" },
   ],
-  copyRights: "@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved.",
+  copyRights: "@ Copyright 2024. AADYAH AEROSPACE.",
+  allRightsReserved : "All Rights Reserved."
 };
 
 //calculate planets animation function

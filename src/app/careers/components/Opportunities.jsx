@@ -11,7 +11,7 @@ export default function Opportunities({ styles }) {
         <div className={styles?.OpportunitiesWrapper} id={slug}>
             <h2 className="heading-1">{title}</h2>
             <p className="paragraph">{description}</p>
-            <PrimaryButton isDark label={button?.text} />
+            <a target='_blank' href="https://www.linkedin.com/company/aadyah-aerospace-private-limited/"><PrimaryButton isDark label={button?.text} /></a>
         </div>
     )
 }
