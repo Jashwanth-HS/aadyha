@@ -549,8 +549,7 @@ export const aadyahImpact = {
     {
       image: "/assets/images/stanford-seed.png",
       title: "In the NEWS",
-      description:
-        "AADYAH in Stanford SEED 2024 Cohort",
+      description: "AADYAH in Stanford SEED 2024 Cohort",
     },
     {
       image: "/assets/images/tech-startup-aadyah.png",
@@ -708,9 +707,9 @@ export const footer = {
     { label: "youtube", slug: "https://www.youtube.com/" },
   ],
   privacyPolicy: [
-    { label: "Quality & Policy", slug: "/Quality" },
-    { label: "cookie policy", slug: "/cookie" },
-    { label: "Privacy Policy", slug: "/Privacy" },
+    { label: "Quality & Policy", slug: "/quality-policy" },
+    { label: "cookie policy", slug: "/cookie-policy" },
+    { label: "Privacy Policy", slug: "/privacy-policy" },
   ],
   copyRights: "@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved.",
 };

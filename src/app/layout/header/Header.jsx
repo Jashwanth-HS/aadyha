@@ -28,7 +28,7 @@ export default function Header() {
       } else {
         navHeaderRef.current.classList.remove(styles?.hideNavHeader);
       }
-      if (window.scrollY <= 400) {
+      if (window.scrollY <= 100) {
         if (isLight) {
           navHeaderRef.current.classList.remove(styles?.colorNavHeader);
           navHeaderRef.current.classList.add(styles?.colorNavHeaderLight);
@@ -94,7 +94,6 @@ export default function Header() {
   };
   return (
     <>
-      
       <header ref={navHeaderRef} className={styles?.navHeader}>
         <div className={styles?.navHeaderInner}>
           <Link
