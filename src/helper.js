@@ -714,7 +714,8 @@ export const footer = {
     { label: "cookie policy", slug: "/cookie" },
     { label: "Privacy Policy", slug: "/Privacy" },
   ],
-  copyRights: "@ Copyright 2024. AADYAH AEROSPACE.  All Rights Reserved.",
+  copyRights: "@ Copyright 2024. AADYAH AEROSPACE.",
+  allRightsReserved : "All Rights Reserved."
 };
 
 //calculate planets animation function

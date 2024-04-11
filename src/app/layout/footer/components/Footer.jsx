@@ -12,8 +12,8 @@ export default function Footer({ styles }) {
     links,
     enquires,
     socialLinks,
-    privacyPolicy,
     copyRights,
+    allRightsReserved,
   } = footer || {};
 
   return (
@@ -73,17 +73,8 @@ export default function Footer({ styles }) {
         </div>
       </div>
       <div className={styles?.copyRightsWrapper}>
-        <div className={styles?.copyRightsItems}>
-          {privacyPolicy.map((e, index) => {
-            const { label, slug } = e || {};
-            return (
-              <a href={slug} key={index}>
-                {label}
-              </a>
-            );
-          })}
-        </div>
         <div className={styles?.privacyPolicyItems}>{copyRights}</div>
+        <div className={styles?.privacyPolicyItems}>{allRightsReserved}</div>
       </div>
     </div>
   );
