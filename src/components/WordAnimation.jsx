@@ -45,14 +45,10 @@ const WordAnimation = ({
 
   const animateWord = typing ? typingAnimation : fadingAnimation;
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (word) {
-        animateWord();
-      }
-    }, delay);
-
-    return () => clearTimeout(timeout);
-  }, [word, delay]);
+    if (word) {
+      animateWord();
+    }
+  }, [word, stagger, typeDelay]);
 
   return (
     <div className={className} ref={wordRef} style={style}>

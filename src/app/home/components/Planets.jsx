@@ -8,19 +8,19 @@ import WordAnimation from "@/components/WordAnimation";
 import { disableOverflow } from "@/helper";
 let initialRender = true;
 
-// Model component which loads a 3D model and animations
 const Model = forwardRef((props, ref) => {
-  // Refs for the group and camera actions
   const group = useRef();
   const valueRef = useRef(0);
   const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
   const { actions } = useAnimations(animations, group);
-
-  // Get reference to the camera action
   const cameraAction = actions["Animation"];
 
   // Effect to pause camera animation on mount
-  useEffect(() => void (actions["Animation"].play().paused = true), []);
+  useEffect(() => {
+    if (cameraAction) {
+      cameraAction.paused = true;
+    }
+  }, [cameraAction]);
 
   // Effect to play camera animation
   useEffect(() => {
@@ -30,25 +30,27 @@ const Model = forwardRef((props, ref) => {
   }, [cameraAction]);
 
   useEffect(() => {
-    if (ref.current == "moon") {
+    if (ref.current === "moon") {
       valueRef.current = 0.37;
-    } else if (ref.current == "mars") {
+    } else if (ref.current === "mars") {
       valueRef.current = 1;
-      actions["Animation"];
-    } else if (ref.current == "earth") {
+    } else if (ref.current === "earth") {
       valueRef.current = 0;
     }
   }, [ref.current]);
+
   // Update camera action time in each frame
-  useFrame((state) => {
-    actions["Animation"].time = THREE.MathUtils.lerp(
-      actions["Animation"].time,
-      actions["Animation"].getClip().duration * valueRef.current,
-      0.015
-    );
+  useFrame((state, delta) => {
+    if (cameraAction) {
+      const deltaValue = ref.current === "mars" ? 0.5 : 1;
+      cameraAction.time = THREE.MathUtils.lerp(
+        cameraAction.time,
+        cameraAction.getClip().duration * valueRef.current,
+        delta * deltaValue // Adjust smoothness by changing this value
+      );
+    }
   });
 
-  // Render the model components
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
