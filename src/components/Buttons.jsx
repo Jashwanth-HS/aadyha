@@ -1,10 +1,12 @@
 import Link from "next/link";
 import styles from "./buttons.module.css";
 import React from "react";
+import { useLenis } from "@studio-freight/react-lenis";
 export const PrimaryButton = ({ label, isDark, className, ...rest }) => {
+  const lenis = useLenis();
   const RenderDiv = rest?.href ? Link : "button";
   if (rest?.href?.includes("#")) {
-    rest = { ...rest, onclick: `lenis.scrollTo('${rest?.href}')` };
+    rest = { ...rest, onClick: () => lenis.scrollTo(rest?.href) };
   }
   return (
     <RenderDiv
