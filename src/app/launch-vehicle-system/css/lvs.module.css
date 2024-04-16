@@ -283,6 +283,10 @@ padding-top: 6rem;
     .Banner h1{
         width: 100%;
     }
+    .TVCWrapContainer{
+        padding-top: 0;
+        gap: 0;
+    }
     .LvsTabWrapper{
         flex-direction: column;
         border: none;
@@ -323,6 +327,7 @@ padding-top: 6rem;
     }
     .TvcContent{
         gap: 40px;
+        width: 100%;
     }
     .TvcContentBlocks{
         grid-template-columns: 1fr;
