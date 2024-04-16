@@ -29,6 +29,7 @@
     width: 30%;
     padding-top: 16px;
     text-align: center;
+    color: #696969;
 }
 .stickyContainer{
     width: 100%;
@@ -127,13 +128,13 @@
     background: rgba(217, 217, 217, 0.5);
 }
 .AccordionTextWhite{
-    color: #fff;
+    color: #fff !important;
 } 
 .AccordionTextWhite::before{
-    background-color: white;
+    background-color: white !important;
 }
 .AccordionIconClass{
-    background-color: white;
+    background-color: white !important;
 }
 .SpaceSystemsItemsRightDesc{
     width: 75%;

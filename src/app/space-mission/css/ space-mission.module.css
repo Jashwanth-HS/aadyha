@@ -42,9 +42,17 @@
 .BannerImg{
     position: absolute;
     bottom: 0;
+    height: 61%;
+    width: 100%;
+}
+.BannerImg > picture {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
 }
 .Banner img{
-    margin-top: -40px;
+    /* margin-top: -40px; */
     display: block;
 }
 .SpaceMissionContent{
@@ -153,7 +161,16 @@
 .PMRepeaterContent{
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 1rem;
+}
+.PMRepeaterContentList{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1rem;
+}
+.PMRepeaterContentList li {
+    color: rgba(255, 255, 255, 0.6);
 }
 .PMRepeaterContent h3::before{
     content: '';
@@ -164,7 +181,7 @@
     margin-right: 10px; 
 }
 .PMRepeaterContent p{
-    width: 60%;
+    width: 100%;
     color: rgba(255, 255, 255, 0.6);
 }
 .SpaceDebrisMissionContainer{

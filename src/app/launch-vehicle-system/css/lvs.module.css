@@ -232,17 +232,17 @@
     justify-content: center;
     align-items: center;
     padding-top: 60px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 .FcsNavBar{
     background: rgba(235, 235, 235, 0.5);
     padding: 20px 60px;
 }
-.FcsNavBar:hover{
-    background: #000;
+/* .FcsNavBar:not(.FcsNavActive):hover{
+    background: rgba(105, 105, 105, 1);
     color: #fff;
     transition: background 0.3s ease, color 0.3s ease;
-}
+} */
 .FcsNavActive{
     background: #000;
     color: #fff;
@@ -250,6 +250,7 @@
 .ControlSystemContentWrapper{
     width: 100%;
     display: flex;
+    display: none;
     gap: 20px;
 }
 .ControlSystemContent{

@@ -28,11 +28,11 @@ const Banner = () => {
           We are dedicated to aspiring for the stars and continually advancing
           the frontiers of aerospace technology
         </p>
-        <PrimaryButton
+        {/* <PrimaryButton
           label={"view current openings"}
           href={"#jobs"}
           style={{ marginTop: "4vh", border: "1px solid black" }}
-        />
+        /> */}
         <div className={styles?.CareerBannerImg}>
           <picture>
             <source

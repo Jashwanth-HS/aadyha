@@ -27,14 +27,14 @@ export default function NavLink({ Links, renderLink, ...rest }) {
     });
   };
   const handleScroll = (e) => {
-    if (window.scrollY > 600) {
+    if (window.scrollY > 600 && MainStickyRef.current) {
       MainStickyRef.current.classList.add(styles?.stickyClassName);
       if (window.scrollY > storePrevScroll.current) {
         MainStickyRef.current.classList.remove(styles?.moveStickyTop);
       } else {
         MainStickyRef.current.classList.add(styles?.moveStickyTop);
       }
-    } else {
+    } else if (MainStickyRef.current) {
       MainStickyRef.current.classList.remove(styles?.moveStickyTop);
       MainStickyRef.current.classList.remove(styles?.stickyClassName);
     }

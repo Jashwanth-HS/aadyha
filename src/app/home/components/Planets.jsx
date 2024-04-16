@@ -2,10 +2,12 @@
 import React, { useRef, useEffect, forwardRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useLenis } from "@studio-freight/react-lenis";
 import styles from "../css/main.module.css";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
 import WordAnimation from "@/components/WordAnimation";
-import { disableOverflow } from "@/helper";
+import { disableOverflow, isVisitedAnimations } from "@/helper";
+import Image from "next/image";
 let initialRender = true;
 
 const Model = forwardRef((props, ref) => {
@@ -105,9 +107,12 @@ const Model = forwardRef((props, ref) => {
 
 // Main component
 const Planets = () => {
+  const lenis = useLenis();
   const devContainerRef = useRef(null);
   const orbitImageRef = useRef(null);
+  const skipButtonRef = useRef(null);
   const overlayDescriptionRef = useRef(null);
+  const MoonImageContainerRef = useRef(null);
   const addLineText = useRef(null);
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [earthSpanText3, setEarthSpanText3] = useState("[MOON]");
@@ -173,6 +178,7 @@ const Planets = () => {
     let setTimeoutId, setTimeoutId1, setTimeoutId2;
     if (direction) {
       disableOverflow(true);
+      if (skipButtonRef.current) skipButtonRef.current.style.display = "flex";
       addLineText.current.classList.remove(styles.addLineTextAnimation);
       addLineText.current.classList.add(styles.addLineTextAnimation);
       if (headingText === "FROM EARTH" && direction !== -1) {
@@ -228,6 +234,7 @@ const Planets = () => {
       }
       if (headingText === "TO MARS" && direction === 1) {
         disableOverflow(false);
+        if (skipButtonRef.current) skipButtonRef.current.style.display = "none";
         window.scrollTo({ behavior: "smooth", top: 500 });
       }
     }
@@ -274,7 +281,9 @@ const Planets = () => {
           : headingText.includes("MARS")
           ? `[SINCE 2013]`
           : `[384,400 km]`;
-
+      MoonImageContainerRef.current.style.display = headingText.includes("MARS")
+        ? "none"
+        : "flex";
       setTimeoutId = setTimeout(
         () => {
           overlayDescriptionRef.current.style.opacity = "1";
@@ -299,6 +308,29 @@ const Planets = () => {
   // Render
   return (
     <>
+      {isVisitedAnimations() && (
+        <button
+          ref={skipButtonRef}
+          className={styles?.skipButton}
+          onClick={() => {
+            disableOverflow();
+            setTimeout(() => {
+              lenis.scrollTo("#SpaceSystemContainer");
+              if (skipButtonRef.current)
+                skipButtonRef.current.style.display = "none";
+            }, 300);
+          }}
+        >
+          <span>skip</span>
+          <div className={styles?.skipButtonImg}>
+            <Image
+              width={100}
+              height={100}
+              src={"/assets/images/bannerSkip.svg"}
+            />
+          </div>
+        </button>
+      )}
       <div className={styles?.divContainer} ref={devContainerRef}>
         {/* Container for scrollable content */}
         <div
@@ -375,6 +407,7 @@ const Planets = () => {
             />
           </div>
           <div
+            ref={MoonImageContainerRef}
             className={styles.MoonImageContainer}
             style={{
               left: earthSpanText3?.includes("MOON")

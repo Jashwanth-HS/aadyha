@@ -135,7 +135,7 @@ export const AvionicsData = {
     "AADYAH offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle.",
   images: [
     "/assets/images/avionics-img-one.png",
-    "/assets/images/avionics-img-two.png",
+    // "/assets/images/avionics-img-two.png",
   ],
   data: {
     title: "OUR SOLUTIONS",
@@ -474,14 +474,32 @@ export const planetaryMissions = {
     {
       image: "/assets/images/lunar-lander.png",
       title: "lunar lander",
-      description:
-        "descent, modular design, enabling safe lunar exploration missions.",
+      description: {
+        text: "AADYAH meticulously designs and predicts the performance of spacecraft with the aim of achieving precise landings on the moon. Among the critical tasks in this pursuit, the analysis of touchdown dynamics during the landing phase stands out as one of the most vital.",
+        list: {
+          type: "ul",
+          data: [
+            "Motion Control System",
+            "Rover Holding and Deployment Mechanism",
+            "Power Distribution System",
+          ],
+        },
+      },
     },
     {
       image: "/assets/images/lunar-rover.png",
       title: "lunar Rover",
-      description:
-        "Robust mobility, advanced instrumentation, pivotal for lunar surface exploration.",
+      description: {
+        text: "The Lunar Rover System is meticulously designed to navigate the lunar terrain, conduct scientific experiments, and push the boundaries of exploration. With a focus on reliability, adaptability, and cutting-edge technology, our rover system is your key to unlocking the mysteries of the lunar landscape.",
+        list: {
+          type: "ul",
+          data: [
+            "Contactless Charging of Rover by Laser Beaming",
+            "Robotic Arm",
+            "Antenna Deployment Mechanism",
+          ],
+        },
+      },
     },
   ],
 };
@@ -661,12 +679,12 @@ export const ourCustomers = {
 //footer cosmos
 
 export const cosmosData = {
-  title: "Your Partner for Mission critical Space Systems",
+  title: "ACCELERATE your space ASPIRATIONS with AADYAH",
   blocks: [
     {
       title: "Join Aadyah",
       description: "Join aadyah. innovate and inspire the world",
-      button: { label: "view opening", slug: "/careers" },
+      button: { label: "view more", slug: "/careers" },
     },
     {
       title: "Clients",
@@ -682,7 +700,7 @@ export const footer = {
   title: "Let’s work together",
   button: {
     label: "View opening",
-    slug: "/careers",
+    slug: "/careers#jobs",
   },
   links: [
     { label: "Satellite SYSTEM", slug: "/satellite-system" },
@@ -703,11 +721,14 @@ export const footer = {
     },
   ],
   socialLinks: [
-    { label: "linkedIn", slug: "https://www.linkedin.com/" },
+    {
+      label: "linkedIn",
+      slug: "https://www.linkedin.com/company/aadyah-aerospace-private-limited/",
+    },
     { label: "twitter", slug: "https://twitter.com/AadyahAerospace" },
     // { label: "instagram", slug: "https://www.instagram.com/" },
     // { label: "facebook", slug: "https://www.facebook.com/" },
-    { label: "youtube", slug: "https://www.youtube.com/" },
+    { label: "youtube", slug: "https://www.youtube.com/@aadyahaerospace5706" },
   ],
   privacyPolicy: [
     { label: "Quality & Policy", slug: "/quality-policy" },
@@ -732,4 +753,12 @@ export const disableOverflow = (boolean) => {
 
 export const createDelay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+let isVisited = false;
+export const isVisitedAnimations = (value) => {
+  if (value) {
+    isVisited = value;
+  }
+  return isVisited;
 };

@@ -3,6 +3,7 @@ import { useIsElementVisible } from "@/helper/Observer";
 import styles from "../css/SpaceSystem.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "@/components/Buttons";
+import { isVisitedAnimations } from "@/helper";
 const LaunchVehicleSystemArray = [
   {
     src: "/assets/images/thrust-vector-control-system.svg",
@@ -12,29 +13,34 @@ const LaunchVehicleSystemArray = [
   {
     src: "/assets/images/guidance-navigation-control.svg",
     title: "Guidance navigation and control",
-    subTitle: "[Design and development of Trajectory simulation & optimization,6DoF simulation, and control navigation guidance algorithms]",
+    subTitle:
+      "[Design and development of Trajectory simulation & optimization,6DoF simulation, and control navigation guidance algorithms]",
   },
   {
     src: "/assets/images/avionics.svg",
     title: "Avionics",
-    subTitle: "[offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle]",
+    subTitle:
+      "[offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle]",
   },
   {
     src: "/assets/images/flow-control-system.svg",
     title: "Flow control system",
-    subTitle: "[custom build valves with high performance, pressure handling and stringent leak-tightness]",
+    subTitle:
+      "[custom build valves with high performance, pressure handling and stringent leak-tightness]",
   },
 ];
 const SatelliteSystemArray = [
   {
     src: "/assets/images/propulsion-subsystems.svg",
     title: "Propulsion subsystems",
-    subTitle: "[delivering the best-in-class control, efficiency, and reliability that your spacecraft demands.]",
+    subTitle:
+      "[delivering the best-in-class control, efficiency, and reliability that your spacecraft demands.]",
   },
   {
     src: "/assets/images/ss-electric-power-system.svg",
     title: "Electric power system (eps)",
-    subTitle: "[Reliable and adaptable power solutions with radiation tolerance, power tracking and multi voltage management tailored for you mission]",
+    subTitle:
+      "[Reliable and adaptable power solutions with radiation tolerance, power tracking and multi voltage management tailored for you mission]",
   },
   {
     src: "/assets/images/ss-on-board-computer.svg",
@@ -44,14 +50,16 @@ const SatelliteSystemArray = [
   {
     src: "/assets/images/ss-motion-control-system.svg",
     title: "Motion control system",
-    subTitle: "[Advanced system which ensures accurate pointing & orientation, and precision-control mechanism]",
+    subTitle:
+      "[Advanced system which ensures accurate pointing & orientation, and precision-control mechanism]",
   },
 ];
 const SpaceMissionArray = [
   {
     src: "/assets/images/sm-sdm.svg",
     title: "SPACE DEBRIS MISSION",
-    subTitle: "[TRACE, is a self-powered and self-communicating beacon,which enable real-time location and velocity data to a ground statin, triggered from Earth.]",
+    subTitle:
+      "[TRACE, is a self-powered and self-communicating beacon,which enable real-time location and velocity data to a ground station, triggered from Earth]",
   },
   {
     src: "/assets/images/sm-satellite.svg",
@@ -72,8 +80,8 @@ const SpaceSystemArray = [
     imagePath: "/assets/images/hp-lvs-img.png",
     renderSvg: "Left1",
     title: "LAUNCH VEHICLE SYSTEM",
-    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions", 
-    Button : {label : "Explore more", slug:"/launch-vehicle-system"}
+    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions",
+    Button: { label: "Explore more", slug: "/launch-vehicle-system" },
   },
   {
     sectionTitle: "Satellite System",
@@ -83,8 +91,9 @@ const SpaceSystemArray = [
     renderSvg: "Right1",
     isRight: true,
     title: "satellite system",
-    subTitle: "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
-    Button : {label : "Explore more", slug:"/satellite-system"}
+    subTitle:
+      "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
+    Button: { label: "Explore more", slug: "/satellite-system" },
   },
   {
     sectionTitle: "Space mission",
@@ -95,7 +104,7 @@ const SpaceSystemArray = [
     isbottom: true,
     title: "SPACE  MISSION",
     subTitle: "Ascending Beyond Limits",
-    Button : {label : "Explore more", slug:"/space-mission"}
+    Button: { label: "Explore more", slug: "/space-mission" },
   },
 ];
 const SectionTitle = ({ title, subTitle }) => {
@@ -147,26 +156,30 @@ const SpaceSystem = ({ data }) => {
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
   useEffect(() => {
-    const svgPaths = elementRef.current.querySelectorAll("path"); 
+    const svgPaths = elementRef.current.querySelectorAll("path");
     if (isElementVisible) {
       svgPaths.forEach((path) => {
-        const animateElement = path.querySelector("animate"); 
+        const animateElement = path.querySelector("animate");
         if (animateElement) {
-          animateElement.beginElement(); 
+          animateElement.beginElement();
         }
       });
     } else {
       svgPaths.forEach((path) => {
         const animateElement = path.querySelector("animate");
         if (animateElement) {
-          animateElement.endElement(); 
+          animateElement.endElement();
         }
       });
     }
   }, [isElementVisible]);
   return (
     <>
-      <div className={styles.SpaceSystemContainer} ref={elementRef}>
+      <div
+        className={styles.SpaceSystemContainer}
+        ref={elementRef}
+        id="SpaceSystemContainer"
+      >
         <SectionTitle
           title={sectionTitle || "launch vehicle SYSTEM"}
           subTitle={sectionSubTitle || "[End to end solutions]"}
@@ -197,7 +210,11 @@ const SpaceSystem = ({ data }) => {
                   );
                 })}
               </div>
-              <PrimaryButton isDark={true} label={Button?.label} href={Button?.slug} />
+              <PrimaryButton
+                isDark={true}
+                label={Button?.label}
+                href={Button?.slug}
+              />
             </div>
           </div>
 
@@ -336,7 +353,9 @@ const Discovering = ({ title }) => {
   const topLeftPartRef = useRef(null);
   const topRightPartRef = useRef(null);
   const bottomPartRef = useRef(null);
-
+  if (isElementVisible) {
+    isVisitedAnimations(true);
+  }
   useEffect(() => {
     let setTimeOutId;
     if (isElementVisible) {
@@ -368,7 +387,7 @@ const Discovering = ({ title }) => {
           <div className="heading-2">{title}</div>
           <div>
             <a href="/about">
-              <PrimaryButton isDark label={' discover Aadyah'} />
+              <PrimaryButton isDark label={" discover Aadyah"} />
             </a>
           </div>
         </div>
@@ -434,7 +453,7 @@ export default function SpaceSystemWrap() {
         );
       })}
       <Discovering title={"Discovering tomorrow's universe today"} />
-      </>
+    </>
     // </div>
   );
 }

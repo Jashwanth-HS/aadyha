@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../css/Clients.module.css";
 import { PrimaryButton } from "@/components/Buttons";
+import Container from "@/components/Container";
 export default function Clients() {
   return (
     <>
@@ -49,8 +50,8 @@ export default function Clients() {
             <div className={styles?.LifeSupporSystemContent}>
               <div>
                 <h3 className="heading-4">
-                  Growing Life in Space. We pave the{" "}
-                  <span>way towards bio-regenerative life-support system</span>
+                  Transcending your dreams into{" "}
+                  <span>orbits with sustainable space solutions</span>
                 </h3>
               </div>
               <div className={styles?.Counter}>
@@ -88,7 +89,7 @@ export default function Clients() {
           </div>
         </div>
 
-        <div className="container">
+        {/* <Container>
           <div className={styles?.LatestNewsContainer}>
             <div className={styles?.LatestNewsTitle}>
               <h3 className="heading-2">latest from aadyah</h3>
@@ -125,7 +126,7 @@ export default function Clients() {
               </div>
             </div>
           </div>
-        </div>
+        </Container> */}
       </div>
 
       <div className={styles?.CeoMessageContainer}>

@@ -76,6 +76,9 @@
 .LvsLeftItemTitle p{
     text-transform: uppercase;
 }
+.svgRender path {
+    stroke:  #7B91B2;
+}
 .LvsRightItem .svgRender{
     position: absolute;
     right: 0;
