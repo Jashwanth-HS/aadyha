@@ -12,7 +12,7 @@ export async function POST(req, res) {
     // Set API key
     const apiKey = apiInstance.authentications["apiKey"];
     apiKey.apiKey =
-      "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";
+      "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";
 
     // Create email object
     const sendSmtpEmail = new SendSmtpEmail();
@@ -28,14 +28,14 @@ export async function POST(req, res) {
       </body>
       </html>`;
     sendSmtpEmail.sender = {
-      name: "jashwanth",
-      email: "jashwanth.hs@supercode.in",
+      name: name,
+      email: email,
     };
     sendSmtpEmail.to = [
-      { email: "jashureddy56@gmail.com", name: "Jashwanth" },
+      { email: "sales@aadyah.com", name: "Aadyah" },
       //   { email: "rahul.rn@supercode.in", name: "Rahul" },
     ];
-    sendSmtpEmail.replyTo = { email: "info@supercode.in", name: "supercode" };
+    sendSmtpEmail.replyTo = { email: "sales@aadyah.com", name: "Aadyah" };
 
     // Send email
     const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
