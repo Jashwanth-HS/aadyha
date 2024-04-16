@@ -339,7 +339,7 @@ export const OnBoardComputer = {
   title: "On-board computer",
   description:
     "A successful space mission hinges on the synergy of its onboard systems. AADYAH On-Board Computer is crafted to be the linchpin that holds everything together, guiding your satellite mission with precision, intelligence, and resilience. Rely on AADYAH OBC to illuminate the path through the intricacies of space exploration.",
-  images: "/assets/images/on-board-computer.png",
+  // images: "/assets/images/on-board-computer.png",
   data: {
     title: "Key Features",
     values: [
@@ -370,7 +370,7 @@ export const MotionControlSystem = {
   title: "Motion control system",
   description:
     "In the vast and challenging environment of space, AADYAH Satellite Motion Control System emerges as the guiding hand, steering your satellite towards its objectives with unmatched precision and reliability. Trust in our Motion Control System to transform the challenges of space into stepping stones towards mission success.",
-  images: "/assets/images/motion-control-system.png",
+  // images: "/assets/images/motion-control-system.png",
   data: {
     title: "Key Features",
     values: [
