@@ -117,15 +117,18 @@
 .SpaceSystemsItemsRight{
     flex: 1;
 }
+
 .SpaceSystemsImgs{
     width: 100%;
-    height: auto;
     max-width: 617px;
-    max-height: 531px;
+    height: 531px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(217, 217, 217, 0.5);
+}
+.SpaceSystemsItems:first-child .SpaceSystemsImgs {
+    justify-content: flex-start;
 }
 .AccordionTextWhite{
     color: #fff !important;
@@ -177,7 +180,12 @@
     .SpaceSystemsItemsContent{
         flex-direction: column;
     }
+    .SpaceSystemsImgs{
+        height: 331px;
+    }
     .SpaceSystemsImgs img{
         width: 100%;
+        height: 80%;
+        object-fit: contain;
     }
 }

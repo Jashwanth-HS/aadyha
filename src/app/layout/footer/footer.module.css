@@ -28,6 +28,9 @@
     flex-direction: column;
     gap: 70px;
 }
+.cosmosContentContainer h2 {
+    text-transform: unset !important;
+}
 .cosmosBlocksContainer{
     display: flex;
     flex-direction: row;
