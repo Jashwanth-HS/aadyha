@@ -34,7 +34,7 @@ const SatelliteSystemArray = [
     src: "/assets/images/propulsion-subsystems.svg",
     title: "Propulsion subsystems",
     subTitle:
-      "[delivering the best-in-class control, efficiency, and reliability that your spacecraft demands.]",
+      "[delivering the best-in-class control, efficiency, and reliability that your spacecraft demands]",
   },
   {
     src: "/assets/images/ss-electric-power-system.svg",
@@ -59,7 +59,7 @@ const SpaceMissionArray = [
     src: "/assets/images/sm-sdm.svg",
     title: "SPACE DEBRIS MISSION",
     subTitle:
-      "[TRACE, is a self-powered and self-communicating beacon,which enable real-time location and velocity data to a ground station, triggered from Earth]",
+      "[TRACE, is a self-powered and self-communicating beacon, which enable real-time location and velocity data to a ground station, triggered from Earth]",
   },
   {
     src: "/assets/images/sm-satellite.svg",

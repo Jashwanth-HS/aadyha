@@ -141,7 +141,7 @@ export default function About() {
               <div>
                 <img src={"/assets/images/innovation.svg"} />
                 <h3 className="sub-heading-1">Innovation</h3>
-                <p className="paragraph">
+                <p className={`${styles?.WcaContainerParagraph} paragraph`}>
                   Our brilliant team pushes boundaries, creating innovative
                   solutions that reshape space exploration.
                 </p>
@@ -149,7 +149,7 @@ export default function About() {
               <div>
                 <img src={"/assets/images/expertise.svg"} />
                 <h3 className="sub-heading-1">Expertise</h3>
-                <p className="paragraph">
+                <p className={`${styles?.WcaContainerParagraph} paragraph`}>
                   Experienced engineers, scientists, and visionaries lead our
                   projects, ensuring a foundation of knowledge and expertise.
                 </p>
@@ -157,7 +157,7 @@ export default function About() {
               <div>
                 <img src={"/assets/images/collaboration.svg"} />
                 <h3 className="sub-heading-1">Collaboration</h3>
-                <p className="paragraph">
+                <p className={`${styles?.WcaContainerParagraph} paragraph`}>
                   We foster global collaboration, cultivating shared innovation
                   and discovery for groundbreaking ideas to emerge
                 </p>
@@ -165,7 +165,7 @@ export default function About() {
               <div>
                 <img src={"/assets/images/ethics-sustainability.svg"} />
                 <h3 className="sub-heading-1">Ethics & Sustainability</h3>
-                <p className="paragraph">
+                <p className={`${styles?.WcaContainerParagraph} paragraph`}>
                   We prioritize ethical operations, emphasizing sustainability
                   in all our activities for responsible and conscientious
                   practices

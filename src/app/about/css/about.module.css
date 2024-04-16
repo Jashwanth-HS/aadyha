@@ -43,6 +43,9 @@
 .gallery div:nth-child(3) {
     margin-top: 94px; 
 }
+.WcaContainerParagraph{
+    color: #E8E8E8;
+}
 .OurVissionContainer{
     position: relative;
     padding-top: 100px;
