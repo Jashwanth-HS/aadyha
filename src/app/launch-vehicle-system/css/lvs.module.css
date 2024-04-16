@@ -32,12 +32,18 @@
     height: 100vh;
     overflow: auto;
 }
+.TVCWrapContainer{
+    display: flex;
+flex-direction: column;
+gap: 10rem;
+padding-top: 6rem;
+}
 .TvcWrap{
     display: flex;
     flex-direction: row-reverse;
-    gap: 100px;
-    align-items: center;
-    padding-top: 100px;
+    gap: 3rem;
+    align-items: flex-start;
+    width: 100%;
 }
 .TvcWrap.TvcWrapRight{
     flex-direction: row;
@@ -46,6 +52,7 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
+    width: 50%;
 }
 .TvcContent h3{
     padding: 8px 0 24px;
@@ -306,6 +313,7 @@
         flex-direction: column;
         padding-top: 60px;
     }
+   
     .TvcWrap{
         flex-direction: column;
         padding-top: 60px;

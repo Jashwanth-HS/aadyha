@@ -45,6 +45,7 @@
 .navHeaderLogo{
     height: 50px;
     width: auto;
+    min-width: 100px;
     transition: all 0.3s ease;
 }
 .navHeaderLogo img {
@@ -64,9 +65,9 @@
 }
 .navHeaderLinksContainer ul{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 4rem;
+    gap: 1rem;
     width: 100%;
 }
 .navHeaderLinksContainer li {
@@ -78,6 +79,7 @@
     font-weight: 400;
     line-height: normal;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 .navHeaderLinksContainer li a{
     font-family: "JetBrains Mono";
@@ -136,9 +138,7 @@
 }
 
 @media(max-width:1440px){
-    .navHeaderLinksContainer ul{
-        gap: 3rem;
-    }
+
     .navHeaderLinksContainer li a{
         font-size: 12px;
     }

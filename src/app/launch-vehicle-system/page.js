@@ -32,7 +32,7 @@ export default function Index() {
         <Banner />
       </Container>
       <NavBar styles={styles} />
-      <Container>
+      <Container className={styles?.TVCWrapContainer}>
         <PartGridContent styles={styles} />
       </Container>
       <Gauidance styles={styles} />

@@ -115,12 +115,12 @@ a {
 }
 
 .mobile-hide {
-  display: block;
+  display: flex;
 }
 
 @media only screen and (max-width: 600px) {
   .desktop-hide {
-      display: block;
+    display: block;
   }
 
   .mobile-hide {
