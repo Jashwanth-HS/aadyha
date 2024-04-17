@@ -9,10 +9,19 @@ import WordAnimation from "@/components/WordAnimation";
 import { disableOverflow, isVisitedAnimations } from "@/helper";
 import Image from "next/image";
 let initialRender = true;
-
-const Model = forwardRef((props, ref) => {
+function cubicBezier(t, p0, p1, p2, p3) {
+  const t2 = t * t;
+  const t3 = t2 * t;
+  return (
+    p0 * (1 - t3) + 3 * p1 * t * (1 - t2) + 3 * p2 * t2 * (1 - t) + p3 * t3
+  );
+}
+const Model = forwardRef(({ X, Y, Z }, ref) => {
   const group = useRef();
   const valueRef = useRef(0);
+
+  const prevRef = useRef("earth");
+  const directionRef = useRef(1);
   const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
   const { actions } = useAnimations(animations, group);
   const cameraAction = actions["Animation"];
@@ -33,81 +42,129 @@ const Model = forwardRef((props, ref) => {
 
   useEffect(() => {
     if (ref.current === "moon") {
-      valueRef.current = 0.37;
+      valueRef.current = 0.375;
+      directionRef.current = prevRef.current == "earth" ? 1 : -1;
+      prevRef.current = "moon";
     } else if (ref.current === "mars") {
       valueRef.current = 1;
+      directionRef.current = 1;
+      prevRef.current = "mars";
     } else if (ref.current === "earth") {
       valueRef.current = 0;
+      directionRef.current = prevRef.current == "moon" ? -1 : 1;
+      prevRef.current = "earth";
     }
   }, [ref.current]);
 
   // Update camera action time in each frame
   useFrame((state, delta) => {
     if (cameraAction) {
-      const deltaValue = ref.current === "mars" ? 0.5 : 1;
+      const duration = cameraAction.getClip().duration;
+      const targetTime = duration * valueRef.current;
+
+      // Calculate the progress of the animation
+      let progress = cameraAction.time / duration;
+      // Apply cubic Bézier transition to the progress
+      let easedProgress = cubicBezier(progress, 0.9, 1, 1, 0);
+      if (directionRef.current == 1) {
+        // easedProgress = cubicBezier(progress, 0.9, 1, 1, 0);
+        if (ref.current == "mars") {
+          console.log("here");
+          easedProgress = cubicBezier(progress, 0.001, 0.001, 0.05, 2);
+        } else {
+          easedProgress = cubicBezier(progress, 0.1, 2, 1.6, 0);
+        }
+      }
+      if (directionRef.current == -1) {
+        if (ref.current == "mars") {
+          easedProgress = cubicBezier(progress, 1.0, -0.1, 0.09, 0.93);
+        } else {
+          easedProgress = cubicBezier(progress, 1.0, -0.19, 0.04, 0.33);
+        }
+      }
+
+      // Set the new time based on the eased progress
       cameraAction.time = THREE.MathUtils.lerp(
         cameraAction.time,
-        cameraAction.getClip().duration * valueRef.current,
-        delta * deltaValue // Adjust smoothness by changing this value
+        targetTime,
+        delta * easedProgress
       );
     }
   });
 
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Scene">
-        <PerspectiveCamera
-          name="Camera"
-          makeDefault
-          far={1000}
-          near={0.1}
-          fov={56.106}
-          scale={5.287}
-        >
-          <directionalLight
-            castShadow
-            position={[-0.35, 2.43, 38.3]}
-            shadow-camera-right={8}
-            shadow-camera-top={8}
-            shadow-camera-left={-8}
-            shadow-camera-bottom={-8}
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-            intensity={2}
-            shadow-bias={-0.0001}
+    <>
+      <group ref={group} dispose={null}>
+        <group name="Scene">
+          <PerspectiveCamera
+            name="Camera"
+            makeDefault
+            far={1000}
+            near={0.1}
+            fov={56.106}
+            scale={5.287}
+          >
+            <pointLight
+              color={0xffd3b3}
+              castShadow
+              position={[1.42, 1.95, -5.29]}
+              shadow-camera-right={1}
+              shadow-camera-top={1}
+              shadow-camera-left={-1}
+              shadow-camera-bottom={-1}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              intensity={12}
+              shadow-bias={-0.0001}
+            />
+            <directionalLight
+              castShadow
+              position={[-0.35, 2.43, 38.3]}
+              shadow-camera-right={2}
+              shadow-camera-top={2}
+              shadow-camera-left={-2}
+              shadow-camera-bottom={-2}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              intensity={1.4}
+              shadow-bias={-0.0001}
+            />
+          </PerspectiveCamera>
+          <mesh
+            name="Earth_"
+            geometry={nodes.Earth_.geometry}
+            material={nodes.Earth_.material}
+            position={[0.234, 0.25, -42.94]}
+            rotation={[0.389, -0.245, 3.054]}
+            scale={-12.921}
           />
-        </PerspectiveCamera>
-        <mesh
-          name="Earth_"
-          geometry={nodes.Earth_.geometry}
-          material={nodes.Earth_.material}
-          position={[0.234, 0.25, -42.94]}
-          rotation={[0.389, -0.245, 3.054]}
-          scale={-12.921}
-        />
-        <mesh
-          name="Moon"
-          geometry={nodes.Moon.geometry}
-          material={nodes.Moon.material}
-          position={[33.679, 17.157, -51.773]}
-          scale={0}
-        />
-        <mesh
-          name="Mars"
-          geometry={nodes.Mars.geometry}
-          material={nodes.Mars.material}
-          position={[-34.067, 1.245, 56.371]}
-          rotation={[-0.016, -1.146, -0.306]}
-          scale={-6.037}
-        />
+          <mesh
+            name="Moon"
+            geometry={nodes.Moon.geometry}
+            material={nodes.Moon.material}
+            position={[33.679, 17.157, -51.773]}
+            scale={0}
+          />
+          <mesh
+            name="Mars"
+            geometry={nodes.Mars.geometry}
+            material={nodes.Mars.material}
+            position={[-34.067, 1.245, 56.371]}
+            rotation={[-0.016, -1.146, -0.306]}
+            scale={-6.037}
+          />
+        </group>
       </group>
-    </group>
+    </>
   );
 });
 
 // Main component
 const Planets = () => {
   const lenis = useLenis();
+  const [X, setX] = useState(1);
+  const [Y, setY] = useState(1);
+  const [Z, setZ] = useState(1);
   const devContainerRef = useRef(null);
   const orbitImageRef = useRef(null);
   const skipButtonRef = useRef(null);
@@ -331,6 +388,46 @@ const Planets = () => {
           </div>
         </button>
       )}
+      {/* <div
+        style={{
+          position: "fixed",
+          zIndex: "999",
+          top: "0",
+          width: "100%",
+          background: "white",
+        }}
+      >
+        <input
+          type="range"
+          min={-10}
+          max={10}
+          value={X}
+          step={0.01}
+          style={{ width: "400px" }}
+          onChange={(e) => setX(e.target.value)}
+        />
+        {X}
+        <input
+          type="range"
+          min={-10}
+          max={10}
+          step={0.01}
+          style={{ width: "400px" }}
+          value={Y}
+          onChange={(e) => setY(e.target.value)}
+        />
+        {Y}
+        <input
+          type="range"
+          min={-10}
+          max={10}
+          step={0.01}
+          value={Z}
+          style={{ width: "400px" }}
+          onChange={(e) => setZ(e.target.value)}
+        />
+        {Z}
+      </div> */}
       <div className={styles?.divContainer} ref={devContainerRef}>
         {/* Container for scrollable content */}
         <div
@@ -457,7 +554,7 @@ const Planets = () => {
           {/* Directional light */}
           <directionalLight intensity={1} position={[10, 10, 0]} />
           {/* Model component */}
-          <Model ref={scroll} />
+          <Model ref={scroll} X={X} Y={Y} Z={Z} />
         </Canvas>
       </div>
       {/* Canvas for 3D scene */}
