@@ -114,19 +114,20 @@ const Model = forwardRef(({ X, Y, Z }, ref) => {
               shadow-camera-bottom={-1}
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
-              intensity={12}
+              intensity={1}
               shadow-bias={-0.0001}
             />
             <directionalLight
               castShadow
-              position={[-0.35, 2.43, 38.3]}
-              shadow-camera-right={2}
-              shadow-camera-top={2}
-              shadow-camera-left={-2}
-              shadow-camera-bottom={-2}
+              position={[-5.64, -0.9, 4.55]}
+              // position={[-0.35, 2.43, 38.3]}
+              shadow-camera-right={10}
+              shadow-camera-top={10}
+              shadow-camera-left={-10}
+              shadow-camera-bottom={-10}
               shadow-mapSize-width={1024}
               shadow-mapSize-height={1024}
-              intensity={1.4}
+              intensity={1.5}
               shadow-bias={-0.0001}
             />
           </PerspectiveCamera>
@@ -456,7 +457,7 @@ const Planets = () => {
               color: headingText.includes("MOON")
                 ? "#424242"
                 : headingText.includes("EARTH")
-                ? "#ffffff"
+                ? "#ffffffb5"
                 : "#C8402D",
               fontSize: !headingText.includes("EARTH") ? "21vw" : "16vw",
             }}
