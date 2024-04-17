@@ -130,6 +130,19 @@ const Model = forwardRef(({ X, Y, Z }, ref) => {
               intensity={1.5}
               shadow-bias={-0.0001}
             />
+            <directionalLight
+              castShadow
+              // position={[-5.64, -0.9, 4.55]}
+              position={[-0.35, 2.43, 38.3]}
+              shadow-camera-right={10}
+              shadow-camera-top={10}
+              shadow-camera-left={-10}
+              shadow-camera-bottom={-10}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+              intensity={0.6}
+              shadow-bias={-0.0001}
+            />
           </PerspectiveCamera>
           <mesh
             name="Earth_"
