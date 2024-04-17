@@ -64,6 +64,8 @@ const SpaceMissionArray = [
   {
     src: "/assets/images/sm-satellite.svg",
     title: "SATELLITE",
+    subTitle:
+      "[PRADEEP SAT: AI-enabled IOT communication satellite with Earth Observation capabilities and On-board data processing]",
   },
   {
     src: "/assets/images/sm-spm.svg",
