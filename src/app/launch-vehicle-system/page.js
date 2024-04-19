@@ -7,8 +7,8 @@ import ControlSystem from "./components/ControlSystem";
 import PartGridContent from "./components/PartGridContent";
 import NavBar from "./components/NavBar";
 import Container from "@/components/Container";
-import { disableOverflow } from "@/helper";
 import { Helmet } from "react-helmet";
+import Loading from "../loading";
 
 const Banner = () => {
   return (
@@ -20,7 +20,13 @@ const Banner = () => {
 };
 export default function Index() {
   useEffect(() => {
-    disableOverflow(false);
+    const loader = document.getElementById("loaderMain");
+    if (loader) {
+      loader.style.display = "none";
+    }
+    return () => {
+      loader.style.display = "flex";
+    };
   }, []);
   return (
     <>
@@ -28,18 +34,20 @@ export default function Index() {
         <title> Launch Vehicle System - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
-      <Container>
-        <Banner />
-      </Container>
-      <NavBar styles={styles} />
-      <Container className={styles?.TVCWrapContainer}>
-        <PartGridContent styles={styles} />
-      </Container>
-      <Gauidance styles={styles} />
-      <Container>
-        <Avionics styles={styles} />
-        <ControlSystem styles={styles} />
-      </Container>
+      <Loading>
+        <Container>
+          <Banner />
+        </Container>
+        <NavBar styles={styles} />
+        <Container className={styles?.TVCWrapContainer}>
+          <PartGridContent styles={styles} />
+        </Container>
+        <Gauidance styles={styles} />
+        <Container>
+          <Avionics styles={styles} />
+          <ControlSystem styles={styles} />
+        </Container>
+      </Loading>
       {/* </div> */}
     </>
   );

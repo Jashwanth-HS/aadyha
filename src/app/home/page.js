@@ -1,7 +1,22 @@
 "use client";
-import React, { useEffect } from "react";
-import Head from "next/head";
-import Planets from "./components/Planets";
+import dynamic from "next/dynamic";
+import React, { useEffect, useState } from "react";
+// import Planets from "./components/Planets";
+const Planets = dynamic(() => import("./components/Planets"), {
+  ssr: false,
+  loading: () => (
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        height: "100vh",
+        width: "100vw",
+        background: "#01031b",
+        zIndex: "9999999",
+      }}
+    ></div>
+  ),
+});
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
 import MobileViewPlanets from "./components/MobileViewPlanets";
@@ -16,6 +31,8 @@ const Section = ({ children }) => {
   return <div style={styles}>{children}</div>;
 };
 export default function Home() {
+  // const [pageLoad, setPageLoaded] = useState(false);
+
   return (
     <>
       <Helmet>

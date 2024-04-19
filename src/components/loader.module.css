@@ -1,0 +1,96 @@
+@keyframes dash {
+    0% {
+      /* stroke-dashoffset: 109.9056396484375px; */
+      fill: transparent;
+    }
+    50% {
+      /* stroke-dashoffset: 0; */
+      fill: white;
+    }
+    100% {
+      /* stroke-dashoffset: 109.9056396484375px; */
+      fill: transparent;
+    }
+  }
+  
+  @keyframes dash2 {
+    0% {
+      /* stroke-dashoffset: 109.91342163085938px; */
+      fill: transparent;
+    }
+    50% {
+      /* stroke-dashoffset: 0; */
+      fill: white;
+    }
+    100% {
+      /* stroke-dashoffset: 109.91342163085938px; */
+      fill: transparent;
+    }
+  }
+  
+  @keyframes dash3 {
+    0% {
+      /* stroke-dashoffset: 109.90582275390625px; */
+      fill: transparent;
+    }
+    50% {
+      /* stroke-dashoffset: 0; */
+      fill: white;
+      
+    }
+    100% {
+      /* stroke-dashoffset: 109.90582275390625px; */
+      fill: transparent;
+    }
+  }
+  
+  @keyframes rotateAnimation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+  }
+  
+  .loaderContainer {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00031B;
+    justify-content: center;
+    align-items: center;
+  }
+  .loaderContainer svg {
+    height: 100px;
+    width: 100px;
+    animation: rotateAnimation 4s linear infinite;
+
+  }
+  svg .loadersvg1 {
+    stroke-dasharray: 0;
+    /* stroke-dasharray: 109.9056396484375px; */
+    fill: transparent;
+    animation: dash 2s linear infinite;
+   
+  }
+  
+  svg .loadersvg2 {
+    /* stroke-dasharray: 109.91342163085938px; */
+    stroke-dasharray: 0;
+
+    fill: transparent;
+    animation: dash2 2s linear infinite;
+  }
+  
+  svg .loadersvg3 {
+    /* stroke-dasharray: 109.90582275390625px; */
+    stroke-dasharray: 0;
+    fill: transparent;
+    animation: dash3 2s linear infinite;
+  }
+  

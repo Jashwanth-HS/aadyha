@@ -431,7 +431,7 @@ export const satelliteRoadmap = {
         image: "/assets/images/spacecarft-operation.svg",
         title: "Spacecraft Operations and IoT Solutions",
         description:
-          "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This 7mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution. It is our endeavor to establish AADYAH as the one stop solution for integrated space asset solutions, underlining our commitment to innovation and excellence.",
+          "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution. It is our endeavor to establish AADYAH as the one stop solution for integrated space asset solutions, underlining our commitment to innovation and excellence.",
         button: {
           text: "read more",
         },
@@ -742,23 +742,15 @@ export const footer = {
 //calculate planets animation function
 
 export const disableOverflow = (boolean) => {
-  if (boolean && window.innerWidth >= 768) {
+  if (boolean) {
+    document.querySelector("html").style.overflowY = "hidden";
     document.querySelector("body").style.overflowY = "hidden";
-    document.querySelector("body").style.height = "100vh";
   } else {
+    document.querySelector("html").style.overflowY = "auto";
     document.querySelector("body").style.overflowY = "auto";
-    document.querySelector("body").style.height = "100%";
   }
 };
 
 export const createDelay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
-};
-
-let isVisited = false;
-export const isVisitedAnimations = (value) => {
-  if (value) {
-    isVisited = value;
-  }
-  return isVisited;
 };

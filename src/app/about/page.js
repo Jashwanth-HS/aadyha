@@ -1,13 +1,18 @@
 "use client";
 import React, { useEffect } from "react";
 import styles from "../about/css/about.module.css";
-import { disableOverflow } from "@/helper";
 import { Helmet } from "react-helmet";
 import { PrimaryButton } from "@/components/Buttons";
 
 export default function About() {
   useEffect(() => {
-    disableOverflow(false);
+    const loader = document.getElementById("loaderMain");
+    if (loader) {
+      loader.style.display = "none";
+    }
+    return () => {
+      loader.style.display = "flex";
+    };
   }, []);
   return (
     <>
