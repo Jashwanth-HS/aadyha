@@ -511,7 +511,6 @@ const Planets = () => {
           <Model ref={scroll} />
         </Canvas>
       </div>
-      {/* Canvas for 3D scene */}
     </>
   );
 };

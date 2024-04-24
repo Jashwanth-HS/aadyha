@@ -679,7 +679,7 @@ export const ourCustomers = {
 //footer cosmos
 
 export const cosmosData = {
-  title: "Accelerate your space ASPIRATIONS with AADYAH",
+  title: "Accelerate your space aspirations with AADYAH",
   blocks: [
     {
       title: "Join Aadyah",
