@@ -35,7 +35,6 @@ export const LoadingSkeleton = ({
   return (
     <div className={styles?.LoaderContainer} {...props}>
       <div className={styles?.firstTextContainer}>
-        {/* <Skeleton circle={true} width={20} height={20} /> */}
         <Skeleton
           containerClassName={styles?.firstText}
           borderRadius={0}
