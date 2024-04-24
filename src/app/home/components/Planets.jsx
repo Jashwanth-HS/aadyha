@@ -402,46 +402,7 @@ const Planets = () => {
           </div>
         </button>
       )}
-      {/* <div
-        style={{
-          position: "fixed",
-          zIndex: "999",
-          top: "0",
-          width: "100%",
-          background: "white",
-        }}
-      >
-        <input
-          type="range"
-          min={-10}
-          max={10}
-          value={X}
-          step={0.01}
-          style={{ width: "400px" }}
-          onChange={(e) => setX(e.target.value)}
-        />
-        {X}
-        <input
-          type="range"
-          min={-10}
-          max={10}
-          step={0.01}
-          style={{ width: "400px" }}
-          value={Y}
-          onChange={(e) => setY(e.target.value)}
-        />
-        {Y}
-        <input
-          type="range"
-          min={-10}
-          max={10}
-          step={0.01}
-          value={Z}
-          style={{ width: "400px" }}
-          onChange={(e) => setZ(e.target.value)}
-        />
-        {Z}
-      </div> */}
+
       <div className={styles?.divContainer} ref={devContainerRef}>
         {/* Container for scrollable content */}
         <div
