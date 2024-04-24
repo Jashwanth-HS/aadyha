@@ -1,32 +1,27 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../careers/css/careers.module.css";
 import Container from "@/components/Container";
 import OurValues from "./components/OurValues";
 import WorkWithUs from "./components/WorkWithUs";
 import AadyahImpact from "./components/AadyahImpact";
-import Testimonial from "./components/Testimonial";
 import Opportunities from "./components/Opportunities";
-import { disableOverflow } from "@/helper";
 import { Helmet } from "react-helmet";
-import { PrimaryButton } from "@/components/Buttons";
 
 const Banner = () => {
-  useEffect(() => {
-    disableOverflow(false);
-  }, []);
   return (
     <>
       <Helmet>
         <title>Careers - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
+
       <div className={styles?.Banner}>
         <h6 className="micro-large secondary-font">work with us</h6>
         <h1 className="heading-1">Build the Future With Us</h1>
         <p className="paragraph">
-          We are dedicated to aspiring for the stars and continually advancing
-          the frontiers of aerospace technology
+          Together let's reach for new horizons and inspire the world with
+          cutting-edge innovation
         </p>
         {/* <PrimaryButton
           label={"view current openings"}
@@ -55,6 +50,15 @@ const Banner = () => {
 };
 
 export default function page() {
+  useEffect(() => {
+    const loader = document.getElementById("loaderMain");
+    if (loader) {
+      loader.style.display = "none";
+    }
+    return () => {
+      loader.style.display = "flex";
+    };
+  }, []);
   return (
     <>
       <Banner />
@@ -69,11 +73,6 @@ export default function page() {
           <AadyahImpact styles={styles} />
         </Container>
       </div>
-      {/* <div className={styles?.TestimonialContainer}>
-        <Container>
-          <Testimonial styles={styles} />
-        </Container>
-      </div> */}
       <Container>
         <Opportunities styles={styles} />
       </Container>

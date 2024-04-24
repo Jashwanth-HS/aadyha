@@ -9,39 +9,41 @@ import {
   ElectricPowerSystem,
   OnBoardComputer,
   MotionControlSystem,
-  disableOverflow,
 } from "@/helper";
 import { Helmet } from "react-helmet";
+import Loading from "../loading";
 const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
 const Banner = () => {
   return (
     <>
-    <Helmet>
-      <title>Satellite System - Aadyah Space</title>
-      <meta name="description" content="Aadyah space home page" />
-    </Helmet>
-    <div className={styles?.Banner}>
-      <h6 className="micro-large secondary-font">Space system</h6>
-      <h1 className="heading-1">Satellite System</h1>
-      <p className="paragraph">
-        AADYAH’s expertise in bespoke Satellite systems can elevate your mission
-        to new heights.
-      </p>
-    </div>
+      <Helmet>
+        <title>Satellite System - Aadyah Space</title>
+        <meta name="description" content="Aadyah space home page" />
+      </Helmet>
+      <div className={styles?.Banner}>
+        <h6 className="micro-large secondary-font">Space system</h6>
+        <h1 className="heading-1">Satellite System</h1>
+        <p className="paragraph">
+          AADYAH’s expertise in bespoke Satellite systems can elevate your
+          mission to new heights.
+        </p>
+      </div>
     </>
   );
 };
 
 export default function page() {
   useEffect(() => {
-    disableOverflow(false);
+    const loader = document.getElementById("loaderMain");
+    if (loader) {
+      loader.style.display = "none";
+    }
+    return () => {
+      loader.style.display = "flex";
+    };
   }, []);
   return (
-    <>
-      {/* <div
-        className={`${styles?.stickyContainer} stickyContainer`}
-        data-lenis-prevent
-      > */}
+    <Loading>
       <Container>
         <Banner />
       </Container>
@@ -60,7 +62,6 @@ export default function page() {
           })}
         </Container>
       </div>
-      {/* </div> */}
-    </>
+    </Loading>
   );
 }

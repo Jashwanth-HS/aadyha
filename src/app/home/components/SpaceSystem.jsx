@@ -3,12 +3,11 @@ import { useIsElementVisible } from "@/helper/Observer";
 import styles from "../css/SpaceSystem.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "@/components/Buttons";
-import { isVisitedAnimations } from "@/helper";
 const LaunchVehicleSystemArray = [
   {
     src: "/assets/images/thrust-vector-control-system.svg",
     title: "Thrust vector control system (TVC)",
-    subTitle: "[TVC by Flex Nozzle Control TVC by Engine Gimballing]",
+    subTitle: "[TVC by Flex Nozzle Control, TVC by Engine Gimballing]",
   },
   {
     src: "/assets/images/guidance-navigation-control.svg",
@@ -34,7 +33,7 @@ const SatelliteSystemArray = [
     src: "/assets/images/propulsion-subsystems.svg",
     title: "Propulsion subsystems",
     subTitle:
-      "[delivering the best-in-class control, efficiency, and reliability that your spacecraft demands]",
+      "AADYAH’s Electronic Control Unit (ECU), Power Processing Unit (PPU), Flow Control System (FCS)",
   },
   {
     src: "/assets/images/ss-electric-power-system.svg",
@@ -157,6 +156,7 @@ const SpaceSystem = ({ data }) => {
   } = data || {};
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
+
   useEffect(() => {
     const svgPaths = elementRef.current.querySelectorAll("path");
     if (isElementVisible) {
@@ -166,7 +166,7 @@ const SpaceSystem = ({ data }) => {
           animateElement.beginElement();
         }
       });
-    } else {
+    } else if (!title.includes("VEHICLE SYSTEM")) {
       svgPaths.forEach((path) => {
         const animateElement = path.querySelector("animate");
         if (animateElement) {
@@ -355,9 +355,7 @@ const Discovering = ({ title }) => {
   const topLeftPartRef = useRef(null);
   const topRightPartRef = useRef(null);
   const bottomPartRef = useRef(null);
-  if (isElementVisible) {
-    isVisitedAnimations(true);
-  }
+
   useEffect(() => {
     let setTimeOutId;
     if (isElementVisible) {

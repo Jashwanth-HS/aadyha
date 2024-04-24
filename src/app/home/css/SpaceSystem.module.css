@@ -68,10 +68,13 @@
     flex-direction: column;
     gap: 5px;
     width: 100%;
+}
+.SpaceSystemListContent h4 {
     text-transform: uppercase;
 }
 .SpaceSystemListContent p{
     color: rgba(255, 255, 255, 0.5);
+    text-transform: unset;
 }
 .LvsLeftItemTitle p{
     text-transform: uppercase;

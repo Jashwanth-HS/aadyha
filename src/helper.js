@@ -51,7 +51,7 @@ export const partGridContent = {
       title: "TVC by Flex Nozzle Control",
       subTitle: "Thrust vector control system",
       description:
-        "Thrust vector control in solid or hybrid rocket motors is achieved using flex nozzles which facilitate the deflection of the thrust by vectoring of the nozzle. Vectoring of the flex nozzle is facilitated by a flexible joint connecting the movable and fixed parts. With over 300 years of combined experience in multidisciplinary engineering, AADYAH excels in the entire process, from design to production, of high-quality TVC systems, including:",
+        "Thrust vector control in solid or hybrid rocket motors is achieved using flex nozzles which facilitate the deflection of the thrust by vectoring of the nozzle. Vectoring of the flex nozzle is facilitated by a flexible joint connecting the movable and fixed parts. With over 300 man years of combined experience in multidisciplinary engineering, AADYAH excels in the entire process, from design to production, of high-quality TVC systems, including:",
       image: "/assets/images/tvc-engine-gimballing.png",
       blocks: [
         {
@@ -431,7 +431,7 @@ export const satelliteRoadmap = {
         image: "/assets/images/spacecarft-operation.svg",
         title: "Spacecraft Operations and IoT Solutions",
         description:
-          "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This 7mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution. It is our endeavor to establish AADYAH as the one stop solution for integrated space asset solutions, underlining our commitment to innovation and excellence.",
+          "Our mission is to operate a spacecraft equipped with IoT communication and imaging payloads. This mission serves as a comprehensive demonstration of our capabilities, showcasing how space assets can be harnessed to provide a complete solution. It is our endeavor to establish AADYAH as the one stop solution for integrated space asset solutions, underlining our commitment to innovation and excellence.",
         button: {
           text: "read more",
         },
@@ -679,7 +679,7 @@ export const ourCustomers = {
 //footer cosmos
 
 export const cosmosData = {
-  title: "ACCELERATE your space ASPIRATIONS with AADYAH",
+  title: "Accelerate your space ASPIRATIONS with AADYAH",
   blocks: [
     {
       title: "Join Aadyah",
@@ -742,23 +742,15 @@ export const footer = {
 //calculate planets animation function
 
 export const disableOverflow = (boolean) => {
-  if (boolean && window.innerWidth >= 768) {
+  if (boolean) {
+    document.querySelector("html").style.overflowY = "hidden";
     document.querySelector("body").style.overflowY = "hidden";
-    document.querySelector("body").style.height = "100vh";
   } else {
+    document.querySelector("html").style.overflowY = "auto";
     document.querySelector("body").style.overflowY = "auto";
-    document.querySelector("body").style.height = "100%";
   }
 };
 
 export const createDelay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
-};
-
-let isVisited = false;
-export const isVisitedAnimations = (value) => {
-  if (value) {
-    isVisited = value;
-  }
-  return isVisited;
 };

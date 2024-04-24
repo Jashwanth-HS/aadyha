@@ -27,9 +27,9 @@ export default function PlanetaryMissions({ styles }) {
                   <div>{PMImages && <img src={PMImages} />}</div>
                   <div className={styles?.PMRepeaterContent}>
                     <h3 className="micro-large secondary-font">{PMtitle}</h3>
-                    <p className="micro-large secondary-font">
+                    {/* <p className="micro-large secondary-font">
                       {PMDescription?.text}
-                    </p>
+                    </p> */}
                     {PMDescription?.list ? (
                       <RenderList
                         list={PMDescription?.list}
