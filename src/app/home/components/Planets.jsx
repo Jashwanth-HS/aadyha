@@ -421,6 +421,7 @@ const Planets = () => {
             />
             <WordAnimation
               opacity={opacity}
+              opacityIntensity={0.5}
               typing={true}
               typeDelay={30}
               word={earthImageLabelSpanText2}
@@ -440,6 +441,7 @@ const Planets = () => {
             />
             <WordAnimation
               opacity={opacity}
+              opacityIntensity={0.5}
               typing={true}
               typeDelay={30}
               word={earthDescription2}
@@ -488,6 +490,7 @@ const Planets = () => {
             />
             <WordAnimation
               opacity={opacity}
+              opacityIntensity={0.5}
               typing={true}
               typeDelay={30}
               word={earthSpanText4}

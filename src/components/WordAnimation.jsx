@@ -7,6 +7,7 @@ const WordAnimation = React.memo(
     word,
     className,
     stagger,
+    opacityIntensity,
     typing,
     fading,
     typeDelay = 100,
@@ -19,7 +20,7 @@ const WordAnimation = React.memo(
       const letters = word.split("") || [""];
       if (wordRef.current) {
         wordRef.current.innerHTML = "";
-        wordRef.current.style.opacity = "1";
+        wordRef.current.style.opacity = opacityIntensity || "1";
       }
       for (let index = 0; index < letters.length; index++) {
         const letter = letters[index];
@@ -42,12 +43,12 @@ const WordAnimation = React.memo(
       const letters = wordRef.current ? wordRef.current.children : null;
       if (letters?.length > 0) {
         gsap.set(letters, {
-          opacity: opacity ? 0 : 1,
+          opacity: opacity ? 0 : opacityIntensity || 1,
           y: isTyping || opacity == false ? 0 : 100,
         });
         gsap.to(letters, {
           duration: 1,
-          opacity: opacity ? 1 : 0,
+          opacity: opacity ? opacityIntensity || 1 : 0,
           y: 0,
           stagger: isTyping ? 0.0001 : opacity ? stagger || 0.3 : 0.01,
         });
@@ -87,7 +88,7 @@ const WordAnimation = React.memo(
               <span
                 key={index}
                 style={{
-                  opacity: opacity ? 0 : 1,
+                  opacity: opacity ? 0 : opacityIntensity || 1,
                   marginLeft: letter !== " " ? "" : marginSpace,
                 }}
               >

@@ -51,7 +51,7 @@ export const partGridContent = {
       title: "TVC by Flex Nozzle Control",
       subTitle: "Thrust vector control system",
       description:
-        "Thrust vector control in solid or hybrid rocket motors is achieved using flex nozzles which facilitate the deflection of the thrust by vectoring of the nozzle. Vectoring of the flex nozzle is facilitated by a flexible joint connecting the movable and fixed parts. With over 300 years of combined experience in multidisciplinary engineering, AADYAH excels in the entire process, from design to production, of high-quality TVC systems, including:",
+        "Thrust vector control in solid or hybrid rocket motors is achieved using flex nozzles which facilitate the deflection of the thrust by vectoring of the nozzle. Vectoring of the flex nozzle is facilitated by a flexible joint connecting the movable and fixed parts. With over 300 man years of combined experience in multidisciplinary engineering, AADYAH excels in the entire process, from design to production, of high-quality TVC systems, including:",
       image: "/assets/images/tvc-engine-gimballing.png",
       blocks: [
         {
@@ -679,7 +679,7 @@ export const ourCustomers = {
 //footer cosmos
 
 export const cosmosData = {
-  title: "ACCELERATE your space ASPIRATIONS with AADYAH",
+  title: "Accelerate your space ASPIRATIONS with AADYAH",
   blocks: [
     {
       title: "Join Aadyah",
