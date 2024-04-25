@@ -188,23 +188,25 @@ const Planets = () => {
 
   useEffect(() => {
     const handleWindowScroll = async () => {
-      const scrollY = window.scrollY;
-      if (
-        scrollY > 10 &&
-        scrollY <= 750 &&
-        scrollY > PrevWindowScroll.current
-      ) {
-        skipButtonRef.current.style.display = "flex";
-        isVisible = true;
-        skipButtonRef.current.click();
-      } else if (
-        scrollY > 10 &&
-        scrollY <= 750 &&
-        scrollY < PrevWindowScroll.current
-      ) {
-        lenis.scrollTo("body");
+      if (window.innerWidth > 768) {
+        const scrollY = window.scrollY;
+        if (
+          scrollY > 10 &&
+          scrollY <= 750 &&
+          scrollY > PrevWindowScroll.current
+        ) {
+          skipButtonRef.current.style.display = "flex";
+          isVisible = true;
+          skipButtonRef.current.click();
+        } else if (
+          scrollY > 10 &&
+          scrollY <= 750 &&
+          scrollY < PrevWindowScroll.current
+        ) {
+          lenis.scrollTo("body");
+        }
+        PrevWindowScroll.current = scrollY;
       }
-      PrevWindowScroll.current = scrollY;
     };
     window.addEventListener("scroll", handleWindowScroll);
     return () => {
@@ -275,26 +277,28 @@ const Planets = () => {
   }, [headingText]);
 
   const handleScroll = (e) => {
-    scroll.current =
-      e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
-    if (
-      (scroll.current > 0.2 && scroll.current < 0.3) ||
-      (scroll.current > 0.6 && scroll.current < 0.8)
-    ) {
-      overlayDescriptionRef.current.style.opacity = "1";
-      addLineText.current.classList.remove(styles.addLineTextAnimation);
-      setOpacity(false);
-    }
+    if (window.innerWidth > 768) {
+      scroll.current =
+        e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
+      if (
+        (scroll.current > 0.2 && scroll.current < 0.3) ||
+        (scroll.current > 0.6 && scroll.current < 0.8)
+      ) {
+        overlayDescriptionRef.current.style.opacity = "1";
+        addLineText.current.classList.remove(styles.addLineTextAnimation);
+        setOpacity(false);
+      }
 
-    if (scroll.current > 0.3 && scroll.current < 0.6) {
-      setHeadingText("TO MOON");
-      setOpacity(true);
-    } else if (scroll.current > 0.8 && scroll.current < 1) {
-      setHeadingText("TO MARS");
-      setOpacity(true);
-    } else if (scroll.current < 0.2) {
-      setHeadingText("FROM EARTH");
-      setOpacity(true);
+      if (scroll.current > 0.3 && scroll.current < 0.6) {
+        setHeadingText("TO MOON");
+        setOpacity(true);
+      } else if (scroll.current > 0.8 && scroll.current < 1) {
+        setHeadingText("TO MARS");
+        setOpacity(true);
+      } else if (scroll.current < 0.2) {
+        setHeadingText("FROM EARTH");
+        setOpacity(true);
+      }
     }
   };
 

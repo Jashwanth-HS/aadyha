@@ -726,8 +726,6 @@ export const footer = {
       slug: "https://www.linkedin.com/company/aadyah-aerospace-private-limited/",
     },
     { label: "twitter", slug: "https://twitter.com/AadyahAerospace" },
-    // { label: "instagram", slug: "https://www.instagram.com/" },
-    // { label: "facebook", slug: "https://www.facebook.com/" },
     { label: "youtube", slug: "https://www.youtube.com/@aadyahaerospace5706" },
   ],
   privacyPolicy: [

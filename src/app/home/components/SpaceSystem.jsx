@@ -19,13 +19,13 @@ const LaunchVehicleSystemArray = [
     src: "/assets/images/avionics.svg",
     title: "Avionics",
     subTitle:
-      "[offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle]",
+      "[Offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle]",
   },
   {
     src: "/assets/images/flow-control-system.svg",
     title: "Flow control system",
     subTitle:
-      "[custom build valves with high performance, pressure handling and stringent leak-tightness]",
+      "[Custom build valves with high performance, pressure handling and stringent leak-tightness]",
   },
 ];
 const SatelliteSystemArray = [
@@ -44,7 +44,7 @@ const SatelliteSystemArray = [
   {
     src: "/assets/images/ss-on-board-computer.svg",
     title: "On-board computer",
-    subTitle: "[tailor-made solutions to integrate with your mssion]",
+    subTitle: "[Tailor-made solutions to integrate with your mssion]",
   },
   {
     src: "/assets/images/ss-motion-control-system.svg",
