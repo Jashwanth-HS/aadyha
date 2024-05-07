@@ -16,30 +16,13 @@ const WordAnimation = React.memo(
     style,
   }) => {
     const wordRef = useRef(null);
-    // const typingAnimation = async () => {
-    //   const letters = word.split("") || [""];
-    //   if (wordRef.current) {
-    //     wordRef.current.innerHTML = "";
-    //     wordRef.current.style.opacity = opacityIntensity || "1";
-    //   }
-    //   for (let index = 0; index < letters.length; index++) {
-    //     const letter = letters[index];
-    //     const span = document.createElement("span");
-    //     span.textContent = letter;
-    //     span.style.display = "inline-block";
-    //     span.style.marginLeft = letter == " " ? "7px" : "0";
-    //     await createDelay(typeDelay);
-    //     if (wordRef.current) wordRef.current.appendChild(span);
-    //   }
-    // };
+
     const typingAnimation = async () => {
       const letters = word.split("") || [""];
       if (wordRef.current) {
         wordRef.current.innerHTML = ""; // Clear the word container
       }
-
       const tl = gsap.timeline();
-
       letters.forEach((letter, index) => {
         const span = document.createElement("span");
         span.textContent = letter;
@@ -51,12 +34,6 @@ const WordAnimation = React.memo(
         tl.to(span, { scaleX: 1, duration: 0.01 }, index * 0.05); // Scale the letter from 0 to 1 to simulate typing
       });
     };
-
-    // const undoTypingAnimation = async () => {
-    //   const spans = wordRef.current;
-    //   spans.style.opacity = "0";
-    //   spans.innerHTML = "";
-    // };
 
     const fadingAnimation = (isTyping) => {
       const letters = wordRef.current ? wordRef.current.children : null;
