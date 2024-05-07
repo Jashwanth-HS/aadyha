@@ -91,7 +91,8 @@
     transition: color 0.3s ease;
 }
 .navHeaderLinksContainer li a:hover{
-    color: #e4572e;
+    opacity:70%;
+    transition: opacity 0.3s ease;
 }
 .navHeaderButton{
     display: flex;
