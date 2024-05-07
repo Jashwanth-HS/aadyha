@@ -134,8 +134,8 @@ const SectionTitle = ({ title, subTitle }) => {
         </svg>
       </div>
       <div className={styles.LineDotContent}>
-        <h3 className="micro-large">{title}</h3>
-        <p className="caption">{subTitle}</p>
+        <h3 className="micro-large secondary-font">{title}</h3>
+        <p className="caption secondary-font">{subTitle}</p>
       </div>
     </div>
   );
