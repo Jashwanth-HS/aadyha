@@ -16,28 +16,47 @@ const WordAnimation = React.memo(
     style,
   }) => {
     const wordRef = useRef(null);
+    // const typingAnimation = async () => {
+    //   const letters = word.split("") || [""];
+    //   if (wordRef.current) {
+    //     wordRef.current.innerHTML = "";
+    //     wordRef.current.style.opacity = opacityIntensity || "1";
+    //   }
+    //   for (let index = 0; index < letters.length; index++) {
+    //     const letter = letters[index];
+    //     const span = document.createElement("span");
+    //     span.textContent = letter;
+    //     span.style.display = "inline-block";
+    //     span.style.marginLeft = letter == " " ? "7px" : "0";
+    //     await createDelay(typeDelay);
+    //     if (wordRef.current) wordRef.current.appendChild(span);
+    //   }
+    // };
     const typingAnimation = async () => {
       const letters = word.split("") || [""];
       if (wordRef.current) {
-        wordRef.current.innerHTML = "";
-        wordRef.current.style.opacity = opacityIntensity || "1";
+        wordRef.current.innerHTML = ""; // Clear the word container
       }
-      for (let index = 0; index < letters.length; index++) {
-        const letter = letters[index];
+
+      const tl = gsap.timeline();
+
+      letters.forEach((letter, index) => {
         const span = document.createElement("span");
         span.textContent = letter;
         span.style.display = "inline-block";
         span.style.marginLeft = letter == " " ? "7px" : "0";
-        await createDelay(typeDelay);
+        span.style.transformOrigin = "left"; // Set transform origin to left for scaleX animation
+        span.style.transform = "scaleX(0)"; // Start with scaleX of 0
         if (wordRef.current) wordRef.current.appendChild(span);
-      }
+        tl.to(span, { scaleX: 1, duration: 0.01 }, index * 0.05); // Scale the letter from 0 to 1 to simulate typing
+      });
     };
 
-    const undoTypingAnimation = async () => {
-      const spans = wordRef.current;
-      spans.style.opacity = "0";
-      spans.innerHTML = "";
-    };
+    // const undoTypingAnimation = async () => {
+    //   const spans = wordRef.current;
+    //   spans.style.opacity = "0";
+    //   spans.innerHTML = "";
+    // };
 
     const fadingAnimation = (isTyping) => {
       const letters = wordRef.current ? wordRef.current.children : null;
@@ -55,11 +74,7 @@ const WordAnimation = React.memo(
       }
     };
 
-    const animateWord = typing
-      ? opacity
-        ? typingAnimation
-        : undoTypingAnimation
-      : fadingAnimation;
+    const animateWord = typing ? opacity && typingAnimation : fadingAnimation;
 
     useEffect(() => {
       let setTimeoutId;
