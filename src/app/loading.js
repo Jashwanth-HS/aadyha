@@ -13,7 +13,9 @@ export default function Loading({
   useEffect(() => {
     document.querySelector("html").style.overflowY = "hidden";
     document.querySelector("body").style.overflowY = "hidden";
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
     return () => {
       document.querySelector("html").style.overflowY = "auto";
       document.querySelector("body").style.overflowY = "auto";
