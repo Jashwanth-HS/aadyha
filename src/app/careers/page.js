@@ -7,6 +7,7 @@ import WorkWithUs from "./components/WorkWithUs";
 import AadyahImpact from "./components/AadyahImpact";
 import Opportunities from "./components/Opportunities";
 import { Helmet } from "react-helmet";
+import Loading from "../loading";
 
 const Banner = () => {
   return (
@@ -53,20 +54,22 @@ export default function page() {
   return (
     <>
       <Banner />
-      <div className={styles?.OurValuesContainer}>
+      <Loading>
+        <div className={styles?.OurValuesContainer}>
+          <Container>
+            <OurValues styles={styles} />
+          </Container>
+        </div>
+        <WorkWithUs styles={styles} />
+        <div className={styles?.AadyahImpactContainer}>
+          <Container>
+            <AadyahImpact styles={styles} />
+          </Container>
+        </div>
         <Container>
-          <OurValues styles={styles} />
+          <Opportunities styles={styles} />
         </Container>
-      </div>
-      <WorkWithUs styles={styles} />
-      <div className={styles?.AadyahImpactContainer}>
-        <Container>
-          <AadyahImpact styles={styles} />
-        </Container>
-      </div>
-      <Container>
-        <Opportunities styles={styles} />
-      </Container>
+      </Loading>
     </>
   );
 }
