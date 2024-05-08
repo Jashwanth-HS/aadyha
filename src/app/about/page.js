@@ -5,15 +5,6 @@ import { Helmet } from "react-helmet";
 import { PrimaryButton } from "@/components/Buttons";
 
 export default function About() {
-  useEffect(() => {
-    const loader = document.getElementById("loaderMain");
-    if (loader) {
-      loader.style.display = "none";
-    }
-    return () => {
-      loader.style.display = "flex";
-    };
-  }, []);
   return (
     <>
       <Helmet>

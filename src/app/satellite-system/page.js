@@ -33,15 +33,6 @@ const Banner = () => {
 };
 
 export default function page() {
-  useEffect(() => {
-    const loader = document.getElementById("loaderMain");
-    if (loader) {
-      loader.style.display = "none";
-    }
-    return () => {
-      loader.style.display = "flex";
-    };
-  }, []);
   return (
     <Loading>
       <Container>

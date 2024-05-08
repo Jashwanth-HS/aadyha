@@ -1,13 +1,7 @@
-import React, { Children, use, useEffect, useState } from "react";
+import React from "react";
 import styles from "./loader.module.css";
-export default function PageLoad({ children }) {
-  const [loaded, setLoaded] = useState(false);
-  useEffect(() => {
-    setLoaded(true);
-  }, []);
-  return loaded ? (
-    children
-  ) : (
+export default function PageLoad() {
+  return (
     <div className={styles?.loaderContainer} id="loaderMain">
       <svg
         className={styles?.active}

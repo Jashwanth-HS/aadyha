@@ -1,39 +1,26 @@
 "use client";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import styles from "./loading.module.css";
 import { useEffect, useState } from "react";
-export default function Loading({ children }) {
-  const [pageLoad, setPageLoad] = useState(false);
-  useEffect(() => {
-    // let setTimeoutId;
-    // setTimeoutId = setTimeout(() => {
-    setPageLoad(true);
-    // }, 200);
-    // return () => {
-    //   clearTimeout(setTimeoutId);
-    // };
-  }, []);
-  // You can add any UI inside Loading, including a Skeleton.
-  return <>{pageLoad ? children : <LoadingSkeleton />}</>;
-}
 
-export const LoadingSkeleton = ({
-  componentLoad,
+export default function Loading({
+  children,
   baseColor = "#F6F6F6",
   highlightColor = "#EFEFEF",
-}) => {
-  const props = componentLoad ? { id: "loaderMain" } : {};
+}) {
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     document.querySelector("html").style.overflowY = "hidden";
     document.querySelector("body").style.overflowY = "hidden";
+    setLoading(false);
     return () => {
       document.querySelector("html").style.overflowY = "auto";
       document.querySelector("body").style.overflowY = "auto";
     };
   }, []);
-  return (
-    <div className={styles?.LoaderContainer} {...props}>
+  return loading ? (
+    <div className={styles?.LoaderContainer}>
       <div className={styles?.firstTextContainer}>
         <Skeleton
           containerClassName={styles?.firstText}
@@ -73,5 +60,7 @@ export const LoadingSkeleton = ({
         highlightColor={highlightColor}
       />
     </div>
+  ) : (
+    children
   );
-};
+}

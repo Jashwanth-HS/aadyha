@@ -5,8 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { forwardRef, use, useEffect, useRef } from "react";
 import { PrimaryButton } from "@/components/Buttons";
-import { LoadingSkeleton } from "@/app/loading";
-import PageLoad from "@/components/PageLoad";
 
 export default function Header() {
   const pathname = usePathname();
@@ -95,7 +93,6 @@ export default function Header() {
   };
   return (
     <>
-      <LoadingSkeleton componentLoad={true} />
       <header ref={navHeaderRef} className={styles?.navHeader}>
         <div className={styles?.navHeaderInner}>
           <Link
