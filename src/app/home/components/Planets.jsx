@@ -242,7 +242,7 @@ const Planets = () => {
         ? "The nurturing sphere we call home."
         : "",
       Description2 = headingText?.includes("MOON")
-        ? `[Inspiring humaanity's quest for exploration]`
+        ? `[Inspiring humanity's quest for exploration]`
         : headingText?.includes("MARS")
         ? `[Discovering New Horizons: Journeying Beyond Earth to Mars]`
         : headingText?.includes("EARTH")
