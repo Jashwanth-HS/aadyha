@@ -182,7 +182,6 @@ const Planets = () => {
     addLineText.current.classList.add(styles.addLineTextAnimation);
     return () => {
       clearTimeout(setTimeoutId);
-      loader.style.display = "flex";
     };
   }, []);
 
