@@ -6,41 +6,24 @@ import Contact from "./components/Contact";
 import OurCustomers from "./components/OurCustomers";
 import { Helmet } from "react-helmet";
 
-const Banner = () => {
+export default function page() {
+  useEffect(() => {
+    const loader = document.getElementById("loaderMain");
+    if (loader) {
+      loader.style.display = "none";
+    }
+    return () => {
+      loader.style.display = "flex";
+    };
+  }, []);
   return (
     <>
       <Helmet>
         <title> Contact - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
-      {/* <div className={styles?.Banner}>
-      <div>
-        <h1 className="heading-1">Reach out to us to know more</h1>
-        <p className="paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-          pharetra vestibulum tincidunt.
-        </p>
-      </div>
-    </div> */}
-    </>
-  );
-};
-
-export default function page() {
-  // useEffect(() => {
-  //   const loader = document.getElementById("loaderMain");
-  //   if (loader) {
-  //     loader.style.display = "none";
-  //   }
-  //   return () => {
-  //     loader.style.display = "flex";
-  //   };
-  // }, []);
-  return (
-    <>
       <div className={styles?.ContactBanner}>
         <Container>
-          <Banner />
           <Contact styles={styles} />
         </Container>
       </div>
