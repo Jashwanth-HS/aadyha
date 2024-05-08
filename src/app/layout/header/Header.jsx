@@ -74,6 +74,10 @@ export default function Header() {
   });
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    let loaderMain = document.getElementById("loaderMain");
+    if (loaderMain) {
+      loaderMain.style.display = "none";
+    }
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
