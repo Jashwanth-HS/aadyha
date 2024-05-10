@@ -5,6 +5,7 @@ import * as THREE from "three";
 import { useLenis } from "@studio-freight/react-lenis";
 import styles from "../css/main.module.css";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
+let targetTimeStore;
 // import WordAnimation from "@/components/WordAnimation";
 const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
   ssr: false,
@@ -48,6 +49,7 @@ const Model = forwardRef((props, ref) => {
     if (actions["Animation"]) {
       const duration = actions["Animation"].getClip().duration;
       const targetTime = duration * ref.current;
+      targetTimeStore = targetTime;
       actions["Animation"].time = THREE.MathUtils.lerp(
         actions["Animation"].time,
         targetTime,
@@ -141,6 +143,7 @@ const Model = forwardRef((props, ref) => {
 const Planets = () => {
   const lenis = useLenis();
   const skipButtonRef = useRef(null);
+  const divContainerRef = useRef(null);
   const overlayDescriptionRef = useRef(null);
   const MoonImageContainerRef = useRef(null);
   const addLineText = useRef(null);
@@ -189,21 +192,31 @@ const Planets = () => {
     const handleWindowScroll = async () => {
       if (window.innerWidth > 768) {
         const scrollY = window.scrollY;
-        if (
-          scrollY > 10 &&
-          scrollY <= 750 &&
-          scrollY > PrevWindowScroll.current
-        ) {
-          skipButtonRef.current.style.display = "flex";
-          isVisible = true;
-          skipButtonRef.current.click();
-        } else if (
-          scrollY > 10 &&
-          scrollY <= 750 &&
-          scrollY < PrevWindowScroll.current
-        ) {
-          lenis.scrollTo("body");
+        if (divContainerRef.current) {
+          const divContainer = divContainerRef.current.getBoundingClientRect();
+          if (
+            scrollY < divContainer.height &&
+            scrollY < PrevWindowScroll.current
+          ) {
+            lenis.scrollTo("body");
+          }
         }
+
+        // if (
+        //   scrollY > 10 &&
+        //   scrollY <= 750 &&
+        //   scrollY > PrevWindowScroll.current
+        // ) {
+        //   skipButtonRef.current.style.display = "flex";
+        //   isVisible = true;
+        //   skipButtonRef.current.click();
+        // } else if (
+        //   scrollY > 10 &&
+        //   scrollY <= 750 &&
+        //   scrollY < PrevWindowScroll.current
+        // ) {
+        //   lenis.scrollTo("body");
+        // }
         PrevWindowScroll.current = scrollY;
       }
     };
@@ -277,6 +290,11 @@ const Planets = () => {
 
   const handleScroll = (e) => {
     if (window.innerWidth > 768) {
+      if (targetTimeStore >= 6.236) {
+        skipButtonRef.current.style.display = "flex";
+        isVisible = true;
+        skipButtonRef.current.click();
+      }
       scroll.current =
         e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
       if (
@@ -325,6 +343,7 @@ const Planets = () => {
       </button>
 
       <div
+        ref={divContainerRef}
         className={styles?.divContainer}
         style={{
           background: headingText?.includes("MOON")
