@@ -3,7 +3,8 @@ import { footer } from "@/helper";
 import Image from "next/image";
 import React from "react";
 
-export default function Footer({ styles }) {
+export default function Footer({ styles, footerData }) {
+  console.log("footerData: ", footerData);
   const {
     slug,
     images,
@@ -14,8 +15,10 @@ export default function Footer({ styles }) {
     socialLinks,
     copyRights,
     allRightsReserved,
-  } = footer || {};
-
+  } = footerData || {};
+  if (!footerData) {
+    return <div>loading</div>;
+  }
   return (
     <div className={styles?.FooterContainer} id={slug}>
       <div className={styles?.FooterItems}>
@@ -28,7 +31,9 @@ export default function Footer({ styles }) {
           <ul>
             {links.map((link, index) => (
               <li key={index}>
-                <a href={link.slug}>{link.label}</a>
+                <a href={link.slug} target={link?.target}>
+                  {link.title}
+                </a>
               </li>
             ))}
           </ul>
@@ -55,16 +60,18 @@ export default function Footer({ styles }) {
         <div className={styles?.SocialLinkWrapper}>
           <ul>
             {socialLinks.map((data, index) => {
-              const { label, slug } = data || {};
+              const { iconSvg, slug } = data || {};
               return (
                 <li key={index}>
                   <a href={slug} target="_blank">
-                    <Image
+                    <div dangerouslySetInnerHTML={{ __html: iconSvg }} />
+
+                    {/* <Image
                       alt="cardImage"
                       width={100}
                       height={100}
                       src={`/assets/socialIcons/${label}.svg`}
-                    />
+                    /> */}
                   </a>
                 </li>
               );

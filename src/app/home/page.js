@@ -21,6 +21,8 @@ import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
 import MobileViewPlanets from "./components/MobileViewPlanets";
 import { Helmet } from "react-helmet";
+import { convertFromACF, fetchPage } from "../lib/api";
+import PageLoad from "@/components/PageLoad";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -33,6 +35,27 @@ const Section = ({ children }) => {
 export default function Home() {
   // const [pageLoad, setPageLoaded] = useState(false);
 
+  const [pageData, setPageData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPageData = async () => {
+      try {
+        const fetchData = await fetchPage(15);
+        const data = await convertFromACF(fetchData, "home");
+        setPageData(data);
+      } catch (error) {
+        console.log("error: ", error);
+        setError("Failed to fetch post");
+      }
+    };
+
+    getPageData();
+  }, []);
+
+  if (error) return <div>{error}</div>;
+  if (!pageData) return <PageLoad />;
+
   return (
     <>
       <Helmet>
@@ -42,8 +65,11 @@ export default function Home() {
       <Planets />
       <Section>
         <MobileViewPlanets />
-        <SpaceSystem />
-        <Clients />
+        <SpaceSystem pageData={pageData} />
+        <Clients
+          clientsSection={pageData?.clientsSection}
+          contentBlock={pageData?.contentBlock}
+        />
       </Section>
     </>
   );

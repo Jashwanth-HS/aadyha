@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "../css/Clients.module.css";
 import { PrimaryButton } from "@/components/Buttons";
-import Container from "@/components/Container";
-export default function Clients() {
+export default function Clients({ clientsSection, contentBlock }) {
+  const { title, client_values, client_link, clients_section_image } =
+    clientsSection || {};
   return (
     <>
       <div className={styles.ClientsContainer}>
@@ -40,51 +41,35 @@ export default function Clients() {
         <div className="container">
           <div className={styles?.LifeSupporSystemWrap}>
             <div className={styles?.LifeSupporSystemImg}>
-              <div>
-                <img src={"/assets/images/life-support-system-img-one.png"} />
-              </div>
-              <div>
-                <img src={"/assets/images/life-support-system-img-two.png"} />
-              </div>
+              {clients_section_image?.map((e, index) => (
+                <div key={index}>
+                  <img src={e} />
+                </div>
+              ))}
             </div>
             <div className={styles?.LifeSupporSystemContent}>
               <div>
-                <h3 className="heading-4">
-                  Transcending your dreams into{" "}
-                  <span>orbits with sustainable space solutions</span>
-                </h3>
+                <h3 className="heading-4">{title}</h3>
               </div>
               <div className={styles?.Counter}>
-                <div className={styles?.CounterItems}>
-                  <div>
-                    <h3 className="caption secondary-font">Global customers</h3>
+                {client_values?.map((e, index) => (
+                  <div key={index} className={styles?.CounterItems}>
+                    <div>
+                      <h3 className="caption secondary-font">{e.title}</h3>
+                    </div>
+                    <div>
+                      <p className="heading-2">{e.value}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="heading-2">17+</p>
-                  </div>
-                </div>
-                <div className={styles?.CounterItems}>
-                  <div>
-                    <h3 className="caption secondary-font">Contracts</h3>
-                  </div>
-                  <div>
-                    <p className="heading-2">20+</p>
-                  </div>
-                </div>
-                <div className={styles?.CounterItems}>
-                  <div>
-                    <h3 className="caption secondary-font">Talent pool</h3>
-                  </div>
-                  <div>
-                    <p className="heading-2">150</p>
-                  </div>
-                </div>
+                ))}
               </div>
-              <PrimaryButton
-                label={" discover Aadyah"}
-                href={"/about"}
-                style={{ marginTop: "2rem" }}
-              />
+              {client_link && (
+                <PrimaryButton
+                  label={client_link?.title}
+                  href={client_link?.url}
+                  style={{ marginTop: "2rem" }}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -133,19 +118,17 @@ export default function Clients() {
         <div className="container">
           <div className={styles?.CeoMessageWrap}>
             <div>
-              <img src={"/assets/images/ceo.png"} />
+              <img src={contentBlock?.profile_image} />
             </div>
             <div className={styles?.CeoMessageContent}>
               <div>
-                <h2 className="heading-3">
-                  “Leading AADYAH is an honor. Together, we pioneer space
-                  systems, missions, and services, transforming aspirations into
-                  cosmic realities.”
-                </h2>
+                <h2 className="heading-3">{contentBlock?.message}</h2>
                 <div className={styles?.profile}>
-                  <h6 className="caption secondary-font">shaju stephen</h6>
+                  <h6 className="caption secondary-font">
+                    {contentBlock?.name}
+                  </h6>
                   <p className="caption secondary-font">
-                    Chairman of the Board, Managing Director{" "}
+                    {contentBlock?.designation}
                   </p>
                 </div>
               </div>

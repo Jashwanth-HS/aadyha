@@ -3,111 +3,7 @@ import { useIsElementVisible } from "@/helper/Observer";
 import styles from "../css/SpaceSystem.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "@/components/Buttons";
-const LaunchVehicleSystemArray = [
-  {
-    src: "/assets/images/thrust-vector-control-system.svg",
-    title: "Thrust vector control system (TVC)",
-    subTitle: "[TVC by Flex Nozzle Control, TVC by Engine Gimballing]",
-  },
-  {
-    src: "/assets/images/guidance-navigation-control.svg",
-    title: "Guidance navigation and control",
-    subTitle:
-      "[Design and development of Trajectory simulation & optimization,6DoF simulation, and control navigation guidance algorithms]",
-  },
-  {
-    src: "/assets/images/avionics.svg",
-    title: "Avionics",
-    subTitle:
-      "[Offers cutting-edge design to manufacture solutions of avionics system, including hardware and software system for launch vehicle]",
-  },
-  {
-    src: "/assets/images/flow-control-system.svg",
-    title: "Flow control system",
-    subTitle:
-      "[Custom build valves with high performance, pressure handling and stringent leak-tightness]",
-  },
-];
-const SatelliteSystemArray = [
-  {
-    src: "/assets/images/propulsion-subsystems.svg",
-    title: "Propulsion subsystems",
-    subTitle:
-      "AADYAH’s Electronic Control Unit (ECU), Power Processing Unit (PPU), Flow Control System (FCS)",
-  },
-  {
-    src: "/assets/images/ss-electric-power-system.svg",
-    title: "Electric power system (eps)",
-    subTitle:
-      "[Reliable and adaptable power solutions with radiation tolerance, power tracking and multi voltage management tailored for you mission]",
-  },
-  {
-    src: "/assets/images/ss-on-board-computer.svg",
-    title: "On-board computer",
-    subTitle: "[Tailor-made solutions to integrate with your mssion]",
-  },
-  {
-    src: "/assets/images/ss-motion-control-system.svg",
-    title: "Motion control system",
-    subTitle:
-      "[Advanced system which ensures accurate pointing & orientation, and precision-control mechanism]",
-  },
-];
-const SpaceMissionArray = [
-  {
-    src: "/assets/images/sm-sdm.svg",
-    title: "SPACE DEBRIS MISSION",
-    subTitle:
-      "[TRACE, is a self-powered and self-communicating beacon, which enable real-time location and velocity data to a ground station, triggered from Earth]",
-  },
-  {
-    src: "/assets/images/sm-satellite.svg",
-    title: "SATELLITE",
-    subTitle:
-      "[PRADEEP SAT: AI-enabled IOT communication satellite with Earth Observation capabilities and On-board data processing]",
-  },
-  {
-    src: "/assets/images/sm-spm.svg",
-    title: "SPACE AND PLANETARY MISSIONS",
-    subTitle: "[Lunar Lander, Lunar Rover]",
-  },
-];
 
-const SpaceSystemArray = [
-  {
-    sectionTitle: "launch vehicle SYSTEM",
-    sectionSubTitle: "[Trusted partner  for your space missions]",
-    blocks: LaunchVehicleSystemArray,
-    imagePath: "/assets/images/hp-lvs-img.png",
-    renderSvg: "Left1",
-    title: "LAUNCH VEHICLE SYSTEM",
-    subTitle: "From Concept to Design: Your partner in bespoke Space Solutions",
-    Button: { label: "Explore more", slug: "/launch-vehicle-system" },
-  },
-  {
-    sectionTitle: "Satellite System",
-    sectionSubTitle: "[Trusted partner  for your space missions]",
-    blocks: SatelliteSystemArray,
-    imagePath: "/assets/images/hp-flow-control-system.png",
-    renderSvg: "Right1",
-    isRight: true,
-    title: "satellite system",
-    subTitle:
-      "AADYAH’s expertise in bespoke Satellite systems can elevate your mission to new heights. ",
-    Button: { label: "Explore more", slug: "/satellite-system" },
-  },
-  {
-    sectionTitle: "Space mission",
-    sectionSubTitle: "[Trusted partner  for your space missions]",
-    blocks: SpaceMissionArray,
-    imagePath: "/assets/images/hp-space-mission.png",
-    renderSvg: "Left2",
-    isbottom: true,
-    title: "SPACE  MISSION",
-    subTitle: "Ascending Beyond Limits",
-    Button: { label: "Explore more", slug: "/space-mission" },
-  },
-];
 const SectionTitle = ({ title, subTitle }) => {
   return (
     <div className={styles.LineDot}>
@@ -152,7 +48,7 @@ const SpaceSystem = ({ data }) => {
     imagePath,
     isRight,
     isbottom,
-    Button,
+    button,
   } = data || {};
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
@@ -202,7 +98,10 @@ const SpaceSystem = ({ data }) => {
                   return (
                     <div key={index} className={styles?.SpaceSystemListitems}>
                       <div className={styles?.SpaceSystemListImg}>
-                        <img src={e?.src} alt="" />
+                        {/* <img src={e?.src} alt="" /> */}
+                        <div
+                          dangerouslySetInnerHTML={{ __html: e?.renderSvg }}
+                        />
                       </div>
                       <div className={styles?.SpaceSystemListContent}>
                         <h4 className="paragraph secondary-font">{e?.title}</h4>
@@ -214,8 +113,8 @@ const SpaceSystem = ({ data }) => {
               </div>
               <PrimaryButton
                 isDark={true}
-                label={Button?.label}
-                href={Button?.slug}
+                label={button?.label}
+                href={button?.slug}
               />
             </div>
           </div>
@@ -349,7 +248,7 @@ const SpaceSystem = ({ data }) => {
   );
 };
 
-const Discovering = ({ title }) => {
+const Discovering = ({ title, button }) => {
   const elementRef = useRef(null);
   const isElementVisible = useIsElementVisible(elementRef.current);
   const topLeftPartRef = useRef(null);
@@ -386,8 +285,8 @@ const Discovering = ({ title }) => {
         <div className={styles?.SpaceSystemDiscoverTitle}>
           <div className="heading-2">{title}</div>
           <div>
-            <a href="/about">
-              <PrimaryButton isDark label={" discover Aadyah"} />
+            <a href={button?.slug}>
+              <PrimaryButton isDark label={button?.label} />
             </a>
           </div>
         </div>
@@ -441,19 +340,18 @@ const Discovering = ({ title }) => {
   );
 };
 
-export default function SpaceSystemWrap() {
+export default function SpaceSystemWrap({ pageData }) {
+  const { spaceSystem, discoverSection } = pageData || {};
   return (
-    // <div className={styles.SpaceSystemContainer}>
     <>
-      {SpaceSystemArray?.map((e, index) => {
+      {spaceSystem?.map((e, index) => {
         return (
           <React.Fragment key={index}>
             <SpaceSystem data={e} />
           </React.Fragment>
         );
       })}
-      <Discovering title={"Discovering tomorrow's universe today"} />
+      <Discovering {...discoverSection} />
     </>
-    // </div>
   );
 }

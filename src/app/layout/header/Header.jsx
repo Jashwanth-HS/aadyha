@@ -1,20 +1,44 @@
-import { headerData } from "@/helper";
 import { usePathname } from "next/navigation";
 import styles from "./header.module.css";
 import Link from "next/link";
-import Image from "next/image";
-import React, { forwardRef, use, useEffect, useRef } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "@/components/Buttons";
+import { convertFromACF, fetchGlobal } from "@/app/lib/api";
 
 export default function Header() {
   const pathname = usePathname();
+  const [pageData, setPageData] = useState(null);
+  const [error, setError] = useState(null);
   const pathNameRef = useRef(null);
   const navHeaderRef = useRef(null);
   const menubarRef = useRef(null);
+  const lightSvgRef = useRef(null);
+  const darkSvgRef = useRef(null);
   const hamburgerRef = useRef(null);
   const imageRef = useRef(null);
   const storePrevScroll = useRef(0);
-  const { logo, links, button } = headerData || {};
+
+  useEffect(() => {
+    const getPageData = async () => {
+      try {
+        const fetchData = await fetchGlobal("header");
+        const data = await convertFromACF(fetchData, "header");
+        setPageData(data);
+        console.log("data?.logos[0]: ", data?.logos);
+        if (data?.logo[0]) {
+          lightSvgRef.current = data?.logo[0];
+        }
+        if (data?.logo[1]) {
+          darkSvgRef.current = data?.logo[1];
+        }
+      } catch (error) {
+        console.log("error: ", error);
+        setError("Failed to fetch post");
+      }
+    };
+
+    getPageData();
+  }, []);
   const handleScroll = (e) => {
     if (!hamburgerRef.current.classList.contains(styles.openMenu)) {
       let isLight =
@@ -31,16 +55,16 @@ export default function Header() {
         if (isLight) {
           navHeaderRef.current.classList.remove(styles?.colorNavHeader);
           navHeaderRef.current.classList.add(styles?.colorNavHeaderLight);
-          imageRef.current.src = "/assets/images/logo.svg";
+          imageRef.current.src = lightSvgRef.current;
         } else {
           navHeaderRef.current.classList.add(styles?.colorNavHeader);
           navHeaderRef.current.classList.remove(styles?.colorNavHeaderLight);
-          imageRef.current.src = "/assets/images/logoBlack.svg";
+          imageRef.current.src = darkSvgRef.current;
         }
       } else {
         navHeaderRef.current.classList.remove(styles?.colorNavHeaderLight);
         navHeaderRef.current.classList.remove(styles?.colorNavHeader);
-        imageRef.current.src = "/assets/images/logo.svg";
+        imageRef.current.src = lightSvgRef.current;
       }
       storePrevScroll.current = window.scrollY;
     }
@@ -56,10 +80,10 @@ export default function Header() {
     navHeaderRef.current.classList.add(styles?.colorNavHeaderLight);
     if (isLight) {
       navHeaderRef.current.classList.remove(styles?.colorNavHeader);
-      imageRef.current.src = "/assets/images/logo.svg";
+      imageRef.current.src = lightSvgRef.current;
     } else {
       navHeaderRef.current.classList.add(styles?.colorNavHeader);
-      imageRef.current.src = "/assets/images/logoBlack.svg";
+      imageRef.current.src = darkSvgRef.current;
     }
     let NavLink = document.querySelectorAll(".navLink");
     if (NavLink?.length > 0) {
@@ -86,12 +110,12 @@ export default function Header() {
     const menu = hamburgerRef.current.classList;
     if (menu.contains(styles.openMenu)) {
       hamburgerRef.current.classList.remove(styles.openMenu);
-      imageRef.current.src = "/assets/images/logoBlack.svg";
+      imageRef.current.src = darkSvgRef.current;
       handleScroll();
       menubarRef.current.classList.remove(styles.openMenubar);
     } else if (!isClose) {
       hamburgerRef.current.classList.add(styles.openMenu);
-      imageRef.current.src = "/assets/images/logo.svg";
+      imageRef.current.src = lightSvgRef.current;
       menubarRef.current.classList.add(styles.openMenubar);
     }
   };
@@ -108,9 +132,9 @@ export default function Header() {
               }
             }}
           >
-            <Image
+            <img
               ref={imageRef}
-              src={logo}
+              src={pageData?.logo[0]}
               width={100}
               height={100}
               alt="logo"
@@ -118,20 +142,20 @@ export default function Header() {
           </Link>
           <nav className={styles?.navHeaderLinksContainer}>
             <ul>
-              {links?.map((link, index) => {
-                const { label, slug } = link;
+              {pageData?.navLinks?.map((link, index) => {
+                const { title, url } = link;
                 return (
-                  <li key={index} className="navLink" id={"/" + slug}>
-                    <Link href={"/" + slug} legacyBehavior>
-                      {label}
+                  <li key={index} className="navLink" id={url}>
+                    <Link href={url} legacyBehavior>
+                      {title}
                     </Link>
                   </li>
                 );
               })}
             </ul>
             <PrimaryButton
-              label={button?.label}
-              href={button?.slug}
+              label={pageData?.connect?.title}
+              href={pageData?.connect?.url}
               className={styles?.navHeaderButton}
             />
           </nav>
@@ -146,7 +170,10 @@ export default function Header() {
         </div>
       </header>
       <MenuBar
-        links={links.concat({ label: "contact us", slug: "contact" })}
+        links={pageData?.navLinks?.concat({
+          title: "contact us",
+          url: "contact",
+        })}
         handleMenuToggle={handleMenuToggle}
         pathname={pathNameRef.current}
         styles={styles}
@@ -163,16 +190,16 @@ const MenuBar = forwardRef(
         <nav className={styles?.navHeaderLinksContainer}>
           <ul>
             {links?.map((link, index) => {
-              const { label, slug } = link;
+              const { title, url } = link;
               return (
-                <li key={index} className={pathname === slug ? "active" : ""}>
+                <li key={index} className={pathname === url ? "active" : ""}>
                   <Link
-                    href={"/" + slug}
+                    href={url}
                     onClick={() => {
                       handleMenuToggle("close");
                     }}
                   >
-                    {label}
+                    {title}
                   </Link>
                 </li>
               );

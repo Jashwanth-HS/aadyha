@@ -1,9 +1,8 @@
 import { PrimaryButton } from "@/components/Buttons";
-import { cosmosData } from "@/helper";
 import Image from "next/image";
 import React from "react";
 
-export default function Cosmos({ styles }) {
+export default function Cosmos({ styles, cosmosData }) {
   const { title, blocks } = cosmosData || {};
   return (
     <div className={styles?.cosmosContainer}>
@@ -33,10 +32,18 @@ export default function Cosmos({ styles }) {
             return (
               <div key={index} className={styles?.cosmosBlock}>
                 <div className={styles?.cosmosBlockContent}>
-                  <h4 className={`${styles?.cosmosBlockTitle} caption secondary-font`}>{title}</h4>
-                  <p className={`${styles?.cosmosBlockDescription} caption secondary-font`}>{description}</p>
+                  <h4
+                    className={`${styles?.cosmosBlockTitle} caption secondary-font`}
+                  >
+                    {title}
+                  </h4>
+                  <p
+                    className={`${styles?.cosmosBlockDescription} caption secondary-font`}
+                  >
+                    {description}
+                  </p>
                 </div>
-                <PrimaryButton label={button.label} href={button?.slug} />
+                <PrimaryButton label={button.title} href={button?.url} />
               </div>
             );
           })}
