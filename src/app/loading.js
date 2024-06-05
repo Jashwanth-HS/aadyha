@@ -9,19 +9,20 @@ export default function Loading({
   baseColor = "#F6F6F6",
   highlightColor = "#EFEFEF",
 }) {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    document.querySelector("html").style.overflowY = "hidden";
-    document.querySelector("body").style.overflowY = "hidden";
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-    return () => {
-      document.querySelector("html").style.overflowY = "auto";
-      document.querySelector("body").style.overflowY = "auto";
-    };
-  }, []);
-  return loading ? (
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   document.querySelector("html").style.overflowY = "hidden";
+  //   document.querySelector("body").style.overflowY = "hidden";
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 500);
+  //   return () => {
+  //     document.querySelector("html").style.overflowY = "auto";
+  //     document.querySelector("body").style.overflowY = "auto";
+  //   };
+  // }, []);
+  // loading ? (
+  return (
     <div className={styles?.LoaderContainer}>
       <div className={styles?.firstTextContainer}>
         <Skeleton
@@ -62,7 +63,8 @@ export default function Loading({
         highlightColor={highlightColor}
       />
     </div>
-  ) : (
-    children
   );
+  // ) : (
+  //   children
+  // );
 }

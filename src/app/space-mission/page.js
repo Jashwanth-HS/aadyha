@@ -7,7 +7,9 @@ import PlanetaryMissions from "./components/PlanetaryMissions";
 import SpaceDebrisMission from "./components/SpaceDebrisMission";
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
-const Banner = () => {
+import { convertFromACF, fetchPage } from "../lib/api";
+const Banner = ({ data }) => {
+  const { tag, title, description } = data || {};
   return (
     <>
       <Helmet>
@@ -16,14 +18,9 @@ const Banner = () => {
       </Helmet>
       <div className={styles?.Banner}>
         <div className={styles?.BannerTitle}>
-          <h6 className="micro-large secondary-font">
-            Mission critical solutions
-          </h6>
-          <h1 className="heading-1">Space mission</h1>
-          <p className="paragraph">
-            Embark on a journey beyond Earth's boundaries as we pioneer the next
-            era of space exploration.
-          </p>
+          <h6 className="micro-large secondary-font">{tag}</h6>
+          <h1 className="heading-1">{title}</h1>
+          <p className="paragraph">{description}</p>
         </div>
         <div className={styles?.BannerImg}>
           <picture>
@@ -47,20 +44,49 @@ const Banner = () => {
 };
 
 export default function page() {
+  const [pageData, setPageData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPageData = async () => {
+      try {
+        const fetchData = await fetchPage(718);
+        const data = await convertFromACF(fetchData, "space-mission");
+        setPageData(data);
+      } catch (error) {
+        console.log("error: ", error);
+        setError("Failed to fetch post");
+      }
+    };
+
+    getPageData();
+  }, []);
+  // if (error) return <div>{error}</div>;
+  if (!pageData) return <Loading />;
+  console.log("pageData: ", pageData);
   return (
-    <Loading>
+    <>
       <Container>
-        <Banner />
+        <Banner data={pageData?.find((e) => e.type == "banner_heading")} />
       </Container>
       <div className={styles?.SpaceMissionContent}>
         <Container>
-          <SatelliteRoadmap styles={styles} />
+          <SatelliteRoadmap
+            styles={styles}
+            data={pageData?.find((e) => e.type == "satellite_roadmap")}
+          />
         </Container>
-        <PlanetaryMissions styles={styles} />
+        <PlanetaryMissions
+          styles={styles}
+          data={pageData?.find((e) => e.type == "space_and_planetary_missions")}
+        />
         <Container>
-          <SpaceDebrisMission styles={styles} />
+          <SpaceDebrisMission
+            styles={styles}
+            data={pageData?.find((e) => e.type == "space_debris_mission")}
+          />
         </Container>
       </div>
-    </Loading>
+    </>
   );
 }

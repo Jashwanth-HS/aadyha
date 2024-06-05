@@ -14,18 +14,16 @@ export default function page() {
         <title> Contact - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
-      <Loading>
-        <div className={styles?.ContactBanner}>
-          <Container>
-            <Contact styles={styles} />
-          </Container>
-        </div>
-        <div className={styles?.OurCustomersWrap}>
-          <Container>
-            <OurCustomers styles={styles} />
-          </Container>
-        </div>
-      </Loading>
+      <div className={styles?.ContactBanner}>
+        <Container>
+          <Contact styles={styles} />
+        </Container>
+      </div>
+      <div className={styles?.OurCustomersWrap}>
+        <Container>
+          <OurCustomers styles={styles} />
+        </Container>
+      </div>
     </>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "@/components/Buttons";
 import { convertFromACF, fetchGlobal } from "@/app/lib/api";
+import Loading from "@/app/loading";
 
 export default function Header() {
   const pathname = usePathname();
@@ -40,31 +41,37 @@ export default function Header() {
     getPageData();
   }, []);
   const handleScroll = (e) => {
-    if (!hamburgerRef.current.classList.contains(styles.openMenu)) {
+    if (!hamburgerRef.current?.classList.contains(styles.openMenu)) {
       let isLight =
         pathNameRef.current === "/" ||
         pathNameRef.current === "/home" ||
         pathNameRef.current === "/about" ||
         pathNameRef.current === "/contact";
       if (window.scrollY > storePrevScroll.current) {
-        navHeaderRef.current.classList.add(styles?.hideNavHeader);
+        navHeaderRef.current?.classList.add(styles?.hideNavHeader);
       } else {
-        navHeaderRef.current.classList.remove(styles?.hideNavHeader);
+        navHeaderRef.current?.classList.remove(styles?.hideNavHeader);
       }
       if (window.scrollY <= 100) {
         if (isLight) {
-          navHeaderRef.current.classList.remove(styles?.colorNavHeader);
-          navHeaderRef.current.classList.add(styles?.colorNavHeaderLight);
-          imageRef.current.src = lightSvgRef.current;
+          navHeaderRef.current?.classList.remove(styles?.colorNavHeader);
+          navHeaderRef.current?.classList.add(styles?.colorNavHeaderLight);
+          if (imageRef.current) {
+            imageRef.current.src = lightSvgRef.current;
+          }
         } else {
-          navHeaderRef.current.classList.add(styles?.colorNavHeader);
-          navHeaderRef.current.classList.remove(styles?.colorNavHeaderLight);
-          imageRef.current.src = darkSvgRef.current;
+          navHeaderRef.current?.classList.add(styles?.colorNavHeader);
+          navHeaderRef.current?.classList.remove(styles?.colorNavHeaderLight);
+          if (imageRef.current) {
+            imageRef.current.src = darkSvgRef.current;
+          }
         }
       } else {
-        navHeaderRef.current.classList.remove(styles?.colorNavHeaderLight);
-        navHeaderRef.current.classList.remove(styles?.colorNavHeader);
-        imageRef.current.src = lightSvgRef.current;
+        navHeaderRef.current?.classList.remove(styles?.colorNavHeaderLight);
+        navHeaderRef.current?.classList.remove(styles?.colorNavHeader);
+        if (imageRef.current) {
+          imageRef.current.src = lightSvgRef.current;
+        }
       }
       storePrevScroll.current = window.scrollY;
     }
@@ -77,13 +84,17 @@ export default function Header() {
       pathname === "/about" ||
       pathname === "/contact";
     pathNameRef.current = pathname;
-    navHeaderRef.current.classList.add(styles?.colorNavHeaderLight);
+    navHeaderRef.current?.classList.add(styles?.colorNavHeaderLight);
     if (isLight) {
-      navHeaderRef.current.classList.remove(styles?.colorNavHeader);
-      imageRef.current.src = lightSvgRef.current;
+      navHeaderRef.current?.classList.remove(styles?.colorNavHeader);
+      if (imageRef.current) {
+        imageRef.current.src = lightSvgRef.current;
+      }
     } else {
-      navHeaderRef.current.classList.add(styles?.colorNavHeader);
-      imageRef.current.src = darkSvgRef.current;
+      navHeaderRef.current?.classList.add(styles?.colorNavHeader);
+      if (imageRef.current) {
+        imageRef.current.src = darkSvgRef.current;
+      }
     }
     let NavLink = document.querySelectorAll(".navLink");
     if (NavLink?.length > 0) {
@@ -110,15 +121,20 @@ export default function Header() {
     const menu = hamburgerRef.current.classList;
     if (menu.contains(styles.openMenu)) {
       hamburgerRef.current.classList.remove(styles.openMenu);
-      imageRef.current.src = darkSvgRef.current;
+      if (imageRef.current) {
+        imageRef.current.src = darkSvgRef.current;
+      }
       handleScroll();
       menubarRef.current.classList.remove(styles.openMenubar);
     } else if (!isClose) {
       hamburgerRef.current.classList.add(styles.openMenu);
-      imageRef.current.src = lightSvgRef.current;
+      if (imageRef.current) {
+        imageRef.current.src = lightSvgRef.current;
+      }
       menubarRef.current.classList.add(styles.openMenubar);
     }
   };
+  if (!pageData) return <Loading />;
   return (
     <>
       <header ref={navHeaderRef} className={styles?.navHeader}>

@@ -1,10 +1,7 @@
 import { PrimaryButton } from "@/components/Buttons";
-import { footer } from "@/helper";
-import Image from "next/image";
 import React from "react";
 
 export default function Footer({ styles, footerData }) {
-  console.log("footerData: ", footerData);
   const {
     slug,
     images,
@@ -16,9 +13,7 @@ export default function Footer({ styles, footerData }) {
     copyRights,
     allRightsReserved,
   } = footerData || {};
-  if (!footerData) {
-    return <div>loading</div>;
-  }
+
   return (
     <div className={styles?.FooterContainer} id={slug}>
       <div className={styles?.FooterItems}>

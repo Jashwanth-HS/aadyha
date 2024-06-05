@@ -3,6 +3,7 @@ import styles from "./footer.module.css";
 import Cosmos from "./components/Cosmos";
 import Footer from "./components/Footer";
 import { convertFromACF, fetchGlobal } from "@/app/lib/api";
+import Loading from "@/app/loading";
 
 export default function FooterMain() {
   const [pageData, setPageData] = useState(null);
@@ -21,6 +22,9 @@ export default function FooterMain() {
 
     getPageData();
   }, []);
+  if (!pageData) {
+    return <Loading />;
+  }
   return (
     <div className={styles?.footerMainContainer}>
       <Cosmos styles={styles} cosmosData={pageData?.cosmosData} />

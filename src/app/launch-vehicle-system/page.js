@@ -25,20 +25,18 @@ export default function Index() {
         <title> Launch Vehicle System - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
-      <Loading>
-        <Container>
-          <Banner />
-        </Container>
-        <NavBar styles={styles} />
-        <Container className={styles?.TVCWrapContainer}>
-          <PartGridContent styles={styles} />
-        </Container>
-        <Gauidance styles={styles} />
-        <Container>
-          <Avionics styles={styles} />
-          <ControlSystem styles={styles} />
-        </Container>
-      </Loading>
+      <Container>
+        <Banner />
+      </Container>
+      <NavBar styles={styles} />
+      <Container className={styles?.TVCWrapContainer}>
+        <PartGridContent styles={styles} />
+      </Container>
+      <Gauidance styles={styles} />
+      <Container>
+        <Avionics styles={styles} />
+        <ControlSystem styles={styles} />
+      </Container>
       {/* </div> */}
     </>
   );

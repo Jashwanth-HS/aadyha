@@ -54,22 +54,20 @@ export default function page() {
   return (
     <>
       <Banner />
-      <Loading>
-        <div className={styles?.OurValuesContainer}>
-          <Container>
-            <OurValues styles={styles} />
-          </Container>
-        </div>
-        <WorkWithUs styles={styles} />
-        <div className={styles?.AadyahImpactContainer}>
-          <Container>
-            <AadyahImpact styles={styles} />
-          </Container>
-        </div>
+      <div className={styles?.OurValuesContainer}>
         <Container>
-          <Opportunities styles={styles} />
+          <OurValues styles={styles} />
         </Container>
-      </Loading>
+      </div>
+      <WorkWithUs styles={styles} />
+      <div className={styles?.AadyahImpactContainer}>
+        <Container>
+          <AadyahImpact styles={styles} />
+        </Container>
+      </div>
+      <Container>
+        <Opportunities styles={styles} />
+      </Container>
     </>
   );
 }

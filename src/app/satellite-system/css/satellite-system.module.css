@@ -39,6 +39,10 @@
 .SsTabTitle{
     text-transform: uppercase;
 }
+.svgIconContainer{
+    height: 40px;
+    width: fit-content;
+}
 /* Propulsion */
 .PropulsionWrapper{
     display: flex;

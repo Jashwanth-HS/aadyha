@@ -107,7 +107,7 @@ const convertHomeACF = async (data) => {
     title: clientsSectionAcfData.title,
     client_values: clientsSectionAcfData.client_values,
     client_link: clientsSectionAcfData.client_link,
-    clients_section_image: clientsSectionAcfData.clients_section_image?.url,
+    clients_section_image: clientsSectionAcfData.clients_section_image,
   };
   return {
     spaceSystem: spaceSystemResults,
@@ -135,7 +135,6 @@ const convertFooterACF = async (data) => {
     type: acf_fc_layout,
   }));
   footerData = convertToFooterJson(footerData);
-  console.log("footerData: ", footerData);
   return {
     cosmosData: { title: cosmosData?.title, blocks: cosmosData?.blocks },
     footerData,
@@ -143,7 +142,6 @@ const convertFooterACF = async (data) => {
 };
 
 function convertToFooterJson(result) {
-  console.log("result: ", result);
   let footer = {
     images: "",
     title: "",
@@ -216,12 +214,73 @@ function convertToFooterJson(result) {
   return footer;
 }
 
+const convertAboutACF = async (data) => {
+  const AboutACFData = data.acf || [];
+  console.log("AboutACFData: ", AboutACFData);
+  const {
+    Pioneer_Heading,
+    join_us,
+    team_image,
+    vision_and_mission,
+    why_choose_aadyah,
+  } = AboutACFData || {};
+};
+
+const convertSatelliteSystemACF = async (data) => {
+  const SatelliteSystemACFData = data.acf || [];
+  let result = {};
+  const { satellite_system_banner, ...rest } = SatelliteSystemACFData || {};
+  result.satellite_system_banner = {
+    tag: satellite_system_banner[0].tag,
+    title: satellite_system_banner[0].title,
+    description: satellite_system_banner[0].description,
+  };
+  result.blocks = Object.entries(rest)
+    .map(([key, value]) => {
+      const { acf_fc_layout, ...rest } = value[0];
+      return {
+        type: acf_fc_layout,
+        ...rest,
+      };
+    })
+    .map((e) => {
+      if (e.image) {
+        e.image = e.image.url;
+        return e;
+      } else {
+        return e;
+      }
+    });
+  return result;
+};
+
+const convertSpaceMissionACF = async (data) => {
+  const SpaceMissionACFData = data.acf || [];
+  console.log("SpaceMissionACFData: ", SpaceMissionACFData);
+  return Object.entries(SpaceMissionACFData).map(([key, value]) => {
+    const { acf_fc_layout, ...rest } = value[0];
+    return { type: acf_fc_layout, ...rest };
+  });
+  // .map((e) => {
+  //   if (e.image) {
+  //     e.image = e.image.url;
+  //   }
+  //   return e;
+  // });
+};
+
 export const convertFromACF = async (data, type) => {
   switch (type) {
     case "header":
       return await convertHeaderACF(data);
     case "home":
       return await convertHomeACF(data);
+    case "about":
+      return await convertAboutACF(data);
+    case "satellite-system":
+      return await convertSatelliteSystemACF(data);
+    case "space-mission":
+      return await convertSpaceMissionACF(data);
     case "footer":
       return await convertFooterACF(data);
     default:

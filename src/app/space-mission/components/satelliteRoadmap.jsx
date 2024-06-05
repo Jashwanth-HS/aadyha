@@ -1,26 +1,28 @@
 "use client";
-import { satelliteRoadmap } from "@/helper";
-import { Box } from "@react-three/drei";
 import React, { useEffect, useRef, useState } from "react";
 
-const NavBar = ({ setActive, active, styles }) => {
+const NavBar = ({ setActive, active, block, styles }) => {
   return (
     <div className={styles?.ControlSystemTabWrapper}>
-      {satelliteRoadmap?.data?.map((e, index) => {
+      {block?.map((e, index) => {
         return (
           <div
             key={index}
             className={`${styles?.FcsNavBar} ${
-              active?.id === e.id ? styles?.FcsNavActive : ""
+              active?.mission_number === e.mission_number
+                ? styles?.FcsNavActive
+                : ""
             } secondary-font`}
             onClick={() =>
-              setActive(satelliteRoadmap?.data?.find((e1) => e1.id === e.id))
+              setActive(
+                block?.find((e1) => e1.mission_number === e.mission_number)
+              )
             }
           >
             <h3 className="secondary-font" style={{ marginRight: "10px" }}>
               [Mission {index + 1}]
             </h3>
-            <p>{e.title}</p>
+            <p>{e.mission_title}</p>
           </div>
         );
       })}
@@ -31,7 +33,7 @@ const NavBar = ({ setActive, active, styles }) => {
 const NavBarcontent = ({ activeData, styles }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showReadMoreButton, setShowReadMoreButton] = useState(false);
-  const { data: contentData } = activeData || {};
+  const { block_description, block_title, block_svg } = activeData || {};
   const ref = useRef(null);
   useEffect(() => {
     setIsOpen(false);
@@ -47,20 +49,19 @@ const NavBarcontent = ({ activeData, styles }) => {
       ? ref.current.scrollHeight + "px"
       : "100px";
   }, [isOpen]);
-  const { image, title, description, button } = contentData || {};
-  if (!activeData?.data) {
+  if (!activeData) {
     return <div>NO data found</div>;
   }
   return (
     <div className={styles?.ControlSystemContentWrapper}>
       <div className={styles?.satelliteRoadmapItems}>
         <div className={styles?.satelliteRoadmapItemsImg}>
-          {image && <img src={image} />}
+          {block_svg && <div dangerouslySetInnerHTML={{ __html: block_svg }} />}
         </div>
         <div className={styles?.satelliteRoadmapContent}>
-          <h3 className="heading-3">{title}</h3>
+          <h3 className="heading-3">{block_title}</h3>
           <p ref={ref} className={`paragraph  ${styles?.paragraphOpenClass}`}>
-            {description}
+            {block_description}
           </p>
           {showReadMoreButton && (
             <button
@@ -88,16 +89,21 @@ const NavBarcontent = ({ activeData, styles }) => {
   );
 };
 
-export default function SatelliteRoadmap({ styles }) {
-  const { title, slug } = satelliteRoadmap || {};
-  const [active, setActive] = useState(satelliteRoadmap?.data[0]);
+export default function SatelliteRoadmap({ styles, data }) {
+  const { header, type, block } = data || {};
+  const [active, setActive] = useState(block[0]);
   return (
-    <div className={styles?.SatelliteRoadmapWrapper} id={slug}>
+    <div className={styles?.SatelliteRoadmapWrapper} id={type}>
       <div className={styles?.Title}>
-        <h3 className="heading-1">{title}</h3>
+        <h3 className="heading-1">{header}</h3>
       </div>
       <div className={styles?.ControlSystemTab}>
-        <NavBar setActive={setActive} active={active} styles={styles} />
+        <NavBar
+          setActive={setActive}
+          active={active}
+          block={block}
+          styles={styles}
+        />
         <NavBarcontent activeData={active} styles={styles} />
       </div>
     </div>
