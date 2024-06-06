@@ -38,6 +38,7 @@ const SectionTitle = ({ title, subTitle }) => {
 };
 
 const SpaceSystem = ({ data }) => {
+  console.log("data: ", data);
   const {
     title,
     sectionTitle,

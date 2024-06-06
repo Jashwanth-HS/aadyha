@@ -130,7 +130,7 @@
     align-items: flex-start;
     gap: 16px;
 }
-.WcaItems div img{
+.WcaItems div svg{
     max-width: 70px;
     height: 70px;
     width: 100%;

@@ -1,3 +1,4 @@
+import React from "react";
 const RenderSvg = ({ name, svgAnimation }) => {
   return name === "sensing-vehicle-acceleration" ? (
     <svg

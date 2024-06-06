@@ -52,10 +52,6 @@ const convertHomeACF = async (data) => {
 
   const spaceSystemResults = await Promise.all(
     spaceSystemAcfData.map(async (item, index) => {
-      // const imagePath =
-      //   (await fetchMedia(item?.section_image)) ||
-      //   "/assets/images/hp-lvs-img.png";
-
       return {
         sectionTitle: item.section_title || "",
         sectionSubTitle: item.section_subtitle || "",
@@ -66,7 +62,7 @@ const convertHomeACF = async (data) => {
             subTitle: block.subtitle || "",
           };
         }),
-        imagePath: item?.section_image?.url,
+        imagePath: item?.section_image,
         renderSvg: index === 0 ? "Left1" : index === 1 ? "Right1" : "Left2",
         ...(index === 1
           ? { isRight: true }
@@ -216,17 +212,29 @@ function convertToFooterJson(result) {
 
 const convertAboutACF = async (data) => {
   const AboutACFData = data.acf || [];
-  console.log("AboutACFData: ", AboutACFData);
-  const {
-    Pioneer_Heading,
-    join_us,
-    team_image,
-    vision_and_mission,
-    why_choose_aadyah,
-  } = AboutACFData || {};
+  let res = {};
+  Object.entries(AboutACFData).forEach(([key, value]) => {
+    value = value.map(({ acf_fc_layout, ...rest }) => ({
+      type: acf_fc_layout,
+      ...rest,
+    }));
+    if (key == "about_banner") {
+      let arr = [];
+      Object.entries(value[0].card_image[0]).forEach(([key, value]) =>
+        arr.push(value)
+      );
+      value[0].card_image = arr;
+    }
+    if (key != "vision_and_mission") {
+      value = value[0];
+    }
+    res[key] = value;
+  });
+  return res;
 };
 
 const convertSatelliteSystemACF = async (data) => {
+  console.log("data: ", data);
   const SatelliteSystemACFData = data.acf || [];
   let result = {};
   const { satellite_system_banner, ...rest } = SatelliteSystemACFData || {};
@@ -235,40 +243,66 @@ const convertSatelliteSystemACF = async (data) => {
     title: satellite_system_banner[0].title,
     description: satellite_system_banner[0].description,
   };
-  result.blocks = Object.entries(rest)
-    .map(([key, value]) => {
-      const { acf_fc_layout, ...rest } = value[0];
-      return {
-        type: acf_fc_layout,
-        ...rest,
-      };
-    })
-    .map((e) => {
-      if (e.image) {
-        e.image = e.image.url;
-        return e;
-      } else {
-        return e;
-      }
-    });
+  result.blocks = Object.entries(rest).map(([key, value]) => {
+    const { acf_fc_layout, ...rest } = value[0];
+    return {
+      type: acf_fc_layout,
+      ...rest,
+    };
+  });
   return result;
 };
 
 const convertSpaceMissionACF = async (data) => {
   const SpaceMissionACFData = data.acf || [];
-  console.log("SpaceMissionACFData: ", SpaceMissionACFData);
   return Object.entries(SpaceMissionACFData).map(([key, value]) => {
     const { acf_fc_layout, ...rest } = value[0];
     return { type: acf_fc_layout, ...rest };
   });
-  // .map((e) => {
-  //   if (e.image) {
-  //     e.image = e.image.url;
-  //   }
-  //   return e;
-  // });
 };
 
+const convertCareersACF = async (data) => {
+  const convertCareersACFData = data.acf || [];
+  Object.entries(convertCareersACFData).forEach(([key, value]) => {
+    if (Array.isArray(value) && key !== "values_tabs") {
+      convertCareersACFData[key] = value.map(
+        ({ acf_fc_layout, ...rest }, index) => ({
+          type: acf_fc_layout,
+          ...rest,
+        })
+      )[0];
+    }
+  });
+  return convertCareersACFData;
+};
+const convertLaunchVehicleSystemACF = async (data) => {
+  const convertLaunchVehicleSystemACFData = data.acf || [];
+
+  Object.entries(convertLaunchVehicleSystemACFData).forEach(([key, value]) => {
+    if (Array.isArray(value) && key !== "tvc_by_flex_nozzle_control") {
+      convertLaunchVehicleSystemACFData[key] = value.map(
+        ({ acf_fc_layout, ...rest }, index) => ({
+          type: acf_fc_layout,
+          ...rest,
+        })
+      )[0];
+    }
+  });
+  return convertLaunchVehicleSystemACFData;
+};
+const convertContactACF = async (data) => {
+  const convertContactACFData = data.acf || [];
+  let res = {};
+  Object.entries(convertContactACFData).forEach(([key, value]) => {
+    value = value.map(({ acf_fc_layout, ...rest }) => ({
+      type: acf_fc_layout,
+      ...rest,
+    }));
+    value = value[0];
+    res[key] = value;
+  });
+  return res;
+};
 export const convertFromACF = async (data, type) => {
   switch (type) {
     case "header":
@@ -281,6 +315,12 @@ export const convertFromACF = async (data, type) => {
       return await convertSatelliteSystemACF(data);
     case "space-mission":
       return await convertSpaceMissionACF(data);
+    case "launch-vehicle-system":
+      return await convertLaunchVehicleSystemACF(data);
+    case "careers":
+      return await convertCareersACF(data);
+    case "contact":
+      return await convertContactACF(data);
     case "footer":
       return await convertFooterACF(data);
     default:

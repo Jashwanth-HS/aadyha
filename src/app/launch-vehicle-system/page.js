@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../launch-vehicle-system/css/lvs.module.css";
 import Avionics from "./components/Avionics";
 import Gauidance from "./components/Gauidance";
@@ -9,16 +9,38 @@ import NavBar from "./components/NavBar";
 import Container from "@/components/Container";
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
+import { convertFromACF, fetchPage } from "../lib/api";
 
-const Banner = () => {
+const Banner = ({ data }) => {
+  const { tag, title } = data || {};
   return (
     <div className={styles?.Banner}>
-      <p className="micro-large secondary-font">Space system</p>
-      <h1 className="heading-1">Launch Vehicle System</h1>
+      <p className="micro-large secondary-font">{tag}</p>
+      <h1 className="heading-1">{title}</h1>
     </div>
   );
 };
 export default function Index() {
+  const [pageData, setPageData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPageData = async () => {
+      try {
+        const fetchData = await fetchPage(167);
+        const data = await convertFromACF(fetchData, "launch-vehicle-system");
+        setPageData(data);
+      } catch (error) {
+        console.log("error: ", error);
+        setError("Failed to fetch post");
+      }
+    };
+
+    getPageData();
+  }, []);
+
+  if (error) return <div>{error}</div>;
+  if (!pageData) return <Loading />;
   return (
     <>
       <Helmet>
@@ -26,16 +48,31 @@ export default function Index() {
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
       <Container>
-        <Banner />
+        <Banner data={pageData?.banner_heading} />
       </Container>
-      <NavBar styles={styles} />
+      <NavBar
+        styles={styles}
+        data={Object.entries(pageData)
+          .map(([key, value]) => {
+            if (key !== "banner_heading") {
+              return value;
+            }
+          })
+          .filter(Boolean)}
+      />
       <Container className={styles?.TVCWrapContainer}>
-        <PartGridContent styles={styles} />
+        <PartGridContent
+          styles={styles}
+          data={pageData?.tvc_trust_vector_control}
+        />
       </Container>
-      <Gauidance styles={styles} />
+      <Gauidance
+        styles={styles}
+        data={pageData?.guidance_navigation_and_control}
+      />
       <Container>
-        <Avionics styles={styles} />
-        <ControlSystem styles={styles} />
+        <Avionics styles={styles} data={pageData?.avioncs_content} />
+        <ControlSystem styles={styles} data={pageData?.flow_control_system} />
       </Container>
       {/* </div> */}
     </>

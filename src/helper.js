@@ -1,25 +1,9 @@
 // Launch Vehicle System
-export const LVCNavBar = [
-  {
-    title: "Thrust vector control system (TVC)",
-    image: "/assets/images/lvs-tvcs.svg",
-    slug: "Thrust",
-  },
-  {
-    title: "Guidance navigation and control",
-    image: "/assets/images/lvs-guidance-navigation-control.svg",
-    slug: "Guidance",
-  },
-  {
-    title: "Avionics",
-    image: "/assets/images/lvs-avionics.svg",
-    slug: "Avionics",
-  },
-  {
-    title: "Flow control system",
-    image: "/assets/images/lvs-flow-control-system.svg",
-    slug: "Flow",
-  },
+export const LVCNavBarOrder = [
+  "tvc",
+  "guidance_navigation_and_control",
+  "avioncs",
+  "flow_control_system",
 ];
 export const StatNavBar = [
   {

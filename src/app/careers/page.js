@@ -8,8 +8,11 @@ import AadyahImpact from "./components/AadyahImpact";
 import Opportunities from "./components/Opportunities";
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
+import { convertFromACF, fetchPage } from "../lib/api";
 
-const Banner = () => {
+const Banner = ({ data, team_images }) => {
+  const { title, subtitle, description } = data || {};
+  const { team_image, team_image_mobile } = team_images || {};
   return (
     <>
       <Helmet>
@@ -18,31 +21,15 @@ const Banner = () => {
       </Helmet>
 
       <div className={styles?.Banner}>
-        <h6 className="micro-large secondary-font">work with us</h6>
-        <h1 className="heading-1">Build the Future With Us</h1>
-        <p className="paragraph">
-          Together let's reach for new horizons and inspire the world with
-          cutting-edge innovation
-        </p>
-        {/* <PrimaryButton
-          label={"view current openings"}
-          href={"#jobs"}
-          style={{ marginTop: "4vh", border: "1px solid black" }}
-        /> */}
+        <h6 className="micro-large secondary-font">{title}</h6>
+        <h1 className="heading-1">{subtitle}</h1>
+        <p className="paragraph">{description}</p>
+
         <div className={styles?.CareerBannerImg}>
           <picture>
-            <source
-              media="(min-width: 768px)"
-              srcSet={"/assets/images/career-banner-img.png"}
-            />
-            <source
-              media="(max-width: 767px)"
-              srcSet={"/assets/images/career-banner-mob-img.png"}
-            />
-            <img
-              src="/assets/images/career-banner-img.png"
-              alt="Fallback Image"
-            />
+            <source media="(min-width: 768px)" srcSet={team_image} />
+            <source media="(max-width: 767px)" srcSet={team_image_mobile} />
+            <img src={team_image} alt="Fallback Image" />
           </picture>
         </div>
       </div>
@@ -51,22 +38,46 @@ const Banner = () => {
 };
 
 export default function page() {
+  const [pageData, setPageData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPageData = async () => {
+      try {
+        const fetchData = await fetchPage(184);
+        const data = await convertFromACF(fetchData, "careers");
+        setPageData(data);
+      } catch (error) {
+        console.log("error: ", error);
+        setError("Failed to fetch post");
+      }
+    };
+
+    getPageData();
+  }, []);
+
+  if (error) return <div>{error}</div>;
+  if (!pageData) return <Loading />;
+  console.log("pageData: ", pageData);
   return (
     <>
-      <Banner />
+      <Banner
+        data={pageData?.banner_heading}
+        team_images={pageData?.team_images}
+      />
       <div className={styles?.OurValuesContainer}>
         <Container>
-          <OurValues styles={styles} />
+          <OurValues styles={styles} data={pageData?.our_values} />
         </Container>
       </div>
-      <WorkWithUs styles={styles} />
+      <WorkWithUs styles={styles} data={pageData?.life_at_aadyah} />
       <div className={styles?.AadyahImpactContainer}>
         <Container>
-          <AadyahImpact styles={styles} />
+          <AadyahImpact styles={styles} data={pageData?.Aadyah_Impact} />
         </Container>
       </div>
       <Container>
-        <Opportunities styles={styles} />
+        <Opportunities styles={styles} data={pageData?.Opportunities} />
       </Container>
     </>
   );

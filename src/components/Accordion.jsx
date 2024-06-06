@@ -64,17 +64,27 @@ export default function AccordionWrap({
       <div className={styles?.accordion}>
         <Accordion transition transitionTimeout={250}>
           {values?.map((e, index) => {
-            const { header, title, description, text, list } = e || {};
+            const {
+              header,
+              title,
+              key_feature,
+              key_description,
+              description,
+              text,
+              list,
+            } = e || {};
             return (
               <React.Fragment key={index}>
                 <AccordionItem
-                  header={title || header}
+                  header={title || header || key_feature}
                   // initialEntered={index === 0}
                   ContentClassName={ContentClassName}
                   HeaderclassName={HeaderclassName}
                   IconClass={IconClass}
                 >
-                  {text || (description && <p>{text || description}</p>)}
+                  {(text || description || key_description) && (
+                    <p>{text || description || key_description}</p>
+                  )}
                   {list && (
                     <RenderList list={list} listClassName={listClassName} />
                   )}
