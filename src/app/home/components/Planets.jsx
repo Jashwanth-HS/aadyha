@@ -25,121 +25,233 @@ const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
 import Image from "next/image";
 import { disableOverflow } from "@/helper";
 import dynamic from "next/dynamic";
+// import { Model22 } from "../../../../public/Aadhya_new_1";
+
 let isVisible = false;
+// const Model = forwardRef((props, ref) => {
+//   const group = useRef();
+//   const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
+//   const { actions } = useAnimations(animations, group);
+
+//   // Effect to pause camera animation on mount
+//   useEffect(() => {
+//     if (actions["Animation"]) {
+//       actions["Animation"].paused = true;
+//     }
+//   }, [actions["Animation"]]);
+
+//   // Effect to play camera animation
+//   useEffect(() => {
+//     if (actions["Animation"]) {
+//       actions["Animation"].play();
+//     }
+//   }, [actions["Animation"]]);
+
+//   useFrame(() => {
+//     if (actions["Animation"]) {
+//       const duration = actions["Animation"].getClip().duration;
+//       const targetTime = duration * ref.current;
+//       targetTimeStore = targetTime;
+//       actions["Animation"].time = THREE.MathUtils.lerp(
+//         actions["Animation"].time,
+//         targetTime,
+//         0.1
+//       );
+//     }
+//   });
+
+//   return (
+//     <>
+//       <group ref={group} {...props} dispose={null}>
+//         <group name="Scene">
+//           <PerspectiveCamera
+//             name="Camera"
+//             makeDefault
+//             far={1000}
+//             near={0.1}
+//             fov={56.106}
+//             scale={5.287}
+//           >
+//             <pointLight
+//               color={0xffd3b3}
+//               castShadow
+//               position={[1.42, 1.95, -5.29]}
+//               shadow-camera-right={1}
+//               shadow-camera-top={1}
+//               shadow-camera-left={-1}
+//               shadow-camera-bottom={-1}
+//               shadow-mapSize-width={1024}
+//               shadow-mapSize-height={1024}
+//               intensity={1}
+//               shadow-bias={-0.0001}
+//             />
+//             <directionalLight
+//               castShadow
+//               position={[-5.64, -0.9, 4.55]}
+//               // position={[-0.35, 2.43, 38.3]}
+//               shadow-camera-right={10}
+//               shadow-camera-top={10}
+//               shadow-camera-left={-10}
+//               shadow-camera-bottom={-10}
+//               shadow-mapSize-width={1024}
+//               shadow-mapSize-height={1024}
+//               intensity={1.5}
+//               shadow-bias={-0.0001}
+//             />
+//             <directionalLight
+//               castShadow
+//               // position={[-5.64, -0.9, 4.55]}
+//               position={[-0.35, 2.43, 38.3]}
+//               shadow-camera-right={10}
+//               shadow-camera-top={10}
+//               shadow-camera-left={-10}
+//               shadow-camera-bottom={-10}
+//               shadow-mapSize-width={1024}
+//               shadow-mapSize-height={1024}
+//               intensity={0.6}
+//               shadow-bias={-0.0001}
+//             />
+//           </PerspectiveCamera>
+//           <mesh
+//             name="Earth_"
+//             geometry={nodes.Earth_.geometry}
+//             material={nodes.Earth_.material}
+//             position={[0.234, 0.25, -42.94]}
+//             rotation={[0.389, -0.245, 3.054]}
+//             scale={-12.921}
+//           />
+//           <mesh
+//             name="Moon"
+//             geometry={nodes.Moon.geometry}
+//             material={nodes.Moon.material}
+//             position={[33.679, 17.157, -51.773]}
+//             scale={0}
+//           />
+//           <mesh
+//             name="Mars"
+//             geometry={nodes.Mars.geometry}
+//             material={nodes.Mars.material}
+//             position={[-34.067, 1.245, 56.371]}
+//             rotation={[-0.016, -1.146, -0.306]}
+//             scale={-6.037}
+//           />
+//         </group>
+//       </group>
+//     </>
+//   );
+// });
+
+// Main component
+
 const Model = forwardRef((props, ref) => {
   const group = useRef();
-  const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
+  const { nodes, materials, animations } = useGLTF("/aadhya_new_1.glb");
   const { actions } = useAnimations(animations, group);
-
+  console.log("actions: ", actions);
   // Effect to pause camera animation on mount
   useEffect(() => {
-    if (actions["Animation"]) {
-      actions["Animation"].paused = true;
+    if (actions["CameraAction"]) {
+      actions["CameraAction"].paused = true;
     }
-  }, [actions["Animation"]]);
+  }, [actions["CameraAction"]]);
 
   // Effect to play camera animation
   useEffect(() => {
-    if (actions["Animation"]) {
-      actions["Animation"].play();
+    if (actions["CameraAction"]) {
+      actions["CameraAction"].play();
     }
-  }, [actions["Animation"]]);
+  }, [actions["CameraAction"]]);
 
   useFrame(() => {
-    if (actions["Animation"]) {
-      const duration = actions["Animation"].getClip().duration;
+    if (actions["CameraAction"]) {
+      const duration = actions["CameraAction"].getClip().duration;
       const targetTime = duration * ref.current;
       targetTimeStore = targetTime;
-      actions["Animation"].time = THREE.MathUtils.lerp(
-        actions["Animation"].time,
+      actions["CameraAction"].time = THREE.MathUtils.lerp(
+        actions["CameraAction"].time,
         targetTime,
         0.1
       );
     }
   });
-
   return (
-    <>
-      <group ref={group} {...props} dispose={null}>
-        <group name="Scene">
-          <PerspectiveCamera
-            name="Camera"
-            makeDefault
-            far={1000}
-            near={0.1}
-            fov={56.106}
-            scale={5.287}
-          >
-            <pointLight
-              color={0xffd3b3}
-              castShadow
-              position={[1.42, 1.95, -5.29]}
-              shadow-camera-right={1}
-              shadow-camera-top={1}
-              shadow-camera-left={-1}
-              shadow-camera-bottom={-1}
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-              intensity={1}
-              shadow-bias={-0.0001}
-            />
-            <directionalLight
-              castShadow
-              position={[-5.64, -0.9, 4.55]}
-              // position={[-0.35, 2.43, 38.3]}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-left={-10}
-              shadow-camera-bottom={-10}
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-              intensity={1.5}
-              shadow-bias={-0.0001}
-            />
-            <directionalLight
-              castShadow
-              // position={[-5.64, -0.9, 4.55]}
-              position={[-0.35, 2.43, 38.3]}
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-left={-10}
-              shadow-camera-bottom={-10}
-              shadow-mapSize-width={1024}
-              shadow-mapSize-height={1024}
-              intensity={0.6}
-              shadow-bias={-0.0001}
-            />
-          </PerspectiveCamera>
-          <mesh
-            name="Earth_"
-            geometry={nodes.Earth_.geometry}
-            material={nodes.Earth_.material}
-            position={[0.234, 0.25, -42.94]}
-            rotation={[0.389, -0.245, 3.054]}
-            scale={-12.921}
-          />
-          <mesh
-            name="Moon"
-            geometry={nodes.Moon.geometry}
-            material={nodes.Moon.material}
-            position={[33.679, 17.157, -51.773]}
-            scale={0}
-          />
-          <mesh
-            name="Mars"
-            geometry={nodes.Mars.geometry}
-            material={nodes.Mars.material}
-            position={[-34.067, 1.245, 56.371]}
-            rotation={[-0.016, -1.146, -0.306]}
-            scale={-6.037}
-          />
-        </group>
+    <group ref={group} {...props} dispose={null}>
+      <group name="Scene">
+        <PerspectiveCamera
+          name="Camera"
+          makeDefault={true}
+          far={1000}
+          near={0.001}
+          fov={22.895}
+          position={[-0.083, 0.016, 0]}
+          rotation={[0, Math.PI / 2, 0]}
+        />
+        <pointLight
+          color={0xffd3b3}
+          castShadow
+          position={[1.42, 1.95, -5.29]}
+          shadow-camera-right={1}
+          shadow-camera-top={1}
+          shadow-camera-left={-1}
+          shadow-camera-bottom={-1}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          intensity={1}
+          shadow-bias={-0.0001}
+        />
+        <directionalLight
+          castShadow
+          position={[-5.64, -0.9, 4.55]}
+          // position={[-0.35, 2.43, 38.3]}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-left={-10}
+          shadow-camera-bottom={-10}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          intensity={1.5}
+          shadow-bias={-0.0001}
+        />
+        <directionalLight
+          castShadow
+          // position={[-5.64, -0.9, 4.55]}
+          position={[-0.35, 2.43, 38.3]}
+          shadow-camera-right={10}
+          shadow-camera-top={10}
+          shadow-camera-left={-10}
+          shadow-camera-bottom={-10}
+          shadow-mapSize-width={1024}
+          shadow-mapSize-height={1024}
+          intensity={0.6}
+          shadow-bias={-0.0001}
+        />
+        <mesh
+          name="Mars"
+          geometry={nodes.Mars.geometry}
+          material={nodes.Mars.material}
+          position={[-9.677, -0.904, -0.233]}
+          rotation={[2.355, -0.563, 2.155]}
+          scale={0.102}
+        />
+        <mesh
+          name="Earth001"
+          geometry={nodes.Earth001.geometry}
+          material={nodes.Earth001.material}
+          position={[-7.545, 0, 0]}
+          scale={1.079}
+        />
+        <mesh
+          name="Moon"
+          geometry={nodes.Moon.geometry}
+          material={nodes.Moon.material}
+          position={[-8.671, 0.541, 0.007]}
+          scale={0.039}
+        />
       </group>
-    </>
+    </group>
   );
 });
 
-// Main component
 const Planets = () => {
   const lenis = useLenis();
   const skipButtonRef = useRef(null);
@@ -290,29 +402,30 @@ const Planets = () => {
 
   const handleScroll = (e) => {
     if (window.innerWidth > 768) {
-      if (targetTimeStore >= 6.236) {
+      if (targetTimeStore >= 10.41) {
         skipButtonRef.current.style.display = "flex";
         isVisible = true;
         skipButtonRef.current.click();
       }
       scroll.current =
         e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
+      console.log("scroll.current: ", scroll.current);
       if (
-        (scroll.current > 0.2 && scroll.current < 0.3) ||
-        (scroll.current > 0.6 && scroll.current < 0.8)
+        (scroll.current > 0.4 && scroll.current < 0.6) ||
+        (scroll.current > 0.7 && scroll.current < 0.9)
       ) {
         overlayDescriptionRef.current.style.opacity = "1";
         addLineText.current.classList.remove(styles.addLineTextAnimation);
         setOpacity(false);
       }
 
-      if (scroll.current > 0.3 && scroll.current < 0.6) {
+      if (scroll.current > 0.6 && scroll.current < 0.7) {
         setHeadingText("TO MOON");
         setOpacity(true);
-      } else if (scroll.current > 0.8 && scroll.current < 1) {
+      } else if (scroll.current > 0.9 && scroll.current < 1) {
         setHeadingText("TO MARS");
         setOpacity(true);
-      } else if (scroll.current < 0.2) {
+      } else if (scroll.current < 0.4) {
         setHeadingText("FROM EARTH");
         setOpacity(true);
       }
@@ -531,12 +644,13 @@ const Planets = () => {
           <directionalLight intensity={1} position={[10, 10, 0]} />
           {/* Model component */}
           <Model ref={scroll} />
+          {/* <ModelLatest ref={scroll} /> */}
         </Canvas>
       </div>
     </>
   );
 };
 
-useGLTF.preload("./Aadhya_final-transformed.glb");
+useGLTF.preload("./aadhya_new_1.glb");
 
 export default Planets;

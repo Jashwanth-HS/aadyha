@@ -23,6 +23,7 @@ import MobileViewPlanets from "./components/MobileViewPlanets";
 import { Helmet } from "react-helmet";
 import { convertFromACF, fetchPage } from "../lib/api";
 import PageLoad from "@/components/PageLoad";
+import { ModelTest } from "../Supercode_1";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -63,6 +64,7 @@ export default function Home() {
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
       <Planets />
+
       <Section>
         <MobileViewPlanets />
         <SpaceSystem pageData={pageData} />
