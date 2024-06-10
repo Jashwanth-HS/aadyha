@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { useLenis } from "@studio-freight/react-lenis";
 import styles from "../css/main.module.css";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
-let targetTimeStore;
+let targetTimeStore, scrollDirectionStore;
 // import WordAnimation from "@/components/WordAnimation";
 const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
   ssr: false,
@@ -25,157 +25,43 @@ const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
 import Image from "next/image";
 import { disableOverflow } from "@/helper";
 import dynamic from "next/dynamic";
-// import { Model22 } from "../../../../public/Aadhya_new_1";
 
 let isVisible = false;
-// const Model = forwardRef((props, ref) => {
-//   const group = useRef();
-//   const { nodes, animations } = useGLTF("./Aadhya_final-transformed.glb");
-//   const { actions } = useAnimations(animations, group);
-
-//   // Effect to pause camera animation on mount
-//   useEffect(() => {
-//     if (actions["Animation"]) {
-//       actions["Animation"].paused = true;
-//     }
-//   }, [actions["Animation"]]);
-
-//   // Effect to play camera animation
-//   useEffect(() => {
-//     if (actions["Animation"]) {
-//       actions["Animation"].play();
-//     }
-//   }, [actions["Animation"]]);
-
-//   useFrame(() => {
-//     if (actions["Animation"]) {
-//       const duration = actions["Animation"].getClip().duration;
-//       const targetTime = duration * ref.current;
-//       targetTimeStore = targetTime;
-//       actions["Animation"].time = THREE.MathUtils.lerp(
-//         actions["Animation"].time,
-//         targetTime,
-//         0.1
-//       );
-//     }
-//   });
-
-//   return (
-//     <>
-//       <group ref={group} {...props} dispose={null}>
-//         <group name="Scene">
-//           <PerspectiveCamera
-//             name="Camera"
-//             makeDefault
-//             far={1000}
-//             near={0.1}
-//             fov={56.106}
-//             scale={5.287}
-//           >
-//             <pointLight
-//               color={0xffd3b3}
-//               castShadow
-//               position={[1.42, 1.95, -5.29]}
-//               shadow-camera-right={1}
-//               shadow-camera-top={1}
-//               shadow-camera-left={-1}
-//               shadow-camera-bottom={-1}
-//               shadow-mapSize-width={1024}
-//               shadow-mapSize-height={1024}
-//               intensity={1}
-//               shadow-bias={-0.0001}
-//             />
-//             <directionalLight
-//               castShadow
-//               position={[-5.64, -0.9, 4.55]}
-//               // position={[-0.35, 2.43, 38.3]}
-//               shadow-camera-right={10}
-//               shadow-camera-top={10}
-//               shadow-camera-left={-10}
-//               shadow-camera-bottom={-10}
-//               shadow-mapSize-width={1024}
-//               shadow-mapSize-height={1024}
-//               intensity={1.5}
-//               shadow-bias={-0.0001}
-//             />
-//             <directionalLight
-//               castShadow
-//               // position={[-5.64, -0.9, 4.55]}
-//               position={[-0.35, 2.43, 38.3]}
-//               shadow-camera-right={10}
-//               shadow-camera-top={10}
-//               shadow-camera-left={-10}
-//               shadow-camera-bottom={-10}
-//               shadow-mapSize-width={1024}
-//               shadow-mapSize-height={1024}
-//               intensity={0.6}
-//               shadow-bias={-0.0001}
-//             />
-//           </PerspectiveCamera>
-//           <mesh
-//             name="Earth_"
-//             geometry={nodes.Earth_.geometry}
-//             material={nodes.Earth_.material}
-//             position={[0.234, 0.25, -42.94]}
-//             rotation={[0.389, -0.245, 3.054]}
-//             scale={-12.921}
-//           />
-//           <mesh
-//             name="Moon"
-//             geometry={nodes.Moon.geometry}
-//             material={nodes.Moon.material}
-//             position={[33.679, 17.157, -51.773]}
-//             scale={0}
-//           />
-//           <mesh
-//             name="Mars"
-//             geometry={nodes.Mars.geometry}
-//             material={nodes.Mars.material}
-//             position={[-34.067, 1.245, 56.371]}
-//             rotation={[-0.016, -1.146, -0.306]}
-//             scale={-6.037}
-//           />
-//         </group>
-//       </group>
-//     </>
-//   );
-// });
-
-// Main component
 
 const Model = forwardRef((props, ref) => {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/aadhya_new_1.glb");
+  const { nodes, materials, animations } = useGLTF("/supercode11.glb");
+  // const { nodes, materials, animations } = useGLTF("/aadhya_new_1.glb");
   const { actions } = useAnimations(animations, group);
-  console.log("actions: ", actions);
   // Effect to pause camera animation on mount
   useEffect(() => {
-    if (actions["CameraAction"]) {
-      actions["CameraAction"].paused = true;
+    if (actions["Animation"]) {
+      actions["Animation"].paused = true;
     }
-  }, [actions["CameraAction"]]);
+  }, [actions["Animation"]]);
 
   // Effect to play camera animation
   useEffect(() => {
-    if (actions["CameraAction"]) {
-      actions["CameraAction"].play();
+    if (actions["Animation"]) {
+      actions["Animation"].play();
     }
-  }, [actions["CameraAction"]]);
+  }, [actions["Animation"]]);
 
   useFrame(() => {
-    if (actions["CameraAction"]) {
-      const duration = actions["CameraAction"].getClip().duration;
+    if (actions["Animation"]) {
+      const duration = actions["Animation"].getClip().duration;
       const targetTime = duration * ref.current;
       targetTimeStore = targetTime;
-      actions["CameraAction"].time = THREE.MathUtils.lerp(
-        actions["CameraAction"].time,
+      actions["Animation"].time = THREE.MathUtils.lerp(
+        actions["Animation"].time,
         targetTime,
         0.1
       );
     }
   });
+  console.log("props: ", props?.Xvalue);
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} dispose={null}>
       <group name="Scene">
         <PerspectiveCamera
           name="Camera"
@@ -187,35 +73,39 @@ const Model = forwardRef((props, ref) => {
           rotation={[0, Math.PI / 2, 0]}
         />
         <pointLight
-          color={0xffd3b3}
+          // color={0xffd3b3}
           castShadow
-          position={[1.42, 1.95, -5.29]}
-          shadow-camera-right={1}
-          shadow-camera-top={1}
-          shadow-camera-left={-1}
-          shadow-camera-bottom={-1}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          intensity={1}
-          shadow-bias={-0.0001}
+          color={0xc47d12}
+          width={10}
+          height={40}
+          shadow-mapSize-width={10}
+          shadow-mapSize-height={40}
+          // position={[props?.Xvalue, props?.Yvalue, props?.Zvalue]}
+          position={[-6.1, 0, 1.1]}
+          intensity={2}
         />
-        <directionalLight
+        {/* <directionalLight
           castShadow
-          position={[-5.64, -0.9, 4.55]}
+          // color={0xc47d12}
+          // position={[-5.64, -0.9, 4.55]}
+          position={[111, 587, 31]}
+          width={props?.Xvalue}
+          height={props?.Yvalue}
           // position={[-0.35, 2.43, 38.3]}
           shadow-camera-right={10}
           shadow-camera-top={10}
           shadow-camera-left={-10}
           shadow-camera-bottom={-10}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          intensity={1.5}
+          shadow-mapSize-width={10}
+          shadow-mapSize-height={10}
+          intensity={5}
           shadow-bias={-0.0001}
-        />
-        <directionalLight
+        /> */}
+        {/* <directionalLight
           castShadow
           // position={[-5.64, -0.9, 4.55]}
-          position={[-0.35, 2.43, 38.3]}
+          // position={[-0.35, 2.43, 38.3]}
+          position={[-3, -2, 10]}
           shadow-camera-right={10}
           shadow-camera-top={10}
           shadow-camera-left={-10}
@@ -224,26 +114,27 @@ const Model = forwardRef((props, ref) => {
           shadow-mapSize-height={1024}
           intensity={0.6}
           shadow-bias={-0.0001}
-        />
+        /> */}
         <mesh
           name="Mars"
           geometry={nodes.Mars.geometry}
-          material={nodes.Mars.material}
-          position={[-9.677, -0.904, -0.233]}
+          material={materials["Material.001"]}
+          position={[-10.158, -0.407, -0.001]}
           rotation={[2.355, -0.563, 2.155]}
-          scale={0.102}
+          scale={0.046}
         />
         <mesh
           name="Earth001"
           geometry={nodes.Earth001.geometry}
-          material={nodes.Earth001.material}
+          material={materials["Material.003"]}
           position={[-7.545, 0, 0]}
+          rotation={[-1.125, -1.122, -1.001]}
           scale={1.079}
         />
         <mesh
           name="Moon"
           geometry={nodes.Moon.geometry}
-          material={nodes.Moon.material}
+          material={materials.Material}
           position={[-8.671, 0.541, 0.007]}
           scale={0.039}
         />
@@ -259,6 +150,9 @@ const Planets = () => {
   const overlayDescriptionRef = useRef(null);
   const MoonImageContainerRef = useRef(null);
   const addLineText = useRef(null);
+  const [Xvalue, setValueX] = useState(10);
+  const [Yvalue, setValueY] = useState(10);
+  const [Zvalue, setValueZ] = useState(10);
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [opacity, setOpacity] = useState(true);
   const [earthSpanText3, setEarthSpanText3] = useState("[MOON]");
@@ -402,30 +296,30 @@ const Planets = () => {
 
   const handleScroll = (e) => {
     if (window.innerWidth > 768) {
-      if (targetTimeStore >= 10.41) {
+      scroll.current =
+        e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
+      if (targetTimeStore >= 10.41 && scrollDirectionStore < scroll.current) {
         skipButtonRef.current.style.display = "flex";
         isVisible = true;
         skipButtonRef.current.click();
       }
-      scroll.current =
-        e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
-      console.log("scroll.current: ", scroll.current);
+      scrollDirectionStore = scroll.current;
       if (
-        (scroll.current > 0.4 && scroll.current < 0.6) ||
-        (scroll.current > 0.7 && scroll.current < 0.9)
+        (scroll.current > 0.2 && scroll.current < 0.5) ||
+        (scroll.current > 0.75 && scroll.current < 0.84)
       ) {
         overlayDescriptionRef.current.style.opacity = "1";
         addLineText.current.classList.remove(styles.addLineTextAnimation);
         setOpacity(false);
       }
 
-      if (scroll.current > 0.6 && scroll.current < 0.7) {
+      if (scroll.current > 0.5 && scroll.current < 0.75) {
         setHeadingText("TO MOON");
         setOpacity(true);
-      } else if (scroll.current > 0.9 && scroll.current < 1) {
+      } else if (scroll.current > 0.84 && scroll.current < 1) {
         setHeadingText("TO MARS");
         setOpacity(true);
-      } else if (scroll.current < 0.4) {
+      } else if (scroll.current < 0.2) {
         setHeadingText("FROM EARTH");
         setOpacity(true);
       }
@@ -634,6 +528,46 @@ const Planets = () => {
             />
           </div>
         </div>
+        {/* <div
+          style={{
+            display: "flex",
+            zIndex: "999",
+            height: "30px",
+            width: "100%",
+            background: "white",
+            position: "fixed",
+            top: "0",
+            left: "0",
+          }}
+        >
+          <span style={{ width: "100px" }}>{Xvalue}:</span>
+          <input
+            type="range"
+            value={Xvalue}
+            min={-10}
+            max={10}
+            step={0.1}
+            onChange={(e) => setValueX(e.target.value)}
+          />
+          <span style={{ width: "100px" }}>{Yvalue}:</span>
+          <input
+            type="range"
+            value={Yvalue}
+            min={-10}
+            max={10}
+            step={0.1}
+            onChange={(e) => setValueY(e.target.value)}
+          />
+          <span style={{ width: "100px" }}>{Zvalue}:</span>
+          <input
+            type="range"
+            value={Zvalue}
+            min={-10}
+            max={10}
+            step={0.1}
+            onChange={(e) => setValueZ(e.target.value)}
+          />
+        </div> */}
         <Canvas
           className={styles?.canvasContainer}
           gl={{ antialias: true, pixelRatio: devicePixelRatio }}
@@ -641,9 +575,10 @@ const Planets = () => {
           {/* Ambient light */}
           <ambientLight intensity={1} />
           {/* Directional light */}
-          <directionalLight intensity={1} position={[10, 10, 0]} />
+          <directionalLight intensity={2} position={[26, 80, 14]} />
+          <directionalLight intensity={3} position={[100, -211, -205]} />
           {/* Model component */}
-          <Model ref={scroll} />
+          <Model ref={scroll} Xvalue={Xvalue} Yvalue={Yvalue} Zvalue={Zvalue} />
           {/* <ModelLatest ref={scroll} /> */}
         </Canvas>
       </div>
@@ -651,6 +586,7 @@ const Planets = () => {
   );
 };
 
-useGLTF.preload("./aadhya_new_1.glb");
+// useGLTF.preload("./aadhya_new_1.glb");
+useGLTF.preload("/supercode11.glb");
 
 export default Planets;
