@@ -59,7 +59,6 @@ const Model = forwardRef((props, ref) => {
       );
     }
   });
-  console.log("props: ", props?.Xvalue);
   return (
     <group ref={group} dispose={null}>
       <group name="Scene">
