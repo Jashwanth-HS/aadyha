@@ -30,8 +30,7 @@ let isVisible = false;
 
 const Model = forwardRef((props, ref) => {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/supercode11.glb");
-  // const { nodes, materials, animations } = useGLTF("/aadhya_new_1.glb");
+  const { nodes, materials, animations } = useGLTF("/Aadyah_animation.glb");
   const { actions } = useAnimations(animations, group);
   // Effect to pause camera animation on mount
   useEffect(() => {
@@ -68,9 +67,10 @@ const Model = forwardRef((props, ref) => {
           far={1000}
           near={0.001}
           fov={22.895}
-          position={[-0.083, 0.016, 0]}
-          rotation={[0, Math.PI / 2, 0]}
+          position={[1.601, 0.129, 0]}
+          rotation={[-1.571, 1.557, 1.571]}
         />
+
         <pointLight
           // color={0xffd3b3}
           castShadow
@@ -83,39 +83,11 @@ const Model = forwardRef((props, ref) => {
           position={[-6.1, 0, 1.1]}
           intensity={2}
         />
-        {/* <directionalLight
-          castShadow
-          // color={0xc47d12}
-          // position={[-5.64, -0.9, 4.55]}
-          position={[111, 587, 31]}
-          width={props?.Xvalue}
-          height={props?.Yvalue}
-          // position={[-0.35, 2.43, 38.3]}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-left={-10}
-          shadow-camera-bottom={-10}
-          shadow-mapSize-width={10}
-          shadow-mapSize-height={10}
-          intensity={5}
-          shadow-bias={-0.0001}
-        /> */}
-        {/* <directionalLight
-          castShadow
-          // position={[-5.64, -0.9, 4.55]}
-          // position={[-0.35, 2.43, 38.3]}
-          position={[-3, -2, 10]}
-          shadow-camera-right={10}
-          shadow-camera-top={10}
-          shadow-camera-left={-10}
-          shadow-camera-bottom={-10}
-          shadow-mapSize-width={1024}
-          shadow-mapSize-height={1024}
-          intensity={0.6}
-          shadow-bias={-0.0001}
-        /> */}
+
         <mesh
           name="Mars"
+          castShadow
+          receiveShadow
           geometry={nodes.Mars.geometry}
           material={materials["Material.001"]}
           position={[-10.158, -0.407, -0.001]}
@@ -124,6 +96,8 @@ const Model = forwardRef((props, ref) => {
         />
         <mesh
           name="Earth001"
+          castShadow
+          receiveShadow
           geometry={nodes.Earth001.geometry}
           material={materials["Material.003"]}
           position={[-7.545, 0, 0]}
@@ -132,9 +106,12 @@ const Model = forwardRef((props, ref) => {
         />
         <mesh
           name="Moon"
+          castShadow
+          receiveShadow
           geometry={nodes.Moon.geometry}
           material={materials.Material}
           position={[-8.671, 0.541, 0.007]}
+          rotation={[0.263, 0.153, 0.689]}
           scale={0.039}
         />
       </group>
@@ -207,21 +184,6 @@ const Planets = () => {
           }
         }
 
-        // if (
-        //   scrollY > 10 &&
-        //   scrollY <= 750 &&
-        //   scrollY > PrevWindowScroll.current
-        // ) {
-        //   skipButtonRef.current.style.display = "flex";
-        //   isVisible = true;
-        //   skipButtonRef.current.click();
-        // } else if (
-        //   scrollY > 10 &&
-        //   scrollY <= 750 &&
-        //   scrollY < PrevWindowScroll.current
-        // ) {
-        //   lenis.scrollTo("body");
-        // }
         PrevWindowScroll.current = scrollY;
       }
     };
@@ -586,6 +548,6 @@ const Planets = () => {
 };
 
 // useGLTF.preload("./aadhya_new_1.glb");
-useGLTF.preload("/supercode11.glb");
+useGLTF.preload("/Aadyah_animation.glb");
 
 export default Planets;
