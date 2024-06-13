@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { useLenis } from "@studio-freight/react-lenis";
 import styles from "../css/main.module.css";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
-let targetTimeStore, scrollDirectionStore;
+let targetTimeStore, scrollDirectionStore, isModelLoaded;
 // import WordAnimation from "@/components/WordAnimation";
 const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
   ssr: false,
@@ -115,7 +115,7 @@ const Planets = () => {
   const overlayDescriptionRef = useRef(null);
   const MoonImageContainerRef = useRef(null);
   const addLineText = useRef(null);
-
+  const [WordAnimationLoaded, setWordAnimationLoaded] = useState(false); // State to track Planets component loading
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [opacity, setOpacity] = useState(true);
   const [earthSpanText3, setEarthSpanText3] = useState("[MOON]");
@@ -147,11 +147,12 @@ const Planets = () => {
     // if (loader) {
     //   loader.style.display = "none";
     // }
-    // setTimeoutId = setTimeout(() => {
-    setHeadingText("FROM EARTH");
-    // }, 1000);
-    addLineText.current.classList.remove(styles.addLineTextAnimation);
-    addLineText.current.classList.add(styles.addLineTextAnimation);
+    setTimeoutId = setTimeout(() => {
+      setHeadingText("FROM EARTH");
+      setWordAnimationLoaded(true);
+      addLineText.current?.classList.remove(styles.addLineTextAnimation);
+      addLineText.current?.classList.add(styles.addLineTextAnimation);
+    }, 1500);
     return () => {
       clearTimeout(setTimeoutId);
     };
@@ -162,7 +163,7 @@ const Planets = () => {
       if (window.innerWidth > 768) {
         const scrollY = window.scrollY;
         if (divContainerRef.current) {
-          const divContainer = divContainerRef.current.getBoundingClientRect();
+          const divContainer = divContainerRef.current?.getBoundingClientRect();
           if (
             scrollY < divContainer.height &&
             scrollY < PrevWindowScroll.current
@@ -184,7 +185,7 @@ const Planets = () => {
     if (overlayDescriptionRef.current)
       overlayDescriptionRef.current.style.opacity = "0";
     if (headingText) {
-      addLineText.current.classList.remove(styles.addLineTextAnimation);
+      addLineText.current?.classList.remove(styles.addLineTextAnimation);
     }
     let LabelSpanText1 = headingText?.includes("MOON")
         ? "[MOON]"
@@ -228,12 +229,17 @@ const Planets = () => {
         : headingText?.includes("EARTH")
         ? `[384,400 km]`
         : "";
-    MoonImageContainerRef.current.style.display = headingText?.includes("MARS")
-      ? "none"
-      : "flex";
+    if (MoonImageContainerRef.current)
+      MoonImageContainerRef.current.style.display = headingText?.includes(
+        "MARS"
+      )
+        ? "none"
+        : "flex";
 
-    overlayDescriptionRef.current.style.opacity = "1";
-    addLineText.current.classList.add(styles.addLineTextAnimation);
+    if (overlayDescriptionRef.current)
+      overlayDescriptionRef.current.style.opacity = "1";
+    if (addLineText.current)
+      addLineText.current.classList.add(styles.addLineTextAnimation);
     setEarthSpanText3(spanText3);
     setEarthSpanText4(spanText4);
     setEarthImageLabelSpanText1(LabelSpanText1);
@@ -246,10 +252,10 @@ const Planets = () => {
     if (window.innerWidth > 768) {
       scroll.current =
         e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
-      if (targetTimeStore >= 10.41 && scrollDirectionStore < scroll.current) {
+      if (targetTimeStore >= 10.4 && scrollDirectionStore < scroll.current) {
         skipButtonRef.current.style.display = "flex";
-        isVisible = true;
         skipButtonRef.current.click();
+        isVisible = true;
       }
       scrollDirectionStore = scroll.current;
       if (
@@ -273,7 +279,7 @@ const Planets = () => {
       }
     }
   };
-
+  if (!WordAnimationLoaded) return <PageLoad />;
   // Render
   return (
     <>
@@ -283,7 +289,7 @@ const Planets = () => {
         style={{ display: isVisible ? "flex" : "none" }}
         onClick={() => {
           setTimeout(() => {
-            lenis.scrollTo("#SpaceSystemContainer");
+            lenis.scrollTo("#SpaceSystemContainer", { duration: 2 });
           }, 100);
         }}
       >
