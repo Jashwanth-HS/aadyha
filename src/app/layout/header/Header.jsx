@@ -25,7 +25,6 @@ export default function Header() {
         const fetchData = await fetchGlobal("header");
         const data = await convertFromACF(fetchData, "header");
         setPageData(data);
-        console.log("data?.logos[0]: ", data?.logos);
         if (data?.logo[0]) {
           lightSvgRef.current = data?.logo[0];
         }

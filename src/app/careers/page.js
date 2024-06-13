@@ -58,7 +58,6 @@ export default function page() {
 
   if (error) return <div>{error}</div>;
   if (!pageData) return <Loading />;
-  console.log("pageData: ", pageData);
   return (
     <>
       <Banner

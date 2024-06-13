@@ -3,7 +3,6 @@ import React from "react";
 import { RenderList } from "@/components/Accordion";
 
 export default function PlanetaryMissions({ styles, data }) {
-  console.log("data: ", data);
   const { type, title, image, block } = data || {};
   return (
     <div className={styles?.PlanetaryMissionsContainer} id={type}>

@@ -1,9 +1,15 @@
 import React from "react";
 import styles from "../css/Clients.module.css";
 import { PrimaryButton } from "@/components/Buttons";
+import Container from "@/components/Container";
 export default function Clients({ clientsSection, contentBlock }) {
-  const { title, client_values, client_link, clients_section_image } =
-    clientsSection || {};
+  const {
+    title,
+    client_values,
+    client_link,
+    team_effort,
+    clients_section_image,
+  } = clientsSection || {};
   return (
     <>
       <div className={styles.ClientsContainer}>
@@ -112,9 +118,26 @@ export default function Clients({ clientsSection, contentBlock }) {
             </div>
           </div>
         </Container> */}
+        <Container>
+          <div className={styles?.team_effortsContainer}>
+            {team_effort?.map((e, index) => {
+              const { svg_icon, description } = e || {};
+              return (
+                <div className={styles?.team_effortsContent} key={index}>
+                  <div
+                    className={styles?.team_effortsSvg}
+                    dangerouslySetInnerHTML={{ __html: svg_icon }}
+                  ></div>
+                  <p className={styles?.team_effortsDescription}>
+                    {description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </Container>
       </div>
-
-      <div className={styles?.CeoMessageContainer}>
+      {/* <div className={styles?.CeoMessageContainer}>
         <div className="container">
           <div className={styles?.CeoMessageWrap}>
             <div>
@@ -132,19 +155,19 @@ export default function Clients({ clientsSection, contentBlock }) {
                   </p>
                 </div>
               </div>
-              {/* <a href="">
-                            <div className={styles?.CeoMessageContentBottm}>
-                                <div><img src={"/assets/images/space-avionics.png"}/></div>
-                                <div>
-                                    <h3 className="sub-heading-3">Space Avionics - Design Nuggets</h3>
-                                    <p className="caption secondary-font">Mr. Sethurajan shared his insights and experience on Mission Development</p>
-                                </div>
-                            </div>
-                        </a> */}
+              // <a href="">
+                     //       <div className={styles?.CeoMessageContentBottm}>
+                        //        <div><img src={"/assets/images/space-avionics.png"}/></div>
+                        //        <div>
+                         //           <h3 className="sub-heading-3">Space Avionics - Design Nuggets</h3>
+                         //           <p className="caption secondary-font">Mr. Sethurajan shared his insights and experience on Mission Development</p>
+                          //      </div>
+                          //  </div>
+                       // </a> 
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

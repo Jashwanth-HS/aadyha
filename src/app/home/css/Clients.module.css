@@ -165,7 +165,54 @@
 .CeoMessageContentBottm h3{
     padding-bottom: 6px;
 }
+.team_effortsContainer{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background: #00031B;
+    color: white;
+    height: 100%;
+    row-gap: 2rem;
+    flex-wrap: wrap;
+}
+.team_effortsContent{
+    display: flex;
+    flex: 25% 1;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: flex-start;
+    border-right: 1px solid #ffffff3f;
+    padding-inline: 2.5cqw 3.5cqw;
+    height: 220px;
+}
+.team_effortsContent:last-child{
+    border-right:none;
+}
+.team_effortsSvg{
+    width: 55px;
+    height: 55px;
 
+}
+.team_effortsSvg svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.team_effortsDescription{
+    width: 100%;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px;
+}
+@media(max-width:1200px){
+    .team_effortsContent{
+        flex: 50%;
+    }
+    .team_effortsContent:nth-child(2){
+        border-right:none;
+    }
+}
 @media(max-width:768px){
     .LifeSupporSystemWrap{
         flex-direction: column;
@@ -205,5 +252,8 @@
     }
     .ClientsLogoItems img{
         width: unset;
+    }
+    .team_effortsContent{
+        flex: 50%;
     }
 }

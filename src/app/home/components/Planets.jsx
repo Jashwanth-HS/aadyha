@@ -9,22 +9,12 @@ let targetTimeStore, scrollDirectionStore;
 // import WordAnimation from "@/components/WordAnimation";
 const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
   ssr: false,
-  loading: () => (
-    <div
-      style={{
-        position: "fixed",
-        top: "0",
-        height: "100vh",
-        width: "100vw",
-        background: "#01031b",
-        zIndex: "9999999",
-      }}
-    ></div>
-  ),
+  loading: () => <PageLoad />,
 });
 import Image from "next/image";
 import { disableOverflow } from "@/helper";
 import dynamic from "next/dynamic";
+import PageLoad from "@/components/PageLoad";
 
 let isVisible = false;
 
@@ -79,7 +69,6 @@ const Model = forwardRef((props, ref) => {
           height={40}
           shadow-mapSize-width={10}
           shadow-mapSize-height={40}
-          // position={[props?.Xvalue, props?.Yvalue, props?.Zvalue]}
           position={[-6.1, 0, 1.1]}
           intensity={2}
         />
@@ -126,9 +115,7 @@ const Planets = () => {
   const overlayDescriptionRef = useRef(null);
   const MoonImageContainerRef = useRef(null);
   const addLineText = useRef(null);
-  const [Xvalue, setValueX] = useState(10);
-  const [Yvalue, setValueY] = useState(10);
-  const [Zvalue, setValueZ] = useState(10);
+
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [opacity, setOpacity] = useState(true);
   const [earthSpanText3, setEarthSpanText3] = useState("[MOON]");
@@ -156,13 +143,13 @@ const Planets = () => {
   useEffect(() => {
     let setTimeoutId;
     disableOverflow();
-    const loader = document.getElementById("loaderMain");
-    if (loader) {
-      loader.style.display = "none";
-    }
-    setTimeoutId = setTimeout(() => {
-      setHeadingText("FROM EARTH");
-    }, 1000);
+    // const loader = document.getElementById("loaderMain");
+    // if (loader) {
+    //   loader.style.display = "none";
+    // }
+    // setTimeoutId = setTimeout(() => {
+    setHeadingText("FROM EARTH");
+    // }, 1000);
     addLineText.current.classList.remove(styles.addLineTextAnimation);
     addLineText.current.classList.add(styles.addLineTextAnimation);
     return () => {
@@ -489,46 +476,6 @@ const Planets = () => {
             />
           </div>
         </div>
-        {/* <div
-          style={{
-            display: "flex",
-            zIndex: "999",
-            height: "30px",
-            width: "100%",
-            background: "white",
-            position: "fixed",
-            top: "0",
-            left: "0",
-          }}
-        >
-          <span style={{ width: "100px" }}>{Xvalue}:</span>
-          <input
-            type="range"
-            value={Xvalue}
-            min={-10}
-            max={10}
-            step={0.1}
-            onChange={(e) => setValueX(e.target.value)}
-          />
-          <span style={{ width: "100px" }}>{Yvalue}:</span>
-          <input
-            type="range"
-            value={Yvalue}
-            min={-10}
-            max={10}
-            step={0.1}
-            onChange={(e) => setValueY(e.target.value)}
-          />
-          <span style={{ width: "100px" }}>{Zvalue}:</span>
-          <input
-            type="range"
-            value={Zvalue}
-            min={-10}
-            max={10}
-            step={0.1}
-            onChange={(e) => setValueZ(e.target.value)}
-          />
-        </div> */}
         <Canvas
           className={styles?.canvasContainer}
           gl={{ antialias: true, pixelRatio: devicePixelRatio }}
@@ -539,15 +486,13 @@ const Planets = () => {
           <directionalLight intensity={2} position={[26, 80, 14]} />
           <directionalLight intensity={3} position={[100, -211, -205]} />
           {/* Model component */}
-          <Model ref={scroll} Xvalue={Xvalue} Yvalue={Yvalue} Zvalue={Zvalue} />
-          {/* <ModelLatest ref={scroll} /> */}
+          <Model ref={scroll} />
         </Canvas>
       </div>
     </>
   );
 };
 
-// useGLTF.preload("./aadhya_new_1.glb");
 useGLTF.preload("/Aadyah_animation.glb");
 
 export default Planets;

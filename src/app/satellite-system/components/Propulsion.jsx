@@ -47,7 +47,6 @@ const NavContent = ({ data, styles }) => {
 };
 export default function Propulsion({ styles, data }) {
   const [active, setActive] = useState(data?.blocks[0].block_content[0]);
-  console.log("active: ", active);
   const { type, title, description, image } = data || {};
   return (
     <div>

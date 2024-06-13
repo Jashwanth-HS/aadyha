@@ -4,18 +4,7 @@ import React, { useEffect, useState } from "react";
 // import Planets from "./components/Planets";
 const Planets = dynamic(() => import("./components/Planets"), {
   ssr: false,
-  loading: () => (
-    <div
-      style={{
-        position: "fixed",
-        top: "0",
-        height: "100vh",
-        width: "100vw",
-        background: "#01031b",
-        zIndex: "9999999",
-      }}
-    ></div>
-  ),
+  loading: () => <PageLoad />,
 });
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
@@ -23,7 +12,6 @@ import MobileViewPlanets from "./components/MobileViewPlanets";
 import { Helmet } from "react-helmet";
 import { convertFromACF, fetchPage } from "../lib/api";
 import PageLoad from "@/components/PageLoad";
-import { ModelTest } from "../Supercode_1";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -38,7 +26,7 @@ export default function Home() {
 
   const [pageData, setPageData] = useState(null);
   const [error, setError] = useState(null);
-
+  const [planetsLoaded, setPlanetsLoaded] = useState(false); // State to track Planets component loading
   useEffect(() => {
     const getPageData = async () => {
       try {
@@ -54,8 +42,19 @@ export default function Home() {
     getPageData();
   }, []);
 
+  // Use useEffect to track when Planets component is loaded
+  useEffect(() => {
+    const simulatePlanetsLoaded = () => {
+      setTimeout(() => {
+        setPlanetsLoaded(true); // Simulate Planets component loaded after 2 seconds
+      }, 2000); // Adjust timeout as needed
+    };
+
+    simulatePlanetsLoaded();
+  }, []);
+
   if (error) return <div>{error}</div>;
-  if (!pageData) return <PageLoad />;
+  if (!pageData || !planetsLoaded) return <PageLoad />;
 
   return (
     <>

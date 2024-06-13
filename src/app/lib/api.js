@@ -46,9 +46,18 @@ export const fetchGlobal = async (name) => {
 
 const convertHomeACF = async (data) => {
   const spaceSystemAcfData = data.acf.space_system || [];
-  const discoverSectionAcfData = data.acf.discover_section[0] || [];
-  const clientsSectionAcfData = data.acf.clients[0] || [];
-  const contentBlockAcfData = data.acf.content_block[0] || [];
+  const discoverSectionAcfData = data.acf.discover_section
+    ? data.acf.discover_section[0] || []
+    : [];
+  const clientsSectionAcfData = data.acf.clients
+    ? data.acf.clients[0] || []
+    : [];
+  const teamEffortSectionAcfData = data.acf.team_effort_section
+    ? data.acf.team_effort_section[0] || []
+    : [];
+  const contentBlockAcfData = data.acf.content_block
+    ? data.acf.content_block[0] || []
+    : [];
 
   const spaceSystemResults = await Promise.all(
     spaceSystemAcfData.map(async (item, index) => {
@@ -103,6 +112,7 @@ const convertHomeACF = async (data) => {
     title: clientsSectionAcfData.title,
     client_values: clientsSectionAcfData.client_values,
     client_link: clientsSectionAcfData.client_link,
+    team_effort: teamEffortSectionAcfData.team_effort,
     clients_section_image: clientsSectionAcfData.clients_section_image,
   };
   return {
@@ -234,7 +244,6 @@ const convertAboutACF = async (data) => {
 };
 
 const convertSatelliteSystemACF = async (data) => {
-  console.log("data: ", data);
   const SatelliteSystemACFData = data.acf || [];
   let result = {};
   const { satellite_system_banner, ...rest } = SatelliteSystemACFData || {};

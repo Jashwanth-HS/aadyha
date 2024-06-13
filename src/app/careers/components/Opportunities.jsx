@@ -4,7 +4,6 @@ import React from "react";
 
 export default function Opportunities({ styles, data }) {
   const { type, title, Description, Button_Link } = data || {};
-  console.log("Button_Link: ", Button_Link);
   return (
     <div className={styles?.OpportunitiesWrapper} id={type}>
       <h2 className="heading-1">{title}</h2>
