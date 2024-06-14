@@ -135,13 +135,13 @@ export default function Header() {
   };
   if (
     !pageData &&
-    (window?.location.href.includes("/about") ||
-      window?.location.href.includes("/contact") ||
-      window?.location.href.includes("/careers") ||
-      window?.location.href.includes("/satellite-system") ||
-      window?.location.href.includes("/space-mission") ||
-      window?.location.href.includes("/launch-vehicle-system") ||
-      window?.location.href.includes("/contact"))
+    (pathNameRef.current?.includes("/about") ||
+      pathNameRef.current?.includes("/contact") ||
+      pathNameRef.current?.includes("/careers") ||
+      pathNameRef.current?.includes("/satellite-system") ||
+      pathNameRef.current?.includes("/space-mission") ||
+      pathNameRef.current?.includes("/launch-vehicle-system") ||
+      pathNameRef.current?.includes("/contact"))
   )
     return <Loading />;
   return (

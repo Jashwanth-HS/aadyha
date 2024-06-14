@@ -146,7 +146,6 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
 
   useEffect(() => {
     let setTimeoutId;
-    console.log("isModelLoaded: ", isModelLoaded);
     if (isModelLoaded) {
       disableOverflow();
       // const loader = document.getElementById("loaderMain");

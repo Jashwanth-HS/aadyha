@@ -23,17 +23,15 @@ export default function FooterMain() {
 
     getPageData();
   }, []);
+  const regex = /\/[a-z0-9]+/;
 
   if (
-    !pageData &&
-    (window?.location.href.includes("/about") ||
-      window?.location.href.includes("/contact") ||
-      window?.location.href.includes("/careers") ||
-      window?.location.href.includes("/satellite-system") ||
-      window?.location.href.includes("/space-mission") ||
-      window?.location.href.includes("/launch-vehicle-system") ||
-      window?.location.href.includes("/contact"))
+    typeof window === "undefined" ||
+    window?.location.href.includes("/home") ||
+    !regex.test(window.location.pathname)
   ) {
+    return <></>;
+  } else if (!pageData) {
     return <Loading />;
   }
   return (
