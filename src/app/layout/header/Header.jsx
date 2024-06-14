@@ -133,7 +133,17 @@ export default function Header() {
       menubarRef.current.classList.add(styles.openMenubar);
     }
   };
-  if (!pageData) return <Loading />;
+  if (
+    !pageData &&
+    (window?.location.href.includes("/about") ||
+      window?.location.href.includes("/contact") ||
+      window?.location.href.includes("/careers") ||
+      window?.location.href.includes("/satellite-system") ||
+      window?.location.href.includes("/space-mission") ||
+      window?.location.href.includes("/launch-vehicle-system") ||
+      window?.location.href.includes("/contact"))
+  )
+    return <Loading />;
   return (
     <>
       <header ref={navHeaderRef} className={styles?.navHeader}>
@@ -147,13 +157,15 @@ export default function Header() {
               }
             }}
           >
-            <img
-              ref={imageRef}
-              src={pageData?.logo[0]}
-              width={100}
-              height={100}
-              alt="logo"
-            />
+            {pageData?.logo[0] && (
+              <img
+                ref={imageRef}
+                src={pageData?.logo[0]}
+                width={100}
+                height={100}
+                alt="logo"
+              />
+            )}
           </Link>
           <nav className={styles?.navHeaderLinksContainer}>
             <ul>

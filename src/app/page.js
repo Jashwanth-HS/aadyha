@@ -1,3 +1,4 @@
+"use client";
 import "./typography.css";
 import styles from "./page.module.css";
 import Home from "./home/page";

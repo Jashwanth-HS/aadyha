@@ -4,6 +4,7 @@ import React from "react";
 
 export default function Cosmos({ styles, cosmosData }) {
   const { title, blocks } = cosmosData || {};
+  if (!cosmosData) return <></>;
   return (
     <div className={styles?.cosmosContainer}>
       <div className={styles?.cosmosContainerBackground}>
@@ -17,7 +18,7 @@ export default function Cosmos({ styles, cosmosData }) {
             srcSet={"/assets/images/cosmosbgMob.svg"}
           />
           <Image
-            alt="cardImage"
+            alt="cosmos bg"
             width={100}
             height={100}
             src={"/assets/images/cosmosbg.svg"}

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 // import Planets from "./components/Planets";
 const Planets = dynamic(() => import("./components/Planets"), {
   ssr: false,
-  loading: () => <PageLoad />,
+  // loading: () => <PageLoad />,
 });
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
@@ -23,10 +23,10 @@ const Section = ({ children }) => {
 };
 export default function Home() {
   // const [pageLoad, setPageLoaded] = useState(false);
-
+  const [isModelLoaded, SetIsModelLoaded] = useState(false); // State to track Planets component loading
   const [pageData, setPageData] = useState(null);
   const [error, setError] = useState(null);
-  const [planetsLoaded, setPlanetsLoaded] = useState(false); // State to track Planets component loading
+  // const [planetsLoaded, setPlanetsLoaded] = useState(false); // State to track Planets component loading
   useEffect(() => {
     const getPageData = async () => {
       try {
@@ -46,7 +46,7 @@ export default function Home() {
   useEffect(() => {
     const simulatePlanetsLoaded = () => {
       setTimeout(() => {
-        setPlanetsLoaded(true); // Simulate Planets component loaded after 2 seconds
+        // setPlanetsLoaded(true); // Simulate Planets component loaded after 2 seconds
       }, 2000); // Adjust timeout as needed
     };
 
@@ -54,7 +54,20 @@ export default function Home() {
   }, []);
 
   if (error) return <div>{error}</div>;
-  if (!pageData || !planetsLoaded) return <PageLoad />;
+  // if (!pageData || !planetsLoaded) return <PageLoad />;
+  // if (!pageData)
+  //   return (
+  //     <div
+  //       style={{
+  //         position: "fixed",
+  //         top: "0",
+  //         height: "100vh",
+  //         width: "100vw",
+  //         background: "#01031b",
+  //         zIndex: "9999999",
+  //       }}
+  //     ></div>
+  //   );
 
   return (
     <>
@@ -62,7 +75,22 @@ export default function Home() {
         <title>Home - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
-      <Planets />
+      {!isModelLoaded && (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            height: "100vh",
+            width: "100vw",
+            background: "#01031b",
+            zIndex: "9999999",
+          }}
+        ></div>
+      )}
+      <Planets
+        SetIsModelLoaded={SetIsModelLoaded}
+        isModelLoaded={isModelLoaded}
+      />
 
       <Section>
         <MobileViewPlanets />
