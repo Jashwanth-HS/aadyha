@@ -26,9 +26,10 @@ export default function FooterMain() {
   const regex = /\/[a-z0-9]+/;
 
   if (
-    typeof window === "undefined" ||
-    window?.location.href.includes("/home") ||
-    !regex.test(window.location.pathname)
+    !pageData &&
+    (typeof window === "undefined" ||
+      window?.location.href.includes("/home") ||
+      !regex.test(window.location.pathname))
   ) {
     return <></>;
   } else if (!pageData) {
