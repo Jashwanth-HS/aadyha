@@ -12,6 +12,7 @@ import MobileViewPlanets from "./components/MobileViewPlanets";
 import { Helmet } from "react-helmet";
 import { convertFromACF, fetchPage } from "../lib/api";
 import PageLoad from "@/components/PageLoad";
+import PlanetsNew from "./components/PlanetsNew";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -87,7 +88,11 @@ export default function Home() {
           }}
         ></div>
       )}
-      <Planets
+      {/* <Planets
+        SetIsModelLoaded={SetIsModelLoaded}
+        isModelLoaded={isModelLoaded}
+      /> */}
+      <PlanetsNew
         SetIsModelLoaded={SetIsModelLoaded}
         isModelLoaded={isModelLoaded}
       />

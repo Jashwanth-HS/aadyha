@@ -25,24 +25,6 @@ export const fetchGlobal = async (name) => {
     throw error;
   }
 };
-// export const fetchMedia = async (mediaId) => {
-//   const myData = Array.isArray(mediaId) ? [...mediaId] : [mediaId];
-//   console.log("myData: ", myData);
-//   // try {
-//   //   const responses = await Promise.all(
-//   //     myData.map(async (id) => {
-//   //       if (typeof id == "string") {
-//   //         const response = await axios.get(`${WORDPRESS_API_URL}/media/${id}`);
-//   //         return response.data?.source_url || "";
-//   //       }
-//   //     })
-//   //   );
-//   //   return responses;
-//   // } catch (error) {
-//   //   console.error("Error fetching media:", error);
-//   //   throw error;
-//   // }
-// };
 
 const convertHomeACF = async (data) => {
   const spaceSystemAcfData = data.acf.space_system || [];
