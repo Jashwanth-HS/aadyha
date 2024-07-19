@@ -26,12 +26,11 @@ export default function FooterMain() {
     setMounted(true);
     getPageData();
   }, []);
-  const regex = /\/[a-z0-9]+/;
 
   if (
     !pageData &&
     !mounted &&
-    (pathname.includes("/home") || !regex.test(window.location.pathname))
+    (pathname.includes("/home") || pathname == "/")
   ) {
     return <></>;
   } else if (!pageData) {
