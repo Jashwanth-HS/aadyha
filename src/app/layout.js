@@ -23,6 +23,14 @@ export default function RootLayout({ children }) {
         name="description"
         content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
       ></meta>
+      <meta
+        property="og:title"
+        content="AADYAH Aerospace Trusted by the ones who push the boundaries"
+      ></meta>
+      <meta
+        property="og:description"
+        content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
+      ></meta>
       <body className={inter.className}>
         <PageLoad />
         <Header />
