@@ -19,6 +19,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <link rel="icon" href="/favicon.svg" />
+      <meta
+        name="description"
+        content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
+      ></meta>
       <body className={inter.className}>
         <PageLoad />
         <Header />
