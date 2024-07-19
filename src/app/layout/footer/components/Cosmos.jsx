@@ -11,17 +11,17 @@ export default function Cosmos({ styles, cosmosData }) {
         <picture>
           <source
             media="(min-width: 768px)"
-            srcSet={"/assets/images/cosmosbg.svg"}
+            srcSet={"/assets/images/cosmosbg.png"}
           />
           <source
             media="(max-width: 767px)"
-            srcSet={"/assets/images/cosmosbgMob.svg"}
+            srcSet={"/assets/images/cosmosbgMob.png"}
           />
           <Image
             alt="cosmos bg"
             width={100}
             height={100}
-            src={"/assets/images/cosmosbg.svg"}
+            src={"/assets/images/cosmosbg.png"}
           />
         </picture>
       </div>
