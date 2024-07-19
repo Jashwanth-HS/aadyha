@@ -46,11 +46,6 @@ export default function Header() {
         pathNameRef.current === "/home" ||
         pathNameRef.current === "/about" ||
         pathNameRef.current === "/contact";
-      if (window.scrollY > storePrevScroll.current) {
-        navHeaderRef.current?.classList.add(styles?.hideNavHeader);
-      } else {
-        navHeaderRef.current?.classList.remove(styles?.hideNavHeader);
-      }
       if (window.scrollY <= 100) {
         if (isLight) {
           navHeaderRef.current?.classList.remove(styles?.colorNavHeader);
@@ -58,20 +53,40 @@ export default function Header() {
           if (imageRef.current) {
             imageRef.current.src = lightSvgRef.current;
           }
-        } else {
+        } else if (
+          pathNameRef.current !== "/" ||
+          pathNameRef.current !== "/home"
+        ) {
           navHeaderRef.current?.classList.add(styles?.colorNavHeader);
           navHeaderRef.current?.classList.remove(styles?.colorNavHeaderLight);
           if (imageRef.current) {
             imageRef.current.src = darkSvgRef.current;
           }
         }
-      } else {
+      } else if (
+        ((pathNameRef.current === "/" || pathNameRef.current === "/home") &&
+          window.scrollY > 3780) ||
+        (pathNameRef.current !== "/" && pathNameRef.current !== "/home")
+      ) {
         navHeaderRef.current?.classList.remove(styles?.colorNavHeaderLight);
         navHeaderRef.current?.classList.remove(styles?.colorNavHeader);
         if (imageRef.current) {
           imageRef.current.src = lightSvgRef.current;
         }
       }
+      if (
+        ((pathNameRef.current === "/" || pathNameRef.current === "/home") &&
+          window.scrollY > 3780) ||
+        (pathNameRef.current !== "/" && pathNameRef.current !== "/home")
+      ) {
+        console.log("in here");
+        if (window.scrollY > storePrevScroll.current) {
+          navHeaderRef.current?.classList.add(styles?.hideNavHeader);
+        } else {
+          navHeaderRef.current?.classList.remove(styles?.hideNavHeader);
+        }
+      }
+
       storePrevScroll.current = window.scrollY;
     }
   };

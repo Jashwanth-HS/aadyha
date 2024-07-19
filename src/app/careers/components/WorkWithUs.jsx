@@ -17,7 +17,9 @@ export default function WorkWithUs({ styles, data }) {
             <React.Fragment key={index}>
               <div className={styles?.WWURepeater}>
                 <div className={styles?.WWURepeaterImgs}>
-                  {Card_Image && <img src={Card_Image} />}
+                  {Card_Image && (
+                    <img src={Card_Image} alt={"Work with us" + index} />
+                  )}
                 </div>
               </div>
             </React.Fragment>

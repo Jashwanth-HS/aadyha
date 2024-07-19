@@ -30,7 +30,7 @@ const NavBarcontent = ({ activeData, styles }) => {
         const { image, title } = e || {};
         return (
           <div className={styles?.ControlSystemContent} key={index}>
-            {image && <img src={image} />}
+            {image && <img src={image} alt={title} />}
             <p className="caption secondary-font">{title}</p>
           </div>
         );

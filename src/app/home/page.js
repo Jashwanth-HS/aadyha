@@ -1,11 +1,5 @@
 "use client";
-import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
-// import Planets from "./components/Planets";
-const Planets = dynamic(() => import("./components/Planets"), {
-  ssr: false,
-  // loading: () => <PageLoad />,
-});
 import SpaceSystem from "./components/SpaceSystem";
 import Clients from "./components/Clients";
 import MobileViewPlanets from "./components/MobileViewPlanets";
@@ -50,25 +44,13 @@ export default function Home() {
         setPlanetsLoaded(true); // Simulate Planets component loaded after 2 seconds
       }, 2000); // Adjust timeout as needed
     };
-
     simulatePlanetsLoaded();
   }, []);
 
   if (error) return <div>{error}</div>;
-  if (!pageData || !planetsLoaded) return <PageLoad />;
-  if (!pageData)
-    return (
-      <div
-        style={{
-          position: "fixed",
-          top: "0",
-          height: "100vh",
-          width: "100vw",
-          background: "#01031b",
-          zIndex: "9999999",
-        }}
-      ></div>
-    );
+  if (!pageData || !planetsLoaded) {
+    return <PageLoad />;
+  }
 
   return (
     <>
@@ -76,27 +58,10 @@ export default function Home() {
         <title>Home - Aadyah Space</title>
         <meta name="description" content="Aadyah space home page" />
       </Helmet>
-      {!isModelLoaded && (
-        <div
-          style={{
-            position: "fixed",
-            top: "0",
-            height: "100vh",
-            width: "100vw",
-            background: "#01031b",
-            zIndex: "9999999",
-          }}
-        ></div>
-      )}
-      {/* <Planets
-        SetIsModelLoaded={SetIsModelLoaded}
-        isModelLoaded={isModelLoaded}
-      /> */}
       <PlanetsNew
         SetIsModelLoaded={SetIsModelLoaded}
         isModelLoaded={isModelLoaded}
       />
-
       <Section>
         <MobileViewPlanets />
         <SpaceSystem pageData={pageData} />

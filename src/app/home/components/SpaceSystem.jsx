@@ -98,7 +98,6 @@ const SpaceSystem = ({ data }) => {
                   return (
                     <div key={index} className={styles?.SpaceSystemListitems}>
                       <div className={styles?.SpaceSystemListImg}>
-                        {/* <img src={e?.src} alt="" /> */}
                         <div
                           dangerouslySetInnerHTML={{ __html: e?.renderSvg }}
                         />
@@ -240,6 +239,7 @@ const SpaceSystem = ({ data }) => {
             <img
               className={styles.LvsImage}
               src={imagePath || "/assets/images/lvs.png"}
+              alt="Lvs image"
             />
           </div>
         </div>

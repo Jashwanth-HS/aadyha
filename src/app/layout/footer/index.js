@@ -5,10 +5,13 @@ import Cosmos from "./components/Cosmos";
 import Footer from "./components/Footer";
 import { convertFromACF, fetchGlobal } from "@/app/lib/api";
 import Loading from "@/app/loading";
+import { usePathname } from "next/navigation";
 
 export default function FooterMain() {
   const [pageData, setPageData] = useState(null);
+  const [mounted, setMounted] = useState(false);
   const [error, setError] = useState(null);
+  const pathname = usePathname();
   useEffect(() => {
     const getPageData = async () => {
       try {
@@ -20,16 +23,15 @@ export default function FooterMain() {
         setError("Failed to fetch post");
       }
     };
-
+    setMounted(true);
     getPageData();
   }, []);
   const regex = /\/[a-z0-9]+/;
 
   if (
     !pageData &&
-    (typeof window === "undefined" ||
-      window?.location.href.includes("/home") ||
-      !regex.test(window.location.pathname))
+    !mounted &&
+    (pathname.includes("/home") || !regex.test(window.location.pathname))
   ) {
     return <></>;
   } else if (!pageData) {

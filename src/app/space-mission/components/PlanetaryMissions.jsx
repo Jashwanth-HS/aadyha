@@ -7,7 +7,7 @@ export default function PlanetaryMissions({ styles, data }) {
   return (
     <div className={styles?.PlanetaryMissionsContainer} id={type}>
       <div className={styles?.PMMoonImg}>
-        {image && <img src={image} />}
+        {image && <img src={image} alt={title} />}
         <h2 className="heading-2 desktop-hide">{title}</h2>
       </div>
 
@@ -19,7 +19,7 @@ export default function PlanetaryMissions({ styles, data }) {
             return (
               <React.Fragment key={index}>
                 <div className={styles?.PMRepeater}>
-                  <div>{image && <img src={image} />}</div>
+                  <div>{image && <img src={image} alt={mission__title} />}</div>
                   <div className={styles?.PMRepeaterContent}>
                     <h3 className="micro-large secondary-font">
                       {mission__title}

@@ -20,7 +20,11 @@ export default function Banner({ styles, data }) {
         {card_image?.map((e, index) => {
           return (
             <div key={index}>
-              <img className={styles.OrbitImage} src={e} />
+              <img
+                className={styles.OrbitImage}
+                src={e}
+                alt={"card image" + index}
+              />
             </div>
           );
         })}

@@ -8,7 +8,9 @@ import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-gsap.registerPlugin(ScrollTrigger);
+import ScrollToPlugin from "gsap/ScrollToPlugin";
+import withDelayedUnmount from "@/helper/DelayUnmount";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 // Define a reusable typing effect setup function
 const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
   let setTimeoutId;
@@ -32,7 +34,7 @@ const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
         ref: ref,
         speed: speed,
       });
-    }, 200); // Adjust timeout delay as needed
+    }, 100); // Adjust timeout delay as needed
   }
   return () => clearTimeout(setTimeoutId);
 };
@@ -44,6 +46,7 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   );
   const { actions } = useAnimations(animations, group);
   // Effect to pause camera animation on mount
+
   useEffect(() => {
     if (actions["Animation"]) {
       actions["Animation"].paused = true;
@@ -133,7 +136,6 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const lenis = useLenis();
 
   // Refs
-  const canvasContainerRef = useRef(null);
   const wordRef = useRef(null);
   const skipButtonRef = useRef(null);
   const wordDescription1Ref = useRef(null);
@@ -144,9 +146,12 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const overlayDescriptionRef = useRef(null);
   const wordSubDescription1Ref = useRef(null);
   const wordSubDescription2Ref = useRef(null);
-  const progressRef = useRef(0);
   const addLineTextRef = useRef(0);
   const divContainerRef = useRef(null);
+  const scrollTween = useRef(null); // Ref to track animation state
+  const hasCompletedRef = useRef(false);
+  const skippingScroll = useRef(false);
+  const canvasTimeLineRef = useRef(false);
 
   //states
   const [word, setWord] = useState("");
@@ -160,15 +165,15 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const [progress, setProgress] = useState(0);
 
   //component variables
-  const devicePixelRatio =
-    typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const devicePixelRatio = window?.devicePixelRatio || 1;
+
   let refs = [
-    wordDescription1Ref,
-    wordDescription2Ref,
-    wordHeading1Ref,
-    wordHeading2Ref,
-    wordSubDescription1Ref,
-    wordSubDescription2Ref,
+    { ref: wordDescription1Ref, opacity: 1 },
+    { ref: wordDescription2Ref, opacity: 0.5 },
+    { ref: wordHeading1Ref, opacity: 1 },
+    { ref: wordHeading2Ref, opacity: 0.5 },
+    { ref: wordSubDescription1Ref, opacity: 1 },
+    { ref: wordSubDescription2Ref, opacity: 0.5 },
   ];
   //functions
 
@@ -189,7 +194,6 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const fadingAnimation = ({
     isTyping,
     opacity,
-    fontsize,
     stagger,
     opacityIntensity,
     ref,
@@ -202,7 +206,6 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
       });
       gsap.to(letters, {
         duration: 1,
-
         opacity: opacity ? opacityIntensity || 1 : 0,
         y: 0,
         stagger: isTyping ? 0.0001 : opacity ? stagger || 0.3 : 0.01,
@@ -212,11 +215,44 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
   //useEffects
 
+  // Custom scroll handler
+
   useEffect(() => {
+    let prevScroll = 0;
+    const handleGsap = ({ to, duration }) => {
+      setTimeout(() => {
+        hasCompletedRef.current = true;
+      }, 100);
+      scrollTween.current = gsap.to(window, {
+        scrollTo: { y: to, autoKill: false },
+        duration: duration,
+        ease: "power3.inOut",
+        // ease: "power3.inOut",
+        onComplete: () => {
+          hasCompletedRef.current = false;
+        },
+      });
+    };
     const handleScroll = () => {
+      if (!hasCompletedRef.current && !skippingScroll.current) {
+        if (window.scrollY > prevScroll) {
+          if (window.scrollY < 1000) {
+            handleGsap({ to: 2430, duration: 6 });
+          } else if (window.scrollY >= 2430 && window.scrollY <= 3500) {
+            handleGsap({ to: 3500, duration: 5 });
+          }
+        } else if (window.scrollY < prevScroll) {
+          if (window.scrollY < 2430) {
+            handleGsap({ to: 0, duration: 6 });
+          } else if (window.scrollY <= 3500) {
+            handleGsap({ to: 2430, duration: 5 });
+          }
+        }
+      }
       if (window.scrollY > 3780) {
         skipButtonRef.current.style.display = "flex";
       }
+      prevScroll = window.scrollY;
     };
     if (skipButtonRef.current) {
       skipButtonRef.current.style.display = "none";
@@ -224,105 +260,115 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [skipButtonRef.current]);
+
   useEffect(() => {
-    if (isModelLoaded) {
-      gsap.set(divContainerRef.current, { background: "#00031B" });
-      gsap.set(`.${styles?.startsImg}, .${styles.OrbitEarthImage}`, {
-        opacity: "1",
-      });
-      gsap.set(`.${styles.OrbitMoonImage}, .${styles.OrbitMarsImage}`, {
-        opacity: "0",
-      });
+    gsap.set(`.${styles?.divContainer}`, { background: "#00031B" });
+    gsap.set(`.${styles?.startsImg}, .${styles.OrbitEarthImage}`, {
+      opacity: "1",
+    });
+    gsap.set(`.${styles.OrbitMoonImage}, .${styles.OrbitMarsImage}`, {
+      opacity: "0",
+    });
 
-      const createScrollTimeline = ({
-        triggerElement,
-        start,
-        end,
-        options = {},
-      }) => {
-        return gsap.timeline({
-          scrollTrigger: {
-            trigger: triggerElement,
-            start: start,
-            end: end,
-            scrub: true,
-            onUpdate: (self) => {
-              setProgress(self.progress.toFixed(9));
-            },
-            ...options, // Additional ScrollTrigger options can be passed in
+    const createScrollTimeline = ({
+      triggerElement,
+      start,
+      end,
+      onComplete = () => {},
+      options = {},
+    }) => {
+      return gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerElement,
+          start: start,
+          end: end,
+          scrub: true,
+          onUpdate: (self) => {
+            setProgress(self.progress.toFixed(9));
           },
-        });
-      };
-
-      const canvasTimeLine = createScrollTimeline({
-        triggerElement: canvasContainerRef.current,
-        start: "top top",
-        end: "bottom+=300%",
-        progressRef: progressRef,
-        options: {
-          pin: true,
+          onComplete: onComplete,
+          ...options, // Additional ScrollTrigger options can be passed in
         },
       });
-      canvasTimeLine
-        .to(
-          `.${styles.addLineText}`,
-          {
-            width: "0",
-            duration: 0.3,
-          },
-          1
-        )
-        .to(
-          divContainerRef.current,
-          {
-            background: "#1F2023",
-            duration: 0.1,
-          },
-          1
-        )
+    };
+    const canvasContainerRefClass = document.querySelector(
+      ".canvasContainerRefClass"
+    );
+    canvasTimeLineRef.current = createScrollTimeline({
+      triggerElement: ".canvasContainerRefClass",
+      start: "top top",
+      end: "bottom+=300%",
+      options: {
+        pin: true,
+      },
+      onComplete: () => {
+        canvasTimeLineRef.current.kill();
+      },
+    });
 
-        .to(
-          `.${styles?.startsImg}, .${styles.OrbitEarthImage}`,
-          {
-            opacity: 0,
-            duration: 0,
-          },
-          1
-        )
-        .to(
-          `.${styles.OrbitMoonImage}`,
-          {
-            opacity: 1,
-            duration: 0,
-          },
-          1
-        )
-
-        .to(
-          `.${styles.OrbitMoonImage}`,
-          {
-            opacity: 0,
-            duration: 0,
-          },
-          1.5
-        )
-        .to(
-          divContainerRef.current,
-          {
-            background: "#100302",
-            duration: 0.3,
-          },
-          1.5
-        )
-        .to(
-          `.${styles.OrbitMarsImage}`,
-          {
-            opacity: 1,
-            duration: 0,
-          },
-          1.5
-        );
-    }
+    canvasTimeLineRef.current
+      .to(
+        `.${styles.addLineText}`,
+        {
+          width: "0",
+          duration: 0.3,
+        },
+        0.8
+      )
+      .to(
+        `.${styles?.divContainer}`,
+        {
+          background: "#1F2023",
+          duration: 0.1,
+        },
+        0.8
+      )
+      .to(
+        `.${styles?.startsImg}, .${styles.OrbitEarthImage}`,
+        {
+          opacity: 0,
+          duration: 0,
+        },
+        0.8
+      )
+      .to(
+        `.${styles.OrbitMoonImage}`,
+        {
+          opacity: 1,
+          duration: 0,
+        },
+        0.8
+      )
+      .to(
+        `.${styles.OrbitMoonImage}`,
+        {
+          opacity: 0,
+          duration: 0,
+        },
+        1.3
+      )
+      .to(
+        `.${styles?.divContainer}`,
+        {
+          background: "#100302",
+          duration: 0.3,
+        },
+        1.3
+      )
+      .to(
+        `.${styles.OrbitMarsImage}`,
+        {
+          opacity: 1,
+          duration: 0,
+        },
+        1.3
+      );
+    return () => {
+      if (canvasTimeLineRef.current) {
+        canvasTimeLineRef.current.kill();
+        canvasTimeLineRef.current = null;
+      }
+    };
   }, [isModelLoaded]);
 
   useEffect(() => {
@@ -364,7 +410,8 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     let setTimeoutId;
     clearTimeout(setTimeoutId);
     if (hideOverlay) {
-      addLineTextRef.current?.classList.remove(styles.addLineTextAnimation);
+      if (addLineTextRef.current)
+        addLineTextRef.current?.classList.remove(styles.addLineTextAnimation);
       if (overlayDescriptionRef.current) {
         overlayDescriptionRef.current.style.opacity = "0";
       }
@@ -372,22 +419,24 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         wordContainerRef.current.style.opacity = "0";
       }
 
-      refs.forEach((e) => {
-        e.current.style.transition = "opacity 1s ease";
-        e.current.style.opacity = "0";
+      refs.forEach(({ ref }) => {
+        ref.current.style.transition = "opacity 0.2s ease";
+        ref.current.style.opacity = "0";
         setTimeoutId = setTimeout(() => {
-          e.current.innerHTML = "";
-        }, 1000);
+          ref.current.innerHTML = "";
+        }, 400);
       });
-      return () => clearTimeout(setTimeoutId);
     } else {
-      refs.forEach((e) => {
-        if (e.current) e.current.style.opacity = "1";
+      refs.forEach(({ ref, opacity }) => {
+        if (ref.current) {
+          ref.current.style.opacity = opacity;
+        }
       });
     }
+    return () => clearTimeout(setTimeoutId);
   }, [hideOverlay]);
+
   useEffect(() => {
-    let setTimeoutId;
     if (word) {
       if (addLineTextRef.current) {
         addLineTextRef.current?.classList.add(styles.addLineTextAnimation);
@@ -398,7 +447,6 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         ref: wordRef,
       });
     }
-    return () => clearTimeout(setTimeoutId);
   }, [word]);
 
   useEffect(() => {
@@ -426,7 +474,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
       word: wordHeading1,
       ref: wordHeading1Ref,
       speed: 0.04,
-      ...(word == "TO MARS" ? { marginSpace: "10px" } : {}),
+      marginSpace: word == "TO MARS" ? "10px" : "",
       opacityRef: [overlayDescriptionRef, wordContainerRef],
       callBack: typingAnimation,
     });
@@ -464,12 +512,18 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
   // Render
   return (
-    <div ref={canvasContainerRef}>
+    <div className="canvasContainerRefClass">
       <button
         ref={skipButtonRef}
         className={styles?.skipButton}
         onClick={() => {
-          lenis.scrollTo("#SpaceSystemContainer", { duration: 2 });
+          skippingScroll.current = true;
+          lenis.scrollTo("#SpaceSystemContainer", {
+            duration: 2,
+            onComplete: () => {
+              skippingScroll.current = false;
+            },
+          });
         }}
       >
         <span>skip</span>
@@ -483,18 +537,25 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         </div>
       </button>
       <div ref={divContainerRef} className={styles?.divContainer} />
-      <img className={styles?.startsImg} src="/assets/images/stars.svg" />
+      <img
+        className={styles?.startsImg}
+        src="/assets/images/stars.svg"
+        alt="stars"
+      />
       <img
         className={styles.OrbitEarthImage}
         src={"/assets/images/orbit-line.png"}
+        alt="Orbit earth image"
       />
       <img
         className={styles.OrbitMoonImage}
         src={"/assets/images/orbit-line-moon.png"}
+        alt="Orbit moon image"
       />
       <img
         className={styles.OrbitMarsImage}
         src={"/assets/images/orbit-line-mars.png"}
+        alt="Orbit mars image"
       />
       <div className={styles.EarthHeading} ref={wordContainerRef}>
         <div
@@ -539,13 +600,11 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         </div>
         <div
           className={styles.EarthDescription}
-          style={
-            word == "TO MOON"
-              ? { right: "18%", maxWidth: "23%" }
-              : word == "TO MARS"
-              ? { right: "18%", maxWidth: "25%" }
-              : { right: "15%", maxWidth: "26%" }
-          }
+          style={{
+            right: word == "TO MOON" || word == "TO MARS" ? "18%" : "15%",
+            maxWidth:
+              word == "TO MOON" ? "23%" : word == "TO MARS" ? "25%" : "26%",
+          }}
         >
           <div className={"heading-3"} ref={wordHeading1Ref}></div>
           <div className={"caption secondary-font"} ref={wordHeading2Ref}></div>
@@ -611,4 +670,6 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
 useGLTF.preload("/Aadyah_animation-transformed.glb");
 
-export default PlanetsNew;
+const DelayedPlanets = withDelayedUnmount(PlanetsNew);
+
+export default DelayedPlanets;

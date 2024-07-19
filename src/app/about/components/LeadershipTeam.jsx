@@ -15,13 +15,13 @@ export default function LeadershipTeam({ styles, data }) {
             return (
               <div key={index} className={styles?.LeadershipTeamItem}>
                 <div className={styles?.LeadershipTeamProfile}>
-                  <img src={profile_image} />
+                  <img src={profile_image} alt="LeadershipTeamProfile" />
                 </div>
                 <h3>{name}</h3>
                 <p>{designation}</p>
                 {linkedin_url && (
                   <a target="_blank" href={linkedin_url?.url}>
-                    <img src={"/assets/images/linkedin.svg"} />
+                    <img src={"/assets/images/linkedin.svg"} alt="linkedin" />
                   </a>
                 )}
               </div>

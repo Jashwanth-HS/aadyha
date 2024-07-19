@@ -10,7 +10,9 @@ export default function SpaceDebrisMission({ styles, data }) {
         <h6 className="sub-heading-2">{sub_title}</h6>
         <p className="paragraph">{description}</p>
       </div>
-      <div className={styles?.SDMSpaceImg}>{image && <img src={image} />}</div>
+      <div className={styles?.SDMSpaceImg}>
+        {image && <img src={image} alt={title} />}
+      </div>
     </div>
   );
 }

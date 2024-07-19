@@ -139,8 +139,7 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
   const PrevWindowScroll = useRef(0);
   const scroll = useRef(0);
 
-  const devicePixelRatio =
-    typeof window !== "undefined" ? window.devicePixelRatio : 1;
+  const devicePixelRatio = window?.devicePixelRatio || 1;
 
   const scrollableDivRef = useRef(null);
 

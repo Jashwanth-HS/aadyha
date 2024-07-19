@@ -45,7 +45,10 @@ export default function VisionMission({ styles, data }) {
         </div>
 
         <div className={styles?.OurVissionTextImg}>
-          <img src={"/assets/images/our-vision-text.png"} />
+          <img
+            src={"/assets/images/our-vision-text.png"}
+            alt="our-vision-text"
+          />
         </div>
       </div>
 

@@ -27,19 +27,28 @@ export default function Clients({ clientsSection, contentBlock }) {
 
           <div className={styles?.ClientsLogo}>
             <div className={styles?.ClientsLogoItems}>
-              <img src={"/assets/images/orbex-logo.png"} />
+              <img src={"/assets/images/orbex-logo.png"} alt={"orbex-logo"} />
             </div>
             <div className={styles?.ClientsLogoItems}>
-              <img src={"/assets/images/skyroot-logo.png"} />
+              <img
+                src={"/assets/images/skyroot-logo.png"}
+                alt={"skyroot-logo"}
+              />
             </div>
             <div className={styles?.ClientsLogoItems}>
-              <img src={"/assets/images/isro-logo.png"} />
+              <img src={"/assets/images/isro-logo.png"} alt={"isro-logo"} />
             </div>
             <div className={styles?.ClientsLogoItems}>
-              <img src={"/assets/images/bellatrix-logo.png"} />
+              <img
+                src={"/assets/images/bellatrix-logo.png"}
+                alt={"bellatrix-logo"}
+              />
             </div>
             <div className={styles?.ClientsLogoItems}>
-              <img src={"/assets/images/latitude-logo.png"} />
+              <img
+                src={"/assets/images/latitude-logo.png"}
+                alt={"latitude-logo"}
+              />
             </div>
           </div>
         </div>
@@ -49,7 +58,7 @@ export default function Clients({ clientsSection, contentBlock }) {
             <div className={styles?.LifeSupporSystemImg}>
               {clients_section_image?.map((e, index) => (
                 <div key={index}>
-                  <img src={e} />
+                  <img src={e} alt={"client" + index} />
                 </div>
               ))}
             </div>

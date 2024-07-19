@@ -237,7 +237,7 @@ text-transform: uppercase;
     height: 1px; 
     background-color: #fff;
     top: 20px;
-    right: 0px;
+    right: -20px;
 }
 .addLineText.addLineTextAnimation {
   animation: expandAnimation 2s forwards; /* Trigger the animation */

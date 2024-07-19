@@ -14,7 +14,7 @@ export default function Avionics({ styles, data }) {
 
         <div className={styles?.AvionicsItemWrapper}>
           <div className={styles?.AvionicsGallery}>
-            {image && <img src={image} />}
+            {image && <img src={image} alt="Avionics" />}
           </div>
           <AccordionWrap AccordianTitle={key_title} values={key_container} />
         </div>

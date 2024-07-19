@@ -18,7 +18,7 @@ export default function SpaceSystems({ data, styles }) {
       </div>
       <div className={styles?.SpaceSystemsItemsContent}>
         <div className={styles?.SpaceSystemsImgs}>
-          {image && <img src={image} />}
+          {image && <img src={image} alt={title} />}
         </div>
         <div className={styles?.SpaceSystemsItemsRight}>
           <p className={styles?.SpaceSystemsItemsRightDesc}>{description}</p>

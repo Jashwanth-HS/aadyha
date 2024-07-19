@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./loader.module.css";
 export default function PageLoad() {
+  useEffect(() => {
+    let html = document.querySelector("html");
+    if (html) {
+      html.style.overflowY = "hidden";
+    }
+    return () => {
+      html.style.overflowY = "auto";
+    };
+  }, []);
   return (
     <div className={styles?.loaderContainer} id="loaderMain">
       <svg

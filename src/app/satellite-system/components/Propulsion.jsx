@@ -55,7 +55,7 @@ export default function Propulsion({ styles, data }) {
           <h3 className="heading-2">{title}</h3>
           <p className="paragraph">{description}</p>
         </div>
-        <div>{image && <img src={image} />}</div>
+        <div>{image && <img src={image} alt={title} />}</div>
       </div>
       <NavBar
         active={active}
