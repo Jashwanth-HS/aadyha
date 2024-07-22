@@ -213,7 +213,7 @@
     transition: all 3s ease;
 }
 .SpaceSystemDiscoverImg .bottomPart {
-    top: auto;
+    top: 100vh;
     /* top: 24vw; */
     left: 0;
     right: 0;

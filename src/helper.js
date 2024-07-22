@@ -323,7 +323,7 @@ export const OnBoardComputer = {
   title: "On-board computer",
   description:
     "A successful space mission hinges on the synergy of its onboard systems. AADYAH On-Board Computer is crafted to be the linchpin that holds everything together, guiding your satellite mission with precision, intelligence, and resilience. Rely on AADYAH OBC to illuminate the path through the intricacies of space exploration.",
-  // images: "/assets/images/on-board-computer.png",
+  images: "/assets/images/on-board-computer.png",
   data: {
     title: "Key Features",
     values: [
@@ -735,4 +735,13 @@ export const disableOverflow = (boolean) => {
 
 export const createDelay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+// Function to debounce scroll events
+export const debounce = (func, wait) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
 };
