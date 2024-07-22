@@ -56,7 +56,6 @@ export default function Home() {
     <>
       <Helmet>
         <title>Home - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
       </Helmet>
       <PlanetsNew
         SetIsModelLoaded={SetIsModelLoaded}

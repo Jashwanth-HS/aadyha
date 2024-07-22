@@ -17,7 +17,7 @@ import dynamic from "next/dynamic";
 
 let isVisible = false;
 
-const Model = forwardRef(({ isModelLoaded }, ref) => {
+const Model = ({ isModelLoaded, scroll }) => {
   const group = useRef();
   // const { nodes, materials, animations } = useGLTF("/Aadyah_animation.glb");
   const { nodes, materials, animations } = useGLTF(
@@ -42,7 +42,7 @@ const Model = forwardRef(({ isModelLoaded }, ref) => {
   useFrame(() => {
     if (actions["Animation"]) {
       const duration = actions["Animation"].getClip().duration;
-      const targetTime = duration * ref.current;
+      const targetTime = duration * scroll;
       targetTimeStore = targetTime;
       actions["Animation"].time = THREE.MathUtils.lerp(
         actions["Animation"].time,
@@ -110,7 +110,7 @@ const Model = forwardRef(({ isModelLoaded }, ref) => {
       </group>
     </group>
   );
-});
+};
 
 const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
   const lenis = useLenis();
@@ -122,6 +122,8 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
   // const [WordAnimationLoaded, setWordAnimationLoaded] = useState(false); // State to track Planets component loading
   const [headingText, setHeadingText] = useState("FROM EARTH");
   const [opacity, setOpacity] = useState(true);
+  const [hideModel, setHideModel] = useState(false);
+  const [scroll, setScroll] = useState(0);
   const [earthSpanText3, setEarthSpanText3] = useState("[MOON]");
   const [earthSpanText4, setEarthSpanText4] = useState("[384,400 km]");
   const [earthImageLabelSpanText1, setEarthImageLabelSpanText1] =
@@ -137,7 +139,6 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
   // Ref for scroll position
 
   const PrevWindowScroll = useRef(0);
-  const scroll = useRef(0);
 
   const devicePixelRatio =
     typeof window !== "undefined" ? window.devicePixelRatio : 1;
@@ -169,6 +170,11 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
       const handleWindowScroll = async () => {
         if (window.innerWidth > 768) {
           const scrollY = window.scrollY;
+          if (scrollY > 3500) {
+            setHideModel(true);
+          } else {
+            setHideModel(false);
+          }
           if (divContainerRef.current) {
             const divContainer =
               divContainerRef.current?.getBoundingClientRect();
@@ -261,36 +267,34 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
 
   const handleScroll = (e) => {
     if (window.innerWidth > 768) {
-      scroll.current =
-        e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
-      if (targetTimeStore >= 10 && scrollDirectionStore < scroll.current) {
+      setScroll(
+        e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
+      );
+      if (targetTimeStore >= 10 && scrollDirectionStore < scroll) {
         skipButtonRef.current.style.display = "flex";
         // skipButtonRef.current.click();
         isVisible = true;
       }
-      if (
-        (scroll.current > 0.2 && scroll.current < 0.5) ||
-        (scroll.current > 0.75 && scroll.current < 0.84)
-      ) {
+      if ((scroll > 0.2 && scroll < 0.5) || (scroll > 0.75 && scroll < 0.84)) {
         overlayDescriptionRef.current.style.opacity = "1";
         addLineText.current.classList.remove(styles.addLineTextAnimation);
         setOpacity(false);
       }
 
-      if (scroll.current > 0.5 && scroll.current < 0.75) {
+      if (scroll > 0.5 && scroll < 0.75) {
         setHeadingText("TO MOON");
         setOpacity(true);
-      } else if (scroll.current > 0.84 && scroll.current < 1) {
-        if (scrollDirectionStore > scroll.current && window.scrollY !== 0) {
+      } else if (scroll > 0.84 && scroll < 1) {
+        if (scrollDirectionStore > scroll && window.scrollY !== 0) {
           lenis.scrollTo("body");
         }
         setHeadingText("TO MARS");
         setOpacity(true);
-      } else if (scroll.current < 0.2) {
+      } else if (scroll < 0.2) {
         setHeadingText("FROM EARTH");
         setOpacity(true);
       }
-      scrollDirectionStore = scroll.current;
+      scrollDirectionStore = scroll;
     }
   };
 
@@ -507,7 +511,9 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
           <directionalLight intensity={2} position={[26, 80, 14]} />
           <directionalLight intensity={3} position={[100, -211, -205]} />
           {/* Model component */}
-          <Model isModelLoaded={SetIsModelLoaded} ref={scroll} />
+          {!hideModel && (
+            <Model isModelLoaded={SetIsModelLoaded} scroll={scroll} />
+          )}
         </Canvas>
       </div>
     </>
@@ -522,7 +528,7 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
       <directionalLight intensity={2} position={[26, 80, 14]} />
       <directionalLight intensity={3} position={[100, -211, -205]} />
       {/* Model component */}
-      <Model isModelLoaded={SetIsModelLoaded} ref={scroll} />
+      <Model isModelLoaded={SetIsModelLoaded} scroll={scroll} />
     </Canvas>
   );
 };

@@ -18,7 +18,24 @@ export default function RootLayout({ children }) {
   }, []);
   return (
     <html lang="en">
-      <link rel="icon" href="/favicon.svg" />
+      <head>
+        <link rel="icon" href="/favicon.svg" />
+        <title>
+          AADYAH Aerospace Trusted by the ones who push the boundaries
+        </title>
+        <meta
+          name="description"
+          content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
+        ></meta>
+        <meta
+          property="og:title"
+          content="AADYAH Aerospace Trusted by the ones who push the boundaries"
+        ></meta>
+        <meta
+          property="og:description"
+          content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
+        ></meta>
+      </head>
       <body className={inter.className}>
         <PageLoad />
         <Header />

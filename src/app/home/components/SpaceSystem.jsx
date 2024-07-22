@@ -3,7 +3,9 @@ import { useIsElementVisible } from "@/helper/Observer";
 import styles from "../css/SpaceSystem.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "@/components/Buttons";
-
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/all";
+// gsap.registerPlugin(ScrollTrigger);
 const SectionTitle = ({ title, subTitle }) => {
   return (
     <div className={styles.LineDot}>
