@@ -163,6 +163,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const [wordSubDescription1, setWordSubDescription1] = useState("");
   const [wordSubDescription2, setWordSubDescription2] = useState("");
   const [progress, setProgress] = useState(0);
+  const [hideModel, setHideModel] = useState(false);
 
   //component variables
   const devicePixelRatio = window?.devicePixelRatio || 1;
@@ -249,8 +250,11 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
           }
         }
       }
-      if (window.scrollY > 3780) {
+      if (window.scrollY > 5000) {
         skipButtonRef.current.style.display = "flex";
+        setHideModel(true);
+      } else if (window.scrollY < 5000) {
+        setHideModel(false);
       }
       prevScroll = window.scrollY;
     };
@@ -662,7 +666,9 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         <directionalLight intensity={2} position={[26, 80, 14]} />
         <directionalLight intensity={3} position={[100, -211, -205]} />
         {/* Model component */}
-        <Model isModelLoaded={SetIsModelLoaded} progress={progress} />
+        {!hideModel && (
+          <Model isModelLoaded={SetIsModelLoaded} progress={progress} />
+        )}
       </Canvas>
     </div>
   );

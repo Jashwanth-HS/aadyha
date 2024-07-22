@@ -263,16 +263,14 @@ const Discovering = ({ title, button }) => {
       topRightPartRef.current.style.right = "22vw";
       topRightPartRef.current.style.top = "0";
       bottomPartRef.current.style.bottom = "1.34vw";
-      setTimeOutId = setTimeout(() => {
-        bottomPartRef.current.style.top = "24vw";
-      }, 3000);
+      bottomPartRef.current.style.top = "24vw";
     } else {
       topLeftPartRef.current.style.left = "-40vh";
       topLeftPartRef.current.style.top = "-40vh";
       topRightPartRef.current.style.right = "-40vh";
       topRightPartRef.current.style.top = "-40vh";
       bottomPartRef.current.style.bottom = "-50vh";
-      bottomPartRef.current.style.top = "auto";
+      bottomPartRef.current.style.top = "100vh";
     }
     return () => {
       clearTimeout(setTimeOutId);

@@ -14,7 +14,6 @@ const WordAnimation = dynamic(() => import("@/components/WordAnimation"), {
 import Image from "next/image";
 import { disableOverflow } from "@/helper";
 import dynamic from "next/dynamic";
-import PageLoad from "@/components/PageLoad";
 
 let isVisible = false;
 
@@ -30,7 +29,7 @@ const Model = forwardRef(({ isModelLoaded }, ref) => {
     if (actions["Animation"]) {
       actions["Animation"].paused = true;
     }
-  }, [actions["Animation"]]);
+  }, [actions]);
 
   // Effect to play camera animation
   useEffect(() => {
@@ -38,7 +37,7 @@ const Model = forwardRef(({ isModelLoaded }, ref) => {
       actions["Animation"].play();
       if (isModelLoaded) isModelLoaded(true);
     }
-  }, [actions["Animation"]]);
+  }, [actions, isModelLoaded]);
 
   useFrame(() => {
     if (actions["Animation"]) {
@@ -54,6 +53,7 @@ const Model = forwardRef(({ isModelLoaded }, ref) => {
   });
   return (
     <group ref={group} dispose={null}>
+      {console.log("jj")}
       <group name="Scene">
         <PerspectiveCamera
           name="Camera"
@@ -139,7 +139,8 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
   const PrevWindowScroll = useRef(0);
   const scroll = useRef(0);
 
-  const devicePixelRatio = window?.devicePixelRatio || 1;
+  const devicePixelRatio =
+    typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
   const scrollableDivRef = useRef(null);
 
@@ -262,12 +263,11 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
     if (window.innerWidth > 768) {
       scroll.current =
         e.target.scrollTop / (e.target.scrollHeight - window.innerHeight);
-      if (targetTimeStore >= 10.4 && scrollDirectionStore < scroll.current) {
+      if (targetTimeStore >= 10 && scrollDirectionStore < scroll.current) {
         skipButtonRef.current.style.display = "flex";
-        skipButtonRef.current.click();
+        // skipButtonRef.current.click();
         isVisible = true;
       }
-      scrollDirectionStore = scroll.current;
       if (
         (scroll.current > 0.2 && scroll.current < 0.5) ||
         (scroll.current > 0.75 && scroll.current < 0.84)
@@ -281,12 +281,16 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
         setHeadingText("TO MOON");
         setOpacity(true);
       } else if (scroll.current > 0.84 && scroll.current < 1) {
+        if (scrollDirectionStore > scroll.current && window.scrollY !== 0) {
+          lenis.scrollTo("body");
+        }
         setHeadingText("TO MARS");
         setOpacity(true);
       } else if (scroll.current < 0.2) {
         setHeadingText("FROM EARTH");
         setOpacity(true);
       }
+      scrollDirectionStore = scroll.current;
     }
   };
 
