@@ -268,11 +268,14 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
   const handleScroll = (e) => {
     if (window.innerWidth > 768) {
       setScroll(
-        e.target.scrollTop / (e.target.scrollHeight - window.innerHeight)
+        e.currentTarget.scrollTop /
+          (e.currentTarget.scrollHeight - window.innerHeight)
       );
       if (targetTimeStore >= 10 && scrollDirectionStore < scroll) {
         skipButtonRef.current.style.display = "flex";
-        // skipButtonRef.current.click();
+        if (isNaN(Math.abs(e.deltaY))) {
+          skipButtonRef.current.click();
+        }
         isVisible = true;
       }
       if ((scroll > 0.2 && scroll < 0.5) || (scroll > 0.75 && scroll < 0.84)) {
@@ -339,6 +342,10 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
           data-lenis-prevent
           ref={scrollableDivRef}
           onScroll={(e) => {
+            handleScroll(e);
+            // Update scroll position
+          }}
+          onWheel={(e) => {
             handleScroll(e);
             // Update scroll position
           }}

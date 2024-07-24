@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
       loaderMain.style.display = "none";
     }
   }, []);
+
   return (
     <html lang="en">
       <head>

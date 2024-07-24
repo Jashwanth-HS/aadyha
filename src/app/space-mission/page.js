@@ -13,10 +13,6 @@ const Banner = ({ data }) => {
   const { tag, title, description } = data || {};
   return (
     <>
-      <Helmet>
-        <title>Space mission - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
-      </Helmet>
       <div className={styles?.Banner}>
         <div className={styles?.BannerTitle}>
           <h6 className="micro-large secondary-font">{tag}</h6>
