@@ -11,6 +11,7 @@ import ChooseAadyah from "./components/ChooseAadyah";
 import TeamImage from "./components/TeamImage";
 import JoinUs from "./components/JoinUs";
 import LeadershipTeam from "./components/LeadershipTeam";
+import MetaData from "@/components/MetaData";
 
 export default function About() {
   const [pageData, setPageData] = useState(null);
@@ -34,12 +35,13 @@ export default function About() {
   if (error) return <div>{error}</div>;
   if (!pageData) return <Loading />;
 
+  console.log("pageData: ", pageData);
   return (
     <>
-      <Helmet>
-        <title>About - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
-      </Helmet>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <div className={styles?.AboutBg}>
         <Banner styles={styles} data={pageData?.about_banner} />
         <VisionMission styles={styles} data={pageData?.vision_and_mission} />

@@ -10,6 +10,7 @@ import Container from "@/components/Container";
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
 import { convertFromACF, fetchPage } from "../lib/api";
+import MetaData from "@/components/MetaData";
 
 const Banner = ({ data }) => {
   const { tag, title } = data || {};
@@ -43,10 +44,10 @@ export default function Index() {
   if (!pageData) return <Loading />;
   return (
     <>
-      <Helmet>
-        <title> Launch Vehicle System - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
-      </Helmet>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <Container>
         <Banner data={pageData?.banner_heading} />
       </Container>

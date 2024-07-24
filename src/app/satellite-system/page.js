@@ -13,6 +13,7 @@ import {
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
 import { convertFromACF, fetchPage } from "../lib/api";
+import MetaData from "@/components/MetaData";
 const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
 const Banner = ({ data }) => {
   const { description, tag, title } = data || {};
@@ -55,6 +56,10 @@ export default function page() {
 
   return (
     <>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <Container>
         <Banner data={pageData?.satellite_system_banner} />
       </Container>

@@ -9,17 +9,13 @@ import Opportunities from "./components/Opportunities";
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
 import { convertFromACF, fetchPage } from "../lib/api";
+import MetaData from "@/components/MetaData";
 
 const Banner = ({ data, team_images }) => {
   const { title, subtitle, description } = data || {};
   const { team_image, team_image_mobile } = team_images || {};
   return (
     <>
-      <Helmet>
-        <title>Careers - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
-      </Helmet>
-
       <div className={styles?.Banner}>
         <h6 className="micro-large secondary-font">{title}</h6>
         <h1 className="heading-1">{subtitle}</h1>
@@ -60,6 +56,10 @@ export default function page() {
   if (!pageData) return <Loading />;
   return (
     <>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <Banner
         data={pageData?.banner_heading}
         team_images={pageData?.team_images}

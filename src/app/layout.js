@@ -20,10 +20,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" />
-        <title>
+        {/* <title>
           AADYAH Aerospace Trusted by the ones who push the boundaries
-        </title>
-        <meta
+        </title> */}
+        {/* <meta
           name="description"
           content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
         ></meta>
@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
         <meta
           property="og:description"
           content="Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
-        ></meta>
+        ></meta> */}
       </head>
       <body className={inter.className}>
         <PageLoad />

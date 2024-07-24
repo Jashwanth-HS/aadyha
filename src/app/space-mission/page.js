@@ -8,6 +8,7 @@ import SpaceDebrisMission from "./components/SpaceDebrisMission";
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
 import { convertFromACF, fetchPage } from "../lib/api";
+import MetaData from "@/components/MetaData";
 const Banner = ({ data }) => {
   const { tag, title, description } = data || {};
   return (
@@ -65,6 +66,10 @@ export default function page() {
   if (!pageData) return <Loading />;
   return (
     <>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <Container>
         <Banner data={pageData?.find((e) => e.type == "banner_heading")} />
       </Container>

@@ -7,6 +7,8 @@ import { Helmet } from "react-helmet";
 import { convertFromACF, fetchPage } from "../lib/api";
 import PageLoad from "@/components/PageLoad";
 import PlanetsNew from "./components/PlanetsNew";
+import Head from "next/head";
+import MetaData from "@/components/MetaData";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -16,6 +18,7 @@ const Section = ({ children }) => {
   };
   return <div style={styles}>{children}</div>;
 };
+
 export default function Home() {
   const [pageLoad, setPageLoaded] = useState(false);
   const [isModelLoaded, SetIsModelLoaded] = useState(false); // State to track Planets component loading
@@ -54,9 +57,10 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Home - Aadyah Space</title>
-      </Helmet>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <PlanetsNew
         SetIsModelLoaded={SetIsModelLoaded}
         isModelLoaded={isModelLoaded}
