@@ -21,6 +21,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" />
+        <link rel="canonical" href="https://aadyah.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://aadyah.com/" />
+        <meta name="robots" content="index, follow" />
       </head>
       <body className={inter.className}>
         <PageLoad />
