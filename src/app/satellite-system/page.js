@@ -13,15 +13,12 @@ import {
 import { Helmet } from "react-helmet";
 import Loading from "../loading";
 import { convertFromACF, fetchPage } from "../lib/api";
+import MetaData from "@/components/MetaData";
 const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
 const Banner = ({ data }) => {
   const { description, tag, title } = data || {};
   return (
     <>
-      <Helmet>
-        <title>Satellite System - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
-      </Helmet>
       <div className={styles?.Banner}>
         <h6 className="micro-large secondary-font">{tag}</h6>
         <h1 className="heading-1">{title}</h1>
@@ -55,6 +52,10 @@ export default function page() {
 
   return (
     <>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <Container>
         <Banner data={pageData?.satellite_system_banner} />
       </Container>

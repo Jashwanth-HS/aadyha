@@ -8,6 +8,7 @@ import { convertFromACF, fetchPage } from "../lib/api";
 import Loading from "../loading";
 import ContactForm from "./components/ContactForm";
 import Address from "./components/Address";
+import MetaData from "@/components/MetaData";
 
 export default function page() {
   const [pageData, setPageData] = useState(null);
@@ -32,10 +33,10 @@ export default function page() {
   if (!pageData) return <Loading />;
   return (
     <>
-      <Helmet>
-        <title> Contact - Aadyah Space</title>
-        <meta name="description" content="Aadyah space home page" />
-      </Helmet>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       <div className={styles?.ContactBanner}>
         <Container>
           <div className={styles?.ContactContainer}>

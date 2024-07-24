@@ -46,7 +46,11 @@ export default function Header() {
         pathNameRef.current === "/home" ||
         pathNameRef.current === "/about" ||
         pathNameRef.current === "/contact";
-      if (window.scrollY > storePrevScroll.current) {
+      if (
+        window.scrollY > storePrevScroll.current &&
+        (pathNameRef.current === "/" || pathNameRef.current === "/home") &&
+        window.scrollY >= 600
+      ) {
         navHeaderRef.current?.classList.add(styles?.hideNavHeader);
       } else {
         navHeaderRef.current?.classList.remove(styles?.hideNavHeader);

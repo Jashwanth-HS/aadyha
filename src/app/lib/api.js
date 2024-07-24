@@ -25,24 +25,6 @@ export const fetchGlobal = async (name) => {
     throw error;
   }
 };
-// export const fetchMedia = async (mediaId) => {
-//   const myData = Array.isArray(mediaId) ? [...mediaId] : [mediaId];
-//   console.log("myData: ", myData);
-//   // try {
-//   //   const responses = await Promise.all(
-//   //     myData.map(async (id) => {
-//   //       if (typeof id == "string") {
-//   //         const response = await axios.get(`${WORDPRESS_API_URL}/media/${id}`);
-//   //         return response.data?.source_url || "";
-//   //       }
-//   //     })
-//   //   );
-//   //   return responses;
-//   // } catch (error) {
-//   //   console.error("Error fetching media:", error);
-//   //   throw error;
-//   // }
-// };
 
 const convertHomeACF = async (data) => {
   const spaceSystemAcfData = data.acf.space_system || [];
@@ -120,6 +102,8 @@ const convertHomeACF = async (data) => {
     discoverSection: discoverSectionResult,
     clientsSection: clientsSectionResults,
     contentBlock: contentBlockResult,
+    meta_description: data.acf.meta_description,
+    meta_title: data.acf.meta_title,
   };
 };
 
@@ -224,21 +208,25 @@ const convertAboutACF = async (data) => {
   const AboutACFData = data.acf || [];
   let res = {};
   Object.entries(AboutACFData).forEach(([key, value]) => {
-    value = value.map(({ acf_fc_layout, ...rest }) => ({
-      type: acf_fc_layout,
-      ...rest,
-    }));
-    if (key == "about_banner") {
-      let arr = [];
-      Object.entries(value[0].card_image[0]).forEach(([key, value]) =>
-        arr.push(value)
-      );
-      value[0].card_image = arr;
+    if (Array.isArray(value)) {
+      value = value.map(({ acf_fc_layout, ...rest }) => ({
+        type: acf_fc_layout,
+        ...rest,
+      }));
+      if (key == "about_banner") {
+        let arr = [];
+        Object.entries(value[0].card_image[0]).forEach(([key, value]) =>
+          arr.push(value)
+        );
+        value[0].card_image = arr;
+      }
+      if (key != "vision_and_mission") {
+        value = value[0];
+      }
+      res[key] = value;
+    } else if (key.includes("meta_title") || key.includes("meta_description")) {
+      res[key] = value;
     }
-    if (key != "vision_and_mission") {
-      value = value[0];
-    }
-    res[key] = value;
   });
   return res;
 };
@@ -252,22 +240,31 @@ const convertSatelliteSystemACF = async (data) => {
     title: satellite_system_banner[0].title,
     description: satellite_system_banner[0].description,
   };
-  result.blocks = Object.entries(rest).map(([key, value]) => {
-    const { acf_fc_layout, ...rest } = value[0];
-    return {
-      type: acf_fc_layout,
-      ...rest,
-    };
-  });
+  result.blocks = Object.entries(rest)
+    .map(([key, value]) => {
+      if (Array.isArray(value)) {
+        const { acf_fc_layout, ...rest } = value[0];
+        return {
+          type: acf_fc_layout,
+          ...rest,
+        };
+      }
+    })
+    .filter(Boolean);
+  result.meta_description = SatelliteSystemACFData.meta_description;
+  result.meta_title = SatelliteSystemACFData.meta_title;
   return result;
 };
 
 const convertSpaceMissionACF = async (data) => {
   const SpaceMissionACFData = data.acf || [];
-  return Object.entries(SpaceMissionACFData).map(([key, value]) => {
+  let res = Object.entries(SpaceMissionACFData).map(([key, value]) => {
     const { acf_fc_layout, ...rest } = value[0];
     return { type: acf_fc_layout, ...rest };
   });
+  res.meta_description = SpaceMissionACFData.meta_description;
+  res.meta_title = SpaceMissionACFData.meta_title;
+  return res;
 };
 
 const convertCareersACF = async (data) => {
@@ -280,6 +277,8 @@ const convertCareersACF = async (data) => {
           ...rest,
         })
       )[0];
+    } else if (key.includes("meta_title") || key.includes("meta_description")) {
+      convertCareersACFData[key] = value;
     }
   });
   return convertCareersACFData;
@@ -295,6 +294,8 @@ const convertLaunchVehicleSystemACF = async (data) => {
           ...rest,
         })
       )[0];
+    } else if (key.includes("meta_title") || key.includes("meta_description")) {
+      convertLaunchVehicleSystemACFData[key] = value;
     }
   });
   return convertLaunchVehicleSystemACFData;
@@ -303,12 +304,18 @@ const convertContactACF = async (data) => {
   const convertContactACFData = data.acf || [];
   let res = {};
   Object.entries(convertContactACFData).forEach(([key, value]) => {
-    value = value.map(({ acf_fc_layout, ...rest }) => ({
-      type: acf_fc_layout,
-      ...rest,
-    }));
-    value = value[0];
-    res[key] = value;
+    if (Array.isArray(value)) {
+      value = value.map(({ acf_fc_layout, ...rest }) => ({
+        type: acf_fc_layout,
+        ...rest,
+      }));
+    }
+    if (key.includes("meta_title") || key.includes("meta_description")) {
+      res[key] = value;
+    } else {
+      value = value[0];
+      res[key] = value;
+    }
   });
   return res;
 };

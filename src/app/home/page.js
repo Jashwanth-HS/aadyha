@@ -12,6 +12,7 @@ import MobileViewPlanets from "./components/MobileViewPlanets";
 import { Helmet } from "react-helmet";
 import { convertFromACF, fetchPage } from "../lib/api";
 import PageLoad from "@/components/PageLoad";
+import MetaData from "@/components/MetaData";
 const Section = ({ children }) => {
   const styles = {
     position: "relative",
@@ -71,9 +72,10 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Home - Aadyah Space</title>
-      </Helmet>
+      <MetaData
+        description={pageData?.meta_description}
+        title={pageData?.meta_title}
+      />
       {!isModelLoaded && (
         <div
           style={{
