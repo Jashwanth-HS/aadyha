@@ -276,6 +276,7 @@ const Planets = ({ SetIsModelLoaded, isModelLoaded }) => {
         if (isNaN(Math.abs(e.deltaY))) {
           skipButtonRef.current.click();
         }
+        //visible
         isVisible = true;
       }
       if ((scroll > 0.2 && scroll < 0.5) || (scroll > 0.75 && scroll < 0.84)) {
