@@ -745,3 +745,36 @@ export const debounce = (func, wait) => {
     timeout = setTimeout(() => func.apply(this, args), wait);
   };
 };
+
+export const interpolateMoon = (X) => {
+  // Data points
+  const x1 = 8781,
+    z1 = 1460;
+  const x2 = 10755,
+    z2 = 2328;
+
+  // Check if X is within the range
+  if (X < x1 || X > x2) {
+    throw new Error("X is out of the interpolation range");
+  }
+
+  // Linear interpolation formula
+  const Z = z1 + ((X - x1) / (x2 - x1)) * (z2 - z1);
+  return Z;
+};
+export const interpolateMars = (X) => {
+  // Data points for interpolation
+  const x1 = 8847,
+    z1 = 2280;
+  const x2 = 10755,
+    z2 = 3543;
+
+  // Check if X is within the range
+  if (X < x1 || X > x2) {
+    throw new Error("X is out of the interpolation range");
+  }
+
+  // Linear interpolation formula
+  const Z = z1 + ((X - x1) / (x2 - x1)) * (z2 - z1);
+  return Z;
+};

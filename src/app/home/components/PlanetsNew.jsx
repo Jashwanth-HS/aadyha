@@ -10,6 +10,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import withDelayedUnmount from "@/helper/DelayUnmount";
+import { interpolateMars, interpolateMoon } from "@/helper";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 // Define a reusable typing effect setup function
 const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
@@ -42,9 +43,10 @@ const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
 const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
-    "/Aadyah_animation-transformed.glb"
+    "/supercode15-transformed.glb"
   );
   const { actions } = useAnimations(animations, group);
+
   // Effect to pause camera animation on mount
 
   useEffect(() => {
@@ -64,7 +66,9 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   useFrame(() => {
     if (actions["Animation"]) {
       const duration = actions["Animation"].getClip().duration;
+
       const targetTime = duration * progress;
+
       actions["Animation"].time = THREE.MathUtils.lerp(
         actions["Animation"].time,
         targetTime,
@@ -73,6 +77,61 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
     }
   });
   return (
+    // <group ref={group} dispose={null}>
+    //   <group name="Scene">
+    //     <PerspectiveCamera
+    //       name="Camera"
+    //       makeDefault={true}
+    //       far={1000}
+    //       near={0.001}
+    //       fov={22.895}
+    //       position={[1.601, 0.129, 0]}
+    //       rotation={[-1.571, 1.557, 1.571]}
+    //     />
+
+    //     <pointLight
+    //       castShadow
+    //       color={0xc47d12}
+    //       width={10}
+    //       height={40}
+    //       shadow-mapSize-width={10}
+    //       shadow-mapSize-height={40}
+    //       position={[-6.1, 0, 1.1]}
+    //       intensity={2}
+    //     />
+
+    //     <mesh
+    //       name="Mars"
+    //       castShadow
+    //       receiveShadow
+    //       geometry={nodes.Mars.geometry}
+    //       material={materials["Material.001"]}
+    //       position={[-10.158, -0.407, -0.001]}
+    //       rotation={[2.355, -0.563, 2.155]}
+    //       scale={0.046}
+    //     />
+    //     <mesh
+    //       name="Earth001"
+    //       castShadow
+    //       receiveShadow
+    //       geometry={nodes.Earth001.geometry}
+    //       material={materials["Material.003"]}
+    //       position={[-7.545, 0, 0]}
+    //       rotation={[-1.125, -1.122, -1.001]}
+    //       scale={1.079}
+    //     />
+    //     <mesh
+    //       name="Moon"
+    //       castShadow
+    //       receiveShadow
+    //       geometry={nodes.Moon.geometry}
+    //       material={materials.Material}
+    //       position={[-8.671, 0.541, 0.007]}
+    //       rotation={[0.263, 0.153, 0.689]}
+    //       scale={0.039}
+    //     />
+    //   </group>
+    // </group>
     <group ref={group} dispose={null}>
       <group name="Scene">
         <PerspectiveCamera
@@ -81,25 +140,11 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
           far={1000}
           near={0.001}
           fov={22.895}
-          position={[1.601, 0.129, 0]}
-          rotation={[-1.571, 1.557, 1.571]}
+          position={[1.623, 0.157, 0]}
+          rotation={[-1.571, 1.556, 1.571]}
         />
-
-        <pointLight
-          castShadow
-          color={0xc47d12}
-          width={10}
-          height={40}
-          shadow-mapSize-width={10}
-          shadow-mapSize-height={40}
-          position={[-6.1, 0, 1.1]}
-          intensity={2}
-        />
-
         <mesh
           name="Mars"
-          castShadow
-          receiveShadow
           geometry={nodes.Mars.geometry}
           material={materials["Material.001"]}
           position={[-10.158, -0.407, -0.001]}
@@ -108,18 +153,14 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
         />
         <mesh
           name="Earth001"
-          castShadow
-          receiveShadow
           geometry={nodes.Earth001.geometry}
-          material={materials["Material.003"]}
+          material={materials["Material.002"]}
           position={[-7.545, 0, 0]}
-          rotation={[-1.125, -1.122, -1.001]}
+          rotation={[-0.788, -0.986, -0.615]}
           scale={1.079}
         />
         <mesh
           name="Moon"
-          castShadow
-          receiveShadow
           geometry={nodes.Moon.geometry}
           material={materials.Material}
           position={[-8.671, 0.541, 0.007]}
@@ -216,6 +257,12 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
   //useEffects
 
+  // Calculate Z for different values of X
+  const calculateZ = (X) => {
+    const percentage = 21.65;
+    return (percentage / 100) * X;
+  };
+
   // Custom scroll handler
 
   useEffect(() => {
@@ -225,7 +272,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         hasCompletedRef.current = true;
       }, 100);
       scrollTween.current = gsap.to(window, {
-        scrollTo: { y: to, autoKill: false },
+        scrollTo: { y: to }, //autoKill: false
         duration: duration,
         ease: "power3.inOut",
         // ease: "power3.inOut",
@@ -234,19 +281,39 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         },
       });
     };
-    const handleScroll = () => {
+    const handleScroll = (e) => {
       if (!hasCompletedRef.current && !skippingScroll.current) {
         if (window.scrollY > prevScroll) {
           if (window.scrollY < 1000) {
-            handleGsap({ to: 2430, duration: 6 });
-          } else if (window.scrollY >= 2430 && window.scrollY <= 3500) {
-            handleGsap({ to: 3500, duration: 5 });
+            handleGsap({
+              to: interpolateMoon(document.documentElement.scrollHeight),
+              duration: 6,
+            });
+          } else if (
+            window.scrollY >=
+              interpolateMoon(document.documentElement.scrollHeight) + 150 &&
+            window.scrollY <=
+              interpolateMars(document.documentElement.scrollHeight)
+          ) {
+            handleGsap({
+              to: interpolateMars(document.documentElement.scrollHeight),
+              duration: 5,
+            });
           }
         } else if (window.scrollY < prevScroll) {
-          if (window.scrollY < 2430) {
+          if (
+            window.scrollY <
+            interpolateMoon(document.documentElement.scrollHeight) + 150
+          ) {
             handleGsap({ to: 0, duration: 6 });
-          } else if (window.scrollY <= 3500) {
-            handleGsap({ to: 2430, duration: 5 });
+          } else if (
+            window.scrollY <=
+            interpolateMars(document.documentElement.scrollHeight)
+          ) {
+            handleGsap({
+              to: interpolateMoon(document.documentElement.scrollHeight) + 150,
+              duration: 5,
+            });
           }
         }
       }
@@ -674,7 +741,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   );
 };
 
-useGLTF.preload("/Aadyah_animation-transformed.glb");
+useGLTF.preload("/supercode15-transformed.glb");
 
 const DelayedPlanets = withDelayedUnmount(PlanetsNew);
 

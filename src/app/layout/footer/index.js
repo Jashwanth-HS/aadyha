@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { convertFromACF, fetchGlobal } from "@/app/lib/api";
 import Loading from "@/app/loading";
 import { usePathname } from "next/navigation";
+import PageLoad from "@/components/PageLoad";
 
 export default function FooterMain() {
   const [pageData, setPageData] = useState(null);
@@ -27,13 +28,11 @@ export default function FooterMain() {
     getPageData();
   }, []);
 
-  if (
-    !pageData &&
-    !mounted &&
-    (pathname.includes("/home") || pathname == "/")
-  ) {
-    return <></>;
+  if (!pageData && (pathname.includes("/home") || pathname == "/")) {
+    console.log("loading");
+    return <PageLoad />;
   } else if (!pageData) {
+    console.log("loading 1");
     return <Loading />;
   }
   return (

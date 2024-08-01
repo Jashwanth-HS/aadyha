@@ -53,7 +53,6 @@ const Model = ({ isModelLoaded, scroll }) => {
   });
   return (
     <group ref={group} dispose={null}>
-      {console.log("jj")}
       <group name="Scene">
         <PerspectiveCamera
           name="Camera"
