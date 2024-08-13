@@ -1,86 +1,34 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import styles from "../satellite-system/css/satellite-system.module.css";
-import NavBar from "./components/NavBar";
-import Container from "@/components/Container";
-import Propulsion from "./components/Propulsion"; //423
-import SpaceSystems from "./components/SpaceSystems";
-import {
-  ElectricPowerSystem,
-  OnBoardComputer,
-  MotionControlSystem,
-} from "@/helper";
-import { Helmet } from "react-helmet";
-import Loading from "../loading";
+"use server";
+
 import { convertFromACF, fetchPage } from "../lib/api";
-import MetaData from "@/components/MetaData";
-const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
-const Banner = ({ data }) => {
-  const { description, tag, title } = data || {};
-  return (
-    <>
-      <div className={styles?.Banner}>
-        <h6 className="micro-large secondary-font">{tag}</h6>
-        <h1 className="heading-1">{title}</h1>
-        <p className="paragraph">{description}</p>
-      </div>
-    </>
-  );
-};
+import SatelliteSystemMain from "./SatelliteSystemMain";
 
-export default function page() {
-  const [pageData, setPageData] = useState(null);
-  const [error, setError] = useState(null);
+// Metadata Generation Function
+export async function generateMetadata() {
+  // Fetch and process data for metadata purposes
+  const fetchData = await fetchPage(423);
+  const data = await convertFromACF(fetchData, "satellite-system");
+  // Return metadata
+  return {
+    title: "AADYAH Aerospace | Satellite system ",
+    description:
+      data?.meta_description ||
+      "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH",
+    openGraph: {
+      title: data?.meta_title || "Default OG Title",
+      description:
+        data?.meta_description ||
+        "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH",
+      images: data?.openGraphImages || [], // Assuming your API provides OG images
+    },
+  };
+}
 
-  useEffect(() => {
-    const getPageData = async () => {
-      try {
-        const fetchData = await fetchPage(423);
-        const data = await convertFromACF(fetchData, "satellite-system");
-        setPageData(data);
-      } catch (error) {
-        console.log("error: ", error);
-        setError("Failed to fetch post");
-      }
-    };
+// Server Component with Data Fetching
+export default async function ContactPage() {
+  // Fetch and process data
+  const fetchData = await fetchPage(423);
+  const data = await convertFromACF(fetchData, "satellite-system");
 
-    getPageData();
-  }, []);
-
-  if (error) return <div>{error}</div>;
-  if (!pageData) return <Loading />;
-
-  return (
-    <>
-      <MetaData
-        description={pageData?.meta_description}
-        title={pageData?.meta_title}
-      />
-      <Container>
-        <Banner data={pageData?.satellite_system_banner} />
-      </Container>
-      <NavBar styles={styles} Blocks={pageData?.blocks} />
-      <Container>
-        <Propulsion
-          styles={styles}
-          data={pageData?.blocks?.find(
-            (e) => e.type === "propulsion_subsystems"
-          )}
-        />
-      </Container>
-      <div className={styles?.SpaceSystemsContainer}>
-        <Container>
-          {pageData?.blocks
-            ?.filter((e) => e.type !== "propulsion_subsystems")
-            .map((e, index) => {
-              return (
-                <React.Fragment key={index}>
-                  <SpaceSystems data={e} styles={styles} />
-                </React.Fragment>
-              );
-            })}
-        </Container>
-      </div>
-    </>
-  );
+  return <SatelliteSystemMain data={data} />;
 }

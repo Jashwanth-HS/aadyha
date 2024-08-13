@@ -5,6 +5,7 @@ import Cosmos from "./components/Cosmos";
 import Footer from "./components/Footer";
 import { convertFromACF, fetchGlobal } from "@/app/lib/api";
 import Loading from "@/app/loading";
+import PageLoad from "@/components/PageLoad";
 
 export default function FooterMain() {
   const [pageData, setPageData] = useState(null);
@@ -23,22 +24,15 @@ export default function FooterMain() {
 
     getPageData();
   }, []);
-  const regex = /\/[a-z0-9]+/;
 
-  if (
-    !pageData &&
-    (typeof window === "undefined" ||
-      window?.location.href.includes("/home") ||
-      !regex.test(window.location.pathname))
-  ) {
-    return <></>;
-  } else if (!pageData) {
-    return <Loading />;
+  if (!pageData) {
+    return <PageLoad />;
   }
+  const { cosmosData, footerData } = pageData || {};
   return (
     <div className={styles?.footerMainContainer}>
-      <Cosmos styles={styles} cosmosData={pageData?.cosmosData} />
-      <Footer styles={styles} footerData={pageData?.footerData} />
+      {cosmosData && <Cosmos styles={styles} cosmosData={cosmosData} />}
+      {footerData && <Footer styles={styles} footerData={footerData} />}
     </div>
   );
 }

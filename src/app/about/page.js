@@ -1,54 +1,34 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import styles from "../about/css/about.module.css";
-import { Helmet } from "react-helmet";
-import { PrimaryButton } from "@/components/Buttons";
-import Loading from "../loading";
+"use server";
+
 import { convertFromACF, fetchPage } from "../lib/api";
-import Banner from "./components/Banner";
-import VisionMission from "./components/VisionMission";
-import ChooseAadyah from "./components/ChooseAadyah";
-import TeamImage from "./components/TeamImage";
-import JoinUs from "./components/JoinUs";
-import LeadershipTeam from "./components/LeadershipTeam";
-import MetaData from "@/components/MetaData";
+import About from "./About";
+// Metadata Generation Function
+export async function generateMetadata() {
+  // Fetch and process data for metadata purposes
+  const fetchData = await fetchPage(272);
+  const data = await convertFromACF(fetchData, "about");
 
-export default function About() {
-  const [pageData, setPageData] = useState(null);
-  const [error, setError] = useState(null);
+  // Return metadata
+  return {
+    title: "AADYAH Aerospace | About Us",
+    description:
+      data?.meta_description ||
+      "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH",
+    openGraph: {
+      title: data?.meta_title || "Default OG Title",
+      description:
+        data?.meta_description ||
+        "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH",
+      images: data?.openGraphImages || [], // Assuming your API provides OG images
+    },
+  };
+}
 
-  useEffect(() => {
-    const getPageData = async () => {
-      try {
-        const fetchData = await fetchPage(272);
-        const data = await convertFromACF(fetchData, "about");
-        setPageData(data);
-      } catch (error) {
-        console.log("error: ", error);
-        setError("Failed to fetch post");
-      }
-    };
+// Server Component with Data Fetching
+export default async function AboutPage() {
+  // Fetch and process data
+  const fetchData = await fetchPage(272);
+  const data = await convertFromACF(fetchData, "about");
 
-    getPageData();
-  }, []);
-
-  if (error) return <div>{error}</div>;
-  if (!pageData) return <Loading />;
-
-  return (
-    <>
-      <MetaData
-        description={pageData?.meta_description}
-        title={pageData?.meta_title}
-      />
-      <div className={styles?.AboutBg}>
-        <Banner styles={styles} data={pageData?.about_banner} />
-        <VisionMission styles={styles} data={pageData?.vision_and_mission} />
-        <ChooseAadyah styles={styles} data={pageData?.why_choose_aadyah} />
-        <TeamImage styles={styles} data={pageData?.team_image} />
-        <JoinUs styles={styles} data={pageData?.join_us} />
-      </div>
-      <LeadershipTeam styles={styles} data={pageData?.our_visionaries} />
-    </>
-  );
+  return <About data={data} />;
 }

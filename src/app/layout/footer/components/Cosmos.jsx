@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Cosmos({ styles, cosmosData }) {
   const { title, blocks } = cosmosData || {};
-  if (!cosmosData) return <></>;
+
   return (
     <div className={styles?.cosmosContainer}>
       <div className={styles?.cosmosContainerBackground}>

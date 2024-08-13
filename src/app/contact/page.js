@@ -1,55 +1,35 @@
-"use client";
-import Container from "@/components/Container";
-import styles from "../contact/css/contact.module.css";
-import React, { useEffect, useState } from "react";
-import OurCustomers from "./components/OurCustomers";
-import { Helmet } from "react-helmet";
+"use server";
+
 import { convertFromACF, fetchPage } from "../lib/api";
-import Loading from "../loading";
-import ContactForm from "./components/ContactForm";
-import Address from "./components/Address";
-import MetaData from "@/components/MetaData";
+import Contact from "./Contact";
 
-export default function page() {
-  const [pageData, setPageData] = useState(null);
-  const [error, setError] = useState(null);
+// Metadata Generation Function
+export async function generateMetadata() {
+  // Fetch and process data for metadata purposes
+  const fetchData = await fetchPage(803);
+  const data = await convertFromACF(fetchData, "contact");
 
-  useEffect(() => {
-    const getPageData = async () => {
-      try {
-        const fetchData = await fetchPage(803);
-        const data = await convertFromACF(fetchData, "contact");
-        setPageData(data);
-      } catch (error) {
-        console.log("error: ", error);
-        setError("Failed to fetch post");
-      }
-    };
+  // Return metadata
+  return {
+    title: "AADYAH Aerospace | Contact Us ",
+    description:
+      data?.meta_description ||
+      "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH",
+    openGraph: {
+      title: data?.meta_title || "Default OG Title",
+      description:
+        data?.meta_description ||
+        "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH",
+      images: data?.openGraphImages || [], // Assuming your API provides OG images
+    },
+  };
+}
 
-    getPageData();
-  }, []);
+// Server Component with Data Fetching
+export default async function ContactPage() {
+  // Fetch and process data
+  const fetchData = await fetchPage(803);
+  const data = await convertFromACF(fetchData, "contact");
 
-  if (error) return <div>{error}</div>;
-  if (!pageData) return <Loading />;
-  return (
-    <>
-      <MetaData
-        description={pageData?.meta_description}
-        title={pageData?.meta_title}
-      />
-      <div className={styles?.ContactBanner}>
-        <Container>
-          <div className={styles?.ContactContainer}>
-            <ContactForm style={styles} />
-            <Address styles={styles} data={pageData?.address_and_contact} />
-          </div>
-        </Container>
-      </div>
-      <div className={styles?.OurCustomersWrap}>
-        <Container>
-          <OurCustomers styles={styles} data={pageData?.our_customer} />
-        </Container>
-      </div>
-    </>
-  );
+  return <Contact data={data} />;
 }

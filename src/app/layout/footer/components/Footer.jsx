@@ -14,7 +14,6 @@ export default function Footer({ styles, footerData }) {
     copyRights,
     allRightsReserved,
   } = footerData || {};
-  if (!footerData) return <div></div>;
 
   return (
     <div className={styles?.FooterContainer} id={slug}>
