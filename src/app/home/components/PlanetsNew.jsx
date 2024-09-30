@@ -10,7 +10,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import withDelayedUnmount from "@/helper/DelayUnmount";
-import { interpolateMars, interpolateMoon } from "@/helper";
+import {
+  calculateMoonScroll,
+  calculateUniversalScroll,
+  getScrollMarsScrollAmount,
+  getScrollMoonScrollAmount,
+  interpolateMars,
+  interpolateMoon,
+} from "@/helper";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 // Define a reusable typing effect setup function
 const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
@@ -42,6 +49,7 @@ const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
 
 const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   const group = useRef();
+  const prevProgress = useRef(progress);
   const { nodes, materials, animations } = useGLTF(
     "/supercode15-transformed.glb"
   );
@@ -64,16 +72,12 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   }, [actions["Animation"]]);
 
   useFrame(() => {
-    if (actions["Animation"]) {
+    if (actions["Animation"] && prevProgress.current !== progress) {
       const duration = actions["Animation"].getClip().duration;
-
-      const targetTime = duration * progress;
-
-      actions["Animation"].time = THREE.MathUtils.lerp(
-        actions["Animation"].time,
-        targetTime,
-        0.1
-      );
+      let targetTime = duration * progress;
+      targetTime = targetTime + 0.85;
+      actions["Animation"].time = targetTime; // Directly set the animation time
+      prevProgress.current = progress; // Update the previous progress
     }
   });
   return (
@@ -193,7 +197,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const hasCompletedRef = useRef(false);
   const skippingScroll = useRef(false);
   const canvasTimeLineRef = useRef(false);
-
+  const prevScroll = useRef(0);
   //states
   const [word, setWord] = useState("");
   const [hideOverlay, setHideOverlay] = useState("");
@@ -244,7 +248,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     if (letters?.length > 0) {
       gsap.set(letters, {
         opacity: opacity ? 0 : opacityIntensity || 1,
-        y: isTyping || opacity == false ? 0 : 100,
+        y: isTyping || opacity === undefined || opacity === false ? 0 : 100,
       });
       gsap.to(letters, {
         duration: 1,
@@ -255,75 +259,86 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     }
   };
 
-  //useEffects
+  const fadingOutAnimation = ({
+    ref,
+    FromOpacity,
+    duration,
+    to,
+    ToOpacity,
+    stagger,
+  }) => {
+    const letters = ref.current ? ref.current.children : null;
+    if (letters?.length > 0) {
+      gsap.set(letters, {
+        opacity: FromOpacity || 1,
+      });
 
-  // Calculate Z for different values of X
-  const calculateZ = (X) => {
-    const percentage = 21.65;
-    return (percentage / 100) * X;
+      gsap.to(letters, {
+        duration: duration || 1,
+        opacity: ToOpacity || 0,
+        y: to || 0,
+        stagger: stagger || 0.0001,
+      });
+    }
   };
-
   // Custom scroll handler
 
   useEffect(() => {
-    let prevScroll = 0;
-    const handleGsap = ({ to, duration }) => {
-      setTimeout(() => {
-        hasCompletedRef.current = true;
-      }, 100);
-      scrollTween.current = gsap.to(window, {
-        scrollTo: { y: to }, //autoKill: false
-        duration: duration,
-        ease: "power3.inOut",
-        // ease: "power3.inOut",
-        onComplete: () => {
-          hasCompletedRef.current = false;
-        },
-      });
+    const handleGSap = ({ to, duration }) => {
+      // Only create a new tween if one isn't already running
+      if (!scrollTween.current || !scrollTween.current.isActive()) {
+        scrollTween.current = gsap.to(window, {
+          scrollTo: { y: to },
+          duration: duration,
+          ease: "power3.inOut",
+        });
+      }
     };
+
     const handleScroll = (e) => {
-      if (!hasCompletedRef.current && !skippingScroll.current) {
-        if (window.scrollY > prevScroll) {
-          if (window.scrollY < 1000) {
-            handleGsap({
-              to: interpolateMoon(document.documentElement.scrollHeight),
-              duration: 6,
-            });
-          } else if (
-            window.scrollY >=
-              interpolateMoon(document.documentElement.scrollHeight) + 150 &&
-            window.scrollY <=
-              interpolateMars(document.documentElement.scrollHeight)
-          ) {
-            handleGsap({
-              to: interpolateMars(document.documentElement.scrollHeight),
-              duration: 5,
-            });
-          }
-        } else if (window.scrollY < prevScroll) {
-          if (
-            window.scrollY <
-            interpolateMoon(document.documentElement.scrollHeight) + 150
-          ) {
-            handleGsap({ to: 0, duration: 6 });
-          } else if (
-            window.scrollY <=
-            interpolateMars(document.documentElement.scrollHeight)
-          ) {
-            handleGsap({
-              to: interpolateMoon(document.documentElement.scrollHeight) + 150,
-              duration: 5,
-            });
-          }
+      const currentScroll = window.scrollY;
+      console.log("currentScroll: ", currentScroll);
+      if (currentScroll > prevScroll.current) {
+        if (currentScroll < 1000) {
+          handleGSap({
+            to: getScrollMoonScrollAmount(),
+            duration: 5,
+          });
+          fadingOutAnimation({
+            FromOpacity: 1,
+            ToOpacity: 0,
+            duration: 0.5,
+            from: 0,
+            to: 100,
+            stagger: 0.08,
+            ref: wordRef,
+          });
+        } else if (
+          currentScroll >= getScrollMoonScrollAmount() + 2 &&
+          currentScroll <= getScrollMarsScrollAmount() + 2
+        ) {
+          handleGSap({
+            to: getScrollMarsScrollAmount(),
+            duration: 5,
+          });
+        }
+      } else if (currentScroll < prevScroll.current) {
+        if (currentScroll < getScrollMoonScrollAmount() + 2) {
+          handleGSap({ to: 0.85, duration: 5 });
+        } else if (currentScroll <= getScrollMarsScrollAmount()) {
+          handleGSap({
+            to: getScrollMoonScrollAmount(),
+            duration: 5,
+          });
         }
       }
-      if (window.scrollY > 5000) {
+      if (currentScroll > 5000) {
         skipButtonRef.current.style.display = "flex";
         setHideModel(true);
-      } else if (window.scrollY < 5000) {
+      } else if (currentScroll < 5000) {
         setHideModel(false);
       }
-      prevScroll = window.scrollY;
+      prevScroll.current = currentScroll;
     };
     if (skipButtonRef.current) {
       skipButtonRef.current.style.display = "none";
@@ -355,6 +370,8 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
           end: end,
           scrub: true,
           onUpdate: (self) => {
+            let selfProgress =
+              self.progress.toFixed(9) < 0.05 ? 0.05 : self.progress.toFixed(9);
             setProgress(self.progress.toFixed(9));
           },
           onComplete: onComplete,
@@ -362,9 +379,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         },
       });
     };
-    const canvasContainerRefClass = document.querySelector(
-      ".canvasContainerRefClass"
-    );
+
     canvasTimeLineRef.current = createScrollTimeline({
       triggerElement: ".canvasContainerRefClass",
       start: "top top",
