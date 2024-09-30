@@ -275,6 +275,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
       gsap.to(letters, {
         duration: duration || 1,
+        delay: 0.4,
         opacity: ToOpacity || 0,
         y: to || 0,
         stagger: stagger || 0.0001,
@@ -297,7 +298,6 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
     const handleScroll = (e) => {
       const currentScroll = window.scrollY;
-      console.log("currentScroll: ", currentScroll);
       if (currentScroll > prevScroll.current) {
         if (currentScroll < 1000) {
           handleGSap({
@@ -307,10 +307,10 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
           fadingOutAnimation({
             FromOpacity: 1,
             ToOpacity: 0,
-            duration: 0.5,
+            duration: 1,
             from: 0,
             to: 100,
-            stagger: 0.08,
+            stagger: 0.06,
             ref: wordRef,
           });
         } else if (

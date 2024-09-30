@@ -79,7 +79,6 @@ export default function Header() {
           window.scrollY > 3780) ||
         (pathNameRef.current !== "/" && pathNameRef.current !== "/home")
       ) {
-        console.log("in here");
         if (window.scrollY > storePrevScroll.current) {
           navHeaderRef.current?.classList.add(styles?.hideNavHeader);
         } else {

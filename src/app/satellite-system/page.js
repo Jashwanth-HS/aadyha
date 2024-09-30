@@ -5,16 +5,9 @@ import NavBar from "./components/NavBar";
 import Container from "@/components/Container";
 import Propulsion from "./components/Propulsion"; //423
 import SpaceSystems from "./components/SpaceSystems";
-import {
-  ElectricPowerSystem,
-  OnBoardComputer,
-  MotionControlSystem,
-} from "@/helper";
-import { Helmet } from "react-helmet";
 import Loading from "../loading";
 import { convertFromACF, fetchPage } from "../lib/api";
 import MetaData from "@/components/MetaData";
-const spaceSystem = [ElectricPowerSystem, OnBoardComputer, MotionControlSystem];
 const Banner = ({ data }) => {
   const { description, tag, title } = data || {};
   return (

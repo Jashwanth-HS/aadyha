@@ -32,7 +32,6 @@ export default function FooterMain() {
     console.log("loading");
     return <PageLoad />;
   } else if (!pageData) {
-    console.log("loading 1");
     return <Loading />;
   }
   return (
