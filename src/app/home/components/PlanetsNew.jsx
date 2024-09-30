@@ -194,7 +194,10 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const addLineTextRef = useRef(0);
   const divContainerRef = useRef(null);
   const scrollTween = useRef(null); // Ref to track animation state
-  const hasCompletedRef = useRef(false);
+  const hasCompletedMarsRef = useRef(false);
+  const hasCompletedMoonRef = useRef(false);
+  const hasCompletedMarsBackRef = useRef(false);
+  const hasCompletedMoonBackRef = useRef(false);
   const skippingScroll = useRef(false);
   const canvasTimeLineRef = useRef(false);
   const prevScroll = useRef(0);
@@ -266,7 +269,9 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     to,
     ToOpacity,
     stagger,
+    callback,
   }) => {
+    if (callback) callback();
     const letters = ref.current ? ref.current.children : null;
     if (letters?.length > 0) {
       gsap.set(letters, {
@@ -285,9 +290,10 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   // Custom scroll handler
 
   useEffect(() => {
-    const handleGSap = ({ to, duration }) => {
+    const handleGSap = ({ to, duration, callback }) => {
       // Only create a new tween if one isn't already running
       if (!scrollTween.current || !scrollTween.current.isActive()) {
+        if (callback) callback();
         scrollTween.current = gsap.to(window, {
           scrollTo: { y: to },
           duration: duration,
@@ -300,32 +306,81 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
       const currentScroll = window.scrollY;
       if (currentScroll > prevScroll.current) {
         if (currentScroll < 1000) {
+          hasCompletedMarsRef.current = false;
           handleGSap({
             to: getScrollMoonScrollAmount(),
             duration: 5,
           });
-          fadingOutAnimation({
-            FromOpacity: 1,
-            ToOpacity: 0,
-            duration: 1,
-            from: 0,
-            to: 100,
-            stagger: 0.06,
-            ref: wordRef,
-          });
+          if (hasCompletedMoonRef.current == false) {
+            fadingOutAnimation({
+              FromOpacity: 1,
+              ToOpacity: 0,
+              duration: 1,
+              from: 0,
+              to: 250,
+              stagger: 0.06,
+              ref: wordRef,
+              callback: () => (hasCompletedMoonRef.current = true),
+            });
+          }
         } else if (
           currentScroll >= getScrollMoonScrollAmount() + 2 &&
           currentScroll <= getScrollMarsScrollAmount() + 2
         ) {
+          hasCompletedMarsBackRef.current = false;
           handleGSap({
             to: getScrollMarsScrollAmount(),
             duration: 5,
           });
+          if (hasCompletedMarsRef.current == false) {
+            fadingOutAnimation({
+              FromOpacity: 1,
+              ToOpacity: 0,
+              duration: 0.5,
+              from: 0,
+              to: 250,
+              stagger: 0.06,
+              ref: wordRef,
+              callback: () => (hasCompletedMarsRef.current = true),
+            });
+          }
         }
       } else if (currentScroll < prevScroll.current) {
-        if (currentScroll < getScrollMoonScrollAmount() + 2) {
-          handleGSap({ to: 0.85, duration: 5 });
+        if (currentScroll < getScrollMoonScrollAmount()) {
+          handleGSap({
+            to: 0.85,
+            duration: 5,
+            callback: () => {
+              hasCompletedMoonBackRef.current = false;
+            },
+          });
+
+          if (hasCompletedMoonBackRef.current == false) {
+            fadingOutAnimation({
+              FromOpacity: 1,
+              ToOpacity: 0,
+              duration: 0.5,
+              from: 0,
+              to: 250,
+              stagger: 0.06,
+              ref: wordRef,
+              callback: () => (hasCompletedMoonBackRef.current = true),
+            });
+          }
         } else if (currentScroll <= getScrollMarsScrollAmount()) {
+          hasCompletedMoonBackRef.current = true;
+          if (hasCompletedMarsBackRef.current == false) {
+            fadingOutAnimation({
+              FromOpacity: 1,
+              ToOpacity: 0,
+              duration: 0.5,
+              from: 0,
+              to: 250,
+              stagger: 0.06,
+              ref: wordRef,
+              callback: () => (hasCompletedMarsBackRef.current = true),
+            });
+          }
           handleGSap({
             to: getScrollMoonScrollAmount(),
             duration: 5,
