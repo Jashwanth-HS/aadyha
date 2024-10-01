@@ -50,9 +50,7 @@ const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
 const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   const group = useRef();
   const prevProgress = useRef(progress);
-  const { nodes, materials, animations } = useGLTF(
-    "/supercode15-transformed.glb"
-  );
+  const { nodes, materials, animations } = useGLTF("/supercode_latest1.glb");
   const { actions } = useAnimations(animations, group);
 
   // Effect to pause camera animation on mount
@@ -147,6 +145,7 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
           position={[1.623, 0.157, 0]}
           rotation={[-1.571, 1.556, 1.571]}
         />
+
         <mesh
           name="Mars"
           geometry={nodes.Mars.geometry}
@@ -802,7 +801,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   );
 };
 
-useGLTF.preload("/supercode15-transformed.glb");
+useGLTF.preload("/supercode_latest1.glb");
 
 const DelayedPlanets = withDelayedUnmount(PlanetsNew);
 
