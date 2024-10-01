@@ -201,6 +201,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const skippingScroll = useRef(false);
   const canvasTimeLineRef = useRef(false);
   const prevScroll = useRef(0);
+  const scrollOut = useRef(false);
   //states
   const [word, setWord] = useState("");
   const [hideOverlay, setHideOverlay] = useState("");
@@ -302,103 +303,93 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
       }
     };
 
-    const handleScroll = (e) => {
-      const currentScroll = window.scrollY;
-      if (currentScroll > prevScroll.current) {
-        if (currentScroll < 1000) {
-          hasCompletedMarsRef.current = false;
-          handleGSap({
-            to: getScrollMoonScrollAmount(),
-            duration: 5,
-          });
-          if (hasCompletedMoonRef.current == false) {
-            fadingOutAnimation({
-              FromOpacity: 1,
-              ToOpacity: 0,
-              duration: 1,
-              from: 0,
-              to: 250,
-              stagger: 0.06,
-              ref: wordRef,
-              callback: () => (hasCompletedMoonRef.current = true),
-            });
-          }
-        } else if (
-          currentScroll >= getScrollMoonScrollAmount() + 2 &&
-          currentScroll <= getScrollMarsScrollAmount() + 2
-        ) {
-          hasCompletedMarsBackRef.current = false;
-          handleGSap({
-            to: getScrollMarsScrollAmount(),
-            duration: 5,
-          });
-          if (hasCompletedMarsRef.current == false) {
-            fadingOutAnimation({
-              FromOpacity: 1,
-              ToOpacity: 0,
-              duration: 0.5,
-              from: 0,
-              to: 250,
-              stagger: 0.06,
-              ref: wordRef,
-              callback: () => (hasCompletedMarsRef.current = true),
-            });
-          }
-        }
-      } else if (currentScroll < prevScroll.current) {
-        if (currentScroll < getScrollMoonScrollAmount()) {
-          handleGSap({
-            to: 0.85,
-            duration: 5,
-            callback: () => {
-              hasCompletedMoonBackRef.current = false;
-            },
-          });
+    const triggerFadingAnimation = (hasCompletedRef, duration, callback) => {
+      if (!hasCompletedRef.current) {
+        fadingOutAnimation({
+          FromOpacity: 1,
+          ToOpacity: 0,
+          duration,
+          from: 0,
+          to: 250,
+          stagger: 0.06,
+          ref: wordRef,
+          callback,
+        });
+      }
+    };
 
-          if (hasCompletedMoonBackRef.current == false) {
-            fadingOutAnimation({
-              FromOpacity: 1,
-              ToOpacity: 0,
-              duration: 0.5,
-              from: 0,
-              to: 250,
-              stagger: 0.06,
-              ref: wordRef,
-              callback: () => (hasCompletedMoonBackRef.current = true),
+    const handleScroll = (e) => {
+      e.preventDefault(); // Prevent the default scroll behavior
+      const currentScroll = window.scrollY;
+      const isScrollingDown = currentScroll > prevScroll.current;
+      const isScrollingUp = currentScroll < prevScroll.current;
+      if (!skippingScroll.current) {
+        if (isScrollingDown) {
+          if (scrollOut.current) return;
+          if (currentScroll < 1000) {
+            hasCompletedMarsRef.current = false;
+            handleGSap({ to: getScrollMoonScrollAmount(), duration: 5 });
+            triggerFadingAnimation(hasCompletedMoonRef, 1, () => {
+              hasCompletedMoonRef.current = true;
             });
-          }
-        } else if (currentScroll <= getScrollMarsScrollAmount()) {
-          hasCompletedMoonBackRef.current = true;
-          if (hasCompletedMarsBackRef.current == false) {
-            fadingOutAnimation({
-              FromOpacity: 1,
-              ToOpacity: 0,
-              duration: 0.5,
-              from: 0,
-              to: 250,
-              stagger: 0.06,
-              ref: wordRef,
-              callback: () => (hasCompletedMarsBackRef.current = true),
+          } else if (
+            currentScroll >= getScrollMoonScrollAmount() + 2 &&
+            currentScroll <= getScrollMarsScrollAmount()
+          ) {
+            hasCompletedMarsBackRef.current = false;
+            handleGSap({ to: getScrollMarsScrollAmount(), duration: 5 });
+            triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
+              hasCompletedMarsRef.current = true;
             });
+          } else if (currentScroll >= getScrollMarsScrollAmount()) {
+            lenis.scrollTo("#SpaceSystemContainer0", {
+              duration: 2,
+            });
+            setTimeout(() => {
+              scrollOut.current = true;
+            }, 1500);
           }
-          handleGSap({
-            to: getScrollMoonScrollAmount(),
-            duration: 5,
-          });
+        } else if (isScrollingUp) {
+          if (currentScroll < 10) return;
+          if (currentScroll < getScrollMoonScrollAmount()) {
+            handleGSap({
+              to: 0.85,
+              duration: 5,
+              callback: () => {
+                hasCompletedMoonBackRef.current = false;
+              },
+            });
+            triggerFadingAnimation(hasCompletedMoonBackRef, 0.5, () => {
+              hasCompletedMoonBackRef.current = true;
+            });
+          } else if (currentScroll <= getScrollMarsScrollAmount()) {
+            hasCompletedMoonBackRef.current = true;
+
+            triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
+              hasCompletedMarsBackRef.current = true;
+            });
+
+            handleGSap({ to: getScrollMoonScrollAmount(), duration: 5 });
+          } else if (currentScroll >= getScrollMarsScrollAmount()) {
+            scrollOut.current = false;
+          }
         }
       }
+
       if (currentScroll > 5000) {
         skipButtonRef.current.style.display = "flex";
         setHideModel(true);
-      } else if (currentScroll < 5000) {
+      } else {
         setHideModel(false);
       }
+
       prevScroll.current = currentScroll;
     };
+
     if (skipButtonRef.current) {
       skipButtonRef.current.style.display = "none";
     }
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: false }); // Disable passive scrolling to control event.preventDefault
     return () => window.removeEventListener("scroll", handleScroll);
   }, [skipButtonRef.current]);
 
@@ -425,9 +416,9 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
           end: end,
           scrub: true,
           onUpdate: (self) => {
-            let selfProgress =
-              self.progress.toFixed(9) < 0.05 ? 0.05 : self.progress.toFixed(9);
-            setProgress(self.progress.toFixed(9));
+            setTimeout(() => {
+              setProgress(self.progress.toFixed(9));
+            }, 150);
           },
           onComplete: onComplete,
           ...options, // Additional ScrollTrigger options can be passed in
@@ -659,7 +650,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         className={styles?.skipButton}
         onClick={() => {
           skippingScroll.current = true;
-          lenis.scrollTo("#SpaceSystemContainer", {
+          lenis.scrollTo("#SpaceSystemContainer0", {
             duration: 2,
             onComplete: () => {
               skippingScroll.current = false;

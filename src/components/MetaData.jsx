@@ -1,9 +1,10 @@
 import Head from "next/head";
 import React from "react";
+import { Helmet } from "react-helmet";
 
 export default function MetaData({ title, description }) {
   return (
-    <head>
+    <Helmet>
       <title>
         {title ||
           "AADYAH Aerospace Trusted by the ones who push the boundaries | AADYAH "}
@@ -43,6 +44,6 @@ export default function MetaData({ title, description }) {
           "Welcome to AADYAH, a pioneering force in space technology innovation and exploration."
         }
       ></meta>
-    </head>
+    </Helmet>
   );
 }

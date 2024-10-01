@@ -37,7 +37,7 @@ const SectionTitle = ({ title, subTitle }) => {
   );
 };
 
-const SpaceSystem = ({ data }) => {
+const SpaceSystem = ({ data, index }) => {
   const {
     title,
     sectionTitle,
@@ -76,7 +76,7 @@ const SpaceSystem = ({ data }) => {
       <div
         className={styles.SpaceSystemContainer}
         ref={elementRef}
-        id="SpaceSystemContainer"
+        id={"SpaceSystemContainer" + index}
       >
         <SectionTitle
           title={sectionTitle || "launch vehicle SYSTEM"}
@@ -345,7 +345,7 @@ export default function SpaceSystemWrap({ pageData }) {
       {spaceSystem?.map((e, index) => {
         return (
           <React.Fragment key={index}>
-            <SpaceSystem data={e} />
+            <SpaceSystem data={e} index={index} />
           </React.Fragment>
         );
       })}
