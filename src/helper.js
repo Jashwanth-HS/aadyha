@@ -77,3 +77,12 @@ export const getScrollMarsScrollAmount = () => {
   // Return the scroll amount
   return scrollAmount;
 };
+
+export const getScrollPoint = (progress, targetProgress) => {
+  // Calculate the target scroll position based on the desired progress
+  const targetScrollPosition =
+    targetProgress * document.querySelector(".pin-spacer").scrollHeight;
+
+  // Return the target scroll point where the progress equals the target
+  return targetScrollPosition;
+};

@@ -21,7 +21,6 @@ const Section = ({ children }) => {
 
 export default function Home() {
   const [pageLoad, setPageLoaded] = useState(false);
-  const [isModelLoaded, SetIsModelLoaded] = useState(false); // State to track Planets component loading
   const [pageData, setPageData] = useState(null);
   const [error, setError] = useState(null);
   const [planetsLoaded, setPlanetsLoaded] = useState(false); // State to track Planets component loading
@@ -61,10 +60,7 @@ export default function Home() {
         description={pageData?.meta_description}
         title={pageData?.meta_title}
       />
-      <PlanetsNew
-        SetIsModelLoaded={SetIsModelLoaded}
-        isModelLoaded={isModelLoaded}
-      />
+      <PlanetsNew />
       <Section>
         <MobileViewPlanets />
         <SpaceSystem pageData={pageData} />

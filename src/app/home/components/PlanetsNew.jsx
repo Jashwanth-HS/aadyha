@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useEffect, forwardRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
 import styles from "../css/main.module.css";
 import { useLenis } from "@studio-freight/react-lenis";
 import { useGLTF, PerspectiveCamera, useAnimations } from "@react-three/drei";
@@ -10,14 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 import withDelayedUnmount from "@/helper/DelayUnmount";
-import {
-  calculateMoonScroll,
-  calculateUniversalScroll,
-  getScrollMarsScrollAmount,
-  getScrollMoonScrollAmount,
-  interpolateMars,
-  interpolateMoon,
-} from "@/helper";
+import { getScrollPoint } from "@/helper";
+import PageLoad from "@/components/PageLoad";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 // Define a reusable typing effect setup function
 const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
@@ -47,7 +40,7 @@ const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
   return () => clearTimeout(setTimeoutId);
 };
 
-const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
+const Model = forwardRef(({ progress }, ref) => {
   const group = useRef();
   const prevProgress = useRef(progress);
   const { nodes, materials, animations } = useGLTF("/supercode_latest1.glb");
@@ -65,7 +58,6 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   useEffect(() => {
     if (actions["Animation"]) {
       actions["Animation"].play();
-      if (isModelLoaded) isModelLoaded(true);
     }
   }, [actions["Animation"]]);
 
@@ -146,6 +138,17 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
           rotation={[-1.571, 1.556, 1.571]}
         />
 
+        <pointLight
+          castShadow
+          color={0xc47d12}
+          width={10}
+          height={40}
+          shadow-mapSize-width={10}
+          shadow-mapSize-height={40}
+          position={[-6.1, 0, 1.1]}
+          intensity={2}
+        />
+
         <mesh
           name="Mars"
           geometry={nodes.Mars.geometry}
@@ -175,7 +178,7 @@ const Model = forwardRef(({ isModelLoaded, progress }, ref) => {
   );
 });
 
-const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
+const PlanetsNew = () => {
   //lenis assign
   const lenis = useLenis();
 
@@ -203,6 +206,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
   const scrollOut = useRef(false);
   //states
   const [word, setWord] = useState("");
+  const [loaded, setLoaded] = useState(false);
   const [hideOverlay, setHideOverlay] = useState("");
   const [wordDescription1, setWordDescription1] = useState("");
   const [wordDescription2, setWordDescription2] = useState("");
@@ -288,20 +292,31 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     }
   };
   // Custom scroll handler
-
+  const handleGSap = ({ to, duration, callback }) => {
+    // Only create a new tween if one isn't already running
+    if (!scrollTween.current || !scrollTween.current.isActive()) {
+      if (callback) callback();
+      scrollTween.current = gsap.to(window, {
+        scrollTo: { y: to },
+        duration: duration,
+        ease: "power3.inOut",
+      });
+    }
+  };
   useEffect(() => {
-    const handleGSap = ({ to, duration, callback }) => {
-      // Only create a new tween if one isn't already running
-      if (!scrollTween.current || !scrollTween.current.isActive()) {
-        if (callback) callback();
-        scrollTween.current = gsap.to(window, {
-          scrollTo: { y: to },
-          duration: duration,
-          ease: "power3.inOut",
-        });
-      }
-    };
-
+    // handleGSap({
+    //   to: 0.65,
+    //   duration: 1,
+    //   callback: () => {
+    //     setTimeout(() => {
+    //       setLoaded(true);
+    //     }, 1500);
+    //   },
+    // });
+    setLoaded(true);
+    console.log("first22");
+  }, []);
+  useEffect(() => {
     const triggerFadingAnimation = (hasCompletedRef, duration, callback) => {
       if (!hasCompletedRef.current) {
         fadingOutAnimation({
@@ -322,55 +337,53 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
       const currentScroll = window.scrollY;
       const isScrollingDown = currentScroll > prevScroll.current;
       const isScrollingUp = currentScroll < prevScroll.current;
+      console.log("progress: ", progress);
       if (!skippingScroll.current) {
-        if (isScrollingDown) {
-          if (scrollOut.current) return;
-          if (currentScroll < 1000) {
-            hasCompletedMarsRef.current = false;
-            handleGSap({ to: getScrollMoonScrollAmount(), duration: 5 });
-            triggerFadingAnimation(hasCompletedMoonRef, 1, () => {
-              hasCompletedMoonRef.current = true;
-            });
-          } else if (
-            currentScroll >= getScrollMoonScrollAmount() + 2 &&
-            currentScroll <= getScrollMarsScrollAmount()
-          ) {
-            hasCompletedMarsBackRef.current = false;
-            handleGSap({ to: getScrollMarsScrollAmount(), duration: 5 });
-            triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
-              hasCompletedMarsRef.current = true;
-            });
-          } else if (currentScroll >= getScrollMarsScrollAmount()) {
-            lenis.scrollTo("#SpaceSystemContainer0", {
-              duration: 2,
-            });
-            setTimeout(() => {
-              scrollOut.current = true;
-            }, 1500);
-          }
-        } else if (isScrollingUp) {
-          if (currentScroll < 10) return;
-          if (currentScroll < getScrollMoonScrollAmount()) {
-            handleGSap({
-              to: 0.85,
-              duration: 5,
-              callback: () => {
-                hasCompletedMoonBackRef.current = false;
-              },
-            });
-            triggerFadingAnimation(hasCompletedMoonBackRef, 0.5, () => {
+        if (!scrollOut.current) {
+          if (isScrollingDown) {
+            if (progress < 0.581187127) {
+              hasCompletedMarsRef.current = false;
+              handleGSap({ to: getScrollPoint(progress, 0.465), duration: 5 });
+              if (progress > 0.000280235) {
+                triggerFadingAnimation(hasCompletedMoonRef, 1, () => {
+                  hasCompletedMoonRef.current = true;
+                });
+              }
+            } else if (progress > 0.581187127 && progress < 0.9) {
+              hasCompletedMarsBackRef.current = false;
+              handleGSap({ to: getScrollPoint(progress, 0.725), duration: 5 });
+              triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
+                hasCompletedMarsRef.current = true;
+              });
+            } else if (progress > 0.91 && progress !== 1) {
+              lenis.scrollTo("#SpaceSystemContainer0", {
+                duration: 2,
+              });
+              setTimeout(() => {
+                scrollOut.current = true;
+              }, 1500);
+            }
+          } else if (isScrollingUp) {
+            if (progress > 0.85 && progress < 1) {
+              handleGSap({
+                to: getScrollPoint(progress, 0.465),
+                duration: 5,
+                callback: () => {
+                  hasCompletedMoonBackRef.current = false;
+                },
+              });
+              triggerFadingAnimation(hasCompletedMoonBackRef, 0.5, () => {
+                hasCompletedMoonBackRef.current = true;
+              });
+            } else if (progress > 0.3 && progress <= 0.581187127) {
               hasCompletedMoonBackRef.current = true;
-            });
-          } else if (currentScroll <= getScrollMarsScrollAmount()) {
-            hasCompletedMoonBackRef.current = true;
-
-            triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
-              hasCompletedMarsBackRef.current = true;
-            });
-
-            handleGSap({ to: getScrollMoonScrollAmount(), duration: 5 });
-          } else if (currentScroll >= getScrollMarsScrollAmount()) {
-            scrollOut.current = false;
+              triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
+                hasCompletedMarsBackRef.current = true;
+              });
+              handleGSap({ to: 0.85, duration: 5 });
+            } else if (progress <= 1) {
+              scrollOut.current = false;
+            }
           }
         }
       }
@@ -390,7 +403,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
     }
     window.addEventListener("scroll", handleScroll, { passive: false }); // Disable passive scrolling to control event.preventDefault
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [skipButtonRef.current]);
+  }, [skipButtonRef.current, progress]);
 
   useEffect(() => {
     gsap.set(`.${styles?.divContainer}`, { background: "#00031B" });
@@ -415,9 +428,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
           end: end,
           scrub: true,
           onUpdate: (self) => {
-            setTimeout(() => {
-              setProgress(self.progress.toFixed(9));
-            }, 150);
+            setProgress(self.progress.toFixed(9));
           },
           onComplete: onComplete,
           ...options, // Additional ScrollTrigger options can be passed in
@@ -500,7 +511,7 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
         canvasTimeLineRef.current = null;
       }
     };
-  }, [isModelLoaded]);
+  }, [loaded]);
 
   useEffect(() => {
     if (progress < 0.17) {
@@ -643,166 +654,175 @@ const PlanetsNew = ({ SetIsModelLoaded, isModelLoaded }) => {
 
   // Render
   return (
-    <div className="canvasContainerRefClass">
-      <button
-        ref={skipButtonRef}
-        className={styles?.skipButton}
-        onClick={() => {
-          skippingScroll.current = true;
-          lenis.scrollTo("#SpaceSystemContainer0", {
-            duration: 2,
-            onComplete: () => {
-              skippingScroll.current = false;
-            },
-          });
-        }}
-      >
-        <span>skip</span>
-        <div className={styles?.skipButtonImg}>
-          <Image
-            alt="bannerSkip"
-            width={100}
-            height={100}
-            src={"/assets/images/bannerSkip.svg"}
-          />
-        </div>
-      </button>
-      <div ref={divContainerRef} className={styles?.divContainer} />
-      <img
-        className={styles?.startsImg}
-        src="/assets/images/stars.svg"
-        alt="stars"
-      />
-      <img
-        className={styles.OrbitEarthImage}
-        src={"/assets/images/orbit-line.png"}
-        alt="Orbit earth image"
-      />
-      <img
-        className={styles.OrbitMoonImage}
-        src={"/assets/images/orbit-line-moon.png"}
-        alt="Orbit moon image"
-      />
-      <img
-        className={styles.OrbitMarsImage}
-        src={"/assets/images/orbit-line-mars.png"}
-        alt="Orbit mars image"
-      />
-      <div className={styles.EarthHeading} ref={wordContainerRef}>
-        <div
-          className={styles.EarthHeadingInner}
-          style={{
-            fontSize: word == "FROM EARTH" ? "16vw" : "21vw",
-            color:
-              word == "FROM EARTH"
-                ? "rgba(255, 255, 255, 0.71)"
-                : word == "TO MOON"
-                ? "rgb(66, 66, 66)"
-                : "rgb(200, 64, 45)",
+    <>
+      {loaded != true && <PageLoad />}
+      <div className="canvasContainerRefClass">
+        <button
+          ref={skipButtonRef}
+          className={styles?.skipButton}
+          onClick={() => {
+            skippingScroll.current = true;
+            lenis.scrollTo("#SpaceSystemContainer0", {
+              duration: 2,
+              onComplete: () => {
+                skippingScroll.current = false;
+              },
+            });
           }}
-          ref={wordRef}
         >
-          {word?.split("")?.map((letter, index) => {
-            return (
-              <span
-                key={index}
-                style={{
-                  opacity: 0,
-                  marginLeft: letter !== " " ? "" : "60px",
-                }}
-              >
-                {letter}
-              </span>
-            );
-          })}
+          <span>skip</span>
+          <div className={styles?.skipButtonImg}>
+            <Image
+              alt="bannerSkip"
+              width={100}
+              height={100}
+              src={"/assets/images/bannerSkip.svg"}
+            />
+          </div>
+        </button>
+        <div ref={divContainerRef} className={styles?.divContainer} />
+        <img
+          className={styles?.startsImg}
+          src="/assets/images/stars.svg"
+          alt="stars"
+        />
+        <img
+          className={styles.OrbitEarthImage}
+          src={"/assets/images/orbit-line.png"}
+          alt="Orbit earth image"
+        />
+        <img
+          className={styles.OrbitMoonImage}
+          src={"/assets/images/orbit-line-moon.png"}
+          alt="Orbit moon image"
+        />
+        <img
+          className={styles.OrbitMarsImage}
+          src={"/assets/images/orbit-line-mars.png"}
+          alt="Orbit mars image"
+        />
+        <div className={styles.EarthHeading} ref={wordContainerRef}>
+          <div
+            className={styles.EarthHeadingInner}
+            style={{
+              fontSize: word == "FROM EARTH" ? "16vw" : "21vw",
+              color:
+                word == "FROM EARTH"
+                  ? "rgba(255, 255, 255, 0.71)"
+                  : word == "TO MOON"
+                  ? "rgb(66, 66, 66)"
+                  : "rgb(200, 64, 45)",
+            }}
+            ref={wordRef}
+          >
+            {word?.split("")?.map((letter, index) => {
+              return (
+                <span
+                  key={index}
+                  style={{
+                    opacity: 0,
+                    marginLeft: letter !== " " ? "" : "60px",
+                  }}
+                >
+                  {letter}
+                </span>
+              );
+            })}
+          </div>
         </div>
+        <div className={styles.overlayDescription} ref={overlayDescriptionRef}>
+          <div className={`${styles?.EarthImageLabel} secondary-font`}>
+            <p ref={addLineTextRef} className={styles.addLineText}></p>
+            <div
+              className={styles.EarthImageLabelSpan}
+              ref={wordDescription1Ref}
+            ></div>
+            <div
+              className={styles.EarthImageLabelSpan}
+              ref={wordDescription2Ref}
+            ></div>
+          </div>
+          <div
+            className={styles.EarthDescription}
+            style={{
+              right: word == "TO MOON" || word == "TO MARS" ? "18%" : "15%",
+              maxWidth:
+                word == "TO MOON" ? "23%" : word == "TO MARS" ? "25%" : "26%",
+            }}
+          >
+            <div className={"heading-3"} ref={wordHeading1Ref}></div>
+            <div
+              className={"caption secondary-font"}
+              ref={wordHeading2Ref}
+            ></div>
+          </div>
+          <div
+            className={styles.MoonImageContainer}
+            style={{
+              display: wordSubDescription1?.includes("MANGALYAAN")
+                ? "none"
+                : "flex",
+              left: wordSubDescription1?.includes("MOON")
+                ? "auto"
+                : wordSubDescription1?.includes("MANGALYAAN")
+                ? "26%"
+                : "29.5%",
+              right:
+                wordSubDescription1?.includes("MARS") ||
+                wordSubDescription1?.includes("MANGALYAAN")
+                  ? "auto"
+                  : "20%",
+              bottom: wordSubDescription1?.includes("MARS")
+                ? "23%"
+                : wordSubDescription1?.includes("MANGALYAAN")
+                ? "23%"
+                : "0",
+              top:
+                wordSubDescription1?.includes("MARS") ||
+                wordSubDescription1?.includes("MANGALYAAN")
+                  ? "auto"
+                  : "27%",
+              width:
+                wordSubDescription1?.includes("MARS") ||
+                wordSubDescription1?.includes("MANGALYAAN")
+                  ? "auto"
+                  : "90px",
+            }}
+          >
+            <div
+              className={`{styles?.MoonImageLabel} secondary-font`}
+              ref={wordSubDescription1Ref}
+            ></div>
+            <div
+              className={`${styles?.MoonImageLabel} secondary-font`}
+              ref={wordSubDescription2Ref}
+            ></div>
+          </div>
+        </div>
+        <Canvas
+          className={styles?.canvasContainer}
+          gl={{ antialias: true, pixelRatio: devicePixelRatio }}
+        >
+          {/* Ambient light */}
+          <ambientLight intensity={1} />
+          {/* Directional light */}
+          <directionalLight intensity={2} position={[26, 80, 14]} />
+          <directionalLight intensity={3} position={[100, -211, -205]} />
+          {/* Model component */}
+          {!hideModel && (
+            <Model
+              // isModelLoaded={SetIsModelLoaded}
+              progress={progress}
+            />
+          )}
+        </Canvas>
       </div>
-      <div className={styles.overlayDescription} ref={overlayDescriptionRef}>
-        <div className={`${styles?.EarthImageLabel} secondary-font`}>
-          <p ref={addLineTextRef} className={styles.addLineText}></p>
-          <div
-            className={styles.EarthImageLabelSpan}
-            ref={wordDescription1Ref}
-          ></div>
-          <div
-            className={styles.EarthImageLabelSpan}
-            ref={wordDescription2Ref}
-          ></div>
-        </div>
-        <div
-          className={styles.EarthDescription}
-          style={{
-            right: word == "TO MOON" || word == "TO MARS" ? "18%" : "15%",
-            maxWidth:
-              word == "TO MOON" ? "23%" : word == "TO MARS" ? "25%" : "26%",
-          }}
-        >
-          <div className={"heading-3"} ref={wordHeading1Ref}></div>
-          <div className={"caption secondary-font"} ref={wordHeading2Ref}></div>
-        </div>
-        <div
-          className={styles.MoonImageContainer}
-          style={{
-            display: wordSubDescription1?.includes("MANGALYAAN")
-              ? "none"
-              : "flex",
-            left: wordSubDescription1?.includes("MOON")
-              ? "auto"
-              : wordSubDescription1?.includes("MANGALYAAN")
-              ? "26%"
-              : "29.5%",
-            right:
-              wordSubDescription1?.includes("MARS") ||
-              wordSubDescription1?.includes("MANGALYAAN")
-                ? "auto"
-                : "20%",
-            bottom: wordSubDescription1?.includes("MARS")
-              ? "23%"
-              : wordSubDescription1?.includes("MANGALYAAN")
-              ? "23%"
-              : "0",
-            top:
-              wordSubDescription1?.includes("MARS") ||
-              wordSubDescription1?.includes("MANGALYAAN")
-                ? "auto"
-                : "27%",
-            width:
-              wordSubDescription1?.includes("MARS") ||
-              wordSubDescription1?.includes("MANGALYAAN")
-                ? "auto"
-                : "90px",
-          }}
-        >
-          <div
-            className={`{styles?.MoonImageLabel} secondary-font`}
-            ref={wordSubDescription1Ref}
-          ></div>
-          <div
-            className={`${styles?.MoonImageLabel} secondary-font`}
-            ref={wordSubDescription2Ref}
-          ></div>
-        </div>
-      </div>
-      <Canvas
-        className={styles?.canvasContainer}
-        gl={{ antialias: true, pixelRatio: devicePixelRatio }}
-      >
-        {/* Ambient light */}
-        <ambientLight intensity={1} />
-        {/* Directional light */}
-        <directionalLight intensity={2} position={[26, 80, 14]} />
-        <directionalLight intensity={3} position={[100, -211, -205]} />
-        {/* Model component */}
-        {!hideModel && (
-          <Model isModelLoaded={SetIsModelLoaded} progress={progress} />
-        )}
-      </Canvas>
-    </div>
+    </>
   );
 };
 
 useGLTF.preload("/supercode_latest1.glb");
 
-const DelayedPlanets = withDelayedUnmount(PlanetsNew);
+// const DelayedPlanets = withDelayedUnmount(PlanetsNew);
 
-export default DelayedPlanets;
+export default PlanetsNew;
