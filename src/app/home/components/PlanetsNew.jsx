@@ -8,7 +8,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
-import withDelayedUnmount from "@/helper/DelayUnmount";
 import { getScrollPoint } from "@/helper";
 import PageLoad from "@/components/PageLoad";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
