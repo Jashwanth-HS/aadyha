@@ -280,105 +280,88 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
 
     const handleFadOut = ({ hasCompletedRef }) => {
       if (!hasCompletedRef) return;
-
-      const fadeOutAnimations = [
-        wordRef,
-        wordDescription1Ref,
-        wordDescription2Ref,
-        wordHeading1Ref,
-        wordHeading2Ref,
-        wordSubDescription1Ref,
-        wordSubDescription2Ref,
-      ].map((ref) =>
-        triggerFadingAnimation({
-          hasCompletedRef,
-          ref,
-          duration: 1,
-          callback: () => (hasCompletedRef.current = true),
-        })
-      );
-
-      // Wait for all fade-out animations to finish
-      Promise.all(fadeOutAnimations).then(() => {
-        hasCompletedRef.current = true;
+      triggerFadingAnimation({
+        hasCompletedRef,
+        ref: wordRef,
+        duration: 1,
+        callback: () => (hasCompletedRef.current = true),
       });
     };
     const EarthPoint = 0.85,
       moonPoint = 0.465,
-      marsPoint = 0.725;
+      marsPoint = 0.75;
     const handleScroll = (e) => {
-      e.preventDefault(); // Prevent the default scroll behavior
       const currentScroll = window.scrollY;
       const isScrollingDown = currentScroll > prevScroll.current;
       const isScrollingUp = currentScroll < prevScroll.current;
+      // Allow default scrolling behavior unless specifically preventing
+      if (skippingScroll.current || scrollOut.current) return;
 
       if (progress <= 1 && isScrollingUp) {
         scrollOut.current = false;
       }
 
-      if (!skippingScroll.current) {
-        if (scrollOut.current) return;
+      if (scrollOut.current) return;
 
-        if (isScrollingDown) {
-          switch (true) {
-            case progress < 0.581187127:
-              hasCompletedMarsRef.current = false;
-              handleGSap({
-                to: getScrollPoint(progress, moonPoint),
-                duration: 7.5,
-              });
-              if (progress > 0.000280235) {
-                handleFadOut({ hasCompletedRef: hasCompletedMoonRef });
-              }
-              break;
+      if (isScrollingDown) {
+        switch (true) {
+          case progress < 0.581187127:
+            hasCompletedMarsRef.current = false;
+            handleGSap({
+              to: getScrollPoint(progress, moonPoint),
+              duration: 7.5,
+            });
+            if (progress > 0.000280235) {
+              handleFadOut({ hasCompletedRef: hasCompletedMoonRef });
+            }
+            break;
 
-            case progress >= 0.581187127 && progress < 0.9:
-              hasCompletedMarsBackRef.current = false;
-              handleGSap({
-                to: getScrollPoint(progress, marsPoint),
-                easing: "power1.inOut",
-                duration: 3,
-              });
-              if (progress > 0.59) {
-                handleFadOut({ hasCompletedRef: hasCompletedMarsRef });
-              }
-              break;
+          case progress >= 0.581187127 && progress < 0.9:
+            hasCompletedMarsBackRef.current = false;
+            handleGSap({
+              to: getScrollPoint(progress, marsPoint),
+              easing: "power1.inOut",
+              duration: 3,
+            });
+            if (progress > 0.59) {
+              handleFadOut({ hasCompletedRef: hasCompletedMarsRef });
+            }
+            break;
 
-            case progress > 0.91 && progress !== 1:
-              lenis.scrollTo("#SpaceSystemContainer0", { duration: 2 });
-              setTimeout(() => {
-                scrollOut.current = true;
-              }, 1500);
-              break;
+          case progress > 0.99 && progress !== 1:
+            lenis.scrollTo("#SpaceSystemContainer0", { duration: 2 });
+            setTimeout(() => {
+              scrollOut.current = true;
+            }, 1500);
+            break;
 
-            default:
-              break;
-          }
-        } else if (isScrollingUp) {
-          switch (true) {
-            case progress > EarthPoint && progress < 1:
-              handleGSap({
-                to: getScrollPoint(progress, moonPoint),
-                duration: 5,
-                callback: () => {
-                  hasCompletedMoonBackRef.current = false;
-                },
-              });
-              if (progress < 0.9) {
-                handleFadOut({ hasCompletedRef: hasCompletedMoonBackRef });
-              }
-              break;
+          default:
+            break;
+        }
+      } else if (isScrollingUp) {
+        switch (true) {
+          case progress > EarthPoint && progress < 1:
+            handleGSap({
+              to: getScrollPoint(progress, moonPoint),
+              duration: 5,
+              callback: () => {
+                hasCompletedMoonBackRef.current = false;
+              },
+            });
+            if (progress < 0.9) {
+              handleFadOut({ hasCompletedRef: hasCompletedMoonBackRef });
+            }
+            break;
 
-            case progress > 0.3 && progress <= 0.581187127:
-              hasCompletedMoonBackRef.current = true;
-              handleGSap({ to: EarthPoint, duration: 5 });
-              if (progress < 0.57) {
-                handleFadOut({ hasCompletedRef: hasCompletedMarsBackRef });
-              }
-              break;
-            default:
-              break;
-          }
+          case progress > 0.3 && progress <= 0.581187127:
+            hasCompletedMoonBackRef.current = true;
+            handleGSap({ to: EarthPoint, duration: 5 });
+            if (progress < 0.57) {
+              handleFadOut({ hasCompletedRef: hasCompletedMarsBackRef });
+            }
+            break;
+          default:
+            break;
         }
       }
 
