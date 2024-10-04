@@ -351,7 +351,7 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
             }
             break;
 
-          case progress > 0.3 && progress <= 0.581187127:
+          case progress > 0.3 && progress <= 0.6:
             hasCompletedMoonBackRef.current = true;
             handleGSap({ to: EarthPoint, duration: 5 });
             if (progress < 0.57) {
