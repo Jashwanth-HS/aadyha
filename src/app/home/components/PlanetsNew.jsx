@@ -211,6 +211,27 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
     }
   };
 
+  // Custom scroll handler
+  const handleGSap = ({ to, duration, easing, callback, onComplete }) => {
+    // Only create a new tween if one isn't already running
+    if (!scrollTween.current || !scrollTween.current.isActive()) {
+      if (callback) callback();
+      scrollTween.current = gsap.to(window, {
+        scrollTo: { y: to },
+        duration: duration,
+        ease: easing || "power3.inOut",
+        onComplete: onComplete,
+      });
+    }
+  };
+  useEffect(() => {
+    handleGSap({
+      to: 0.85,
+      duration: 1,
+      onComplete: () => setPageLoaded(true),
+    });
+  }, []);
+
   const fadingOutAnimation = ({
     ref,
     FromOpacity,
@@ -236,28 +257,13 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
       });
     }
   };
-  // Custom scroll handler
-  const handleGSap = ({ to, duration, easing, callback, onComplete }) => {
-    // Only create a new tween if one isn't already running
-    if (!scrollTween.current || !scrollTween.current.isActive()) {
-      if (callback) callback();
-      scrollTween.current = gsap.to(window, {
-        scrollTo: { y: to },
-        duration: duration,
-        ease: easing || "power3.inOut",
-        onComplete: onComplete,
-      });
-    }
-  };
   useEffect(() => {
-    handleGSap({
-      to: 0.85,
-      duration: 1,
-      onComplete: () => setPageLoaded(true),
-    });
-  }, []);
-  useEffect(() => {
-    const triggerFadingAnimation = (hasCompletedRef, duration, callback) => {
+    const triggerFadingAnimation = ({
+      hasCompletedRef,
+      duration,
+      ref,
+      callback,
+    }) => {
       if (!hasCompletedRef.current) {
         fadingOutAnimation({
           FromOpacity: 1,
@@ -266,10 +272,36 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
           from: 0,
           to: 250,
           stagger: 0.06,
-          ref: wordRef,
+          ref: ref || wordRef,
           callback,
         });
       }
+    };
+
+    const handleFadOut = ({ hasCompletedRef }) => {
+      if (!hasCompletedRef) return;
+
+      const fadeOutAnimations = [
+        wordRef,
+        wordDescription1Ref,
+        wordDescription2Ref,
+        wordHeading1Ref,
+        wordHeading2Ref,
+        wordSubDescription1Ref,
+        wordSubDescription2Ref,
+      ].map((ref) =>
+        triggerFadingAnimation({
+          hasCompletedRef,
+          ref,
+          duration: 1,
+          callback: () => (hasCompletedRef.current = true),
+        })
+      );
+
+      // Wait for all fade-out animations to finish
+      Promise.all(fadeOutAnimations).then(() => {
+        hasCompletedRef.current = true;
+      });
     };
     const EarthPoint = 0.85,
       moonPoint = 0.465,
@@ -296,9 +328,7 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
                 duration: 7.5,
               });
               if (progress > 0.000280235) {
-                triggerFadingAnimation(hasCompletedMoonRef, 1, () => {
-                  hasCompletedMoonRef.current = true;
-                });
+                handleFadOut({ hasCompletedRef: hasCompletedMoonRef });
               }
               break;
 
@@ -310,9 +340,7 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
                 duration: 4,
               });
               if (progress > 0.59) {
-                triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
-                  hasCompletedMarsRef.current = true;
-                });
+                handleFadOut({ hasCompletedRef: hasCompletedMarsRef });
               }
               break;
 
@@ -337,9 +365,7 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
                 },
               });
               if (progress < 0.9) {
-                triggerFadingAnimation(hasCompletedMoonBackRef, 0.5, () => {
-                  hasCompletedMoonBackRef.current = true;
-                });
+                handleFadOut({ hasCompletedRef: hasCompletedMoonBackRef });
               }
               break;
 
@@ -347,9 +373,7 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
               hasCompletedMoonBackRef.current = true;
               handleGSap({ to: EarthPoint, duration: 5 });
               if (progress < 0.57) {
-                triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
-                  hasCompletedMarsBackRef.current = true;
-                });
+                handleFadOut({ hasCompletedRef: hasCompletedMarsBackRef });
               }
               break;
             default:
