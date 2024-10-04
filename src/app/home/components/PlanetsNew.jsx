@@ -332,12 +332,12 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
               }
               break;
 
-            case progress >= 0.5 && progress < 0.9:
+            case progress >= 0.581187127 && progress < 0.9:
               hasCompletedMarsBackRef.current = false;
               handleGSap({
                 to: getScrollPoint(progress, marsPoint),
                 easing: "power1.inOut",
-                duration: 4,
+                duration: 3,
               });
               if (progress > 0.59) {
                 handleFadOut({ hasCompletedRef: hasCompletedMarsRef });
