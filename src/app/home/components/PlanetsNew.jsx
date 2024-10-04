@@ -43,7 +43,7 @@ const setupTypingEffect = ({ word, ref, speed, callBack, opacityRef }) => {
 const Model = forwardRef(({ progress }, ref) => {
   const group = useRef();
   const prevProgress = useRef(progress);
-  const { nodes, materials, animations } = useGLTF("/supercode_latest1.glb");
+  const { nodes, materials, animations } = useGLTF("/latest_final_1.glb");
   const { actions } = useAnimations(animations, group);
 
   // Effect to pause camera animation on mount
@@ -71,61 +71,6 @@ const Model = forwardRef(({ progress }, ref) => {
     }
   });
   return (
-    // <group ref={group} dispose={null}>
-    //   <group name="Scene">
-    //     <PerspectiveCamera
-    //       name="Camera"
-    //       makeDefault={true}
-    //       far={1000}
-    //       near={0.001}
-    //       fov={22.895}
-    //       position={[1.601, 0.129, 0]}
-    //       rotation={[-1.571, 1.557, 1.571]}
-    //     />
-
-    //     <pointLight
-    //       castShadow
-    //       color={0xc47d12}
-    //       width={10}
-    //       height={40}
-    //       shadow-mapSize-width={10}
-    //       shadow-mapSize-height={40}
-    //       position={[-6.1, 0, 1.1]}
-    //       intensity={2}
-    //     />
-
-    //     <mesh
-    //       name="Mars"
-    //       castShadow
-    //       receiveShadow
-    //       geometry={nodes.Mars.geometry}
-    //       material={materials["Material.001"]}
-    //       position={[-10.158, -0.407, -0.001]}
-    //       rotation={[2.355, -0.563, 2.155]}
-    //       scale={0.046}
-    //     />
-    //     <mesh
-    //       name="Earth001"
-    //       castShadow
-    //       receiveShadow
-    //       geometry={nodes.Earth001.geometry}
-    //       material={materials["Material.003"]}
-    //       position={[-7.545, 0, 0]}
-    //       rotation={[-1.125, -1.122, -1.001]}
-    //       scale={1.079}
-    //     />
-    //     <mesh
-    //       name="Moon"
-    //       castShadow
-    //       receiveShadow
-    //       geometry={nodes.Moon.geometry}
-    //       material={materials.Material}
-    //       position={[-8.671, 0.541, 0.007]}
-    //       rotation={[0.263, 0.153, 0.689]}
-    //       scale={0.039}
-    //     />
-    //   </group>
-    // </group>
     <group ref={group} dispose={null}>
       <group name="Scene">
         <PerspectiveCamera
@@ -178,7 +123,7 @@ const Model = forwardRef(({ progress }, ref) => {
   );
 });
 
-const PlanetsNew = () => {
+const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
   //lenis assign
   const lenis = useLenis();
 
@@ -292,7 +237,7 @@ const PlanetsNew = () => {
     }
   };
   // Custom scroll handler
-  const handleGSap = ({ to, duration, callback }) => {
+  const handleGSap = ({ to, duration, callback, onComplete }) => {
     // Only create a new tween if one isn't already running
     if (!scrollTween.current || !scrollTween.current.isActive()) {
       if (callback) callback();
@@ -300,21 +245,16 @@ const PlanetsNew = () => {
         scrollTo: { y: to },
         duration: duration,
         ease: "power3.inOut",
+        onComplete: onComplete,
       });
     }
   };
   useEffect(() => {
-    // handleGSap({
-    //   to: 0.65,
-    //   duration: 1,
-    //   callback: () => {
-    //     setTimeout(() => {
-    //       setLoaded(true);
-    //     }, 1500);
-    //   },
-    // });
-    setLoaded(true);
-    console.log("first22");
+    handleGSap({
+      to: 0.85,
+      duration: 1,
+      onComplete: () => setPageLoaded(true),
+    });
   }, []);
   useEffect(() => {
     const triggerFadingAnimation = (hasCompletedRef, duration, callback) => {
@@ -337,11 +277,17 @@ const PlanetsNew = () => {
       const currentScroll = window.scrollY;
       const isScrollingDown = currentScroll > prevScroll.current;
       const isScrollingUp = currentScroll < prevScroll.current;
-      console.log("progress: ", progress);
+
+      if (progress <= 1 && isScrollingUp) {
+        scrollOut.current = false;
+      }
+
       if (!skippingScroll.current) {
-        if (!scrollOut.current) {
-          if (isScrollingDown) {
-            if (progress < 0.581187127) {
+        if (scrollOut.current) return;
+
+        if (isScrollingDown) {
+          switch (true) {
+            case progress < 0.581187127:
               hasCompletedMarsRef.current = false;
               handleGSap({ to: getScrollPoint(progress, 0.465), duration: 5 });
               if (progress > 0.000280235) {
@@ -349,22 +295,31 @@ const PlanetsNew = () => {
                   hasCompletedMoonRef.current = true;
                 });
               }
-            } else if (progress > 0.581187127 && progress < 0.9) {
+              break;
+
+            case progress > 0.581187127 && progress < 0.9:
               hasCompletedMarsBackRef.current = false;
               handleGSap({ to: getScrollPoint(progress, 0.725), duration: 5 });
-              triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
-                hasCompletedMarsRef.current = true;
-              });
-            } else if (progress > 0.91 && progress !== 1) {
-              lenis.scrollTo("#SpaceSystemContainer0", {
-                duration: 2,
-              });
+              if (progress > 0.59) {
+                triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
+                  hasCompletedMarsRef.current = true;
+                });
+              }
+              break;
+
+            case progress > 0.91 && progress !== 1:
+              lenis.scrollTo("#SpaceSystemContainer0", { duration: 2 });
               setTimeout(() => {
                 scrollOut.current = true;
               }, 1500);
-            }
-          } else if (isScrollingUp) {
-            if (progress > 0.85 && progress < 1) {
+              break;
+
+            default:
+              break;
+          }
+        } else if (isScrollingUp) {
+          switch (true) {
+            case progress > 0.85 && progress < 1:
               handleGSap({
                 to: getScrollPoint(progress, 0.465),
                 duration: 5,
@@ -372,18 +327,24 @@ const PlanetsNew = () => {
                   hasCompletedMoonBackRef.current = false;
                 },
               });
-              triggerFadingAnimation(hasCompletedMoonBackRef, 0.5, () => {
-                hasCompletedMoonBackRef.current = true;
-              });
-            } else if (progress > 0.3 && progress <= 0.581187127) {
+              if (progress < 0.9) {
+                triggerFadingAnimation(hasCompletedMoonBackRef, 0.5, () => {
+                  hasCompletedMoonBackRef.current = true;
+                });
+              }
+              break;
+
+            case progress > 0.3 && progress <= 0.581187127:
               hasCompletedMoonBackRef.current = true;
-              triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
-                hasCompletedMarsBackRef.current = true;
-              });
               handleGSap({ to: 0.85, duration: 5 });
-            } else if (progress <= 1) {
-              scrollOut.current = false;
-            }
+              if (progress < 0.57) {
+                triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
+                  hasCompletedMarsBackRef.current = true;
+                });
+              }
+              break;
+            default:
+              break;
           }
         }
       }
@@ -511,7 +472,7 @@ const PlanetsNew = () => {
         canvasTimeLineRef.current = null;
       }
     };
-  }, [loaded]);
+  }, []);
 
   useEffect(() => {
     if (progress < 0.17) {
@@ -655,7 +616,7 @@ const PlanetsNew = () => {
   // Render
   return (
     <>
-      {loaded != true && <PageLoad />}
+      {pageLoad != true && <PageLoad />}
       <div className="canvasContainerRefClass">
         <button
           ref={skipButtonRef}
@@ -809,20 +770,13 @@ const PlanetsNew = () => {
           <directionalLight intensity={2} position={[26, 80, 14]} />
           <directionalLight intensity={3} position={[100, -211, -205]} />
           {/* Model component */}
-          {!hideModel && (
-            <Model
-              // isModelLoaded={SetIsModelLoaded}
-              progress={progress}
-            />
-          )}
+          {!hideModel && <Model progress={progress} />}
         </Canvas>
       </div>
     </>
   );
 };
 
-useGLTF.preload("/supercode_latest1.glb");
-
-// const DelayedPlanets = withDelayedUnmount(PlanetsNew);
+useGLTF.preload("/latest_final_1.glb");
 
 export default PlanetsNew;

@@ -60,7 +60,7 @@ export default function Home() {
         description={pageData?.meta_description}
         title={pageData?.meta_title}
       />
-      <PlanetsNew />
+      <PlanetsNew setPageLoaded={setPageLoaded} pageLoad={pageLoad} />
       <Section>
         <MobileViewPlanets />
         <SpaceSystem pageData={pageData} />
