@@ -237,14 +237,14 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
     }
   };
   // Custom scroll handler
-  const handleGSap = ({ to, duration, callback, onComplete }) => {
+  const handleGSap = ({ to, duration, easing, callback, onComplete }) => {
     // Only create a new tween if one isn't already running
     if (!scrollTween.current || !scrollTween.current.isActive()) {
       if (callback) callback();
       scrollTween.current = gsap.to(window, {
         scrollTo: { y: to },
         duration: duration,
-        ease: "power3.inOut",
+        ease: easing || "power3.inOut",
         onComplete: onComplete,
       });
     }
@@ -271,7 +271,9 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
         });
       }
     };
-
+    const EarthPoint = 0.85,
+      moonPoint = 0.465,
+      marsPoint = 0.725;
     const handleScroll = (e) => {
       e.preventDefault(); // Prevent the default scroll behavior
       const currentScroll = window.scrollY;
@@ -289,7 +291,10 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
           switch (true) {
             case progress < 0.581187127:
               hasCompletedMarsRef.current = false;
-              handleGSap({ to: getScrollPoint(progress, 0.465), duration: 5 });
+              handleGSap({
+                to: getScrollPoint(progress, moonPoint),
+                duration: 7.5,
+              });
               if (progress > 0.000280235) {
                 triggerFadingAnimation(hasCompletedMoonRef, 1, () => {
                   hasCompletedMoonRef.current = true;
@@ -297,9 +302,13 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
               }
               break;
 
-            case progress > 0.581187127 && progress < 0.9:
+            case progress >= 0.5 && progress < 0.9:
               hasCompletedMarsBackRef.current = false;
-              handleGSap({ to: getScrollPoint(progress, 0.725), duration: 5 });
+              handleGSap({
+                to: getScrollPoint(progress, marsPoint),
+                easing: "power1.inOut",
+                duration: 4,
+              });
               if (progress > 0.59) {
                 triggerFadingAnimation(hasCompletedMarsRef, 0.5, () => {
                   hasCompletedMarsRef.current = true;
@@ -319,9 +328,9 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
           }
         } else if (isScrollingUp) {
           switch (true) {
-            case progress > 0.85 && progress < 1:
+            case progress > EarthPoint && progress < 1:
               handleGSap({
-                to: getScrollPoint(progress, 0.465),
+                to: getScrollPoint(progress, moonPoint),
                 duration: 5,
                 callback: () => {
                   hasCompletedMoonBackRef.current = false;
@@ -336,7 +345,7 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
 
             case progress > 0.3 && progress <= 0.581187127:
               hasCompletedMoonBackRef.current = true;
-              handleGSap({ to: 0.85, duration: 5 });
+              handleGSap({ to: EarthPoint, duration: 5 });
               if (progress < 0.57) {
                 triggerFadingAnimation(hasCompletedMarsBackRef, 0.5, () => {
                   hasCompletedMarsBackRef.current = true;
