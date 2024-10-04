@@ -294,11 +294,10 @@ const PlanetsNew = ({ setPageLoaded, pageLoad }) => {
       const isScrollingDown = currentScroll > prevScroll.current;
       const isScrollingUp = currentScroll < prevScroll.current;
       // Allow default scrolling behavior unless specifically preventing
-      if (skippingScroll.current || scrollOut.current) return;
-
       if (progress <= 1 && isScrollingUp) {
         scrollOut.current = false;
       }
+      if (skippingScroll.current || scrollOut.current) return;
 
       if (scrollOut.current) return;
 
